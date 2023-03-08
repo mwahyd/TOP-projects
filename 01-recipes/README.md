@@ -4,7 +4,7 @@ This project is to design a basic recipe website. It will serve as a test to the
 
 Skills to demonstrate:
 
--Setting up a homepage
--Creating subsequent pages
--Using links to navigate to the the recipe pages and back to homepage
--Adding pictures to the individual pages.
+1.Setting up a homepage
+2.Creating subsequent pages
+3.Using links to navigate to the the recipe pages and back to homepage
+4.Adding pictures to the individual pages.
