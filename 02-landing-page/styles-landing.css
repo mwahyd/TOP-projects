@@ -16,6 +16,10 @@ h2 {
   margin-bottom: 15px;
 }
 
+img {
+  max-width: 100%;
+}
+
 button {
   background-color: #3882f6;
   color: #f9faf8;
@@ -26,7 +30,7 @@ button {
 }
 
 .container {
-  width: 70%;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 0 30px;
 }
@@ -41,6 +45,7 @@ button {
 /* nav */
 
 .navbar {
+  height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -48,14 +53,22 @@ button {
   padding-bottom: 15px;
 }
 
+.navbar a {
+  text-decoration: none;
+  color: #f9faf8;
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.navbar a:hover {
+  color: palevioletred;
+}
+
 .navbar ul {
   list-style-type: none;
 
   display: flex;
-  gap: 15px;
-  font-size: 20px;
-  font-weight: bold;
-  color: #e5e7eb;
+  gap: 30px;
 }
 
 .navbar .logo {
