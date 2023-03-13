@@ -21,3 +21,27 @@ h2 {
   width: 70%;
   margin: 0 auto;
 }
+
+/* header section */
+
+.header-section {
+  background-color: #1f2937;
+  color: #f9faf8;
+}
+
+/* nav */
+
+.navbar {
+  border: 2px solid yellow;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar ul {
+  list-style-type: none;
+
+  display: flex;
+  gap: 15px;
+}
