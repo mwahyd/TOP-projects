@@ -26,7 +26,6 @@ button {
 }
 
 .container {
-  border: 2px solid red;
   width: 70%;
   margin: 0 auto;
   padding: 0 30px;
@@ -143,7 +142,6 @@ button {
 }
 
 .ad {
-  border: 2px solid yellow;
   background-color: #3882f6;
   padding: 50px;
   border-radius: 20px;
@@ -154,7 +152,6 @@ button {
 }
 
 .ad-text {
-  border: 2px solid yellow;
   color: #f9faf8;
   font-size: 20px;
 }
@@ -163,4 +160,14 @@ button {
   border: 5px solid #f9faf8;
   border-radius: 10px;
   padding: 2px 20px;
+}
+
+/* footer */
+footer {
+  background-color: #1f2937;
+  height: 100px;
+  color: #f9faf8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
