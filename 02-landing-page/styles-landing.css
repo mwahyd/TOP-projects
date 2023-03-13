@@ -134,3 +134,33 @@ button {
 .quote .content {
   padding: 30px;
 }
+
+/* ad section */
+.ad-section {
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+}
+
+.ad {
+  border: 2px solid yellow;
+  background-color: #3882f6;
+  padding: 50px;
+  border-radius: 20px;
+  border: 2px solid #3882f6;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.ad-text {
+  border: 2px solid yellow;
+  color: #f9faf8;
+  font-size: 20px;
+}
+
+.ad button {
+  border: 5px solid #f9faf8;
+  border-radius: 10px;
+  padding: 2px 20px;
+}
