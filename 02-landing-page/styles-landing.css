@@ -92,3 +92,32 @@ button {
   color: #e5e7eb;
   margin-bottom: 15px;
 }
+
+/* pets section */
+
+.profile h2 {
+  font-size: 36px;
+  font-weight: extra-bold;
+  color: #1f2937;
+  margin: 50px 0 70px 0;
+  text-align: center;
+}
+
+.profile img {
+  width: 150px;
+  height: auto;
+  border: 5px solid #3882f6;
+  border-radius: 10px;
+}
+
+.box-container {
+  display: flex;
+
+  margin-bottom: 50px;
+}
+
+.box {
+  text-align: center;
+  padding: 20px;
+  font-size: 20px;
+}
