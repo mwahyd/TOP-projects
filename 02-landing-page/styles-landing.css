@@ -215,16 +215,28 @@ footer {
 }
 
 /* media */
-@media (max-width: 600px) {
-  .header .container,
-  .article .container {
+@media (max-width: 800px) {
+  .container {
     flex-direction: column;
+    text-align: center;
     padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+  .header button {
+    margin-bottom: 30px;
+  }
+
+  .header img {
+    margin-bottom: 50px;
+  }
+
+  .box-container {
+    display: block;
     text-align: center;
   }
 
-  .boxes .container {
-    display: block;
-    text-align: center;
+  .ad button {
+    margin: -50px;
   }
 }
