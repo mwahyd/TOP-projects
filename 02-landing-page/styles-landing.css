@@ -213,3 +213,18 @@ footer {
   align-items: center;
   font-size: 20px;
 }
+
+/* media */
+@media (max-width: 600px) {
+  .header .container,
+  .article .container {
+    flex-direction: column;
+    padding-top: 20px;
+    text-align: center;
+  }
+
+  .boxes .container {
+    display: block;
+    text-align: center;
+  }
+}
