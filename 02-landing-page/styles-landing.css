@@ -7,7 +7,7 @@
 }
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: Roboto, sans-serif;
   line-height: 1.5;
 }
 
@@ -83,15 +83,11 @@ button {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+  height: 100%;
 }
 
 .text-content {
-  flex: 1;
   margin-right: 50px;
-}
-
-.header img {
-  flex: 1;
 }
 
 .text-content h1 {
@@ -99,10 +95,14 @@ button {
   font-weight: extra-bold;
 }
 
+button:hover {
+  background-color: #002ead;
+}
+
 .text-content p {
   font-size: 20px;
   color: #e5e7eb;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 
 /* pets section */
@@ -116,10 +116,11 @@ button {
 }
 
 .profile img {
-  width: 150px;
-  height: auto;
+  max-width: 150px;
+  max-height: auto;
   border: 5px solid #3882f6;
   border-radius: 10px;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
 }
 
 .box-container {
@@ -129,7 +130,11 @@ button {
 }
 
 .box {
+  flex: 1;
+  border: 1px solid rgb(184, 182, 182);
+
   text-align: center;
+  margin: 20px 15px;
   padding: 20px;
   font-size: 20px;
 }
@@ -138,9 +143,22 @@ button {
 
 .quote-section {
   background-color: #e5e7eb;
+  color: #1f2937;
   font-size: 36px;
   font-style: italic;
-  color: #1f2937;
+  min-height: 500px;
+  padding-left: 50px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.quote h4 {
+  font-size: 30px;
+  text-align: end;
+  padding-right: 100px;
+  margin-top: 10px;
 }
 
 .quote .content {
@@ -149,38 +167,49 @@ button {
 
 /* ad section */
 .ad-section {
-  min-height: 300px;
+  min-height: 400px;
+
   display: flex;
   align-items: center;
 }
 
 .ad {
   background-color: #3882f6;
-  padding: 50px;
-  border-radius: 20px;
   border: 2px solid #3882f6;
+  border-radius: 20px;
+  color: #f9faf8;
+  line-height: 1.2;
+  height: 150px;
+  width: 1200px;
 
   display: flex;
   justify-content: space-between;
-}
-
-.ad-text {
-  color: #f9faf8;
-  font-size: 20px;
+  align-items: center;
+  padding: 0 80px;
+  gap: 150px;
 }
 
 .ad button {
-  border: 5px solid #f9faf8;
-  border-radius: 10px;
-  padding: 2px 20px;
+  padding: 6px 35px;
+  background-color: #3882f6;
+  border: 3px solid #f9faf8;
+  border-radius: 15px;
+  font-size: 20px;
+  color: #f9faf8;
+  font-weight: bold;
+}
+
+.ad button:hover {
+  background-color: #002ead;
 }
 
 /* footer */
 footer {
   background-color: #1f2937;
-  height: 100px;
-  color: #f9faf8;
+  min-height: 100px;
+  color: #e5e7eb;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  font-size: 20px;
 }
