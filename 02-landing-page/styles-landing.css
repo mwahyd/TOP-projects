@@ -4,10 +4,38 @@
   padding: 0;
 }
 
-html {
-  font-size: 10px;
-}
-
 body {
   font-family: "Open Sans", sans-serif;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/* header section */
+.header-section,
+footer {
+  background-color: #1f2937;
+  color: #f9faf8;
+}
+
+.navbar {
+  border: 2px solid yellow;
+  padding: 15px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.navbar .logo {
+  font-size: 24px;
+}
+
+.navbar ul {
+  list-style-type: none;
+  font-weight: bold;
+
+  display: flex;
+  gap: 10px;
 }
