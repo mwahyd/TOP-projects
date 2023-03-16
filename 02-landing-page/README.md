@@ -1,5 +1,7 @@
 # Pets Landing Page
 
+[Live Demo](https://mwahyd.github.io/TOP-projects/02-landing-page/index-landing.html)
+
 This project is to demonstrate the knowledge level of CSS and HTML (Odin Project Foundation Course Project 1).
 Skills to exhibit:
 

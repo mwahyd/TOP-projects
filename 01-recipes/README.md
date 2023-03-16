@@ -1,5 +1,7 @@
 # Odin Recipes
 
+[Live Demo](https://mwahyd.github.io/TOP-projects/01-recipes/index-recipes.html)
+
 This project is to design a basic recipe website. It will serve as a test to the HTML knowledge acquired throughout the course.
 
 Skills to demonstrate:
