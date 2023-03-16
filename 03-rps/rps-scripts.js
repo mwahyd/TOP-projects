@@ -54,6 +54,20 @@ function scoreboard() {
   console.log(`WINS ${WINS} TIES ${TIES} LOSSES ${LOSSES}`);
 }
 
+function finalResult() {
+  let result = "";
+  if (WINS > LOSSES && WINS > TIES) {
+    result = "Player Wins";
+  } else if (LOSSES > WINS && LOSSES > TIES) {
+    result = "Computer Wins";
+  } else {
+    result = "The game is a Tie!";
+  }
+  console.log(`\n\n\n${result}`);
+  scoreboard();
+  console.log("\n\n");
+}
+
 function game(array) {
   scoreboard();
   for (let i = 1; i <= 5; i++) {
@@ -61,6 +75,7 @@ function game(array) {
     console.log(`Round ${i}: \n${result}`);
     scoreboard();
   }
+  finalResult();
 }
 
 // let result = getComputerChoice(choices);
