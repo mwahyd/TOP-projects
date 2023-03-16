@@ -1,4 +1,6 @@
-// get randomised computer choice
+let WINS = 0;
+let LOSSES = 0;
+let TIES = 0;
 
 const choices = { r: "rock", p: "paper", s: "scissors" };
 
@@ -31,22 +33,33 @@ function playRound(array) {
 
 function determineOutcome(compChoice, userChoice) {
   if (userChoice === "rock" && compChoice === "scissors") {
+    WINS += 1;
     return "You win! Rock beats Scissors";
   } else if (userChoice === "paper" && compChoice === "rock") {
+    WINS += 1;
     return "You win! Paper beats Rock";
   } else if (userChoice === "scissors" && compChoice === "paper") {
+    WINS += 1;
     return "You win! Scissors beats paper";
   } else if (userChoice === compChoice) {
+    TIES += 1;
     return `Its a tie! ${userChoice} vs ${compChoice}`;
   } else {
+    LOSSES += 1;
     return `You lose! ${compChoice} beats ${userChoice}`;
   }
 }
 
+function scoreboard() {
+  console.log(`WINS ${WINS} TIES ${TIES} LOSSES ${LOSSES}`);
+}
+
 function game(array) {
+  scoreboard();
   for (let i = 1; i <= 5; i++) {
     let result = playRound(array);
     console.log(`Round ${i}: \n${result}`);
+    scoreboard();
   }
 }
 
