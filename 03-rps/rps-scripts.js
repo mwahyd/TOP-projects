@@ -1,6 +1,6 @@
 // get randomised computer choice
 
-const choices = { r: "Rock", p: "Paper", s: "Scissors" };
+const choices = { r: "rock", p: "paper", s: "scissors" };
 
 function getComputerChoice(array) {
   const mappedChars = ["r", "p", "s"];
@@ -8,7 +8,7 @@ function getComputerChoice(array) {
 }
 
 function getPlayerInput(choicesArray) {
-  const choice = prompt("Rock (r), Paper (p), Scissors (s)? ");
+  const choice = prompt("Rock (r), Paper (p), Scissors (s)? ").toLowerCase();
   return validatePlayerInput(choice, choicesArray);
 }
 
@@ -22,8 +22,32 @@ function validatePlayerInput(playerInput, array) {
   }
 }
 
-let result = getComputerChoice(choices);
-console.log(result);
+function playRound(array) {
+  const player = getPlayerInput(array);
+  const computer = getComputerChoice(array);
+  const outcome = determineOutcome(computer, player);
+  return outcome;
+}
 
-result = getPlayerInput(choices);
+function determineOutcome(compChoice, userChoice) {
+  if (userChoice === "rock" && compChoice === "scissors") {
+    return "You win! Rock beats Scissors";
+  } else if (userChoice === "paper" && compChoice === "rock") {
+    return "You win! Paper beats Rock";
+  } else if (userChoice === "scissors" && compChoice === "paper") {
+    return "You win! Scissors beats paper";
+  } else if (userChoice === compChoice) {
+    return `Its a tie! ${userChoice} vs ${compChoice}`;
+  } else {
+    return `You lose! ${compChoice} beats ${userChoice}`;
+  }
+}
+
+// let result = getComputerChoice(choices);
+// console.log(result);
+
+// result = getPlayerInput(choices);
+// console.log(result);
+
+let result = playRound(choices);
 console.log(result);
