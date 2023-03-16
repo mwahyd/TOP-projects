@@ -63,9 +63,9 @@ function finalResult() {
   } else {
     result = "The game is a Tie!";
   }
-  console.log(`\n\n\n${result}`);
+  console.log(`\n${result}`);
   scoreboard();
-  console.log("\n\n");
+  console.log("\n");
 }
 
 function game(array) {
@@ -74,17 +74,9 @@ function game(array) {
     let result = playRound(array);
     console.log(`Round ${i}: \n${result}`);
     scoreboard();
+    console.log("\n");
   }
   finalResult();
 }
-
-// let result = getComputerChoice(choices);
-// console.log(result);
-
-// result = getPlayerInput(choices);
-// console.log(result);
-
-// let result = playRound(choices);
-// console.log(result);
 
 game(choices);
