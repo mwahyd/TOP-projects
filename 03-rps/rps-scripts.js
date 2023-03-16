@@ -43,11 +43,20 @@ function determineOutcome(compChoice, userChoice) {
   }
 }
 
+function game(array) {
+  for (let i = 1; i <= 5; i++) {
+    let result = playRound(array);
+    console.log(`Round ${i}: \n${result}`);
+  }
+}
+
 // let result = getComputerChoice(choices);
 // console.log(result);
 
 // result = getPlayerInput(choices);
 // console.log(result);
 
-let result = playRound(choices);
-console.log(result);
+// let result = playRound(choices);
+// console.log(result);
+
+game(choices);
