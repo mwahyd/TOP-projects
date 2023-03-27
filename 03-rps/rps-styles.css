@@ -22,11 +22,14 @@ body {
 .top-section {
   border: 2px solid yellow;
   height: 10%;
+  margin-top: 30px;
+  margin-bottom: 40px;
 }
 
 .mid-section {
   border: 2px solid yellow;
   height: 30%;
+  margin-bottom: 40px;
 }
 
 .last-section {
@@ -35,7 +38,6 @@ body {
 }
 
 section {
-  margin-bottom: 20px;
 }
 
 /* top section */
