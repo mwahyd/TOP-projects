@@ -68,15 +68,23 @@ function finalResult() {
   console.log("\n");
 }
 
+// function game(array) {
+//   scoreboard();
+//   for (let i = 1; i <= 5; i++) {
+//     let result = playRound(array);
+//     console.log(`Round ${i}: \n${result}`);
+//     scoreboard();
+//     console.log("\n");
+//   }
+//   finalResult();
+// }
+
 function game(array) {
   scoreboard();
-  for (let i = 1; i <= 5; i++) {
-    let result = playRound(array);
-    console.log(`Round ${i}: \n${result}`);
-    scoreboard();
-    console.log("\n");
-  }
-  finalResult();
+  let result = playRound(array);
+  console.log(`Round: \n${result}`);
+  scoreboard();
+  console.log("\n");
 }
 
-game(choices);
+// game(choices);
