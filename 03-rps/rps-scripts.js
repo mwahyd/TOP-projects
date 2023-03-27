@@ -12,6 +12,7 @@ const display = document.querySelector(".display");
 const outcomeP = document.createElement("p");
 const roundP = document.createElement("p");
 const scoreP = document.createElement("p");
+const finalP = document.createElement("p");
 
 // lists
 const choices = { r: "rock", p: "paper", s: "scissors" };
@@ -62,25 +63,10 @@ function finalResult() {
   } else {
     result = "The game is a Tie!";
   }
-  console.log(`\n${result}`);
-  createScoreboard();
-  console.log("\n");
+  return `\n${result}`;
+  // createScoreboard();
+  // console.log("\n");
 }
-
-// function game(event, array) {
-//   createScoreboard();
-//   // for (let i = 1; i <= 5; i++) {
-//   roundP.textContent = `Round ${1}`;
-//   const outcome = playRound(event, array);
-//   outcomeP.textContent = outcome;
-//   console.log(`Round ${1}: \n${outcome}`);
-//   createScoreboard();
-//   console.log("\n");
-// }
-// finalResult();
-// // }
-
-// game(choices);
 
 function game(event, array) {
   roundP.textContent = `Round ${(ROUND += 1)}`;
@@ -94,11 +80,16 @@ function game(event, array) {
   display.appendChild(roundP);
   display.appendChild(scoreP);
   display.appendChild(outcomeP);
+
+  if (ROUND === 5) {
+    const result = finalResult();
+    finalP.textContent = result;
+    display.appendChild(finalP);
+  }
 }
 
 // handler functions
 function buttonClicked(event) {
-  console.log(event.target.id);
   game(event, choices);
 }
 
