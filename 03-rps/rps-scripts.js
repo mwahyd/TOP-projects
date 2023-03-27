@@ -9,26 +9,24 @@ function getComputerChoice(array) {
   return array[mappedChars[Math.floor(Math.random() * mappedChars.length)]];
 }
 
-function getPlayerInput(choicesArray) {
-  const choice = prompt("Rock (r), Paper (p), Scissors (s)? ").toLowerCase();
-  return validatePlayerInput(choice, choicesArray);
-}
+// function getPlayerInput(choicesArray) {}
 
-function validatePlayerInput(playerInput, array) {
-  if (Object.keys(array).includes(playerInput)) {
-    return array[playerInput];
-  } else if (Object.values(array).includes(playerInput)) {
-    return playerInput;
-  } else {
-    return "Please enter Rock (r), Paper (p) or Scissors (s)";
-  }
-}
+// function validatePlayerInput(playerInput, array) {
+//   if (Object.keys(array).includes(playerInput)) {
+//     return array[playerInput];
+//   } else if (Object.values(array).includes(playerInput)) {
+//     return playerInput;
+//   } else {
+//     return "Please enter Rock (r), Paper (p) or Scissors (s)";
+//   }
+// }
 
-function playRound(array) {
-  const player = getPlayerInput(array);
+function playRound(event, array) {
+  const player = event.target.id;
   const computer = getComputerChoice(array);
   const outcome = determineOutcome(computer, player);
-  return outcome;
+  console.log(outcome);
+  // return outcome;
 }
 
 function determineOutcome(compChoice, userChoice) {
@@ -88,3 +86,18 @@ function game(array) {
 }
 
 // game(choices);
+
+// handler functions
+function buttonClicked(event) {
+  console.log(event.target.id);
+  playRound(event, choices);
+}
+
+// query selectors
+const buttons = document.querySelectorAll("button");
+console.log(buttons);
+
+// event listeners
+buttons.forEach((button) => {
+  button.addEventListener("click", buttonClicked);
+});
