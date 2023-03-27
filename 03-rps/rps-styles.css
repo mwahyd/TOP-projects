@@ -4,9 +4,28 @@
   box-sizing: border-box;
 }
 
+body {
+  font-family: Electrolize, sans-serif;
+}
+
 .main-container {
   border: 2px solid red;
   height: 100vh;
   width: 80%;
   margin: 0 auto;
+}
+
+section {
+  border: 2px solid yellow;
+  height: 30%;
+}
+
+button {
+  border: none;
+  color: none;
+}
+
+img {
+  width: 200px;
+  height: 200px;
 }
