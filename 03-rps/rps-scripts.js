@@ -74,6 +74,18 @@ function addElements(parent, ...createdElements) {
   }
 }
 
+function disableButtons() {
+  buttons.forEach((button) => {
+    button.disabled = true;
+  });
+}
+
+function enableButtons() {
+  buttons.forEach((button) => {
+    button.disabled = false;
+  });
+}
+
 function game(event, array) {
   roundP.textContent = `Round ${(ROUND += 1)}`;
 
@@ -85,11 +97,8 @@ function game(event, array) {
 
   addElements(display, roundP, scoreP, outcomeP);
 
-  // display.appendChild(roundP);
-  // display.appendChild(scoreP);
-  // display.appendChild(outcomeP);
-
   if (ROUND === 5) {
+    disableButtons();
     const result = finalResult();
     finalP.textContent = result;
     display.appendChild(finalP);
