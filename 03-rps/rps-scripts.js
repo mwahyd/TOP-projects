@@ -1,32 +1,32 @@
+// trackers
 let WINS = 0;
 let LOSSES = 0;
 let TIES = 0;
+let ROUND = 0;
 
+// query selectors
+const buttons = document.querySelectorAll("button");
+const display = document.querySelector(".display");
+
+// created elements
+const outcomeP = document.createElement("p");
+const roundP = document.createElement("p");
+const scoreP = document.createElement("p");
+
+// lists
 const choices = { r: "rock", p: "paper", s: "scissors" };
 
+// logic functions
 function getComputerChoice(array) {
   const mappedChars = ["r", "p", "s"];
   return array[mappedChars[Math.floor(Math.random() * mappedChars.length)]];
 }
 
-// function getPlayerInput(choicesArray) {}
-
-// function validatePlayerInput(playerInput, array) {
-//   if (Object.keys(array).includes(playerInput)) {
-//     return array[playerInput];
-//   } else if (Object.values(array).includes(playerInput)) {
-//     return playerInput;
-//   } else {
-//     return "Please enter Rock (r), Paper (p) or Scissors (s)";
-//   }
-// }
-
 function playRound(event, array) {
   const player = event.target.id;
   const computer = getComputerChoice(array);
   const outcome = determineOutcome(computer, player);
-  console.log(outcome);
-  // return outcome;
+  return outcome;
 }
 
 function determineOutcome(compChoice, userChoice) {
@@ -66,36 +66,26 @@ function finalResult() {
   console.log("\n");
 }
 
-// function game(array) {
+// function game(event, array) {
 //   scoreboard();
-//   for (let i = 1; i <= 5; i++) {
-//     let result = playRound(array);
-//     console.log(`Round ${i}: \n${result}`);
-//     scoreboard();
-//     console.log("\n");
-//   }
-//   finalResult();
+//   // for (let i = 1; i <= 5; i++) {
+//   roundP.textContent = `Round ${1}`;
+//   const outcome = playRound(event, array);
+//   outcomeP.textContent = outcome;
+//   console.log(`Round ${1}: \n${outcome}`);
+//   scoreboard();
+//   console.log("\n");
 // }
-
-function game(array) {
-  scoreboard();
-  let result = playRound(array);
-  console.log(`Round: \n${result}`);
-  scoreboard();
-  console.log("\n");
-}
+// finalResult();
+// // }
 
 // game(choices);
 
 // handler functions
 function buttonClicked(event) {
   console.log(event.target.id);
-  playRound(event, choices);
+  game(event, choices);
 }
-
-// query selectors
-const buttons = document.querySelectorAll("button");
-console.log(buttons);
 
 // event listeners
 buttons.forEach((button) => {
