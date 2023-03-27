@@ -11,13 +11,33 @@ body {
 .main-container {
   border: 2px solid red;
   height: 100vh;
-  width: 80%;
+  width: 60%;
   margin: 0 auto;
 }
 
-section {
+.title {
+  border: 2px solid red;
+  font-size: 2.5rem;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+.top-section {
+  border: 2px solid yellow;
+  height: 10%;
+}
+
+.mid-section {
   border: 2px solid yellow;
   height: 30%;
+}
+.last-section {
+  border: 2px solid yellow;
+  height: 45%;
+}
+
+section {
+  margin-bottom: 20px;
 }
 
 button {
