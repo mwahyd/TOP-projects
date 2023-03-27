@@ -4,6 +4,9 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./rps-styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Electrolize" />
     <script src="./rps-scripts.js" defer></script>
     <title>Rock Paper Scissors</title>
   </head>
@@ -12,17 +15,21 @@
     <main class="main-container">
       <section class="top-section">
         <header>
-          <h1>Rock Paper Scissors - UI</h1>
+          <h1 class="title">Rock Paper Scissors - UI</h1>
         </header>
       </section>
 
       <section class="mid section">
-        <button id="rock">Rock</button>
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <div class="btn-container">
+          <button id="rock"><img src="./images/rock.jpg" /></button>
+          <button id="paper"><img src="./images/paper.jpg" /></button>
+          <button id="scissors"><img src="./images/scissors.jpg" /></button>
+        </div>
       </section>
 
-      <section class="last-section"></section>
+      <section class="last-section">
+        <div class="display"></div>
+      </section>
     </main>
   </body>
 </html>
