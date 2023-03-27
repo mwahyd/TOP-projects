@@ -1,3 +1,4 @@
+/* general settings */
 * {
   margin: 0;
   padding: 0;
@@ -15,13 +16,7 @@ body {
   margin: 0 auto;
 }
 
-.title {
-  border: 2px solid red;
-  font-size: 2.5rem;
-  padding: 20px 10px;
-  text-align: center;
-}
-
+/* section settings */
 .top-section {
   border: 2px solid yellow;
   height: 10%;
@@ -31,6 +26,7 @@ body {
   border: 2px solid yellow;
   height: 30%;
 }
+
 .last-section {
   border: 2px solid yellow;
   height: 45%;
@@ -40,6 +36,15 @@ section {
   margin-bottom: 20px;
 }
 
+/* top section */
+.title {
+  border: 2px solid red;
+  font-size: 2.5rem;
+  padding: 20px 10px;
+  text-align: center;
+}
+
+/* mid section */
 button {
   border: none;
   color: none;
@@ -49,3 +54,5 @@ img {
   width: 200px;
   height: 200px;
 }
+
+/* last section */
