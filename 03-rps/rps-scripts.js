@@ -68,6 +68,12 @@ function finalResult() {
   // console.log("\n");
 }
 
+function addElements(parent, ...createdElements) {
+  for (const element of createdElements) {
+    parent.appendChild(element);
+  }
+}
+
 function game(event, array) {
   roundP.textContent = `Round ${(ROUND += 1)}`;
 
@@ -77,9 +83,11 @@ function game(event, array) {
   const scoreboard = createScoreboard();
   scoreP.textContent = scoreboard;
 
-  display.appendChild(roundP);
-  display.appendChild(scoreP);
-  display.appendChild(outcomeP);
+  addElements(display, roundP, scoreP, outcomeP);
+
+  // display.appendChild(roundP);
+  // display.appendChild(scoreP);
+  // display.appendChild(outcomeP);
 
   if (ROUND === 5) {
     const result = finalResult();
