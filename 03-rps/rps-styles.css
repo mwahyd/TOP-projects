@@ -7,6 +7,8 @@
 
 body {
   font-family: Electrolize, sans-serif;
+  background-color: #03001c;
+  color: #b6eada;
 }
 
 .main-container {
@@ -46,13 +48,20 @@ section {
 
 /* mid section */
 button {
-  border: none;
-  color: none;
+  border: 5px solid #f4f4f4;
 }
 
 img {
   width: 200px;
   height: 200px;
+}
+
+.btn-container {
+  height: 100%;
+
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 /* last section */
