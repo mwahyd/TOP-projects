@@ -48,8 +48,9 @@ function determineOutcome(compChoice, userChoice) {
   }
 }
 
-function scoreboard() {
+function createScoreboard() {
   console.log(`WINS ${WINS} TIES ${TIES} LOSSES ${LOSSES}`);
+  return `WINS ${WINS} TIES ${TIES} LOSSES ${LOSSES}`;
 }
 
 function finalResult() {
@@ -62,24 +63,38 @@ function finalResult() {
     result = "The game is a Tie!";
   }
   console.log(`\n${result}`);
-  scoreboard();
+  createScoreboard();
   console.log("\n");
 }
 
 // function game(event, array) {
-//   scoreboard();
+//   createScoreboard();
 //   // for (let i = 1; i <= 5; i++) {
 //   roundP.textContent = `Round ${1}`;
 //   const outcome = playRound(event, array);
 //   outcomeP.textContent = outcome;
 //   console.log(`Round ${1}: \n${outcome}`);
-//   scoreboard();
+//   createScoreboard();
 //   console.log("\n");
 // }
 // finalResult();
 // // }
 
 // game(choices);
+
+function game(event, array) {
+  roundP.textContent = `Round ${(ROUND += 1)}`;
+
+  const outcome = playRound(event, array);
+  outcomeP.textContent = outcome;
+
+  const scoreboard = createScoreboard();
+  scoreP.textContent = scoreboard;
+
+  display.appendChild(roundP);
+  display.appendChild(scoreP);
+  display.appendChild(outcomeP);
+}
 
 // handler functions
 function buttonClicked(event) {
