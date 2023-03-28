@@ -3,17 +3,23 @@ let WINS = 0;
 let LOSSES = 0;
 let TIES = 0;
 let ROUND = 0;
+let PLAYER = "";
+let COMPUTER = "";
 
 // query selectors
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector(".display");
 const intro = document.querySelector("#intro");
+const winner = document.querySelector("#winner");
+const spanP = document.querySelector("#player");
+const spanC = document.querySelector("#comp");
+const playerCompDiv = document.querySelector("#player-comp");
 
 // created elements
-const outcomeP = document.createElement("p");
-const roundP = document.createElement("p");
-const scoreP = document.createElement("p");
-const finalP = document.createElement("p");
+const outcomeP = document.createElement("h4");
+const roundP = document.createElement("h4");
+const scoreP = document.createElement("h4");
+const finalP = document.createElement("h3");
 
 // lists
 const choices = { r: "rock", p: "paper", s: "scissors" };
@@ -25,9 +31,12 @@ function getComputerChoice(array) {
 }
 
 function playRound(event, array) {
-  const player = event.target.id;
+  const player = event.target.name;
   const computer = getComputerChoice(array);
+  PLAYER = player;
+  COMPUTER = computer;
   const outcome = determineOutcome(computer, player);
+
   return outcome;
 }
 
@@ -56,12 +65,12 @@ function createScoreboard() {
 
 function finalResult() {
   let result = "";
-  if (WINS > LOSSES && WINS > TIES) {
-    result = "Player Wins";
-  } else if (LOSSES > WINS && LOSSES > TIES) {
-    result = "Computer Wins";
+  if (WINS > LOSSES || (WINS > LOSSES && WINS <= TIES)) {
+    result = "PLAYER WINS";
+  } else if (LOSSES > WINS || (LOSSES > WINS && LOSSES <= TIES)) {
+    result = "COMPUTER WINS";
   } else {
-    result = "The game is a Tie!";
+    result = "GAME TIED!";
   }
   return `\n${result}`;
   // createScoreboard();
@@ -86,14 +95,22 @@ function enableButtons() {
   });
 }
 
+function displayChoice(player, computer) {
+  spanP.textContent = player;
+  spanC.textContent = computer;
+}
+
 function game(event, array) {
-  roundP.textContent = `Round ${(ROUND += 1)}`;
+  roundP.textContent = `ROUND ${(ROUND += 1)}`;
 
   const outcome = playRound(event, array);
   outcomeP.textContent = outcome;
+  outcomeP.classList.add("capitalise");
 
   const scoreboard = createScoreboard();
   scoreP.textContent = scoreboard;
+
+  displayChoice(PLAYER, COMPUTER);
 
   addElements(display, roundP, scoreP, outcomeP);
 
@@ -101,13 +118,16 @@ function game(event, array) {
     disableButtons();
     const result = finalResult();
     finalP.textContent = result;
-    display.appendChild(finalP);
+    winner.appendChild(finalP);
   }
 }
 
 // handler functions
 function buttonClicked(event) {
   intro.style.display = "none";
+  playerCompDiv.style.display = "flex";
+  playerCompDiv.style.justifyContent = "space-evenly";
+
   game(event, choices);
 }
 
