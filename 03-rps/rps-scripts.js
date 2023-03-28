@@ -72,8 +72,6 @@ function finalResult() {
     result = "GAME TIED!";
   }
   return `\n${result}`;
-  // createScoreboard();
-  // console.log("\n");
 }
 
 function displayChoice(player, computer) {
