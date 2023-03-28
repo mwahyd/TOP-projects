@@ -36,7 +36,6 @@ function playRound(event, array) {
   PLAYER = player;
   COMPUTER = computer;
   const outcome = determineOutcome(computer, player);
-
   return outcome;
 }
 
@@ -77,6 +76,11 @@ function finalResult() {
   // console.log("\n");
 }
 
+function displayChoice(player, computer) {
+  spanP.textContent = player;
+  spanC.textContent = computer;
+}
+
 function addElements(parent, ...createdElements) {
   for (const element of createdElements) {
     parent.appendChild(element);
@@ -95,11 +99,6 @@ function enableButtons() {
   });
 }
 
-function displayChoice(player, computer) {
-  spanP.textContent = player;
-  spanC.textContent = computer;
-}
-
 function game(event, array) {
   roundP.textContent = `ROUND ${(ROUND += 1)}`;
 
@@ -111,7 +110,6 @@ function game(event, array) {
   scoreP.textContent = scoreboard;
 
   displayChoice(PLAYER, COMPUTER);
-
   addElements(display, roundP, scoreP, outcomeP);
 
   if (ROUND === 5) {
@@ -127,7 +125,6 @@ function buttonClicked(event) {
   intro.style.display = "none";
   playerCompDiv.style.display = "flex";
   playerCompDiv.style.justifyContent = "space-evenly";
-
   game(event, choices);
 }
 
