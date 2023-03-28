@@ -105,6 +105,13 @@ function displayDivs() {
   playerCompDiv.style.justifyContent = "space-evenly";
 }
 
+function changeOrder(flexContainer) {
+  flexContainer.children[3].style.order = -4;
+  flexContainer.children[4].style.order = -3;
+  flexContainer.children[5].style.order = -1;
+  flexContainer.children[1].style.order = -2;
+}
+
 function game(event, array) {
   roundP.textContent = `ROUND ${(ROUND += 1)}`;
 
@@ -117,6 +124,7 @@ function game(event, array) {
 
   displayChoice(PLAYER, COMPUTER);
   addElements(display, roundP, scoreP, outcomeP);
+  changeOrder(display);
 
   if (ROUND === 5) {
     disableButtons();
