@@ -85,10 +85,20 @@ img:hover {
 }
 
 #player-comp {
-  border: 2px solid red;
-  width: 100%;
-  display: flex;
-  justify-content: space-evenly;
+  width: 80%;
+  display: none;
+}
+
+span {
+  border: 5px dashed #5b8fb9;
+  padding: 15px;
+  text-transform: capitalize;
+  color: salmon;
+  margin-left: 10px;
+}
+
+#winner {
+  color: goldenrod;
 }
 
 /* style classes */
@@ -102,4 +112,8 @@ img:hover {
 
 .hidden {
   display: none;
+}
+
+.capitalise {
+  text-transform: uppercase;
 }
