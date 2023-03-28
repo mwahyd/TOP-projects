@@ -99,6 +99,12 @@ function enableButtons() {
   });
 }
 
+function displayDivs() {
+  intro.style.display = "none";
+  playerCompDiv.style.display = "flex";
+  playerCompDiv.style.justifyContent = "space-evenly";
+}
+
 function game(event, array) {
   roundP.textContent = `ROUND ${(ROUND += 1)}`;
 
@@ -122,9 +128,7 @@ function game(event, array) {
 
 // handler functions
 function buttonClicked(event) {
-  intro.style.display = "none";
-  playerCompDiv.style.display = "flex";
-  playerCompDiv.style.justifyContent = "space-evenly";
+  displayDivs();
   game(event, choices);
 }
 
