@@ -84,6 +84,11 @@ img:hover {
   gap: 20px;
 }
 
+#intro {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
 #player-comp {
   width: 80%;
   display: none;
