@@ -44,14 +44,24 @@ body {
 
 /* mid section */
 button {
-  border: 5px dashed #f4f4f4;
-  padding: 20px;
   background-color: #252525;
+  border: none;
+  width: 200px;
+  height: 200px;
 }
 
 img {
+  border: 5px dashed #f4f4f4;
+  padding: 20px;
   width: 200px;
   height: 200px;
+}
+
+img:hover {
+  background-color: #252525;
+  height: 250px;
+  width: 250px;
+  border: 10px dashed gold;
 }
 
 .btn-container {
@@ -65,7 +75,7 @@ img {
 /* last section */
 .display {
   height: 100%;
-  font-size: 2.5rem;
+  font-size: 2rem;
 
   display: flex;
   flex-direction: column;
@@ -74,7 +84,14 @@ img {
   gap: 20px;
 }
 
-/* style selectors */
+#player-comp {
+  border: 2px solid red;
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* style classes */
 .center-text {
   text-align: center;
 }
