@@ -15,6 +15,7 @@ body {
   height: 100vh;
   width: 60%;
   margin: 0 auto;
+  overflow: hidden;
 }
 
 /* section settings */
@@ -34,12 +35,9 @@ body {
   height: 45%;
 }
 
-section {
-}
-
 /* top section */
 .title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   padding: 20px 10px;
   text-align: center;
 }
@@ -60,18 +58,31 @@ img {
   height: 100%;
 
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
   align-items: center;
 }
 
 /* last section */
 .display {
   height: 100%;
-  font-size: 2rem;
+  font-size: 2.5rem;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-evenly;
   gap: 20px;
+}
+
+/* style selectors */
+.center-text {
+  text-align: center;
+}
+
+.mb-50 {
+  margin-bottom: 50px;
+}
+
+.hidden {
+  display: none;
 }
