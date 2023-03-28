@@ -1,6 +1,6 @@
 # Project: Rock Paper Scissors
 
-[Live demo](https://mwahyd.github.io/TOP-projects/03-rps/rps-landing.html)
+[Live demo](https://mwahyd.github.io/TOP-projects/03-rps/rps-index.html)
 
 A basic representation of the game Rock Paper Scissors using HTML and Javascript
 Objectives:
