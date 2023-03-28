@@ -7,6 +7,7 @@ let ROUND = 0;
 // query selectors
 const buttons = document.querySelectorAll("button");
 const display = document.querySelector(".display");
+const intro = document.querySelector("#intro");
 
 // created elements
 const outcomeP = document.createElement("p");
@@ -50,8 +51,7 @@ function determineOutcome(compChoice, userChoice) {
 }
 
 function createScoreboard() {
-  console.log(`WINS ${WINS} TIES ${TIES} LOSSES ${LOSSES}`);
-  return `WINS ${WINS} TIES ${TIES} LOSSES ${LOSSES}`;
+  return `WINS: ${WINS} TIES: ${TIES} LOSSES: ${LOSSES}`;
 }
 
 function finalResult() {
@@ -107,6 +107,7 @@ function game(event, array) {
 
 // handler functions
 function buttonClicked(event) {
+  intro.style.display = "none";
   game(event, choices);
 }
 
