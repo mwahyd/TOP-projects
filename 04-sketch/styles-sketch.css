@@ -19,11 +19,34 @@ body {
 
 section {
   border: 2px solid yellow;
-  height: 30%;
+}
+
+.header-section,
+.footer-section {
+  height: 10%;
 }
 
 /* header section */
 
 /* body section */
+.body-section {
+  height: 80%;
+}
+
+.sketchpad-container {
+  border: 2px solid red;
+  width: 80%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+.canvas {
+  border: 2px solid blue;
+  height: 70%;
+  width: 50%;
+  margin: 0 auto;
+}
 
 /* footer section */
+
+/* style classes */
