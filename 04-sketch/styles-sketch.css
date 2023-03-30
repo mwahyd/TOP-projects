@@ -1,0 +1,29 @@
+/* general settings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Courier New", Courier, monospace;
+  background-color: grey;
+}
+
+.main-container {
+  border: 2px solid red;
+  height: 100vh;
+  width: 80%;
+  margin: 0 auto;
+}
+
+section {
+  border: 2px solid yellow;
+  height: 30%;
+}
+
+/* header section */
+
+/* body section */
+
+/* footer section */
