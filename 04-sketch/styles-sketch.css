@@ -7,7 +7,7 @@
 
 body {
   font-family: "Courier New", Courier, monospace;
-  background-color: grey;
+  background-color: #cacaca;
 }
 
 .main-container {
@@ -50,3 +50,20 @@ section {
 /* footer section */
 
 /* style classes */
+.box {
+  border: 2px solid red;
+  height: 10px;
+  width: 10px;
+}
+
+.box-border {
+  border: 1px solid salmon;
+}
+
+.flex {
+  display: flex;
+}
+
+.inflexible {
+  flex: none;
+}
