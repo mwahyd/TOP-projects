@@ -4,6 +4,7 @@ let gridY = 16;
 
 // query selectors
 const canvas = document.querySelector(".canvas");
+const colourPicker = document.querySelector("#colour-picker");
 
 // created elements
 const gridContainer = document.createElement("div");
@@ -46,9 +47,24 @@ function removeHover(event) {
   event.target.classList.remove("hover");
 }
 
+// handler function
+function buttonClicked(event) {
+  console.log(event.target);
+  const colour = getColour();
+  console.log(colour);
+  event.target.style.backgroundColor = colour;
+}
+
+function getColour() {
+  return colourPicker.value;
+}
+
 // event listeners
 const squares = canvas.querySelectorAll(".square");
 squares.forEach((square) => {
   square.addEventListener("mouseenter", addHover);
   square.addEventListener("mouseleave", removeHover);
+
+  // click event
+  square.addEventListener("click", buttonClicked);
 });
