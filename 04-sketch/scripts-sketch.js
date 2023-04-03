@@ -19,12 +19,20 @@ function createGrid(width, height) {
   for (const num of Array.from(Array(number).keys())) {
     const square = document.createElement("div");
     square.classList.add("box-border");
-    square.style.width = `${canvas.offsetWidth / width}px`;
-    square.style.height = `${canvas.offsetHeight / height}px`;
+
+    // square.style.width = `${canvas.offsetWidth / width - 1}px`;
+    // square.style.height = `${canvas.offsetHeight / height - 1}px`;
+
+    const dimension = canvas.offsetWidth / width;
+    const dimensionPercent = (dimension / canvas.offsetWidth) * 100;
+    square.style.width = `${dimensionPercent}%`;
+    // square.style.height = `${dimensionPercent}%`;
+
+    console.log(dimension);
+    console.log(dimensionPercent);
+
     canvas.appendChild(square);
   }
 }
 
 createGrid(gridX, gridY);
-
-createGrid(10);
