@@ -56,6 +56,27 @@ section {
   gap: 50px;
 }
 
+#colour-picker {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  width: 100px;
+  height: 100px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+#colour-picker::-webkit-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+
+#colour-picker::-moz-color-swatch {
+  border-radius: 15px;
+  border: none;
+}
+
 /* footer section */
 
 /* style classes */
