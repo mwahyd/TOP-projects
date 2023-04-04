@@ -76,7 +76,7 @@ section {
   cursor: pointer;
 }
 
-.tools .btn {
+.btn {
   font-size: 1.2rem;
   width: auto;
   height: 80%;
@@ -114,6 +114,10 @@ section {
 }
 
 .coloured {
+}
+
+.erased {
+  background-color: #fefae0;
 }
 
 .selected {
