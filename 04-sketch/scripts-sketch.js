@@ -53,6 +53,7 @@ function buttonClicked(event) {
   const colour = getColour();
   console.log(colour);
   event.target.style.backgroundColor = colour;
+  event.target.classList.add("coloured");
 }
 
 function getColour() {
@@ -66,5 +67,5 @@ squares.forEach((square) => {
   square.addEventListener("mouseleave", removeHover);
 
   // click event
-  square.addEventListener("click", buttonClicked);
+  square.addEventListener("mousedown", buttonClicked);
 });
