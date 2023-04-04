@@ -72,12 +72,23 @@ function addRemoveSelect(button) {
 
 function draw(colourCode, square) {
   square.style.backgroundColor = colourCode;
+  square.classList.add("coloured");
+}
+
+function erase(square) {
+  if (square.classList.contains("coloured")) {
+    square.style.backgroundColor = "";
+    square.classList.add("erased");
+    square.classList.remove("coloured");
+  }
 }
 
 // handler functions
 function squareClicked(event) {
   if (isDraw) {
     draw(getColour(), event.target);
+  } else if (isErase) {
+    erase(event.target);
   }
   // console.log(event.target);
   // const colour = getColour();
