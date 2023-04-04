@@ -70,39 +70,41 @@ function addRemoveSelect(button) {
   }
 }
 
+function draw(colourCode, square) {
+  square.style.backgroundColor = colourCode;
+}
+
 // handler functions
-function buttonClicked(event) {
-  console.log(event.target);
-  const colour = getColour();
-  console.log(colour);
-  event.target.style.backgroundColor = colour;
-  event.target.classList.add("coloured");
+function squareClicked(event) {
+  if (isDraw) {
+    draw(getColour(), event.target);
+  }
+  // console.log(event.target);
+  // const colour = getColour();
+  // console.log(colour);
+  // event.target.style.backgroundColor = colour;
+  // event.target.classList.add("coloured");
 }
 
 function checkToolClicked(event) {
   if (event.target.nodeName !== "BUTTON") {
     return;
   }
-  console.log(event.target.nodeName);
-  console.log(event.target.id);
   switch (event.target.id) {
     case "draw":
       isDraw = true;
       isErase = false;
       addRemoveSelect(event.target);
-      console.log("You clicked the draw button");
       break;
     case "eraser":
       isDraw = false;
       isErase = true;
       addRemoveSelect(event.target);
-      console.log("You clicked the eraser button");
       break;
     case "clear":
       isDraw = false;
       isErase = false;
       addRemoveSelect(event.target);
-      console.log("You clicked the clear button");
       break;
   }
 }
@@ -114,7 +116,7 @@ squares.forEach((square) => {
   square.addEventListener("mouseleave", removeHover);
 
   // click event
-  square.addEventListener("mousedown", buttonClicked);
+  square.addEventListener("mousedown", squareClicked);
 });
 
 const tools = document.querySelector(".tools");
