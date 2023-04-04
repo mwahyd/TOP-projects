@@ -1,6 +1,8 @@
 // vars
 let gridX = 16;
 let gridY = 16;
+let isDraw = false;
+let isErase = false;
 
 // query selectors
 const canvas = document.querySelector(".canvas");
@@ -47,7 +49,11 @@ function removeHover(event) {
   event.target.classList.remove("hover");
 }
 
-// handler function
+function getColour() {
+  return colourPicker.value;
+}
+
+// handler functions
 function buttonClicked(event) {
   console.log(event.target);
   const colour = getColour();
@@ -56,8 +62,29 @@ function buttonClicked(event) {
   event.target.classList.add("coloured");
 }
 
-function getColour() {
-  return colourPicker.value;
+function checkToolClicked(event) {
+  if (event.target.nodeName !== "BUTTON") {
+    return;
+  }
+  console.log(event.target.nodeName);
+  console.log(event.target.id);
+  switch (event.target.id) {
+    case "draw":
+      isDraw = true;
+      isErase = false;
+      console.log("You clicked the draw button");
+      break;
+    case "eraser":
+      isDraw = false;
+      isErase = true;
+      console.log("You clicked the eraser button");
+      break;
+    case "clear":
+      isDraw = false;
+      isErase = false;
+      console.log("You clicked the clear button");
+      break;
+  }
 }
 
 // event listeners
@@ -69,3 +96,6 @@ squares.forEach((square) => {
   // click event
   square.addEventListener("mousedown", buttonClicked);
 });
+
+const tools = document.querySelector(".tools");
+tools.addEventListener("click", checkToolClicked);
