@@ -41,6 +41,7 @@ function createGrid(width, height) {
 // set up grid
 createGrid(gridX, gridY);
 
+// activity functions
 function addHover(event) {
   event.target.classList.add("hover");
 }
@@ -51,6 +52,22 @@ function removeHover(event) {
 
 function getColour() {
   return colourPicker.value;
+}
+
+function addRemoveSelect(button) {
+  if (isDraw === true && isErase === false) {
+    button.classList.add("selected");
+    button.nextElementSibling.classList.remove("selected");
+  } else if (isDraw === false && isErase === true) {
+    button.classList.add("selected");
+    button.previousElementSibling.classList.remove("selected");
+  } else if (isDraw === false || isErase === false) {
+    // button.classList.remove("selected");
+    button.previousElementSibling.classList.remove("selected");
+    button.previousElementSibling.previousElementSibling.classList.remove(
+      "selected"
+    );
+  }
 }
 
 // handler functions
@@ -72,16 +89,19 @@ function checkToolClicked(event) {
     case "draw":
       isDraw = true;
       isErase = false;
+      addRemoveSelect(event.target);
       console.log("You clicked the draw button");
       break;
     case "eraser":
       isDraw = false;
       isErase = true;
+      addRemoveSelect(event.target);
       console.log("You clicked the eraser button");
       break;
     case "clear":
       isDraw = false;
       isErase = false;
+      addRemoveSelect(event.target);
       console.log("You clicked the clear button");
       break;
   }
