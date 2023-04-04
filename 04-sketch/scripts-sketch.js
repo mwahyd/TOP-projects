@@ -83,6 +83,14 @@ function erase(square) {
   }
 }
 
+function clearCanvas() {
+  squares.forEach((square) => {
+    if (square.classList.contains("coloured")) {
+      square.style.backgroundColor = "";
+    }
+  });
+}
+
 // handler functions
 function squareClicked(event) {
   if (isDraw) {
@@ -116,6 +124,7 @@ function checkToolClicked(event) {
       isDraw = false;
       isErase = false;
       addRemoveSelect(event.target);
+      clearCanvas();
       break;
   }
 }
