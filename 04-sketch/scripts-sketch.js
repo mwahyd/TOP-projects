@@ -10,11 +10,6 @@ const colourPicker = document.querySelector("#colour-picker");
 
 // created elements
 const gridContainer = document.createElement("div");
-// const grid = document.createElement("div");
-
-// // get canvas dimensions
-// console.log(canvas.offsetWidth);
-// console.log(canvas.offsetHeight);
 
 // functions
 function createGrid(width, height) {
@@ -23,16 +18,9 @@ function createGrid(width, height) {
     const square = document.createElement("div");
     square.classList.add("box-border", "square");
 
-    // square.style.width = `${canvas.offsetWidth / width - 1}px`;
-    // square.style.height = `${canvas.offsetHeight / height - 1}px`;
-
     const dimension = canvas.offsetWidth / width;
     const dimensionPercent = (dimension / canvas.offsetWidth) * 100;
     square.style.width = `${dimensionPercent}%`;
-    // square.style.height = `${dimensionPercent}%`;
-
-    // console.log(dimension);
-    // console.log(dimensionPercent);
 
     canvas.appendChild(square);
   }
@@ -62,7 +50,6 @@ function addRemoveSelect(button) {
     button.classList.add("selected");
     button.previousElementSibling.classList.remove("selected");
   } else if (isDraw === false || isErase === false) {
-    // button.classList.remove("selected");
     button.previousElementSibling.classList.remove("selected");
     button.previousElementSibling.previousElementSibling.classList.remove(
       "selected"
@@ -98,11 +85,6 @@ function squareClicked(event) {
   } else if (isErase) {
     erase(event.target);
   }
-  // console.log(event.target);
-  // const colour = getColour();
-  // console.log(colour);
-  // event.target.style.backgroundColor = colour;
-  // event.target.classList.add("coloured");
 }
 
 function checkToolClicked(event) {
