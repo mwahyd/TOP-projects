@@ -38,6 +38,10 @@ section {
   width: 80%;
   height: 100%;
   margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .canvas {
@@ -51,9 +55,13 @@ section {
 
 .tools {
   border: 2px solid red;
+  height: 15%;
+  width: 80%;
+  margin: 0 auto;
+
   display: flex;
   justify-content: center;
-  gap: 50px;
+  gap: 8%;
 }
 
 #colour-picker {
