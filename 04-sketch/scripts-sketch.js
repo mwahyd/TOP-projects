@@ -1,7 +1,4 @@
 // vars
-let gridX = 16;
-let gridY = 16;
-let dimension = 0;
 let isDraw = false;
 let isErase = false;
 
@@ -9,33 +6,14 @@ let isErase = false;
 const canvas = document.querySelector(".canvas");
 const colourPicker = document.querySelector("#colour-picker");
 
-// // range slider
-// const slider = document.querySelector("#slider");
-// slider.addEventListener("input", getSliderValue);
-
 // created elements
 const gridContainer = document.createElement("div");
 
 // functions
-
 function getSliderValue() {
   console.log(slider.value);
   return slider.value;
 }
-
-// function createGrid(width, height) {
-//   const number = width * height;
-//   for (const num of Array.from(Array(number).keys())) {
-//     const square = document.createElement("div");
-//     square.classList.add("box-border", "square");
-
-//     const dimension = canvas.offsetWidth / width;
-//     const dimensionPercent = (dimension / canvas.offsetWidth) * 100;
-//     square.style.width = `${dimensionPercent}%`;
-
-//     canvas.appendChild(square);
-//   }
-// }
 
 function createGrid(sliderValue) {
   // const sliderValue = getSliderValue();
@@ -54,9 +32,6 @@ function createGrid(sliderValue) {
   }
   console.log(canvas);
 }
-
-// // set up grid
-// createGrid();
 
 // activity functions
 function addHover(event) {
