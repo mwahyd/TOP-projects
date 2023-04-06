@@ -156,9 +156,4 @@ tools.addEventListener("click", checkToolClicked);
 const slider = document.querySelector("#slider");
 slider.addEventListener("input", updateCanvas);
 
-// // set up grid
-// createGrid(getSliderValue());
-
-// // square event listeners
-// setSquareListeners();
 createCanvas();
