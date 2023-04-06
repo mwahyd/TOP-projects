@@ -16,3 +16,10 @@ Tools:
 - HTML
 - CSS
 - Javascript
+
+Features to Add:
+
+- save created swatch colours
+- allow undo and redo of actions
+
+![Screenshot!](app-example.png)
