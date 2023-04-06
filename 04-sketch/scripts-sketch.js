@@ -7,6 +7,14 @@ let isMouseDown = false;
 const canvas = document.querySelector(".canvas");
 const colourPicker = document.querySelector("#colour-picker");
 
+// buttons
+const tools = document.querySelector(".tools");
+tools.addEventListener("click", checkToolClicked);
+
+// range slider
+const slider = document.querySelector("#slider");
+slider.addEventListener("input", updateCanvas);
+
 // created elements
 const gridContainer = document.createElement("div");
 
@@ -171,12 +179,12 @@ function createCanvas() {
   sliderOutput();
 }
 
-// buttons
-const tools = document.querySelector(".tools");
-tools.addEventListener("click", checkToolClicked);
+// // buttons
+// const tools = document.querySelector(".tools");
+// tools.addEventListener("click", checkToolClicked);
 
-// range slider
-const slider = document.querySelector("#slider");
-slider.addEventListener("input", updateCanvas);
+// // range slider
+// const slider = document.querySelector("#slider");
+// slider.addEventListener("input", updateCanvas);
 
 createCanvas();
