@@ -102,6 +102,11 @@ function sliderOutput() {
   });
 }
 
+function sliderAppearance() {
+  valPerc = (slider.value / slider.max) * 100;
+  slider.style.backgroundImage = `linear-gradient(to right, #FFD966 ${valPerc}%, #efeeee ${valPerc}%)`;
+}
+
 // handler functions
 function squareClicked(event) {
   if (isDraw) {
@@ -139,12 +144,14 @@ function updateCanvas(event) {
   destroyCanvas(canvas);
   createGrid(getSliderValue());
   setSquareListeners();
+  sliderAppearance();
   sliderOutput();
 }
 
 function createCanvas() {
   createGrid(getSliderValue());
   setSquareListeners();
+  sliderAppearance();
   sliderOutput();
 }
 
