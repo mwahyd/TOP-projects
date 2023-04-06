@@ -13,3 +13,5 @@ Rock, paper, scissors UI
 3. create a new user interface
 4. player to click on image icons to interact with the game
 5. determine the winner and display winner
+
+![Screenshot!](./images/game-eg.png)
