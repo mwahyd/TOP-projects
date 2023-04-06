@@ -78,6 +78,7 @@ section {
 
 .btn {
   font-size: 1.2rem;
+  font-weight: bold;
   width: auto;
   height: 80%;
   padding: 0.5% 2%;
@@ -99,6 +100,14 @@ section {
 #colour-picker::-moz-color-swatch {
   border-radius: 15px;
   border: none;
+}
+
+#grid-size {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: flex-start;
 }
 
 /* footer section */
