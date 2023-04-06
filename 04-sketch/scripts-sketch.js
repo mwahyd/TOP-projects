@@ -11,15 +11,11 @@ const gridContainer = document.createElement("div");
 
 // functions
 function getSliderValue() {
-  console.log(slider.value);
   return slider.value;
 }
 
 function createGrid(sliderValue) {
-  // const sliderValue = getSliderValue();
-  console.log("createGrid", sliderValue);
   const gridSize = sliderValue ** 2;
-  console.log("gridSize", gridSize);
   for (const num of Array.from(Array(gridSize).keys())) {
     const square = document.createElement("div");
     square.classList.add("box-border", "square");
@@ -30,7 +26,6 @@ function createGrid(sliderValue) {
 
     canvas.appendChild(square);
   }
-  console.log(canvas);
 }
 
 // activity functions
