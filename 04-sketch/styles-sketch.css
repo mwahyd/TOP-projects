@@ -8,6 +8,7 @@
 body {
   font-family: Poppins, sans-serif;
   background-color: #fefae0;
+  color: #474e7b;
 }
 
 .main-container {
@@ -27,6 +28,14 @@ section {
 }
 
 /* header section */
+h1 {
+  border: 2px solid red;
+  font-size: 2.5rem;
+  font-weight: bold;
+  letter-spacing: 5px;
+  text-align: center;
+  margin-top: 1%;
+}
 
 /* body section */
 .body-section {
@@ -79,6 +88,7 @@ section {
 .btn {
   font-size: 1.2rem;
   font-weight: 550;
+  color: #474e7b;
   width: auto;
   height: 80%;
   padding: 0.5% 2%;
