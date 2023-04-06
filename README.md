@@ -2,4 +2,4 @@
 
 [webpage](https://mwahyd.github.io/TOP-projects/index.html)
 
-- This repository is a collection of all the projects created during the Odin Project course.
+- A collection of all the self made projects for the Odin Project.
