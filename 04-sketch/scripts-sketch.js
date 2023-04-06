@@ -95,6 +95,13 @@ function setSquareListeners() {
   });
 }
 
+function sliderOutput() {
+  spans = document.querySelectorAll(".output");
+  spans.forEach((span) => {
+    span.textContent = slider.value;
+  });
+}
+
 // handler functions
 function squareClicked(event) {
   if (isDraw) {
@@ -132,6 +139,13 @@ function updateCanvas(event) {
   destroyCanvas(canvas);
   createGrid(getSliderValue());
   setSquareListeners();
+  sliderOutput();
+}
+
+function createCanvas() {
+  createGrid(getSliderValue());
+  setSquareListeners();
+  sliderOutput();
 }
 
 // buttons
@@ -142,8 +156,9 @@ tools.addEventListener("click", checkToolClicked);
 const slider = document.querySelector("#slider");
 slider.addEventListener("input", updateCanvas);
 
-// set up grid
-createGrid(getSliderValue());
+// // set up grid
+// createGrid(getSliderValue());
 
-// square event listeners
-setSquareListeners();
+// // square event listeners
+// setSquareListeners();
+createCanvas();
