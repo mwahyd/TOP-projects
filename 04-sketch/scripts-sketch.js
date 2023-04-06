@@ -100,6 +100,7 @@ function erase(square) {
 }
 
 function clearCanvas() {
+  const squares = canvas.querySelectorAll(".square");
   squares.forEach((square) => {
     if (square.classList.contains("coloured")) {
       square.style.backgroundColor = "";
@@ -111,6 +112,17 @@ function destroyCanvas(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
   }
+}
+
+function setSquareListeners() {
+  const squares = canvas.querySelectorAll(".square");
+  squares.forEach((square) => {
+    square.addEventListener("mouseenter", addHover);
+    square.addEventListener("mouseleave", removeHover);
+
+    // click event
+    square.addEventListener("mousedown", squareClicked);
+  });
 }
 
 // handler functions
@@ -149,17 +161,8 @@ function checkToolClicked(event) {
 function updateCanvas(event) {
   destroyCanvas(canvas);
   createGrid(getSliderValue());
+  setSquareListeners();
 }
-
-// event listeners
-const squares = canvas.querySelectorAll(".square");
-squares.forEach((square) => {
-  square.addEventListener("mouseenter", addHover);
-  square.addEventListener("mouseleave", removeHover);
-
-  // click event
-  square.addEventListener("mousedown", squareClicked);
-});
 
 // buttons
 const tools = document.querySelector(".tools");
@@ -171,3 +174,6 @@ slider.addEventListener("input", updateCanvas);
 
 // set up grid
 createGrid(getSliderValue());
+
+// square event listeners
+setSquareListeners();
