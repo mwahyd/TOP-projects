@@ -179,12 +179,4 @@ function createCanvas() {
   sliderOutput();
 }
 
-// // buttons
-// const tools = document.querySelector(".tools");
-// tools.addEventListener("click", checkToolClicked);
-
-// // range slider
-// const slider = document.querySelector("#slider");
-// slider.addEventListener("input", updateCanvas);
-
 createCanvas();
