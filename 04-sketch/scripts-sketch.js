@@ -1,6 +1,7 @@
 // vars
 let isDraw = false;
 let isErase = false;
+let isMouseDown = false;
 
 // query selectors
 const canvas = document.querySelector(".canvas");
@@ -90,8 +91,23 @@ function setSquareListeners() {
     square.addEventListener("mouseenter", addHover);
     square.addEventListener("mouseleave", removeHover);
 
-    // click event
-    square.addEventListener("mousedown", squareClicked);
+    // click to paint square
+    square.addEventListener("click", squareClicked);
+
+    // draw continuously when holding down mouse
+    square.addEventListener("mousedown", () => {
+      isMouseDown = true;
+    });
+
+    square.addEventListener("mousemove", (event) => {
+      if (isMouseDown) {
+        squareClicked(event);
+      }
+    });
+
+    square.addEventListener("mouseup", () => {
+      isMouseDown = false;
+    });
   });
 }
 
