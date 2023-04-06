@@ -24,7 +24,14 @@
             <button class="btn" id="draw">Draw</button>
             <button class="btn" id="eraser">Eraser</button>
             <button class="btn" id="clear">Clear</button>
-            <button class="btn" id="grid-size">Change Grid Size</button>
+            <button class="btn" id="grid-size">
+              <input type="range" id="slider" min="1" max="20" value="10" />
+
+              <label for="slider">
+                Grid Size: <span class="output"></span> x
+                <span class="output"></span>
+              </label>
+            </button>
           </div>
 
           <div class="canvas"></div>
