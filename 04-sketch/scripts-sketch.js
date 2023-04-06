@@ -24,7 +24,7 @@ function getSliderValue() {
 }
 
 function createGrid(sliderValue) {
-  const gridSize = sliderValue ** 2;
+  const gridSize = Number(sliderValue) ** 2;
   for (const num of Array.from(Array(gridSize).keys())) {
     const square = document.createElement("div");
     square.classList.add("box-border", "square");
