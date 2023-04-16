@@ -1,0 +1,27 @@
+/* general attrs */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: 2px solid red;
+  height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1;
+}
+
+/* header styles */
+.header {
+  border: 2px solid yellow;
+}
+
+/* main styles */
+
+/* footer */
