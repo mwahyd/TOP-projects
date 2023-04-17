@@ -1,4 +1,6 @@
 /* general attrs */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700;800&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -8,9 +10,19 @@
 body {
   border: 2px solid red;
   height: 100vh;
+  font-family: "Open Sans", sans-serif;
 
   display: flex;
   flex-direction: column;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+button {
+  font-size: 3rem;
 }
 
 .main {
@@ -23,5 +35,34 @@ body {
 }
 
 /* main styles */
+
+.main.container {
+  border: 2px solid blue;
+}
+
+.calculator {
+  border: 2px solid magenta;
+  width: 20%;
+  height: 50%;
+  margin: 0 auto;
+}
+
+.display {
+  border: 2px solid orange;
+  height: 20%;
+}
+
+.buttons {
+  border: 2px solid red;
+  height: 80%;
+}
+
+.buttons .operators {
+  border: 2px solid green;
+}
+
+.buttons .digits {
+  border: 2px solid pink;
+}
 
 /* footer */
