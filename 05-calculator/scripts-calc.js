@@ -62,17 +62,23 @@ function operate(sign, num1, num2) {
 //   // console.log(event.target.className);
 // }
 
+// activity functions
+function getFirstNum(event) {
+  num1 += `${event.target.textContent}`;
+  console.log(num1.slice(1));
+}
+
 // handler functions
 function getButtonClicked(event) {
   switch (event.target.className) {
     case "digit":
       console.log("run function", event.target.className);
       if (isTotalNull && !isSignClicked && !isNum2Collected) {
-        getFirstNum();
+        getFirstNum(event);
         isNum1Collected = true;
       }
       if (isNum1Collected && isSignClicked) {
-        getSecondNum();
+        getSecondNum(event);
         isNum2Collected = true;
       }
       break;
