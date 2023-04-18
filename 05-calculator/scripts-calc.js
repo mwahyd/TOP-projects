@@ -9,14 +9,15 @@ let num1 = 0,
   sign = "",
   total = 0;
 
-let isNum1Collected = false;
 let isNum2Collected = false;
 let isSignClicked = false;
 let isTotalNull = true;
 
 // math functions
 function add(num1, num2) {
-  return num1 + num2;
+  total = num1 + num2;
+  console.log(total);
+  return total;
 }
 
 function subtract(num1, num2) {
@@ -34,13 +35,13 @@ function divide(num1, num2) {
 function operate(sign, num1, num2) {
   switch (sign) {
     case "+":
-      return add(num1, num2);
+      return add(Number(num1), Number(num2));
     case "-":
-      return subtract(num1, num2);
+      return subtract(Number(num1), Number(num2));
     case "*":
-      return multiply(num1, num2);
+      return multiply(Number(num1), Number(num2));
     case "/":
-      return divide(num1, num2);
+      return divide(Number(num1), Number(num2));
     default:
       console.error("Invalid sign:", sign);
       return null;
@@ -75,6 +76,9 @@ function getSecondNum(event) {
 
 function calculate(firstNum, sign, secondNum) {
   console.log(`${firstNum} ${sign} ${secondNum}`);
+  console.log({ total }, { num1 }, { num2 }, { sign });
+  operate(sign, num1, num2);
+  isTotalNull = false;
 }
 
 // handler functions
@@ -84,7 +88,6 @@ function getButtonClicked(event) {
       console.log("run function", event.target.className);
       if (isTotalNull && !isSignClicked && !isNum2Collected) {
         getFirstNum(event);
-        isNum1Collected = true;
       }
       if (isSignClicked) {
         getSecondNum(event);
@@ -107,6 +110,7 @@ function getButtonClicked(event) {
       if (event.target.id === "equal") {
         console.log("equal button clicked");
         calculate(num1, sign, num2);
+        num2 = 0;
       }
       break;
   }
