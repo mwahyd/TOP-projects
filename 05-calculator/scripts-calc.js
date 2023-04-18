@@ -68,6 +68,15 @@ function getFirstNum(event) {
   console.log(num1.slice(1));
 }
 
+function getSecondNum(event) {
+  num2 += `${event.target.textContent}`;
+  console.log(num2.slice(1));
+}
+
+function calculate(firstNum, sign, secondNum) {
+  console.log(`${firstNum} ${sign} ${secondNum}`);
+}
+
 // handler functions
 function getButtonClicked(event) {
   switch (event.target.className) {
@@ -90,6 +99,10 @@ function getButtonClicked(event) {
       break;
     case "operator":
       console.log("run function", event.target.className);
+      if (event.target.id === "equal") {
+        console.log("equal button clicked");
+        calculate(num1, sign, num2);
+      }
       break;
   }
 }
