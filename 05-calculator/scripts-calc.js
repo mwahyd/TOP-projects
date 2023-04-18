@@ -86,7 +86,7 @@ function getButtonClicked(event) {
         getFirstNum(event);
         isNum1Collected = true;
       }
-      if (isNum1Collected && isSignClicked) {
+      if (isSignClicked) {
         getSecondNum(event);
         isNum2Collected = true;
       }
