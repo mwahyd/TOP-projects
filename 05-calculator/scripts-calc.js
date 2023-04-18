@@ -48,21 +48,6 @@ function operate(sign, num1, num2) {
   }
 }
 
-// handler functions
-// function getButtonClicked(event) {
-//   if (event.target.className !== "sign" && isSignClicked === false) {
-//     console.log("FIRST NUM", event.target);
-//   } else if (event.target.className === "sign") {
-//     isNum1Collected = true;
-//     isSignClicked = true;
-//     console.log("SIGN PRESSED", event.target);
-//   } else if (isSignClicked && isNum1Collected) {
-//     console.log("SECOND NUM", event.target);
-//   }
-//   // console.log(event.target);
-//   // console.log(event.target.className);
-// }
-
 // activity functions
 function getFirstNum(event) {
   num1 += `${event.target.textContent}`;
@@ -117,7 +102,6 @@ function getButtonClicked(event) {
 }
 
 // event listeners
-
 BUTTONS.forEach((button) => {
   button.addEventListener("click", getButtonClicked);
 });
