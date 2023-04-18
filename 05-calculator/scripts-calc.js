@@ -90,13 +90,18 @@ function getButtonClicked(event) {
         getSecondNum(event);
         isNum2Collected = true;
       }
+      if (!isTotalNull) {
+        num1 = total;
+      }
       break;
+
     case "sign":
       isSignClicked = true;
       sign = event.target.textContent;
       console.log(sign);
       console.log("run function", event.target.className);
       break;
+
     case "operator":
       console.log("run function", event.target.className);
       if (event.target.id === "equal") {
