@@ -1,0 +1,73 @@
+/* general attrs */
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700;800&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  border: 2px solid red;
+  height: 100vh;
+  font-family: "Open Sans", sans-serif;
+
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+button {
+  font-size: 3rem;
+  width: 73px;
+}
+
+.main {
+  flex: 1;
+}
+
+/* header styles */
+.header {
+  border: 2px solid yellow;
+}
+
+/* main styles */
+
+.main.container {
+  border: 2px solid blue;
+}
+
+.calculator {
+  border: 2px solid magenta;
+  width: 300px;
+  height: 500px;
+  margin: 0 auto;
+}
+
+.display {
+  border: 4px solid orange;
+  height: 20%;
+}
+
+.buttons {
+  border: 2px solid red;
+  height: 75%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button#clear,
+button#delete {
+  width: 109px;
+}
+
+button#equal {
+  width: 145px;
+}
+
+/* footer */
