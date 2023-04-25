@@ -66,6 +66,7 @@ function updateSignPressed(event) {
   if (!isNumber1) {
     number1 = 0;
     firstNum.textContent = 0;
+    console.log("number1 updated here");
   }
   isSignPressed = true;
   sign = event.target.textContent;
@@ -73,16 +74,31 @@ function updateSignPressed(event) {
   console.log(sign);
 }
 
-function evaluate() {
-  if (!isNumber2) {
-    number2 = 0;
-    secNum.textContent = 0;
-  } else if (!number1 && !sign && !number2) {
-    disTotal.textContent = 0;
-  }
+function callOperate() {
   total = operate(Number(number1), sign, Number(number2));
   disTotal.textContent = total;
-  console.log(total);
+}
+
+function evaluate() {
+  if (isNumber1 && isSignPressed && isNumber2) {
+    callOperate();
+    console.log("IF state:", total);
+  } else if (number1 === 0 && sign === "" && number2 === 0) {
+    disTotal.textContent = 0;
+    console.log("Show zero when equal clicked without numbers");
+  } else if (isNumber1 && sign === "" && number2 === 0) {
+    total = number1;
+    disTotal.textContent = total.slice(1);
+  } else if (!isNumber2) {
+    number2 = 0;
+    secNum.textContent = 0;
+    console.log("number2 updated here");
+    callOperate();
+    console.log("Else IF !isNumber2:", total);
+  } else if (!isNumber1) {
+    callOperate();
+    console.log("Else IF !isNumber1:", total);
+  }
 }
 
 // handler functions
