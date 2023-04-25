@@ -28,7 +28,7 @@ body {
 
 .calculator {
   border: 2px solid red;
-  max-width: 20rem;
+  max-width: 19rem;
   height: 50%;
 }
 
@@ -40,4 +40,20 @@ body {
 .buttons {
   border: 2px solid purple;
   height: 75%;
+
+  display: flex;
+  flex-wrap: wrap;
+}
+
+button {
+  width: 74px;
+}
+
+button#equal {
+  width: 148px;
+}
+
+button#clear,
+button#delete {
+  width: 111px;
 }
