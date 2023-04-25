@@ -13,7 +13,8 @@ let total = 0,
   sign = "",
   isSignPressed = false,
   isNumber1 = false,
-  isNumber2 = false;
+  isNumber2 = false,
+  isTotal = false;
 
 // math functions
 function add(num1, num2) {
@@ -47,7 +48,7 @@ function operate(numOne, sign, numTwo) {
 
 // activity functions
 function updateDigitsPressed(event) {
-  if (total === 0) {
+  if (!isTotal) {
     if (!isSignPressed) {
       isNumber1 = true;
       number1 += event.target.textContent;
@@ -57,13 +58,21 @@ function updateDigitsPressed(event) {
       number2 += event.target.textContent;
       secNum.textContent = number2.slice(1);
     }
+  } else if (isTotal) {
+    isNumber1 = true;
+    number1 = total;
+    firstNum.textContent = number1;
+    console.log("number1 is now total");
+    if (isSignPressed) {
+      isNumber2 = true;
+      number2 += event.target.textContent;
+      secNum.textContent = number2.slice(1);
+    }
   }
-  console.log(number1);
-  console.log(number2);
 }
 
 function updateSignPressed(event) {
-  if (!isNumber1) {
+  if (!isNumber1 && !isTotal) {
     number1 = 0;
     firstNum.textContent = 0;
     console.log("number1 updated here");
@@ -71,25 +80,36 @@ function updateSignPressed(event) {
   isSignPressed = true;
   sign = event.target.textContent;
   mathSign.textContent = sign;
-  console.log(sign);
+  console.log("sign pressed", sign);
 }
 
 function callOperate() {
   total = operate(Number(number1), sign, Number(number2));
+  isTotal = true;
   disTotal.textContent = total;
+}
+
+function resetNumsSignBool() {
+  console.log("number1, sign, number2 bools reset");
+  isSignPressed = false;
+  isNumber1 = false;
+  isNumber2 = false;
 }
 
 function evaluate() {
   if (isNumber1 && isSignPressed && isNumber2) {
     callOperate();
     console.log("IF state:", total);
-  } else if (number1 === 0 && sign === "" && number2 === 0) {
+  } //else if (number1 === 0 && sign === "" && number2 === 0) {
+  else if (!number1 && !sign && !number2) {
     disTotal.textContent = 0;
     console.log("Show zero when equal clicked without numbers");
-  } else if (isNumber1 && sign === "" && number2 === 0) {
+  } // else if (isNumber1 && sign === "" && number2 === 0) {
+  else if (isNumber1 && !sign && !number2) {
     total = number1;
     disTotal.textContent = total.slice(1);
-  } else if (!isNumber2) {
+    console.log("Show number1 as total if equal pressed without signs");
+  } else if (!isNumber2 && !isTotal) {
     number2 = 0;
     secNum.textContent = 0;
     console.log("number2 updated here");
@@ -99,6 +119,9 @@ function evaluate() {
     callOperate();
     console.log("Else IF !isNumber1:", total);
   }
+  number2 = 0;
+  console.log("number2 reset to zero here");
+  resetNumsSignBool();
 }
 
 // handler functions
