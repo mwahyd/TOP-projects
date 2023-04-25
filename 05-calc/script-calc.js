@@ -4,13 +4,16 @@ const mathSign = document.querySelector("#math-sign");
 const secNum = document.querySelector("#sec-num");
 const disTotal = document.querySelector("#total");
 const buttons = document.querySelectorAll("button");
+const addEqual = document.querySelector("#add-equal");
 
 // vars
 let total = 0,
   number1 = 0,
   number2 = 0,
   sign = "",
-  isSignPressed = false;
+  isSignPressed = false,
+  isNumber1 = false,
+  isNumber2 = false;
 
 // math functions
 function add(num1, num2) {
@@ -46,9 +49,11 @@ function operate(numOne, sign, numTwo) {
 function updateDigitsPressed(event) {
   if (total === 0) {
     if (!isSignPressed) {
+      isNumber1 = true;
       number1 += event.target.textContent;
       firstNum.textContent = number1.slice(1);
     } else if (isSignPressed) {
+      isNumber2 = true;
       number2 += event.target.textContent;
       secNum.textContent = number2.slice(1);
     }
@@ -58,6 +63,10 @@ function updateDigitsPressed(event) {
 }
 
 function updateSignPressed(event) {
+  if (!isNumber1) {
+    number1 = 0;
+    firstNum.textContent = 0;
+  }
   isSignPressed = true;
   sign = event.target.textContent;
   mathSign.textContent = sign;
@@ -65,6 +74,12 @@ function updateSignPressed(event) {
 }
 
 function evaluate() {
+  if (!isNumber2) {
+    number2 = 0;
+    secNum.textContent = 0;
+  } else if (!number1 && !sign && !number2) {
+    disTotal.textContent = 0;
+  }
   total = operate(Number(number1), sign, Number(number2));
   disTotal.textContent = total;
   console.log(total);
@@ -82,7 +97,7 @@ function buttonClicked(event) {
       break;
     case "operator":
       if (event.target.id === "equal") {
-        console.log("equal pressed");
+        addEqual.classList.remove("hidden");
         evaluate();
       }
   }
