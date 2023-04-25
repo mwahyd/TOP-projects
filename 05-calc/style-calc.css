@@ -5,12 +5,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font: inherit;
 }
 
 body {
   border: 2px solid blue;
   height: 100vh;
   font-family: "Open Sans", sans-serif;
+  font-size: 1.125rem;
 
   display: flex;
   flex-direction: column;
@@ -20,8 +22,22 @@ body {
 .main {
   border: 2px solid orange;
   flex: 1;
+
+  margin: 0 auto;
 }
 
 .calculator {
   border: 2px solid red;
+  max-width: 20rem;
+  height: 50%;
+}
+
+.display {
+  border: 2px solid blue;
+  height: 25%;
+}
+
+.buttons {
+  border: 2px solid purple;
+  height: 75%;
 }
