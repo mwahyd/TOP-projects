@@ -46,9 +46,11 @@ function operate(numOne, sign, numTwo) {
 function updateDigitsPressed(event) {
   if (total === 0) {
     if (!isSignPressed) {
-      number1 = event.target.textContent;
+      number1 += event.target.textContent;
+      firstNum.textContent = number1.slice(1);
     } else if (isSignPressed) {
-      number2 = event.target.textContent;
+      number2 += event.target.textContent;
+      secNum.textContent = number2.slice(1);
     }
   }
   console.log(number1);
@@ -58,7 +60,14 @@ function updateDigitsPressed(event) {
 function updateSignPressed(event) {
   isSignPressed = true;
   sign = event.target.textContent;
+  mathSign.textContent = sign;
   console.log(sign);
+}
+
+function evaluate() {
+  total = operate(Number(number1), sign, Number(number2));
+  disTotal.textContent = total;
+  console.log(total);
 }
 
 // handler functions
@@ -71,6 +80,11 @@ function buttonClicked(event) {
     case "sign":
       updateSignPressed(event);
       break;
+    case "operator":
+      if (event.target.id === "equal") {
+        console.log("equal pressed");
+        evaluate();
+      }
   }
 }
 
