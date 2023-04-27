@@ -104,7 +104,16 @@ function updateSignPressed(event) {
 function callOperate() {
   total = operate(Number(number1), sign, Number(number2));
   isTotal = true;
-  disTotal.textContent = total;
+  displayTotalOnCalc();
+}
+
+function displayTotalOnCalc() {
+  if (Number.isFinite(total) && !Number.isInteger(total)) {
+    total = total.toFixed(2);
+    disTotal.textContent = total;
+  } else {
+    disTotal.textContent = total;
+  }
 }
 
 function resetNumsSignBool() {
