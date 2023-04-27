@@ -112,7 +112,11 @@ function displayTotalOnCalc() {
     total = total.toFixed(2);
     disTotal.textContent = total;
   } else {
-    disTotal.textContent = total;
+    if (total >= 1000000000) {
+      total = total.toExponential(3);
+    }
+    const formattedTotal = total.toLocaleString();
+    disTotal.textContent = formattedTotal;
   }
 }
 
