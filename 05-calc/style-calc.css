@@ -40,15 +40,12 @@ body {
 .display {
   border: 2px solid yellow;
   height: 25%;
-  padding: 15px;
+  padding: 10px 20px;
 
   display: flex;
+  flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
-}
-
-.dis-container {
-  border: 2px solid blue;
 }
 
 .buttons {
@@ -87,4 +84,20 @@ button:hover {
 button#equal:hover {
   background-color: rgba(179, 0, 3, 0.7);
   border-color: rgba(179, 0, 3, 0.7);
+}
+
+.pressed-buttons,
+p {
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+#total {
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+/* action classes */
+.hidden {
+  display: none;
 }
