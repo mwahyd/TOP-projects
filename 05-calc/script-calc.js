@@ -61,6 +61,20 @@ function updateDigitsPressed(event) {
   }
 }
 
+function updateCalcWhenSignPressed(event) {
+  if (!isNumber1 && !isTotal) {
+    number1 = 0;
+    firstNum.textContent = 0;
+    console.log("number1 updated here");
+  }
+
+  updateSignPressed(event);
+
+  if (isTotal && isSignPressed) {
+    updateNum1ToTotalWhenSignPressed();
+  }
+}
+
 function updateNum1ToTotalWhenSignPressed() {
   isNumber1 = true;
   number1 = total;
@@ -75,20 +89,10 @@ function updateNum2WhenSignPressed(event) {
 }
 
 function updateSignPressed(event) {
-  if (!isNumber1 && !isTotal) {
-    number1 = 0;
-    firstNum.textContent = 0;
-    console.log("number1 updated here");
-  }
-
   isSignPressed = true;
   sign = event.target.textContent;
   mathSign.textContent = sign;
   console.log("sign pressed", sign);
-
-  if (isTotal && isSignPressed) {
-    updateNum1ToTotalWhenSignPressed();
-  }
 }
 
 function callOperate() {
@@ -140,7 +144,7 @@ function buttonClicked(event) {
       updateDigitsPressed(event);
       break;
     case "sign":
-      updateSignPressed(event);
+      updateCalcWhenSignPressed(event);
       break;
     case "operator":
       if (event.target.id === "equal") {
