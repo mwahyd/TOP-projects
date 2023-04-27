@@ -21,7 +21,7 @@ body {
 
 /* main object settings */
 .main {
-  border: 2px solid orange;
+  border: 2px solid red;
   flex: 1;
 
   display: flex;
@@ -38,8 +38,7 @@ body {
 }
 
 .display {
-  border: 2px solid yellow;
-  height: 25%;
+  height: 30%;
   padding: 10px 20px;
 
   display: flex;
@@ -49,7 +48,7 @@ body {
 }
 
 .buttons {
-  height: 75%;
+  height: 70%;
 
   display: flex;
   flex-wrap: wrap;
@@ -60,8 +59,6 @@ button {
   font-size: 1.5rem;
   width: 75.2px;
   border-radius: 10px;
-  background-color: #3b3b3b;
-  border-color: #3b3b3b;
   color: #ffffff;
 }
 
@@ -76,9 +73,27 @@ button#delete {
   width: 113px;
 }
 
-button:hover {
+.digit,
+.deci {
   background-color: #484848;
   border-color: #484848;
+}
+
+.operator,
+.sign {
+  background-color: #3b3b3b;
+  border-color: #3b3b3b;
+}
+
+.operator:hover,
+.sign:hover {
+  background-color: #484848;
+  border-color: #484848;
+}
+
+.digit:hover {
+  background-color: #3b3b3b;
+  border-color: #3b3b3b;
 }
 
 button#equal:hover {
