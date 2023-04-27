@@ -71,6 +71,7 @@ function updateCalcWhenSignPressed(event) {
   updateSignPressed(event);
 
   if (isTotal && isSignPressed) {
+    resetNum2AndSecNum();
     updateNum1ToTotalWhenSignPressed();
   }
 }
@@ -86,6 +87,11 @@ function updateNum2WhenSignPressed(event) {
   isNumber2 = true;
   number2 += event.target.textContent;
   secNum.textContent = number2.slice(1);
+}
+
+function resetNum2AndSecNum() {
+  number2 = 0;
+  secNum.textContent = number2;
 }
 
 function updateSignPressed(event) {
