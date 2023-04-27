@@ -54,21 +54,24 @@ function updateDigitsPressed(event) {
       number1 += event.target.textContent;
       firstNum.textContent = number1.slice(1);
     } else if (isSignPressed) {
-      isNumber2 = true;
-      number2 += event.target.textContent;
-      secNum.textContent = number2.slice(1);
+      updateNum2WhenSignPressed(event);
     }
-  } else if (isTotal) {
-    isNumber1 = true;
-    number1 = total;
-    firstNum.textContent = number1;
-    console.log("number1 is now total");
-    if (isSignPressed) {
-      isNumber2 = true;
-      number2 += event.target.textContent;
-      secNum.textContent = number2.slice(1);
-    }
+  } else if (isTotal && isSignPressed) {
+    updateNum2WhenSignPressed(event);
   }
+}
+
+function updateNum1ToTotalWhenSignPressed() {
+  isNumber1 = true;
+  number1 = total;
+  firstNum.textContent = number1;
+  console.log("number1 is now total");
+}
+
+function updateNum2WhenSignPressed(event) {
+  isNumber2 = true;
+  number2 += event.target.textContent;
+  secNum.textContent = number2.slice(1);
 }
 
 function updateSignPressed(event) {
@@ -77,10 +80,15 @@ function updateSignPressed(event) {
     firstNum.textContent = 0;
     console.log("number1 updated here");
   }
+
   isSignPressed = true;
   sign = event.target.textContent;
   mathSign.textContent = sign;
   console.log("sign pressed", sign);
+
+  if (isTotal && isSignPressed) {
+    updateNum1ToTotalWhenSignPressed();
+  }
 }
 
 function callOperate() {
