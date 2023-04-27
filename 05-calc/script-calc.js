@@ -79,7 +79,8 @@ function updateCalcWhenSignPressed(event) {
 function updateNum1ToTotalWhenSignPressed() {
   isNumber1 = true;
   number1 = total;
-  firstNum.textContent = number1;
+  const formattedTotal = number1.toLocaleString();
+  firstNum.textContent = formattedTotal;
   console.log("number1 is now total");
 }
 
@@ -178,14 +179,14 @@ buttons.forEach((button) => {
   button.addEventListener("click", buttonClicked);
 });
 
-let result = operate(1, "+", 2);
-console.log(result);
+// let result = operate(1, "+", 2);
+// console.log(result);
 
-result = operate(4, "-", 2);
-console.log(result);
+// result = operate(4, "-", 2);
+// console.log(result);
 
-result = operate(2, "*", 2);
-console.log(result);
+// result = operate(2, "*", 2);
+// console.log(result);
 
-result = operate(1, "/", 2);
-console.log(result);
+// result = operate(1, "/", 2);
+// console.log(result);
