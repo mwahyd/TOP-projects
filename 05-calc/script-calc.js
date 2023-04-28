@@ -5,6 +5,7 @@ const secNum = document.querySelector("#sec-num");
 const disTotal = document.querySelector("#total");
 const buttons = document.querySelectorAll("button");
 const addEqual = document.querySelector("#add-equal");
+const decimal = document.querySelector("#decimal");
 
 // vars
 let total = 0,
@@ -50,6 +51,7 @@ function operate(numOne, sign, numTwo) {
 function updateDigitsPressed(event) {
   if (!isTotal) {
     if (!isSignPressed) {
+      disableDecimalButton(event);
       isNumber1 = true;
       number1 += event.target.textContent;
       firstNum.textContent = number1.slice(1);
@@ -69,6 +71,8 @@ function updateCalcWhenSignPressed(event) {
   }
 
   updateSignPressed(event);
+  // allow decimal to be clicked for num 2
+  decimal.classList.remove("disable-button");
 
   if (isTotal && isSignPressed) {
     resetNum2AndSecNum();
@@ -88,6 +92,7 @@ function updateNum1ToTotalWhenSignPressed() {
 }
 
 function updateNum2WhenSignPressed(event) {
+  disableDecimalButton(event);
   isNumber2 = true;
   number2 += event.target.textContent;
   secNum.textContent = number2.slice(1);
@@ -105,6 +110,12 @@ function updateSignPressed(event) {
   console.log("sign pressed", sign);
 }
 
+function disableDecimalButton(event) {
+  if (event.target.id === "decimal") {
+    decimal.classList.add("disable-button");
+  }
+}
+
 function callOperate() {
   total = operate(Number(number1), sign, Number(number2));
   isTotal = true;
@@ -114,14 +125,13 @@ function callOperate() {
 function displayTotalOnCalc() {
   if (Number.isFinite(total) && !Number.isInteger(total)) {
     total = total.toFixed(2);
-    // formatTotalAndDisplay(Number(total));
+    formatTotalAndDisplay(Number(total));
   } else {
     if (total >= 1000000000) {
       total = total.toExponential(3);
     }
-    // formatTotalAndDisplay(total);
+    formatTotalAndDisplay(total);
   }
-  formatTotalAndDisplay(Number(total));
 }
 
 function formatTotalAndDisplay(result) {
@@ -166,7 +176,7 @@ function evaluate() {
 
 // handler functions
 function buttonClicked(event) {
-  //   console.log(event.target.className);
+  console.log(event.target);
   switch (event.target.className) {
     case "digit":
       updateDigitsPressed(event);
@@ -185,10 +195,6 @@ function buttonClicked(event) {
 // event listeners
 buttons.forEach((button) => {
   button.addEventListener("click", buttonClicked);
-});
-
-window.addEventListener("keypress", (event) => {
-  console.log(event.code);
 });
 
 // let result = operate(1, "+", 2);
