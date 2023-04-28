@@ -116,3 +116,7 @@ p {
 .hidden {
   display: none;
 }
+
+.disable-button {
+  pointer-events: none;
+}
