@@ -111,14 +111,18 @@ function callOperate() {
 function displayTotalOnCalc() {
   if (Number.isFinite(total) && !Number.isInteger(total)) {
     total = total.toFixed(2);
-    disTotal.textContent = total;
+    formatTotalAndDisplay(Number(total));
   } else {
     if (total >= 1000000000) {
       total = total.toExponential(3);
     }
-    const formattedTotal = total.toLocaleString();
-    disTotal.textContent = formattedTotal;
+    formatTotalAndDisplay(total);
   }
+}
+
+function formatTotalAndDisplay(result) {
+  const formattedTotal = result.toLocaleString();
+  disTotal.textContent = formattedTotal;
 }
 
 function resetNumsSignBool() {
