@@ -120,3 +120,8 @@ p {
 .disable-button {
   pointer-events: none;
 }
+
+.disable-all-buttons {
+  pointer-events: none;
+  opacity: 0.2;
+}
