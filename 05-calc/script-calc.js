@@ -74,6 +74,10 @@ function updateCalcWhenSignPressed(event) {
   // allow decimal to be clicked for num 2
   decimal.classList.remove("disable-button");
 
+  if (isNumber1 && isSignPressed && number2 !== 0) {
+    callOperate();
+    console.log("Total from sign press", total);
+  }
   if (isTotal && isSignPressed) {
     resetNum2AndSecNum();
     updateNum1ToTotalWhenSignPressed();
