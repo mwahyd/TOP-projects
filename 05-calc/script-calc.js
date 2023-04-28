@@ -15,7 +15,8 @@ let total = 0,
   isSignPressed = false,
   isNumber1 = false,
   isNumber2 = false,
-  isTotal = false;
+  isTotal = false,
+  isError = false;
 
 // math functions
 function add(num1, num2) {
@@ -142,6 +143,7 @@ function formatTotalAndDisplay(result) {
   const formattedTotal = result.toLocaleString();
   disTotal.textContent = formattedTotal;
   if (formattedTotal === "NaN") {
+    isError = true;
     disTotal.textContent = "ERROR";
     toggleButtonsStateWhenACPressed();
   }
@@ -164,6 +166,23 @@ function resetNumsSignBool() {
   isSignPressed = false;
   isNumber1 = false;
   isNumber2 = false;
+}
+
+function resetAllVars() {
+  total = 0;
+  number1 = 0;
+  number2 = 0;
+  sign = "";
+  isSignPressed = false;
+  isNumber1 = false;
+  isNumber2 = false;
+  isTotal = false;
+  isError = false;
+  addEqual.classList.add("hidden");
+  mathSign.textContent = "";
+  firstNum.textContent = "";
+  secNum.textContent = "";
+  disTotal.textContent = 0;
 }
 
 function evaluate() {
@@ -209,7 +228,10 @@ function buttonClicked(event) {
         addEqual.classList.remove("hidden");
         evaluate();
       } else if (event.target.id === "clear") {
-        toggleButtonsStateWhenACPressed();
+        if (isError) {
+          toggleButtonsStateWhenACPressed();
+        }
+        resetAllVars();
       }
   }
 }
