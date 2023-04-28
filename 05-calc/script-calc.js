@@ -78,7 +78,10 @@ function updateCalcWhenSignPressed(event) {
 
 function updateNum1ToTotalWhenSignPressed() {
   isNumber1 = true;
-  number1 = total;
+  if (Number.isFinite(total) && !Number.isInteger(total)) {
+    total = total.toFixed(2);
+  }
+  number1 = Number(total);
   const formattedTotal = number1.toLocaleString();
   firstNum.textContent = formattedTotal;
   console.log("number1 is now total");
@@ -111,13 +114,14 @@ function callOperate() {
 function displayTotalOnCalc() {
   if (Number.isFinite(total) && !Number.isInteger(total)) {
     total = total.toFixed(2);
-    formatTotalAndDisplay(Number(total));
+    // formatTotalAndDisplay(Number(total));
   } else {
     if (total >= 1000000000) {
       total = total.toExponential(3);
     }
-    formatTotalAndDisplay(total);
+    // formatTotalAndDisplay(total);
   }
+  formatTotalAndDisplay(Number(total));
 }
 
 function formatTotalAndDisplay(result) {
@@ -181,6 +185,10 @@ function buttonClicked(event) {
 // event listeners
 buttons.forEach((button) => {
   button.addEventListener("click", buttonClicked);
+});
+
+window.addEventListener("keypress", (event) => {
+  console.log(event.code);
 });
 
 // let result = operate(1, "+", 2);
