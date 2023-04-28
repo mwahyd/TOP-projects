@@ -141,6 +141,22 @@ function displayTotalOnCalc() {
 function formatTotalAndDisplay(result) {
   const formattedTotal = result.toLocaleString();
   disTotal.textContent = formattedTotal;
+  if (formattedTotal === "NaN") {
+    disTotal.textContent = "ERROR";
+    toggleButtonsStateWhenACPressed();
+  }
+}
+
+function toggleButtonsStateWhenACPressed() {
+  buttons.forEach((button) => {
+    if (button.id === "clear") {
+      return;
+    } else if (button.classList.contains("disable-all-buttons")) {
+      button.classList.remove("disable-all-buttons");
+    } else {
+      button.classList.add("disable-all-buttons");
+    }
+  });
 }
 
 function resetNumsSignBool() {
@@ -192,6 +208,8 @@ function buttonClicked(event) {
       if (event.target.id === "equal") {
         addEqual.classList.remove("hidden");
         evaluate();
+      } else if (event.target.id === "clear") {
+        toggleButtonsStateWhenACPressed();
       }
   }
 }
