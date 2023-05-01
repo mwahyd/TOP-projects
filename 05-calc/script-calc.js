@@ -78,8 +78,12 @@ function updateCalcWhenSignPressed(event) {
   }
 
   updateSignPressed(event);
+
   // allow decimal to be clicked for num 2
   decimal.classList.remove("disable-button");
+
+  // toggle isDelete when sign pressed
+  isDelete = false;
 
   if (isNumber1 && isSignPressed && number2 !== 0) {
     callOperate();
@@ -106,7 +110,11 @@ function updateNum2WhenSignPressed(event) {
   disableDecimalButton(event);
   isNumber2 = true;
   number2 += event.target.textContent;
-  secNum.textContent = number2.slice(1);
+  if (isDelete) {
+    secNum.textContent = number2;
+  } else {
+    secNum.textContent = number2.slice(1);
+  }
 }
 
 function resetNum2AndSecNum() {
@@ -175,10 +183,16 @@ function deleteNumsWhenDelPressed() {
     console.log(nums1);
     nums1.pop();
     number1 = nums1.join("");
-    firstNum.textContent = number1.slice(1);
+    firstNum.textContent = number1.slice();
     console.log(nums1);
   } else if (isNumber2) {
     console.log("it is number2");
+    const nums2 = Array.from(number2);
+    console.log(nums2);
+    nums2.pop();
+    number2 = nums2.join("");
+    secNum.textContent = number2.slice();
+    console.log(nums2);
   }
 }
 
@@ -187,6 +201,8 @@ function resetNumsSignBool() {
   isSignPressed = false;
   isNumber1 = false;
   isNumber2 = false;
+  number2 = 0;
+  console.log("number2 reset to zero here");
 }
 
 function resetAllVars() {
@@ -199,6 +215,7 @@ function resetAllVars() {
   isNumber2 = false;
   isTotal = false;
   isError = false;
+  isDelete = false;
   addEqual.classList.add("hidden");
   mathSign.textContent = "";
   firstNum.textContent = "";
@@ -229,8 +246,8 @@ function evaluate() {
     callOperate();
     console.log("Else IF !isNumber1:", total);
   }
-  number2 = 0;
-  console.log("number2 reset to zero here");
+  // number2 = 0;
+  // console.log("number2 reset to zero here");
   resetNumsSignBool();
 }
 
