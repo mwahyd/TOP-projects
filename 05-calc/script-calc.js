@@ -17,6 +17,7 @@ let total = 0,
   isNumber2 = false,
   isTotal = false,
   isError = false,
+  isEvaluate = false,
   isDelete = false;
 
 // math functions
@@ -78,8 +79,9 @@ function updateCalcWhenSignPressed(event) {
   // allow decimal to be clicked for num 2
   decimal.classList.remove("disable-button");
 
-  // toggle isDelete when sign pressed
+  // toggle isDelete and isEvaluate when sign pressed
   isDelete = false;
+  isEvaluate = false;
 
   if (isTotal && isSignPressed) {
     console.log("num1 to total from updateCalcWhenSignPressed");
@@ -186,7 +188,7 @@ function deleteNumsWhenDelPressed() {
     number1 = nums1.join("");
     firstNum.textContent = number1.slice();
     console.log(nums1);
-  } else if (isNumber2) {
+  } else if (isNumber2 && !isEvaluate) {
     console.log("it is number2");
     const nums2 = Array.from(number2);
     console.log(nums2);
@@ -200,6 +202,7 @@ function deleteNumsWhenDelPressed() {
 function resetNumsSignBool() {
   console.log("number1, sign, number2 bools reset");
   isSignPressed = false;
+  isEvaluate = false;
   isNumber1 = false;
   isNumber2 = false;
   number2 = 0;
@@ -217,6 +220,7 @@ function resetAllVars() {
   isNumber2 = false;
   isTotal = false;
   isError = false;
+  isEvaluate = false;
   isDelete = false;
   addEqual.classList.add("hidden");
   mathSign.textContent = "";
@@ -226,6 +230,7 @@ function resetAllVars() {
 }
 
 function evaluate() {
+  isEvaluate = true;
   if (!isSignPressed) {
     if (isNumber1) {
       disTotal.textContent = number1.slice(1);
