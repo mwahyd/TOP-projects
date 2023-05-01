@@ -58,7 +58,6 @@ function updateDigitsPressed(event) {
       isNumber1 = true;
       number1 += event.target.textContent;
       displayNumsBasedOnIsDelete(number1, firstNum);
-      console.log("updateDigitsPressed", number1);
     } else if (isSignPressed) {
       updateNum2WhenSignPressed(event);
     }
@@ -71,7 +70,6 @@ function updateCalcWhenSignPressed(event) {
   if (!isNumber1 && !isTotal) {
     number1 = 0;
     firstNum.textContent = 0;
-    console.log("number1 updated here");
   }
 
   updateSignPressed(event);
@@ -84,7 +82,6 @@ function updateCalcWhenSignPressed(event) {
   isEvaluate = false;
 
   if (isTotal && isSignPressed) {
-    console.log("num1 to total from updateCalcWhenSignPressed");
     resetNum2AndSecNum();
     updateNum1ToTotalWhenSignPressed();
   }
@@ -98,7 +95,6 @@ function updateNum1ToTotalWhenSignPressed() {
   number1 = Number(total);
   const formattedTotal = number1.toLocaleString();
   firstNum.textContent = formattedTotal;
-  console.log("number1 is now total");
 }
 
 function updateNum2WhenSignPressed(event) {
@@ -121,7 +117,6 @@ function updateSignPressed(event) {
   isSignPressed = true;
   sign = event.target.textContent;
   mathSign.textContent = sign;
-  console.log("sign pressed", sign);
 }
 
 function disableDecimalButton(event) {
@@ -181,33 +176,27 @@ function toggleButtonsStateWhenACPressed() {
 function deleteNumsWhenDelPressed() {
   isDelete = true;
   if (isNumber1 && !isTotal && !isSignPressed) {
-    console.log("It is number1 not total value");
     const nums1 = Array.from(number1);
-    console.log(nums1);
+
     nums1.pop();
     number1 = nums1.join("");
     firstNum.textContent = number1.slice();
-    console.log(nums1);
   } else if (isNumber2 && !isEvaluate) {
-    console.log("it is number2");
     const nums2 = Array.from(number2);
-    console.log(nums2);
+
     nums2.pop();
     number2 = nums2.join("");
     secNum.textContent = number2.slice();
-    console.log(nums2);
   }
 }
 
 function resetNumsSignBool() {
-  console.log("number1, sign, number2 bools reset");
   isSignPressed = false;
   isEvaluate = false;
   isNumber1 = false;
   isNumber2 = false;
   number2 = 0;
   secNum.textContent = number2;
-  console.log("number2 reset to zero here");
 }
 
 function resetAllVars() {
@@ -251,7 +240,7 @@ function evaluate() {
 
 // handler functions
 function buttonClicked(event) {
-  // console.log(event.target);
+  //
   switch (event.target.className) {
     case "digit":
       updateDigitsPressed(event);
