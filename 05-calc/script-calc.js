@@ -146,7 +146,11 @@ function displayTotalOnCalc() {
 function formatTotalAndDisplay(result) {
   const formattedTotal = result.toLocaleString();
   disTotal.textContent = formattedTotal;
-  if (formattedTotal === "NaN") {
+  if (
+    formattedTotal === "NaN" ||
+    formattedTotal === "Infinity" ||
+    formattedTotal === "-∞"
+  ) {
     isError = true;
     disTotal.textContent = "ERROR";
     toggleButtonsStateWhenACPressed();
