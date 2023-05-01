@@ -234,14 +234,6 @@ function evaluate() {
   } else if (isNumber1 && isSignPressed && isNumber2) {
     addEqual.classList.remove("hidden");
     callOperate();
-  }
-  // else if (!number1 && !sign && !number2) {
-  //   // show zero when equal clicked without numbers
-  //   disTotal.textContent = 0;
-  // }
-  else if (isNumber1 && !sign && !number2) {
-    // show number1 as total if equal pressed without signs
-    disTotal.textContent = number1.slice(1);
   } else if (!isNumber2 && !isTotal) {
     resetNum2AndSecNum();
     callOperate();
