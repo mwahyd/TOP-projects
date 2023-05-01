@@ -278,15 +278,3 @@ function buttonClicked(event) {
 buttons.forEach((button) => {
   button.addEventListener("click", buttonClicked);
 });
-
-// let result = operate(1, "+", 2);
-// console.log(result);
-
-// result = operate(4, "-", 2);
-// console.log(result);
-
-// result = operate(2, "*", 2);
-// console.log(result);
-
-// result = operate(1, "/", 2);
-// console.log(result);
