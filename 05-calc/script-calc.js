@@ -234,10 +234,12 @@ function evaluate() {
   if (!isSignPressed) {
     if (isNumber1) {
       disTotal.textContent = number1.slice(1);
+      number1 = 0;
     }
     return;
   } else if (isNumber1 && isSignPressed && isNumber2) {
     addEqual.classList.remove("hidden");
+    isSignPressed = false;
     callOperate();
   } else if (!isNumber2 && !isTotal) {
     resetNum2AndSecNum();
@@ -249,7 +251,7 @@ function evaluate() {
 
 // handler functions
 function buttonClicked(event) {
-  console.log(event.target);
+  // console.log(event.target);
   switch (event.target.className) {
     case "digit":
       updateDigitsPressed(event);
