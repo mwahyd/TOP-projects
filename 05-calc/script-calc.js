@@ -81,10 +81,10 @@ function updateCalcWhenSignPressed(event) {
   // toggle isDelete when sign pressed
   isDelete = false;
 
-  if (isNumber1 && isSignPressed && number2 !== 0) {
-    callOperate();
-    console.log("Total from sign press", total);
-  }
+  // if (isNumber1 && isSignPressed && number2 !== 0) {
+  //   callOperate();
+  //   console.log("Total from sign press", total);
+  // }
   if (isTotal && isSignPressed) {
     resetNum2AndSecNum();
     updateNum1ToTotalWhenSignPressed();
@@ -115,6 +115,10 @@ function resetNum2AndSecNum() {
 }
 
 function updateSignPressed(event) {
+  // evaluate expression if num1, sign and num2 and sign clicked again
+  if (isNumber1 && isSignPressed && number2 !== 0) {
+    callOperate();
+  }
   isSignPressed = true;
   sign = event.target.textContent;
   mathSign.textContent = sign;
@@ -235,11 +239,11 @@ function evaluate() {
     disTotal.textContent = total.slice(1);
   } else if (!isNumber2 && !isTotal) {
     resetNum2AndSecNum();
-
     callOperate();
   } else if (!isNumber1) {
     callOperate();
   }
+  // reset stored numbers and var when equal pressed
   resetNumsSignBool();
 }
 
