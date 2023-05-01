@@ -234,7 +234,6 @@ function evaluate() {
   } else if (isNumber1 && isSignPressed && isNumber2) {
     addEqual.classList.remove("hidden");
     callOperate();
-    updateNum1ToTotalWhenSignPressed();
   }
   // else if (!number1 && !sign && !number2) {
   //   // show zero when equal clicked without numbers
@@ -249,8 +248,6 @@ function evaluate() {
   } else if (!isNumber1) {
     callOperate();
   }
-  // reset stored numbers and var when equal pressed
-  resetNumsSignBool();
 }
 
 // handler functions
