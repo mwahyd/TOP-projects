@@ -226,26 +226,28 @@ function resetAllVars() {
 function evaluate() {
   if (isNumber1 && isSignPressed && isNumber2) {
     callOperate();
-    console.log("IF state:", total);
+    // console.log("IF state:", total);
   } //else if (number1 === 0 && sign === "" && number2 === 0) {
   else if (!number1 && !sign && !number2) {
+    // show zero when equal clicked without numbers
     disTotal.textContent = 0;
-    console.log("Show zero when equal clicked without numbers");
+    // console.log("Show zero when equal clicked without numbers");
   } // else if (isNumber1 && sign === "" && number2 === 0) {
   else if (isNumber1 && !sign && !number2) {
+    // show number1 as total if equal pressed without signs
     total = number1;
     disTotal.textContent = total.slice(1);
-    console.log("Show number1 as total if equal pressed without signs");
+    // console.log("Show number1 as total if equal pressed without signs");
   } else if (!isNumber2 && !isTotal) {
     resetNum2AndSecNum();
     // number2 = 0;
     // secNum.textContent = 0;
-    console.log("number2 updated here");
+    // console.log("number2 updated here");
     callOperate();
-    console.log("Else IF !isNumber2:", total);
+    // console.log("Else IF !isNumber2:", total);
   } else if (!isNumber1) {
     callOperate();
-    console.log("Else IF !isNumber1:", total);
+    // console.log("Else IF !isNumber1:", total);
   }
   resetNumsSignBool();
 }
