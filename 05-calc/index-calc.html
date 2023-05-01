@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./styles-calc.css" />
-    <script src="./scripts-calc.js" defer></script>
+    <link rel="stylesheet" href="./style-calc.css" />
+    <script src="./script-calc.js" defer></script>
     <title>Web Calculator</title>
   </head>
 
@@ -18,8 +18,12 @@
     <main class="main container">
       <div class="calculator">
         <div class="display">
-          <p class="pressed-buttons"></p>
-          <p>= <span id="total"></span></p>
+          <p class="first-line">
+            <span id="first-num"></span> <span id="math-sign"></span>
+            <span id="sec-num"></span>
+            <span id="add-equal" class="hidden">=</span>
+          </p>
+          <p><span id="total">0</span></p>
         </div>
 
         <div class="buttons">
