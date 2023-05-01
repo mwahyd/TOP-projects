@@ -56,11 +56,12 @@ function updateDigitsPressed(event) {
       disableDecimalButton(event);
       isNumber1 = true;
       number1 += event.target.textContent;
-      if (isDelete) {
-        firstNum.textContent = number1;
-      } else {
-        firstNum.textContent = number1.slice(1);
-      }
+      // if (isDelete) {
+      //   firstNum.textContent = number1;
+      // } else {
+      //   firstNum.textContent = number1.slice(1);
+      // }
+      displayNumsBasedOnIsDelete(number1, firstNum);
       console.log("updateDigitsPressed", number1);
     } else if (isSignPressed) {
       updateNum2WhenSignPressed(event);
@@ -110,11 +111,12 @@ function updateNum2WhenSignPressed(event) {
   disableDecimalButton(event);
   isNumber2 = true;
   number2 += event.target.textContent;
-  if (isDelete) {
-    secNum.textContent = number2;
-  } else {
-    secNum.textContent = number2.slice(1);
-  }
+  displayNumsBasedOnIsDelete(number2, secNum);
+  // if (isDelete) {
+  //   secNum.textContent = number2;
+  // } else {
+  //   secNum.textContent = number2.slice(1);
+  // }
 }
 
 function resetNum2AndSecNum() {
@@ -160,6 +162,14 @@ function formatTotalAndDisplay(result) {
     isError = true;
     disTotal.textContent = "ERROR";
     toggleButtonsStateWhenACPressed();
+  }
+}
+
+function displayNumsBasedOnIsDelete(number, displayVar) {
+  if (isDelete) {
+    displayVar.textContent = number;
+  } else {
+    displayVar.textContent = number.slice(1);
   }
 }
 
