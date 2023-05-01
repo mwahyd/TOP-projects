@@ -1,12 +1,27 @@
 # Web Calculator App
 
-Objectives
+[Live demo](https://mwahyd.github.io/TOP-projects/05-calc/index-calc.html)
 
-- Create the basic math functionalities
-- Output a basic version of the calculator using HTML
-- Create a "display" to output the clicked digits
-- Store the clicked digits and operators and output the result
+App Functionalities:
+
+- Perform basic arithmetic functions
+- Display the correct sequence of numbers and signs as pressed
+- Able to chain expressions and display the result (eg: 12 + 7 - 5 \* 3 = 42)
+- Round answers to an appropriate significant figure
+- Truncate extremely long numbers to exponent form
+- Able to clear the calculator and start over
+- Able to delete numbers from calculator if required
+- Catch math errors and require calculator to be resetted
+
+Tools:
+
+- HTML
+- CSS
+- Javascript
 
 Features to Add:
 
-- Add keyboard support
+- Keyboard support
+
+![Screenshot!](calc-screenshot.png)
+![Screenshot!](calc-error.png)
