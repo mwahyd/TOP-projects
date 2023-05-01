@@ -16,7 +16,8 @@ let total = 0,
   isNumber1 = false,
   isNumber2 = false,
   isTotal = false,
-  isError = false;
+  isError = false,
+  isDelete = false;
 
 // math functions
 function add(num1, num2) {
@@ -55,7 +56,12 @@ function updateDigitsPressed(event) {
       disableDecimalButton(event);
       isNumber1 = true;
       number1 += event.target.textContent;
-      firstNum.textContent = number1.slice(1);
+      if (isDelete) {
+        firstNum.textContent = number1;
+      } else {
+        firstNum.textContent = number1.slice(1);
+      }
+      console.log("updateDigitsPressed", number1);
     } else if (isSignPressed) {
       updateNum2WhenSignPressed(event);
     }
@@ -161,6 +167,21 @@ function toggleButtonsStateWhenACPressed() {
   });
 }
 
+function deleteNumsWhenDelPressed() {
+  isDelete = true;
+  if (isNumber1 && !isTotal && !isSignPressed) {
+    console.log("It is number1 not total value");
+    const nums1 = Array.from(number1);
+    console.log(nums1);
+    nums1.pop();
+    number1 = nums1.join("");
+    firstNum.textContent = number1.slice(1);
+    console.log(nums1);
+  } else if (isNumber2) {
+    console.log("it is number2");
+  }
+}
+
 function resetNumsSignBool() {
   console.log("number1, sign, number2 bools reset");
   isSignPressed = false;
@@ -232,6 +253,8 @@ function buttonClicked(event) {
           toggleButtonsStateWhenACPressed();
         }
         resetAllVars();
+      } else if (event.target.id === "delete") {
+        deleteNumsWhenDelPressed();
       }
   }
 }
