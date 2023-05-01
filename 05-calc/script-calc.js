@@ -232,7 +232,7 @@ function resetAllVars() {
 function evaluate() {
   isEvaluate = true;
   if (!isSignPressed) {
-    if (isNumber1) {
+    if (number1) {
       disTotal.textContent = number1.slice(1);
       number1 = 0;
     }
