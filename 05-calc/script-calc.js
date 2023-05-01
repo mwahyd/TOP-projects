@@ -81,10 +81,6 @@ function updateCalcWhenSignPressed(event) {
   // toggle isDelete when sign pressed
   isDelete = false;
 
-  // if (isNumber1 && isSignPressed && number2 !== 0) {
-  //   callOperate();
-  //   console.log("Total from sign press", total);
-  // }
   if (isTotal && isSignPressed) {
     resetNum2AndSecNum();
     updateNum1ToTotalWhenSignPressed();
