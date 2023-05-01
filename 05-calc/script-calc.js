@@ -82,6 +82,7 @@ function updateCalcWhenSignPressed(event) {
   isDelete = false;
 
   if (isTotal && isSignPressed) {
+    console.log("num1 to total from updateCalcWhenSignPressed");
     resetNum2AndSecNum();
     updateNum1ToTotalWhenSignPressed();
   }
@@ -202,6 +203,7 @@ function resetNumsSignBool() {
   isNumber1 = false;
   isNumber2 = false;
   number2 = 0;
+  secNum.textContent = number2;
   console.log("number2 reset to zero here");
 }
 
@@ -224,15 +226,23 @@ function resetAllVars() {
 }
 
 function evaluate() {
-  if (isNumber1 && isSignPressed && isNumber2) {
+  if (!isSignPressed) {
+    if (isNumber1) {
+      disTotal.textContent = number1.slice(1);
+    }
+    return;
+  } else if (isNumber1 && isSignPressed && isNumber2) {
+    addEqual.classList.remove("hidden");
     callOperate();
-  } else if (!number1 && !sign && !number2) {
-    // show zero when equal clicked without numbers
-    disTotal.textContent = 0;
-  } else if (isNumber1 && !sign && !number2) {
+    updateNum1ToTotalWhenSignPressed();
+  }
+  // else if (!number1 && !sign && !number2) {
+  //   // show zero when equal clicked without numbers
+  //   disTotal.textContent = 0;
+  // }
+  else if (isNumber1 && !sign && !number2) {
     // show number1 as total if equal pressed without signs
-    total = number1;
-    disTotal.textContent = total.slice(1);
+    disTotal.textContent = number1.slice(1);
   } else if (!isNumber2 && !isTotal) {
     resetNum2AndSecNum();
     callOperate();
@@ -255,7 +265,7 @@ function buttonClicked(event) {
       break;
     case "operator":
       if (event.target.id === "equal") {
-        addEqual.classList.remove("hidden");
+        // addEqual.classList.remove("hidden");
         evaluate();
       } else if (event.target.id === "clear") {
         if (isError) {
