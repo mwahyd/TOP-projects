@@ -9,7 +9,6 @@
 }
 
 body {
-  border: 2px solid blue;
   height: 100vh;
   font-family: "Open Sans", sans-serif;
   color: #ffffff;
@@ -21,7 +20,6 @@ body {
 
 /* main object settings */
 .main {
-  border: 2px solid red;
   flex: 1;
 
   display: flex;
@@ -109,6 +107,20 @@ p {
 
 #total {
   font-size: 2rem;
+  font-weight: 700;
+}
+
+.footer {
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: #202020;
+  padding: 10px;
+  text-align: center;
+}
+
+.footer a {
+  text-decoration: none;
+  color: maroon;
   font-weight: 700;
 }
 
