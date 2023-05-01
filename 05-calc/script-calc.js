@@ -237,8 +237,9 @@ function evaluate() {
     disTotal.textContent = total.slice(1);
     console.log("Show number1 as total if equal pressed without signs");
   } else if (!isNumber2 && !isTotal) {
-    number2 = 0;
-    secNum.textContent = 0;
+    resetNum2AndSecNum();
+    // number2 = 0;
+    // secNum.textContent = 0;
     console.log("number2 updated here");
     callOperate();
     console.log("Else IF !isNumber2:", total);
