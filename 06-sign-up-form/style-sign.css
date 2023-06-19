@@ -73,8 +73,8 @@ main {
   line-height: 1;
   width: 100%;
 
-  color: white;
-  background-color: rgba(240, 128, 128, 0.4);
+  color: rebeccapurple;
+  background-color: rgba(252, 205, 202, 0.6);
 }
 
 .credits {
@@ -98,7 +98,7 @@ footer {
 }
 
 .hero-text strong {
-  color: orangered;
+  color: #ff684d;
 }
 
 /* form container */
@@ -150,6 +150,7 @@ input {
 input:focus {
   outline: none;
   border: 2px solid orange;
+  box-shadow: 0 1px 1px 1px #ccc;
 }
 
 input:valid:not(:optional) {
@@ -160,8 +161,8 @@ input:valid:not(:optional) {
 
 button[type="submit"] {
   padding: 10px 30px;
-  background-color: rgb(255, 108, 55);
-  border: 2px solid rgb(255, 108, 55);
+  background-color: #ff684d;
+  border: 2px solid #ff684d;
   border-radius: 10px;
 
   font-size: 1.5rem;
@@ -179,7 +180,7 @@ footer {
 
 footer a {
   text-decoration: none;
-  color: rgb(255, 108, 55);
+  color: #ff684d;
 }
 
 footer a:hover {
