@@ -28,23 +28,23 @@
       </div>
 
       <div class="form-container">
-        <form action="#" method="POST">
+        <form action="">
           <fieldset>
             <legend>Join us today</legend>
 
             <label for="forename">
               First Name
-              <input type="text" id="forename" name="forename" />
+              <input type="text" id="forename" name="forename" required />
             </label>
 
             <label for="surname">
               Last Name
-              <input type="text" id="surname" name="surname" />
+              <input type="text" id="surname" name="surname" required />
             </label>
 
             <label for="mail">
               Email
-              <input type="email" name="email" id="mail" />
+              <input type="email" name="email" id="mail" required />
             </label>
 
             <label for="tel">
@@ -54,16 +54,18 @@
 
             <label for="password">
               Password
-              <input type="password" name="password" id="password" />
+              <input type="password" name="password" id="password" required />
             </label>
 
             <label for="conf-pwd">
               Confirm Password
-              <input type="password" name="conf-pwd" id="conf-pwd" />
+              <input type="password" name="conf-pwd" id="conf-pwd" required />
             </label>
           </fieldset>
-          <button>Create Account</button>
+
+          <button type="submit">Create Account</button>
         </form>
+        <footer>Already have an account? <a href="#">Log in</a></footer>
       </div>
     </main>
   </body>
