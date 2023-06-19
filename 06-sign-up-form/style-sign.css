@@ -37,13 +37,13 @@ main {
   border: 2px solid red;
   margin: 0 auto;
   width: min(80ch, 80vw - 2rem);
-  height: 60%;
+  height: 90%;
 }
 
 /* image-title container */
 
 .img-title {
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
   position: relative;
   font-family: title-font;
   font-size: 2rem;
@@ -63,14 +63,11 @@ main {
   background-color: rgba(240, 128, 128, 0.4);
 }
 
-.form-container {
-  border: 2px solid rebeccapurple;
-}
-
 /* text-container */
 
 .hero-text,
-legend {
+footer a,
+footer {
   font-family: text-font;
   font-size: 1.4rem;
   letter-spacing: 3px;
@@ -83,17 +80,85 @@ legend {
 
 /* form container */
 fieldset {
+  border: 2px solid rebeccapurple;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 0 100px;
+
+  margin-bottom: 40px;
 }
 
 legend {
   text-align: center;
+  color: black;
+  padding: 8px;
+  font-size: 2rem;
+}
+
+label,
+legend,
+button[type="submit"] {
+  font-family: title-font;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
+label {
+  font-size: 1.6rem;
+  color: #444;
+}
+
+label:last-of-type {
+  margin-bottom: 20px;
 }
 
 input {
+  appearance: none;
+
   display: block;
   width: 100%;
+  height: 30px;
+
+  border: 1px solid #aaa;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid orange;
+}
+
+input:valid:not(:optional) {
+  outline: none;
+  border: 2px solid rgb(163, 163, 111);
+  background-color: rgb(235, 235, 173);
+}
+
+button[type="submit"] {
+  padding: 10px 30px;
+  background-color: rgb(255, 108, 55);
+  border: 2px solid rgb(255, 108, 55);
+  border-radius: 10px;
+
+  font-size: 1.5rem;
+  color: white;
+
+  display: block;
+  margin: 0 auto;
+}
+
+footer {
+  margin-top: 10px;
+  text-align: center;
+  color: #444;
+}
+
+footer a {
+  text-decoration: none;
+  color: rgb(255, 108, 55);
+}
+
+footer a:hover {
+  text-decoration: underline;
 }
