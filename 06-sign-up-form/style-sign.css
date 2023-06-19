@@ -24,16 +24,43 @@ body {
   line-height: 1.5;
 }
 
-/* img {
-  width: clamp(400px, 100%, 800px);
+img {
+  display: block;
+  width: 100%;
   height: auto;
-} */
+  max-height: 500px;
+}
 
 /* main container */
 
 main {
   border: 2px solid red;
   margin: 0 auto;
-  width: min(200ch, 80vw - 2rem);
+  width: min(80ch, 80vw - 2rem);
   height: 60%;
+}
+
+.img-title {
+  border: 2px solid orange;
+  position: relative;
+  font-family: title-font;
+  font-size: 2rem;
+  letter-spacing: 8px;
+}
+
+.title {
+  position: absolute;
+  top: 0px;
+  left: 0;
+  text-align: center;
+
+  line-height: 1;
+  width: 100%;
+
+  color: white;
+  background-color: rgba(240, 128, 128, 0.4);
+}
+
+.form-container {
+  border: 2px solid rebeccapurple;
 }
