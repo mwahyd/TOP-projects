@@ -1,6 +1,5 @@
 # Sign Up Form
 
-[Live demo](https://mwahyd.github.io/TOP-projects/06-calc/index-sign.html)
+[Live demo](https://mwahyd.github.io/TOP-projects/06-sign-up-form/index-sign.html)
 
-- A basic form to test new found skills
-  git
+- A sign up form to test newly found skills.
