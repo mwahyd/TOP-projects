@@ -40,6 +40,8 @@ main {
   height: 60%;
 }
 
+/* image-title container */
+
 .img-title {
   border: 2px solid orange;
   position: relative;
@@ -63,4 +65,35 @@ main {
 
 .form-container {
   border: 2px solid rebeccapurple;
+}
+
+/* text-container */
+
+.hero-text,
+legend {
+  font-family: text-font;
+  font-size: 1.4rem;
+  letter-spacing: 3px;
+  padding: 8px;
+}
+
+.hero-text strong {
+  color: orangered;
+}
+
+/* form container */
+fieldset {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 0 100px;
+}
+
+legend {
+  text-align: center;
+}
+
+input {
+  display: block;
+  width: 100%;
 }
