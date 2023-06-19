@@ -34,10 +34,21 @@ img {
 /* main container */
 
 main {
-  border: 2px solid red;
   margin: 0 auto;
   width: min(80ch, 80vw - 2rem);
   height: 90%;
+}
+
+.top-section {
+  padding: 8px;
+  border: 2px solid rgb(255, 184, 122);
+  border-radius: 10px 10px 0 0;
+}
+
+.bottom-section {
+  padding: 8px;
+  border: 2px solid rgb(255, 184, 122);
+  border-radius: 0px 0px 10px 10px;
 }
 
 /* image-title container */
@@ -80,18 +91,18 @@ footer {
 
 /* form container */
 fieldset {
-  border: 2px solid rebeccapurple;
+  border: 5px solid rebeccapurple;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   gap: 0 100px;
 
-  margin-bottom: 40px;
+  margin-bottom: 30px;
 }
 
 legend {
   text-align: center;
-  color: black;
+  color: rebeccapurple;
   padding: 8px;
   font-size: 2rem;
 }
