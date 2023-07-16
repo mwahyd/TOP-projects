@@ -19,5 +19,7 @@ li {
 img {
   border: 5px solid rgb(227, 113, 113);
   border-radius: 50%;
-  max-width: 4%;
+  width: 90px;
+  height: auto;
+  object-fit: contain;
 }
