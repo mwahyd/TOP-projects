@@ -191,7 +191,7 @@ h1 {
   grid-template-rows: repeat(3, 170px);
   gap: 30px;
   padding-right: 30px;
-  align-content: space-between;
+  align-content: center;
 }
 
 .card {
@@ -200,7 +200,7 @@ h1 {
   border-left: 10px solid orange;
   background-color: rgb(249, 249, 249);
   border-radius: 10px;
-  height: 150px;
+  height: 200px;
 
   position: relative;
 }
