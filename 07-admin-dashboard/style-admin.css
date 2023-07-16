@@ -32,3 +32,9 @@ img {
   grid-template-columns: 1fr 4fr;
   grid-template-rows: auto;
 }
+
+.sidebar {
+  border: 2px solid blue;
+  grid-column: 1;
+  grid-row: 1/4;
+}
