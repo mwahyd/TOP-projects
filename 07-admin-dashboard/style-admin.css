@@ -34,7 +34,75 @@ img {
 }
 
 .sidebar {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   grid-column: 1;
   grid-row: 1/4;
+}
+
+/* ! header styles */
+
+.header {
+  border: 2px solid green;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+.header > .top-header,
+.header > .bottom-header {
+  grid-column: 1 / -1;
+}
+
+.header > .top-header {
+  /* border: 2px solid orange; */
+  display: flex;
+  justify-content: space-between;
+}
+
+.top-header img {
+  width: 60px;
+  height: 60px;
+}
+
+.top-header .left-links,
+.top-header .right-links {
+  padding: 20px;
+  width: 50%;
+  border: 2px solid blue;
+}
+
+.header-user {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+/* > left links */
+
+.left-links {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.left-links input {
+  width: 80%;
+  height: 13%;
+  border-radius: 15px;
+  border: 2px solid #ccc;
+  background-color: #ccc;
+}
+
+/* > right links */
+
+.right-links {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  gap: 30px;
+}
+
+/* > header icons */
+
+.header-icons {
+  font-size: 1.3rem;
 }
