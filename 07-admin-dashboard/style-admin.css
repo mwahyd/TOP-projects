@@ -29,7 +29,6 @@ img {
 
 .container {
   height: 100%;
-  border: 2px solid green;
   display: grid;
   grid-template-columns: 1fr 5fr;
   grid-template-rows: min-content min-content minmax(min-content, 1fr);
@@ -39,7 +38,6 @@ img {
 /* ! header styles */
 
 .header {
-  border: 5px solid green;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -222,7 +220,6 @@ h1 {
 .secondary-content,
 .top,
 .trending-profiles {
-  border: 2px solid red;
   display: flex;
   flex-direction: column;
 }
@@ -235,12 +232,12 @@ h1 {
   padding: 15px 30px;
 }
 
-.top {
-  margin-bottom: 20px;
+.bottom h2 {
+  margin-top: 15px;
+  margin-bottom: 10px;
 }
 
 .profile {
-  /* border: 2px solid red; */
   width: 60%;
   display: flex;
   align-items: center;
