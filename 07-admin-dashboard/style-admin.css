@@ -14,6 +14,7 @@ body {
 
 li {
   list-style-type: none;
+  font-size: 1.2rem;
 }
 
 img {
@@ -53,10 +54,13 @@ img {
   grid-column: 1 / -1;
 }
 
-.header > .top-header {
+.header > .top-header,
+.header > .bottom-header {
   /* border: 2px solid orange; */
   display: flex;
   justify-content: space-between;
+
+  padding: 10px 20px;
 }
 
 .top-header img {
@@ -64,9 +68,8 @@ img {
   height: 60px;
 }
 
-.top-header .left-links,
-.top-header .right-links {
-  padding: 20px;
+.left-links,
+.right-links {
   width: 50%;
   border: 2px solid blue;
 }
@@ -104,5 +107,21 @@ img {
 /* > header icons */
 
 .header-icons {
+  font-size: 1.3rem;
+}
+
+/* ! bottom header */
+.bottom-header .right-links > li {
+  border: 2px solid #1b6b93;
+  background-color: #1b6b93;
+  color: white;
+  font-weight: 500;
+  border-radius: 20px;
+  padding: 5px 15px;
+  width: 100px;
+  text-align: center;
+}
+
+.bottom-header .user {
   font-size: 1.3rem;
 }
