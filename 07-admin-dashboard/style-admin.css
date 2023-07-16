@@ -23,3 +23,12 @@ img {
   height: auto;
   object-fit: contain;
 }
+
+/* ! main container styles */
+
+.container {
+  border: 2px solid red;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  grid-template-rows: auto;
+}
