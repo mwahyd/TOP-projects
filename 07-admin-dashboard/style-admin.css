@@ -1,0 +1,13 @@
+/* ! General styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+img {
+  border: 2px solid red;
+  border-radius: 50%;
+  max-width: 4%;
+}
