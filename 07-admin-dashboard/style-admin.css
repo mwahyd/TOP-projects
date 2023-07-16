@@ -20,7 +20,7 @@ li {
 img {
   border: 5px solid rgb(227, 113, 113);
   border-radius: 50%;
-  width: 90px;
+  width: 75px;
   height: auto;
   object-fit: contain;
 }
@@ -28,16 +28,17 @@ img {
 /* ! main container styles */
 
 .container {
-  border: 2px solid red;
+  height: 100%;
+  border: 2px solid green;
   display: grid;
-  grid-template-columns: 1fr 3fr;
-  grid-template-rows: auto;
+  grid-template-columns: 1fr 5fr;
 }
 
 /* ! header styles */
 
 .header {
-  border: 2px solid green;
+  /* border: 5px solid green; */
+  height: 20vh;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
@@ -46,6 +47,7 @@ img {
 .header > .top-header,
 .header > .bottom-header {
   grid-column: 1 / -1;
+  border: 2px solid orange;
 }
 
 .header > .top-header,
@@ -54,7 +56,7 @@ img {
   display: flex;
   justify-content: space-between;
 
-  padding: 10px 20px;
+  padding: 10px 60px;
 }
 
 .top-header img {
@@ -82,8 +84,8 @@ img {
 }
 
 .left-links input {
-  width: 80%;
-  height: 30%;
+  width: 100%;
+  height: 50%;
   border-radius: 15px;
   border: 2px solid #ccc;
   background-color: #ccc;
@@ -142,7 +144,7 @@ h1 {
   grid-column: 1;
   grid-row: 1/4;
 
-  border: 2px solid purple;
+  /* border: 2px solid purple; */
   background-color: #1b6b93;
   color: white;
   padding: 10px 30px;
@@ -166,4 +168,47 @@ h1 {
 .sidebar p {
   display: inline;
   font-size: 1.2rem;
+}
+
+/* ! sub headings */
+
+.sub-headings,
+.content {
+  /* border: 2px solid purple; */
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  padding: 20px 15px 0px 10px;
+
+  background-color: #ededed;
+}
+
+/* ! main content */
+
+.projects {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: repeat(3, 170px);
+  gap: 30px;
+  padding-right: 30px;
+}
+
+.card {
+  /* border: 2px solid red; */
+  padding: 20px;
+  border-left: 10px solid orange;
+  background-color: rgb(253, 249, 241);
+  border-radius: 10px;
+  height: 150px;
+
+  position: relative;
+}
+
+.card .icons {
+  display: flex;
+  justify-content: space-evenly;
+
+  position: absolute;
+  width: 150px;
+  right: 25px;
+  bottom: 20px;
 }
