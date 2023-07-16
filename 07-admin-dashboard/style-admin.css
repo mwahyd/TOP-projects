@@ -6,8 +6,18 @@
   box-sizing: border-box;
 }
 
+body {
+  height: 100vh;
+  font-family: sans-serif;
+  line-height: 1.6;
+}
+
+li {
+  list-style-type: none;
+}
+
 img {
-  border: 2px solid red;
+  border: 5px solid rgb(227, 113, 113);
   border-radius: 50%;
   max-width: 4%;
 }
