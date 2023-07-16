@@ -32,22 +32,25 @@ img {
   border: 2px solid green;
   display: grid;
   grid-template-columns: 1fr 5fr;
+  grid-template-rows: min-content min-content minmax(min-content, 1fr);
+  background-color: #ededed;
 }
 
 /* ! header styles */
 
 .header {
-  /* border: 5px solid green; */
-  height: 20vh;
+  border: 5px solid green;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 1fr 1fr;
+
+  background-color: white;
 }
 
 .header > .top-header,
 .header > .bottom-header {
   grid-column: 1 / -1;
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
 }
 
 .header > .top-header,
@@ -142,7 +145,7 @@ h1 {
 .sidebar {
   /* border: 2px solid blue; */
   grid-column: 1;
-  grid-row: 1/4;
+  grid-row: 1/5;
 
   /* border: 2px solid purple; */
   background-color: #1b6b93;
@@ -177,9 +180,9 @@ h1 {
   /* border: 2px solid purple; */
   display: grid;
   grid-template-columns: 3fr 1fr;
-  padding: 20px 15px 0px 10px;
+  padding: 20px 50px 0px 20px;
 
-  background-color: #ededed;
+  /* background-color: #ededed; */
 }
 
 /* ! main content */
@@ -190,13 +193,14 @@ h1 {
   grid-template-rows: repeat(3, 170px);
   gap: 30px;
   padding-right: 30px;
+  align-content: space-between;
 }
 
 .card {
   /* border: 2px solid red; */
   padding: 20px;
   border-left: 10px solid orange;
-  background-color: rgb(253, 249, 241);
+  background-color: rgb(249, 249, 249);
   border-radius: 10px;
   height: 150px;
 
@@ -211,4 +215,39 @@ h1 {
   width: 150px;
   right: 25px;
   bottom: 20px;
+}
+
+/* ! aside secondary content */
+
+.secondary-content,
+.top,
+.trending-profiles {
+  border: 2px solid red;
+  display: flex;
+  flex-direction: column;
+}
+
+.top,
+.trending-profiles {
+  background-color: white;
+  border-radius: 10px;
+  gap: 20px;
+  padding: 15px 30px;
+}
+
+.top {
+  margin-bottom: 20px;
+}
+
+.profile {
+  /* border: 2px solid red; */
+  width: 60%;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.profile img {
+  width: 55px;
+  height: 55px;
 }
