@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -18,35 +18,33 @@
     <div class="container">
       <header class="header">
         <div class="top-header">
-          <label for="search">
-            <i class="fa-solid fa-search"></i>
+          <div class="left-links">
+            <i class="fa-solid fa-search header-icons"></i>
             <input type="text" name="search" id="search" />
-          </label>
+          </div>
 
           <div class="right-links">
-            <i class="fa-solid fa-bell"></i>
+            <i class="fa-solid fa-bell header-icons"></i>
             <img src="./assets/cat.jpg" alt="profile picture" />
-            <p>Leslie Drawstring</p>
+            <p class="header-user">Leslie Drawstring</p>
           </div>
         </div>
 
         <div class="bottom-header">
-          <div class="bottom-left-links">
+          <div class="left-links">
             <img src="./assets/cat.jpg" alt="mid profile picture" />
 
             <div class="greetings">
-              <p class="greeting">Hi there,</p>
-              <p class="user">Leslie Drawstring (@stringi)</p>
+              <h4 class="greeting">Hi there,</h4>
+              <h3 class="user">Leslie Drawstring (@stringi)</h3>
             </div>
           </div>
 
-          <div class="bottom-right-links">
-            <ul class="header-links">
-              <li>New</li>
-              <li>Upload</li>
-              <li>Share</li>
-            </ul>
-          </div>
+          <ul class="right-links">
+            <li>New</li>
+            <li>Upload</li>
+            <li>Share</li>
+          </ul>
         </div>
       </header>
 
@@ -58,53 +56,58 @@
 
         <ul class="main-links">
           <li>
-            <i class="fa-solid fa-home side-bar-logos"></i>
+            <i class="fa-solid fa-home sidebar-logos"></i>
             <p>Home</p>
           </li>
 
           <li>
-            <i class="fa-solid fa-ghost side-bar-logos"></i>
+            <i class="fa-solid fa-ghost sidebar-logos"></i>
             <p>User</p>
           </li>
           <li>
-            <i class="fa-solid fa-feather side-bar-logos"></i>
+            <i class="fa-solid fa-feather sidebar-logos"></i>
             <p>Message</p>
           </li>
           <li>
-            <i class="fa-solid fa-newspaper side-bar-logos"></i>
+            <i class="fa-solid fa-newspaper sidebar-logos"></i>
             <p>Hisotry</p>
           </li>
           <li>
-            <i class="fa-solid fa-calendar-week side-bar-logos"></i>
+            <i class="fa-solid fa-calendar-week sidebar-logos"></i>
             <p>Tasks</p>
           </li>
           <li>
-            <i class="fa-solid fa-users side-bar-logos"></i>
+            <i class="fa-solid fa-users sidebar-logos"></i>
             <p>Communities</p>
           </li>
         </ul>
 
         <ul class="secondary-links">
           <li>
-            <i class="fa-solid fa-gear"></i>
+            <i class="fa-solid fa-gear sidebar-logos"></i>
             <p>Settings</p>
           </li>
           <li>
-            <i class="fa-solid fa-puzzle-piece"></i>
+            <i class="fa-solid fa-puzzle-piece sidebar-logos"></i>
             <p>Support</p>
           </li>
           <li>
-            <i class="fa-solid fa-record-vinyl"></i>
+            <i class="fa-solid fa-record-vinyl sidebar-logos"></i>
             <p>Logout</p>
           </li>
         </ul>
       </nav>
 
+      <nav class="sub-headings">
+        <h2>Your Projects</h2>
+        <h2>Announcements</h2>
+      </nav>
+
       <main class="content">
-        <h2>Your projects</h2>
         <ul class="projects">
-          <li>
-            <div class="card">
+          <!-- <h2>Your projects</h2> -->
+          <li class="card">
+            <div class="card-name">
               <h3>Project Name</h3>
               <p>Description of the project</p>
             </div>
@@ -115,8 +118,8 @@
             </div>
           </li>
 
-          <li>
-            <div class="card">
+          <li class="card">
+            <div class="card-name">
               <h3>Project Name</h3>
               <p>Description of the project</p>
             </div>
@@ -127,8 +130,8 @@
             </div>
           </li>
 
-          <li>
-            <div class="card">
+          <li class="card">
+            <div class="card-name">
               <h3>Project Name</h3>
               <p>Description of the project</p>
             </div>
@@ -139,8 +142,8 @@
             </div>
           </li>
 
-          <li>
-            <div class="card">
+          <li class="card">
+            <div class="card-name">
               <h3>Project Name</h3>
               <p>Description of the project</p>
             </div>
@@ -151,8 +154,8 @@
             </div>
           </li>
 
-          <li>
-            <div class="card">
+          <li class="card">
+            <div class="card-name">
               <h3>Project Name</h3>
               <p>Description of the project</p>
             </div>
@@ -163,8 +166,8 @@
             </div>
           </li>
 
-          <li>
-            <div class="card">
+          <li class="card">
+            <div class="card-name">
               <h3>Project Name</h3>
               <p>Description of the project</p>
             </div>
@@ -175,81 +178,70 @@
             </div>
           </li>
         </ul>
+
+        <aside class="secondary-content">
+          <div class="top">
+            <!-- <h2>Announcements</h2> -->
+
+            <div class="broadcast">
+              <h4>Site Maintenance</h4>
+              <p class="border-bottom">
+                The site will not be accessible on the 30th of February due to
+                maintenace.
+              </p>
+            </div>
+
+            <div class="broadcast">
+              <h4>Community Share Day</h4>
+              <p class="border-bottom">
+                Next week is the well awaited festive share day!
+              </p>
+            </div>
+          </div>
+
+          <div class="bottom">
+            <h2>Trending</h2>
+
+            <div class="trending-profiles">
+              <div class="profile">
+                <img src="./assets/chicken.jpg" alt="" />
+
+                <div class="trending-user">
+                  <h3>@chippy</h3>
+                  <p>Bird Sanctuary</p>
+                </div>
+              </div>
+
+              <div class="profile">
+                <img src="./assets/dino.jpg" alt="" />
+
+                <div class="trending-user">
+                  <h3>@rawr</h3>
+                  <p>Jawsick Experience</p>
+                </div>
+              </div>
+
+              <div class="profile">
+                <img src="./assets/toucan.jpg" alt="" />
+
+                <div class="trending-user">
+                  <h3>@beakii</h3>
+                  <p>Art of ZEN</p>
+                </div>
+              </div>
+
+              <div class="profile">
+                <img src="./assets/cat.jpg" alt="" />
+
+                <div class="trending-user">
+                  <h3>@stringi</h3>
+                  <p>Dashboard</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </aside>
       </main>
-
-      <aside class="secondary-content">
-        <div class="top">
-          <h2>Announcements</h2>
-
-          <div class="broadcast">
-            <h4>Site Maintenance</h4>
-            <p>
-              The site will not be accessible on the 30th of February due to
-              maintenace. If anyone will be able to access the site on this day
-              please let us know!
-            </p>
-          </div>
-
-          <div class="broadcast">
-            <h4>Community Share Day</h4>
-            <p>
-              Next week is the well awaited festive share day! Please bring
-              various items to exchange with one another.
-            </p>
-          </div>
-
-          <div class="broadcast">
-            <h4>Updated Privacy Policy</h4>
-            <p>
-              Please take time to read through the update privacy policy.
-              Despite you like it or not, if you wish to continue using the
-              service, you will have to click the accept button.
-            </p>
-          </div>
-        </div>
-
-        <div class="bottom">
-          <h2>Tending</h2>
-
-          <div class="trending-profiles">
-            <div class="profile">
-              <img src="./assets/chicken.jpg" alt="" />
-
-              <div class="trending-user">
-                <h3>@chippy</h3>
-                <p>Bird Sanctuary</p>
-              </div>
-            </div>
-
-            <div class="profile">
-              <img src="./assets/dino.jpg" alt="" />
-
-              <div class="trending-user">
-                <h3>@rawr</h3>
-                <p>Jawsick Experience</p>
-              </div>
-            </div>
-
-            <div class="profile">
-              <img src="./assets/./toucan.jpg" alt="" />
-
-              <div class="trending-user">
-                <h3>@beakii</h3>
-                <p>Art of ZEN</p>
-              </div>
-            </div>
-
-            <div class="profile">
-              <img src="./assets/cat.jpg" alt="" />
-
-              <div class="trending-user">
-                <h3>@stringi</h3>
-                <p>Dashboard</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </aside>
 
       <footer></footer>
     </div>
