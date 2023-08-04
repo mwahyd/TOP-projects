@@ -17,6 +17,43 @@
       <main>
         <button class="add-btn">&#43;</button>
         <div class="content"></div>
+
+        <div class="modal">
+          <form action="#" class="book-form">
+            <fieldset>
+              <legend>New Book</legend>
+              <div class="close">&#10006;</div>
+              <label for="title">
+                Title:
+                <input type="text" name="title" id="title" required />
+              </label>
+
+              <label for="author">
+                Author:
+                <input type="text" name="author" id="author" required />
+              </label>
+
+              <label for="pages">
+                Pages:
+                <input
+                  type="tel"
+                  name="pages"
+                  id="pages"
+                  pattern="[0-9]{1,4}"
+                  title="Pages should be between 1 - 9999" />
+              </label>
+
+              <label for="status" class="status">
+                Read:
+                <input type="checkbox" name="status" id="status" />
+              </label>
+
+              <label for="add" class="btn-modal">
+                <input type="submit" id="add" value="Add" />
+              </label>
+            </fieldset>
+          </form>
+        </div>
       </main>
 
       <footer></footer>
