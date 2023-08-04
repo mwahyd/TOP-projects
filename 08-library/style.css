@@ -91,9 +91,11 @@ fieldset {
 legend {
   text-align: left;
   font-size: 1.3rem;
+  padding: 5px;
+  margin-left: 10px;
 }
 
-label:not(label.status, label.btn-modal) {
+label:not(label.status) {
   /* border: 1px dotted red; */
   font-size: 1.2rem;
   margin-bottom: 15px;
@@ -108,6 +110,8 @@ input:not(input[type="submit"], input[type="checkbox"]) {
   margin-left: 20px;
   padding: 5px 10px;
   font-size: 1.125rem;
+  border: 2px solid #ccc;
+  outline-color: #666;
 }
 
 label.status,
@@ -122,9 +126,18 @@ input[type="submit"] {
 
 input[type="submit"] {
   padding: 5px 10px;
+  background-color: transparent;
+  border-radius: 10px;
+  border: 4px solid #ccc;
+}
+
+input[type="submit"]:hover {
+  background-color: #666;
+  color: white;
 }
 
 input[type="checkbox"] {
   transform: scale(1.8);
   margin-left: 5px;
+  border: 2px solid #ccc;
 }
