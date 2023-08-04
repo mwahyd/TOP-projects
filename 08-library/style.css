@@ -1,0 +1,38 @@
+html {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  line-height: 1.5;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  border: 3px dashed orange;
+  min-width: 450px;
+  max-width: 900px;
+  height: 100vh;
+  margin: 0 auto;
+  padding: 10px 20px;
+}
+
+.header {
+  text-align: center;
+  border: 2px solid red;
+}
+
+.add-btn {
+  background-color: transparent;
+  /* border: none; */
+  border: 2px solid red;
+  font-size: 5rem;
+
+  display: block;
+  margin: 50px auto;
+}
