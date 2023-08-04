@@ -14,9 +14,11 @@ html {
 }
 
 .container {
+  resize: horizontal;
+  overflow: auto;
   border: 3px dashed orange;
   min-width: 450px;
-  max-width: 900px;
+  max-width: 1000px;
   height: 100vh;
   margin: 0 auto;
   padding: 10px 20px;
@@ -27,6 +29,8 @@ html {
   border: 2px solid red;
 }
 
+/* content div */
+
 .add-btn {
   background-color: transparent;
   /* border: none; */
@@ -35,4 +39,27 @@ html {
 
   display: block;
   margin: 50px auto;
+}
+
+.content {
+  border: 2px solid red;
+
+  display: grid;
+  gap: 25px;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  justify-items: stretch;
+}
+
+.card {
+  border: 2px solid blue;
+  font-size: 1.125rem;
+  height: 180px;
+  width: 100%;
+  padding: 10px 15px;
+  text-transform: capitalize;
+  text-align: center;
+}
+
+.card > p {
+  margin-bottom: 10px;
 }
