@@ -52,12 +52,14 @@ function getBooksOnDOM() {
 function createBookCard(book) {
   const div = document.createElement("div");
   div.classList.add("card");
+  let status;
+  book.read === "read" ? (status = "read") : (status = "not-read");
 
   div.innerHTML = `
-  <p>${book.title}</p>
+  <p><strong>${book.title}</strong></p>
   <p>${book.author}</p>
   <p>${book.pages} pages</p>
-  <p class="status">${book.read}</p>
+  <p class="${status}">${book.read}</p>
   <span class="del">&#10006;</span>
   `;
 
@@ -109,19 +111,40 @@ function clearState(array) {
   getBooksOnDOM();
 }
 
+function removeCard(event) {
+  if (event.target.nodeName !== "SPAN") {
+    return;
+  }
+  if (confirm("Do you want to remove this item?")) {
+    console.log(event.target);
+    console.log(event.target.parentElement);
+    event.target.parentElement.remove();
+  }
+}
+
 // event listeners
-document.addEventListener("DOMContentLoaded", getBooksOnDOM);
+const init = () => {
+  document.addEventListener("DOMContentLoaded", getBooksOnDOM);
 
-document.querySelector(".add-btn").addEventListener("click", (event) => {
-  document.querySelector(".modal").classList.remove("hidden");
-  document.querySelector(".blur").classList.remove("hidden");
-});
+  // plus sign
+  document.querySelector(".add-btn").addEventListener("click", (event) => {
+    document.querySelector(".modal").classList.remove("hidden");
+    document.querySelector(".blur").classList.remove("hidden");
+  });
 
-document.querySelector(".close-btn").addEventListener("click", (event) => {
-  document.querySelector(".modal").classList.add("hidden");
-  document.querySelector(".blur").classList.add("hidden");
-});
+  // display modal
+  document.querySelector(".close-btn").addEventListener("click", (event) => {
+    document.querySelector(".modal").classList.add("hidden");
+    document.querySelector(".blur").classList.add("hidden");
+  });
 
-document
-  .querySelector(".modal")
-  .addEventListener("submit", onFormSubmitValidate);
+  // modal form
+  document
+    .querySelector(".modal")
+    .addEventListener("submit", onFormSubmitValidate);
+
+  // card
+  document.querySelector(".content").addEventListener("click", removeCard);
+};
+
+init();
