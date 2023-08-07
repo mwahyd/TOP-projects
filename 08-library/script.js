@@ -31,7 +31,16 @@ function Book(title, author, pages, read) {
   this.author = author;
   this.pages = pages;
   this.read = read;
+  this.index;
 }
+
+Book.prototype.toggleStatus = function (status) {
+  this.read = status;
+};
+
+Book.prototype.addIndex = function (index) {
+  this.index = index;
+};
 
 // handler functions
 function addBookToLibrary(obj) {
@@ -41,18 +50,21 @@ function addBookToLibrary(obj) {
   read === true ? (read = "read") : (read = "not read");
 
   digiLibrary.push(new Book(title, author, pages, read));
-  console.log(digiLibrary);
+  digiLibrary.at(-1).addIndex(digiLibrary.length);
+  // console.log(digiLibrary);
 }
 
 function getBooksOnDOM() {
   // later incooperate local storage and fetch data from local storage
   // digiLibrary.forEach((book) => createBookCard(book));
-  createBookCard(digiLibrary.at(-1));
+  createBookCard(digiLibrary.at(-1), digiLibrary.indexOf(digiLibrary.at(-1)));
+  console.log(digiLibrary);
 }
 
-function createBookCard(book) {
+function createBookCard(book, index) {
   const div = document.createElement("div");
   div.classList.add("card");
+  div.setAttribute("data-index", index + 1);
   let status;
   book.read === "read" ? (status = "read") : (status = "not-read");
 
@@ -127,13 +139,20 @@ function toggleReadStatus(event) {
   if (!event.target.classList.contains("status")) {
     return;
   }
-  // console.log(event.target.classList.contains("status"));
-  // console.log(event.target);
+
   if (event.target.classList.contains("read")) {
+    // update status on prototype of item
+    const index = event.target.parentElement.getAttribute("data-index");
+    digiLibrary[index - 1].toggleStatus("not read");
+
     event.target.textContent = "not read";
     event.target.classList.add("not-read");
     event.target.classList.remove("read");
   } else if (event.target.classList.contains("not-read")) {
+    // update status on prototype of item
+    const index = event.target.parentElement.getAttribute("data-index");
+    digiLibrary[index - 1].toggleStatus("read");
+
     event.target.textContent = "read";
     event.target.classList.add("read");
     event.target.classList.remove("not-read");
