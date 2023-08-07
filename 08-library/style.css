@@ -59,7 +59,7 @@ html {
 
   display: grid;
   gap: 25px;
-  grid-template-columns: repeat(auto-fit, minmax(175px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
   justify-items: stretch;
 }
 
@@ -195,4 +195,14 @@ input[type="checkbox"] {
   background-color: rgba(255, 255, 255, 0.75);
   backdrop-filter: blur(3px);
   z-index: 1;
+}
+
+.read {
+  background-color: yellowgreen;
+  padding: 2px;
+}
+
+.not-read {
+  background-color: rgb(205, 50, 89);
+  padding: 2px;
 }
