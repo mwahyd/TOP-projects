@@ -18,40 +18,39 @@
         <button class="add-btn">&#43;</button>
         <div class="content"></div>
 
-        <div class="modal hidden">
-          <form action="#" class="book-form">
-            <fieldset>
-              <legend>New Book</legend>
-              <div class="close">&#10006;</div>
-              <label for="title">
-                Title:
-                <input type="text" name="title" id="title" required />
-              </label>
+        <form action="#" class="book-form modal hidden">
+          <fieldset class="">
+            <legend>New Book</legend>
+            <div class="close-btn">&#10006;</div>
+            <label for="title">
+              Title:
+              <input type="text" name="title" id="title" required />
+            </label>
 
-              <label for="author">
-                Author:
-                <input type="text" name="author" id="author" required />
-              </label>
+            <label for="author">
+              Author:
+              <input type="text" name="author" id="author" required />
+            </label>
 
-              <label for="pages">
-                Pages:
-                <input
-                  type="tel"
-                  name="pages"
-                  id="pages"
-                  pattern="[0-9]{1,4}"
-                  title="Pages should be between 1 - 9999" />
-              </label>
+            <label for="pages">
+              Pages:
+              <input
+                type="tel"
+                name="pages"
+                id="pages"
+                pattern="^[1-9]{1}([0-9]{1,2})?"
+                title="Pages should be between 1 - 9999" />
+            </label>
 
-              <label for="status" class="status">
-                Read:
-                <input type="checkbox" name="status" id="status" />
-              </label>
+            <label for="status" class="status">
+              Read:
+              <input type="checkbox" name="status" id="status" />
+            </label>
 
-              <input type="submit" id="add" value="Add" />
-            </fieldset>
-          </form>
-        </div>
+            <input type="submit" id="add" value="Add" />
+          </fieldset>
+        </form>
+        <div class="blur hidden"></div>
       </main>
 
       <footer></footer>
