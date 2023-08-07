@@ -67,8 +67,8 @@ html {
   /* border: 2px solid #ccc; */
   border-radius: 8px;
   box-shadow: 0 0 10px 0.5px #bababa;
-  font-size: 1.125rem;
-  height: 180px;
+  font-size: 1.135rem;
+  height: 200px;
   width: 100%;
   padding: 10px 15px;
   text-transform: capitalize;
@@ -88,7 +88,7 @@ html {
 }
 
 .card > p {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
 }
 
 /* form */
@@ -197,12 +197,17 @@ input[type="checkbox"] {
   z-index: 1;
 }
 
+.read,
+.not-read {
+  padding: 2px;
+  font-weight: bold;
+  color: #fff;
+}
+
 .read {
   background-color: yellowgreen;
-  padding: 2px;
 }
 
 .not-read {
   background-color: rgb(205, 50, 89);
-  padding: 2px;
 }
