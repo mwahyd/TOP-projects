@@ -1,28 +1,28 @@
 const digiLibrary = [
-  {
-    title: "the book thief",
-    author: "markus zusak",
-    pages: 545,
-    read: "not read",
-  },
-  {
-    title: "the da vinci code",
-    author: "dan brown",
-    pages: 545,
-    read: "read",
-  },
-  {
-    title: "cloud atlas",
-    author: "david mitchell",
-    pages: 545,
-    read: "not read",
-  },
-  {
-    title: "digital fortress",
-    author: "dan brown",
-    pages: 545,
-    read: "read",
-  },
+  // {
+  //   title: "the book thief",
+  //   author: "markus zusak",
+  //   pages: 545,
+  //   read: "not read",
+  // },
+  // {
+  //   title: "the da vinci code",
+  //   author: "dan brown",
+  //   pages: 545,
+  //   read: "read",
+  // },
+  // {
+  //   title: "cloud atlas",
+  //   author: "david mitchell",
+  //   pages: 545,
+  //   read: "not read",
+  // },
+  // {
+  //   title: "digital fortress",
+  //   author: "dan brown",
+  //   pages: 545,
+  //   read: "read",
+  // },
 ];
 
 // book class
@@ -46,7 +46,8 @@ function addBookToLibrary(obj) {
 
 function getBooksOnDOM() {
   // later incooperate local storage and fetch data from local storage
-  digiLibrary.forEach((book) => createBookCard(book));
+  // digiLibrary.forEach((book) => createBookCard(book));
+  createBookCard(digiLibrary.at(-1));
 }
 
 function createBookCard(book) {
@@ -141,7 +142,7 @@ function toggleReadStatus(event) {
 
 // event listeners
 const init = () => {
-  document.addEventListener("DOMContentLoaded", getBooksOnDOM);
+  // document.addEventListener("DOMContentLoaded", getBooksOnDOM);
 
   // plus sign
   document.querySelector(".add-btn").addEventListener("click", (event) => {
