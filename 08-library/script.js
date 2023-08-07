@@ -59,7 +59,7 @@ function createBookCard(book) {
   <p><strong>${book.title}</strong></p>
   <p>${book.author}</p>
   <p>${book.pages} pages</p>
-  <p class="${status}">${book.read}</p>
+  <p class="status ${status}">${book.read}</p>
   <span class="del">&#10006;</span>
   `;
 
@@ -122,6 +122,23 @@ function removeCard(event) {
   }
 }
 
+function toggleReadStatus(event) {
+  if (!event.target.classList.contains("status")) {
+    return;
+  }
+  // console.log(event.target.classList.contains("status"));
+  // console.log(event.target);
+  if (event.target.classList.contains("read")) {
+    event.target.textContent = "not read";
+    event.target.classList.add("not-read");
+    event.target.classList.remove("read");
+  } else if (event.target.classList.contains("not-read")) {
+    event.target.textContent = "read";
+    event.target.classList.add("read");
+    event.target.classList.remove("not-read");
+  }
+}
+
 // event listeners
 const init = () => {
   document.addEventListener("DOMContentLoaded", getBooksOnDOM);
@@ -145,6 +162,11 @@ const init = () => {
 
   // card
   document.querySelector(".content").addEventListener("click", removeCard);
+
+  // toggle read to not-read vice versa
+  document
+    .querySelector(".content")
+    .addEventListener("click", toggleReadStatus);
 };
 
 init();
