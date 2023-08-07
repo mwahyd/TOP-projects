@@ -57,14 +57,14 @@ function addBookToLibrary(obj) {
 function getBooksOnDOM() {
   // later incooperate local storage and fetch data from local storage
   // digiLibrary.forEach((book) => createBookCard(book));
-  createBookCard(digiLibrary.at(-1), digiLibrary.indexOf(digiLibrary.at(-1)));
+  createBookCard(digiLibrary.at(-1));
   console.log(digiLibrary);
 }
 
-function createBookCard(book, index) {
+function createBookCard(book) {
   const div = document.createElement("div");
   div.classList.add("card");
-  div.setAttribute("data-index", index + 1);
+  div.setAttribute("data-index", book.index);
   let status;
   book.read === "read" ? (status = "read") : (status = "not-read");
 
