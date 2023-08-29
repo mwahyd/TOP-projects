@@ -12,16 +12,53 @@
       <h1>Tic Tac Toe</h1>
     </header>
 
-    <main>
+    <main id="main">
       <div class="container">
-        <div class="content">
-          <h2>Menu</h2>
-          <button>Player1 vs Player2</button>
-          <button>Player1 vs Computer</button>
-          <button>Start</button>
+        <div id="menu">
+          <h2 class="h2-title">Menu</h2>
+          <button class="option1">Player1 vs Player2</button>
+          <button class="option2">Player1 vs Computer</button>
+          <button class="start">Start</button>
           <!-- when start button clicked, redirect to PAGE 2 -->
         </div>
       </div>
+
+      <section class="modal1 hidden">
+        <form action="#">
+          <label for="player1">
+            Player1:
+            <input
+              type="text"
+              id="player1"
+              name="player1"
+              placeholder="enter name..."
+              maxlength="10" />
+          </label>
+
+          <label for="maker1">
+            Select Marker:
+            <button class="marker-x">x</button>
+            <button class="marker-o">o</button>
+          </label>
+
+          <label for="player2">
+            Player2:
+            <input
+              type="text"
+              id="player2"
+              name="player2"
+              placeholder="enter name..."
+              maxlength="10" />
+          </label>
+          <label for="marker2">
+            Select Marker:
+            <button class="marker-x">x</button>
+            <button class="marker-o">o</button>
+          </label>
+        </form>
+      </section>
+
+      <section class="modal2 hidden"></section>
     </main>
 
     <footer class="footer">
