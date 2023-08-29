@@ -25,7 +25,7 @@ body {
 /* header */
 
 header {
-  border: 1px solid salmon;
+  /* border: 1px solid salmon; */
   height: 10%;
 }
 
@@ -43,7 +43,7 @@ main {
 }
 
 .container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   height: 100%;
   margin: 0 auto;
   width: clamp(450px, 800px, 1200px);
@@ -54,22 +54,23 @@ main {
 }
 
 #menu {
-  border: 2px solid greenyellow;
+  border: 2px solid burlywood;
   height: 80%;
   width: 80%;
+  padding: 5px 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
 h2 {
-  font-size: 2.3rem;
+  font-size: 2.8rem;
 }
 
 /* player vs player2  / computer */
 
 .options {
-  border: 2px solid blue;
+  /* border: 2px solid blue; */
   font-size: 1.6rem;
   height: 60%;
 
@@ -86,10 +87,23 @@ h2 {
 
 .player1,
 .player2 {
-  border: 1px solid red;
   font-size: 2rem;
-  margin: 10px;
+  margin: px;
   width: 40%;
+}
+
+.fields {
+  flex: 1;
+  margin-top: 10px;
+  border: 2px solid brown;
+  height: 70%;
+}
+
+.player-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
 }
 
 .opponent {
@@ -110,11 +124,13 @@ h2 {
 .start {
   display: block;
   margin: 0 auto;
-  padding: 10px;
-  width: 50%;
+  border: 2px solid orange;
+  border-radius: 15px;
+  padding: 5px;
+  width: 20%;
   font-size: 2rem;
   font-weight: bold;
-  background-color: orange;
+  background: linear-gradient(orange, rgb(255, 153, 0));
   letter-spacing: 1px;
 }
 
@@ -137,4 +153,18 @@ footer {
 
 .selected {
   background-color: #ccc;
+}
+
+.text-gradient {
+  background: -webkit-linear-gradient(orange, orangered);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.light-border {
+  border: 1px solid burlywood;
+}
+
+.card-border-rad {
+  border-radius: 10px;
 }
