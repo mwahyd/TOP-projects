@@ -63,7 +63,59 @@ main {
 }
 
 h2 {
-  font-size: 2.2rem;
+  font-size: 2.3rem;
+}
+
+/* player vs player2  / computer */
+
+.options {
+  border: 2px solid blue;
+  font-size: 1.6rem;
+  height: 60%;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.player1,
+.player2,
+.vs {
+  display: flex;
+  flex-direction: column;
+}
+
+.player1,
+.player2 {
+  border: 1px solid red;
+  font-size: 2rem;
+  margin: 10px;
+  width: 40%;
+}
+
+.opponent {
+  width: 50%;
+  padding: 20px;
+  margin: 3vh auto;
+  font-size: 1.6rem;
+  font-weight: bold;
+  background-color: transparent;
+}
+
+.vs {
+  justify-content: center;
+  font-size: 3.5rem;
+  font-weight: bold;
+}
+
+.start {
+  display: block;
+  margin: 0 auto;
+  padding: 10px;
+  width: 50%;
+  font-size: 2rem;
+  font-weight: bold;
+  background-color: orange;
+  letter-spacing: 1px;
 }
 
 /* footer */
@@ -79,6 +131,10 @@ footer {
   display: none;
 }
 
-.title {
+.text-centre {
   text-align: center;
+}
+
+.selected {
+  background-color: #ccc;
 }
