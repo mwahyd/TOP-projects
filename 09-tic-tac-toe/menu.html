@@ -9,21 +9,70 @@
   </head>
   <body>
     <header>
-      <h1>Tic Tac Toe</h1>
+      <h1 class="text-centre">Tic Tac Toe</h1>
     </header>
 
     <main id="main">
       <div class="container">
         <div id="menu">
-          <h2 class="h2-title">Menu</h2>
-          <button class="option1">Player1 vs Player2</button>
-          <button class="option2">Player1 vs Computer</button>
+          <h2 class="h2 text-centre text-gradient">Menu</h2>
+
+          <div class="options">
+            <div class="player1 light-border">
+              <div class="player-container">
+                <h3 class="text-centre">Player 1</h3>
+
+                <form action="#" class="fields">
+                  <label for="first-player">
+                    name:
+                    <input
+                      type="text"
+                      id="first-player"
+                      placeholder="enter name ..."
+                      maxlength="10" />
+                  </label>
+                  <label class="markers">
+                    select marker:
+                    <button class="marker-x">x</button>
+                    <button class="marker-o">o</button>
+                  </label>
+                </form>
+              </div>
+            </div>
+
+            <div class="vs">Vs</div>
+
+            <div class="player2 light-border">
+              <div class="co-op player-container">
+                <h3 class="text-centre">Player 2</h3>
+
+                <form action="#" class="fields">
+                  <label for="first-player">
+                    name:
+                    <input
+                      type="text"
+                      id="second-player"
+                      placeholder="enter name ..."
+                      maxlength="10" />
+                  </label>
+                  <label class="markers">
+                    select marker:
+                    <button class="marker-x">x</button>
+                    <button class="marker-o">o</button>
+                  </label>
+                </form>
+              </div>
+
+              <button class="player2-btn opponent hidden">Player 2</button>
+              <button class="computer-btn opponent hidden">Computer</button>
+            </div>
+          </div>
           <button class="start">Start</button>
           <!-- when start button clicked, redirect to PAGE 2 -->
         </div>
       </div>
 
-      <section class="modal1 hidden">
+      <!-- <section class="modal1 hidden">
         <form action="#">
           <label for="player1">
             Player1:
@@ -35,7 +84,7 @@
               maxlength="10" />
           </label>
 
-          <label for="maker1">
+          <label id="maker1">
             Select Marker:
             <button class="marker-x">x</button>
             <button class="marker-o">o</button>
@@ -50,18 +99,38 @@
               placeholder="enter name..."
               maxlength="10" />
           </label>
-          <label for="marker2">
+          <label id="marker2">
             Select Marker:
             <button class="marker-x">x</button>
             <button class="marker-o">o</button>
           </label>
         </form>
-      </section>
+        <button class="modal1-save">Done</button>
+      </section> -->
 
-      <section class="modal2 hidden"></section>
+      <!-- <section class="modal2 hidden">
+        <form action="#">
+          <label for="player1-comp">
+            Player1:
+            <input
+              type="text"
+              id="player1-comp"
+              name="player1"
+              placeholder="enter name..."
+              maxlength="10" />
+          </label>
+
+          <label id="maker1-comp">
+            Select Marker:
+            <button class="marker-x">x</button>
+            <button class="marker-o">o</button>
+          </label>
+        </form>
+        <button class="modal2-save">Done</button>
+      </section> -->
     </main>
 
-    <footer class="footer">
+    <footer class="footer text-centre">
       Created by
       <a href="https://github.com/mwahyd" target="_blank">mwahyd</a> 2023
     </footer>
