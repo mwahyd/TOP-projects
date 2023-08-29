@@ -16,5 +16,47 @@ html {
 }
 
 body {
+  border: 2px solid green;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* header */
+
+header {
+  border: 1px solid salmon;
+  height: 10%;
+  text-align: center;
+}
+
+h1 {
+  position: relative;
+  top: clamp(10%, 40%, 70%);
+  font-size: clamp(1.5rem, 3.5rem, 15rem);
+  font-weight: bold;
+}
+
+/* main */
+
+main {
+  flex: 1;
+}
+
+.container {
+  border: 2px solid red;
+  height: 100%;
+  margin: 0 auto;
+  width: clamp(450px, 800px, 1200px);
+}
+
+footer {
+  border: 1px solid salmon;
+  height: 10%;
+}
+
+/* action classes */
+
+.hidden {
+  display: none;
 }
