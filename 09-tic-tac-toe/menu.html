@@ -19,7 +19,7 @@
 
           <div class="options">
             <div class="player1 light-border">
-              <div class="player-container">
+              <div class="player1-card player-container hidden">
                 <h3 class="text-centre">Player 1</h3>
 
                 <form action="#" class="fields">
@@ -31,19 +31,24 @@
                       placeholder="enter name ..."
                       maxlength="10" />
                   </label>
+
                   <label class="markers">
                     select marker:
-                    <button class="marker-x">x</button>
-                    <button class="marker-o">o</button>
+                    <div class="">
+                      <button class="marker-x">x</button>
+                      <button class="marker-o">o</button>
+                    </div>
                   </label>
                 </form>
               </div>
+
+              <button class="player1-btn opponent">Player 1</button>
             </div>
 
             <div class="vs">Vs</div>
 
             <div class="player2 light-border">
-              <div class="co-op player-container">
+              <div class="co-op player-container hidden">
                 <h3 class="text-centre">Player 2</h3>
 
                 <form action="#" class="fields">
@@ -57,14 +62,16 @@
                   </label>
                   <label class="markers">
                     select marker:
-                    <button class="marker-x">x</button>
-                    <button class="marker-o">o</button>
+                    <div class="">
+                      <button class="marker-x">x</button>
+                      <button class="marker-o">o</button>
+                    </div>
                   </label>
                 </form>
               </div>
 
-              <button class="player2-btn opponent hidden">Player 2</button>
-              <button class="computer-btn opponent hidden">Computer</button>
+              <button class="player2-btn opponent">Player 2</button>
+              <button class="computer-btn opponent">Computer</button>
             </div>
           </div>
           <button class="start">Start</button>
