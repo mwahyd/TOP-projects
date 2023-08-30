@@ -123,12 +123,13 @@ input {
   justify-content: space-evenly;
 }
 
-.opponent {
+.players {
   width: 50%;
   padding: 20px;
   margin: 3vh auto;
   font-weight: bold;
   background-color: transparent;
+  cursor: pointer;
 }
 
 .vs {
@@ -172,6 +173,10 @@ footer {
 
 .selected {
   background-color: #81b622;
+}
+
+.hover:hover {
+  background-color: #ccc;
 }
 
 .text-gradient {
