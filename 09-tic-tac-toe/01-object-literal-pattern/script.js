@@ -5,28 +5,37 @@ const game = {
   playersInfo: {},
 
   init: function () {
-    this.cacheMenuDOM();
+    this.cacheDOM();
     this.bindEvents();
     this.setDefault();
-    console.log("this works from init");
   },
 
-  cacheMenuDOM: function () {
+  cacheDOM: function () {
     this.container = document.querySelector(".container");
     this.players = this.container.querySelectorAll(".players");
     this.forms = this.container.querySelectorAll(".fields");
     this.p1Input = this.container.querySelector("#first-player");
     this.p2Input = this.container.querySelector("#second-player");
+
+    // game DOM
+    this.gameContent = this.container.querySelector(".game-content");
+    this.gameboardContainer = this.container.querySelector(".game-board");
   },
 
   bindEvents: function () {
+    // event when player1 or player2 button clicked
     this.players.forEach((player) => {
       player.addEventListener("click", this.showPlayerCard.bind(this));
     });
-
+    // event for the marker and input
     this.forms.forEach((form) => {
       form.addEventListener("click", this.getInputs.bind(this));
     });
+
+    // game html events
+    if (document.body.id === "game-page") {
+      window.addEventListener("load", this.gameBoard.bind(this));
+    }
   },
 
   // handler functions
@@ -77,13 +86,21 @@ const game = {
           this.playersInfo["p2Marker"] = this.p2Marker || "o";
         }
         console.log(this.playersInfo);
-
         break;
     }
+  },
 
-    // console.log(this.playersInfo);
-    // console.log(event.target);
-    // console.log(event.target.classList.add("saved"));
+  gameBoard: function () {
+    this.gameboard = ["x", "o", "x", "o", "x", "x", "o", "o", "x"];
+    this.gameboard.forEach((marker, index) => {
+      const div = document.createElement("div");
+      div.setAttribute("data-index", index);
+      div.classList.add("cell");
+      div.textContent = marker;
+
+      this.gameboardContainer.appendChild(div);
+    });
+    console.log(this.gameboard);
   },
 
   // support functions
