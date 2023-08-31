@@ -38,6 +38,8 @@ const game = {
       case "player2-btn":
         event.target.nextElementSibling.classList.add("hidden");
         this.addRemoveHidden(event);
+        this.playersInfo["p2"] = "player 2";
+        console.log(this.playersInfo);
         break;
       case "computer-btn":
         event.target.classList.add("selected");
