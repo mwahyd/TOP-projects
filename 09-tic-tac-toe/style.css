@@ -116,6 +116,16 @@ input {
   border: 2px solid #666;
 }
 
+/* .button-group {
+  border: 2px solid red;
+} */
+
+.save-btn {
+  margin-left: 30%;
+  transform: scale(75%);
+  cursor: pointer;
+}
+
 .player-container {
   height: 100%;
   display: flex;
@@ -172,7 +182,9 @@ footer {
 }
 
 .selected {
-  background-color: #81b622;
+  /* background-color: #81b622; */
+  /* background-color: #a1f791; */
+  background: linear-gradient(orange, rgb(255, 153, 0));
 }
 
 .hover:hover {
@@ -191,4 +203,10 @@ footer {
 
 .card-border-rad {
   border-radius: 10px;
+}
+
+.saved {
+  background: linear-gradient(orange, rgb(255, 153, 0));
+  border: 2px solid orange !important;
+  border-radius: 15px;
 }
