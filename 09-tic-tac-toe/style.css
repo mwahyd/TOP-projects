@@ -37,6 +37,8 @@ h1 {
   font-weight: bold;
 }
 
+/* - menu html styles */
+
 /* main */
 
 main {
@@ -44,7 +46,7 @@ main {
 }
 
 .container {
-  /* border: 2px solid red; */
+  border: 2px solid red;
   height: 100%;
   margin: 0 auto;
   width: clamp(450px, 800px, 1200px);
@@ -55,7 +57,7 @@ main {
 }
 
 #menu {
-  /* border: 2px solid burlywood; */
+  border: 2px solid burlywood;
   height: 80%;
   width: 80%;
   padding: 5px 10px;
@@ -155,6 +157,15 @@ input {
   font-weight: bold;
   background: linear-gradient(orange, rgb(255, 153, 0));
   letter-spacing: 1px;
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.start:hover {
+  background: linear-gradient(hsl(39, 100%, 61%), hsl(36, 100%, 61%));
 }
 
 /* footer */
@@ -165,6 +176,17 @@ footer {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+/* - game html styles */
+
+#menu.game {
+}
+
+.game-header {
+  border: 2px solid red;
+  display: flex;
+  justify-content: space-evenly;
 }
 
 /* action classes */
