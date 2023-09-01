@@ -3,6 +3,7 @@
 const game = {
   // root functions
   playersInfo: {},
+  gameboard: ["", "", "", "", "", "", "", "", ""],
 
   // flags
   p1Turn: false,
@@ -49,7 +50,7 @@ const game = {
 
     // game html events
     if (document.body.id === "game-page") {
-      window.addEventListener("load", this.gameBoard.bind(this));
+      // window.addEventListener("load", this.gameBoard.bind(this));
       this.gameboardContainer.addEventListener(
         "click",
         this.gameController.bind(this)
@@ -58,6 +59,8 @@ const game = {
   },
 
   render: function () {
+    // load the game board
+    this.gameBoard();
     this.playersInfo = JSON.parse(localStorage.getItem("playersInfo"))[0];
     console.log(this.playersInfo);
     // display all the player infomation
@@ -113,17 +116,15 @@ const game = {
   },
 
   placeMarker: function (event, marker) {
-    // check which player's turn
-    console.log(event.target);
-    // check if squre is empty
-    console.log("empty square", this.checkEmptySquare(event.target));
-    // place marker
-    if (this.checkEmptySquare(event.target)) {
-      event.target.textContent = marker;
+    this.squareIndex = event.target.getAttribute("data-index");
+    if (this.gameboard[this.squareIndex] === "") {
+      this.gameboard[this.squareIndex] = marker;
+      console.log(this.gameboard);
+      this.gameboardContainer.innerHTML = "";
+      this.gameBoard();
     } else {
       console.log("square not empty");
     }
-
     // call change turn function
     this.setTurn();
   },
@@ -177,7 +178,6 @@ const game = {
   },
 
   gameBoard: function () {
-    this.gameboard = ["", "", "", "", "", "", "", "", "x"];
     this.gameboard.forEach((marker, index) => {
       const div = document.createElement("div");
       div.setAttribute("data-index", index);
@@ -213,6 +213,8 @@ const game = {
     }
     // allow player to place marker if square is empty,
     // transfer turn to player2
+
+    // ? remove event listener
   },
 
   // support functions
