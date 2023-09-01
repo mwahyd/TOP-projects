@@ -119,15 +119,9 @@ const game = {
         break;
       case "save-btn":
         if (event.target.id === "save1") {
-          event.target.classList.add("saved");
-          this.p1Name = this.getName(this.p1Input);
-          this.playersInfo["p1"] = this.p1Name || "player 1";
-          this.playersInfo["p1Marker"] = this.p1Marker || "x";
+          this.saveInfo(event, "p1", "p1Marker", "p1", "x");
         } else if (event.target.id === "save2") {
-          event.target.classList.add("saved");
-          this.p2Name = this.getName(this.p2Input);
-          this.playersInfo["p2"] = this.p2Name || "player 2";
-          this.playersInfo["p2Marker"] = this.p2Marker || "o";
+          this.saveInfo(event, "p2", "p2Marker", "p2", "o");
         }
         console.log(this.playersInfo);
         break;
@@ -190,6 +184,13 @@ const game = {
     if (playerInput.value.trim() !== "") {
       return playerInput.value.trim().toLowerCase();
     }
+  },
+
+  saveInfo: function (event, player, marker, defaultName, defaultMarker) {
+    event.target.classList.add("saved");
+    this.p1Name = this.getName(this.p1Input);
+    this.playersInfo[player] = this.p1Name || defaultName;
+    this.playersInfo[marker] = this.p1Marker || defaultMarker;
   },
 
   storePlayerInfo: function (array) {
