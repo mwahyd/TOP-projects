@@ -8,6 +8,10 @@ const game = {
     this.cacheDOM();
     this.bindEvents();
     this.setDefault();
+
+    if (document.body.id === "game-page") {
+      this.render();
+    }
   },
 
   cacheDOM: function () {
@@ -18,8 +22,12 @@ const game = {
     this.p2Input = this.container.querySelector("#second-player");
 
     // game DOM
-    this.gameContent = this.container.querySelector(".game-content");
-    this.gameboardContainer = this.container.querySelector(".game-board");
+    if (document.body.id === "game-page") {
+      this.gameContent = this.container.querySelector(".game-content");
+      this.gameboardContainer = this.container.querySelector(".game-board");
+      // game header
+      this.spans = this.gameContent.querySelectorAll("span");
+    }
   },
 
   bindEvents: function () {
@@ -36,6 +44,41 @@ const game = {
     if (document.body.id === "game-page") {
       window.addEventListener("load", this.gameBoard.bind(this));
     }
+  },
+
+  render: function () {
+    this.playersInfo = JSON.parse(localStorage.getItem("playersInfo"))[0];
+    console.log(this.playersInfo);
+    // display all the player infomation
+    console.log(this.spans);
+    this.spans.forEach((item) => {
+      switch (item.id) {
+        case "timer":
+          console.log(item.id);
+          item.textContent = "1:30";
+          break;
+        case "round":
+          console.log(item.id);
+          item.textContent = 2;
+          break;
+        case "player1-name":
+          console.log(item.id);
+          item.textContent = this.playersInfo["p1"];
+          break;
+        case "p1-marker":
+          console.log(item.id);
+          item.textContent = this.playersInfo["p1Marker"];
+          break;
+        case "player2-name":
+          console.log(item.id);
+          item.textContent = this.playersInfo["p2"];
+          break;
+        case "p2-marker":
+          console.log(item.id);
+          item.textContent = this.playersInfo["p2Marker"];
+          break;
+      }
+    });
   },
 
   // handler functions
@@ -60,6 +103,7 @@ const game = {
   },
 
   getInputs: function (event) {
+    event.preventDefault();
     if (event.target.nodeName !== "BUTTON") {
       console.log("not a button click");
       return;
@@ -88,14 +132,15 @@ const game = {
         console.log(this.playersInfo);
         break;
     }
+    this.storePlayerInfo([this.playersInfo]);
   },
 
   gameBoard: function () {
-    this.gameboard = ["x", "o", "x", "o", "x", "x", "o", "o", "x"];
+    this.gameboard = ["x", "o", "x", "o", "x", "", "", "o", "x"];
     this.gameboard.forEach((marker, index) => {
       const div = document.createElement("div");
       div.setAttribute("data-index", index);
-      div.classList.add("cell");
+      div.classList.add("square", "highlight");
       div.textContent = marker;
 
       this.gameboardContainer.appendChild(div);
@@ -111,6 +156,7 @@ const game = {
     // - reload the page to set it back to default
     // remove saved from save buttons
     // remove saved from marker buttons
+    // ! clear local storage FOR EVERY NEW GAME
   },
 
   addRemoveHidden: function (event) {
@@ -122,11 +168,11 @@ const game = {
   },
 
   setDefault: function () {
-    this.playersInfo["p1"] = "player 1";
+    this.playersInfo["p1"] = "p1";
     this.playersInfo["p1Marker"] = "x";
-    this.playersInfo["p2"] = "player 2";
+    this.playersInfo["p2"] = "p2";
     this.playersInfo["p2Marker"] = "o";
-    console.log(this.playersInfo);
+    // console.log(this.playersInfo);
   },
 
   selectMarker: function (event, buttonID) {
@@ -144,6 +190,10 @@ const game = {
     if (playerInput.value.trim() !== "") {
       return playerInput.value.trim().toLowerCase();
     }
+  },
+
+  storePlayerInfo: function (array) {
+    localStorage.setItem("playersInfo", JSON.stringify(array));
   },
 };
 
