@@ -110,18 +110,18 @@ const game = {
     }
     switch (event.target.classList[0]) {
       case "p1-markers":
-        this.p1Marker = this.selectMarker(event, "p1-marker1");
-        console.log(this.p1Marker);
+        this.p1M = this.selectMarker(event, "p1-marker1");
+        console.log(this.p1M);
         break;
       case "p2-markers":
-        this.p2Marker = this.selectMarker(event, "p2-marker1");
-        console.log(this.p2Marker);
+        this.p2M = this.selectMarker(event, "p2-marker1");
+        console.log(this.p2M);
         break;
       case "save-btn":
         if (event.target.id === "save1") {
-          this.saveInfo(event, "p1", "p1Marker", "p1", "x");
+          this.saveInfo(event, this.p1Input, "p1", "p1M", this.p1M, "p1", "x");
         } else if (event.target.id === "save2") {
-          this.saveInfo(event, "p2", "p2Marker", "p2", "o");
+          this.saveInfo(event, this.p2Input, "p2", "p2M", this.p2M, "p2", "o");
         }
         console.log(this.playersInfo);
         break;
@@ -163,9 +163,9 @@ const game = {
 
   setDefault: function () {
     this.playersInfo["p1"] = "p1";
-    this.playersInfo["p1Marker"] = "x";
+    this.playersInfo["p1M"] = "x";
     this.playersInfo["p2"] = "p2";
-    this.playersInfo["p2Marker"] = "o";
+    this.playersInfo["p2M"] = "o";
     // console.log(this.playersInfo);
   },
 
@@ -186,11 +186,10 @@ const game = {
     }
   },
 
-  saveInfo: function (event, player, marker, defaultName, defaultMarker) {
+  saveInfo: function (event, plIn, player, marker, inMark, deName, deMark) {
     event.target.classList.add("saved");
-    this.p1Name = this.getName(this.p1Input);
-    this.playersInfo[player] = this.p1Name || defaultName;
-    this.playersInfo[marker] = this.p1Marker || defaultMarker;
+    this.playersInfo[player] = this.getName(plIn) || deName;
+    this.playersInfo[marker] = inMark || deMark;
   },
 
   storePlayerInfo: function (array) {
