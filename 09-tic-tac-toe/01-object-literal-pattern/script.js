@@ -116,17 +116,12 @@ const game = {
   },
 
   placeMarker: function (event, marker) {
-    this.squareIndex = event.target.getAttribute("data-index");
-    if (this.gameboard[this.squareIndex] === "") {
+    if (this.checkEmptySquare(event.target)) {
       this.gameboard[this.squareIndex] = marker;
       console.log(this.gameboard);
       this.gameboardContainer.innerHTML = "";
       this.gameBoard();
-    } else {
-      console.log("square not empty");
     }
-    // call change turn function
-    this.setTurn();
   },
 
   // handler functions
@@ -191,7 +186,11 @@ const game = {
 
   gameController: function (event) {
     // check player turn,
-    this.isTurn = this.setTurn();
+    if (this.checkEmptySquare(event.target)) {
+      this.isTurn = this.setTurn();
+    } else {
+      alert("square not empty");
+    }
     console.log(this.isTurn);
     // get player marker,
     switch (this.isTurn) {
@@ -274,7 +273,12 @@ const game = {
   },
 
   checkEmptySquare: function (target) {
-    return target.textContent === "" ? true : false;
+    this.squareIndex = target.getAttribute("data-index");
+    return this.gameboard[this.squareIndex] === "" ? true : false;
+    //   return target.textContent === "" ? true : false;
+    //   this.squareIndex = event.target.getAttribute("data-index");
+    //   if (this.gameboard[this.squareIndex] === "") {
+    // },
   },
 };
 
