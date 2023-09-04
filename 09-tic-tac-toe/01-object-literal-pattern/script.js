@@ -2,9 +2,13 @@
 
 const game = {
   init: function () {
-    // root functions
+    // root data structures
     this.playersInfo = {};
     this.gameboard = ["", "", "", "", "", "", "", "", ""];
+    // vars
+    this.p1Score = 0;
+    this.p2Score = 0;
+    this.tie = 0;
     // flags
     this.winner = false;
     this.p1Turn = false;
@@ -63,36 +67,7 @@ const game = {
     this.gameBoard();
     this.playersInfo = JSON.parse(localStorage.getItem("playersInfo"))[0];
     console.log(this.playersInfo);
-    // display all the player infomation
-    // console.log(this.spans);
-    this.spans.forEach((item) => {
-      switch (item.id) {
-        case "timer":
-          // console.log(item.id);
-          item.textContent = "1:30";
-          break;
-        case "round":
-          // console.log(item.id);
-          item.textContent = 2;
-          break;
-        case "player1-name":
-          // console.log(item.id);
-          item.textContent = this.playersInfo["p1"];
-          break;
-        case "p1-marker":
-          // console.log(item.id);
-          item.textContent = this.playersInfo["p1M"];
-          break;
-        case "player2-name":
-          // console.log(item.id);
-          item.textContent = this.playersInfo["p2"];
-          break;
-        case "p2-marker":
-          // console.log(item.id);
-          item.textContent = this.playersInfo["p2M"];
-          break;
-      }
-    });
+    this.displayGameHeader();
   },
 
   setTurn: function () {
@@ -214,7 +189,17 @@ const game = {
     // transfer turn to player2
 
     // check 3 in a row
-    setTimeout(() => this.check3InARow(this.isTurn), 100);
+    // setTimeout(() => this.is3InARow(this.isTurn), 50);
+
+    this.roundWinner = this.is3InARow(this.isTurn);
+    if (this.roundWinner) {
+      this.endRound();
+      setTimeout(() => alert(`${this.roundWinner} wins`), 50);
+      this.score(this.roundWinner);
+    } else if (!this.gameboard.includes("")) {
+      this.endRound();
+      setTimeout(() => alert("Round tied"), 50);
+    }
 
     // ? remove event listener
   },
@@ -284,7 +269,7 @@ const game = {
     // },
   },
 
-  check3InARow: function (playerTurn) {
+  is3InARow: function (playerTurn) {
     // check if player has their marker on these spots
     if (
       // top horizontal
@@ -319,16 +304,59 @@ const game = {
       (this.gameboard[2] === this.playersInfo[`${playerTurn}M`] &&
         this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
         this.gameboard[6] === this.playersInfo[`${playerTurn}M`])
-    ) {
-      this.endRound();
-      alert(`${playerTurn} wins`);
-    } else if (!this.gameboard.includes("")) {
-      alert("Round tied");
-    }
+    )
+      return playerTurn;
   },
 
   endRound: function () {
     return this.gameboardContainer.classList.add("disable-squares");
+  },
+
+  displayGameHeader: function () {
+    this.spans.forEach((item) => {
+      switch (item.id) {
+        case "timer":
+          // console.log(item.id);
+          item.textContent = "1:30";
+          break;
+        case "round":
+          // console.log(item.id);
+          item.textContent = 1;
+          break;
+        case "player1-name":
+          // console.log(item.id);
+          item.textContent = this.playersInfo["p1"];
+          break;
+        case "p1-marker":
+          // console.log(item.id);
+          item.textContent = this.playersInfo["p1M"];
+          break;
+        case "player2-name":
+          // console.log(item.id);
+          item.textContent = this.playersInfo["p2"];
+          break;
+        case "p2-marker":
+          // console.log(item.id);
+          item.textContent = this.playersInfo["p2M"];
+          break;
+      }
+    });
+  },
+
+  score: function (winner) {
+    if (winner === "p1") {
+      this.p1Score += 1;
+    } else if (winner === "p2") {
+      this.p2Score += 1;
+    } else {
+      this.tie += 1;
+    }
+  },
+
+  updateGameHeader: function () {
+    // update round info;
+    // give winner a point;
+    // enable square clicks;
   },
 };
 
