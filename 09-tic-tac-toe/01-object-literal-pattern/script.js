@@ -191,15 +191,7 @@ const game = {
     // check 3 in a row
     // setTimeout(() => this.is3InARow(this.isTurn), 50);
 
-    this.roundWinner = this.is3InARow(this.isTurn);
-    if (this.roundWinner) {
-      this.endRound();
-      setTimeout(() => alert(`${this.roundWinner} wins`), 50);
-      this.score(this.roundWinner);
-    } else if (!this.gameboard.includes("")) {
-      this.endRound();
-      setTimeout(() => alert("Round tied"), 50);
-    }
+    this.declareRoundWinner();
 
     // ? remove event listener
   },
@@ -308,8 +300,37 @@ const game = {
       return playerTurn;
   },
 
+  startRound: function () {
+    return this.gameboardContainer.classList.remove("disable-squares");
+  },
+
   endRound: function () {
     return this.gameboardContainer.classList.add("disable-squares");
+  },
+
+  declareRoundWinner: function () {
+    this.roundWinner = this.is3InARow(this.isTurn);
+    if (this.roundWinner) {
+      this.updateScore(this.roundWinner);
+      this.endRound();
+      setTimeout(() => alert(`${this.roundWinner} wins`), 50);
+      // alert(`${this.roundWinner} wins`);
+      this.resetGameBoard();
+    } else if (!this.gameboard.includes("")) {
+      setTimeout(() => alert("Round tied"), 50);
+      // alert("Round tied");
+      this.resetGameBoard();
+    }
+  },
+
+  declareGameWinner: function () {
+    if (this.p1Score === 3) {
+      console.log("P1 WINNER!");
+    } else if (this.p2Score === 3) {
+      console.log("P2 WINNER!");
+    } else {
+      console.log("Game tied");
+    }
   },
 
   displayGameHeader: function () {
@@ -322,6 +343,7 @@ const game = {
         case "round":
           // console.log(item.id);
           item.textContent = 1;
+          console.log(item);
           break;
         case "player1-name":
           // console.log(item.id);
@@ -343,20 +365,34 @@ const game = {
     });
   },
 
-  score: function (winner) {
+  resetGameBoard: function () {
+    setTimeout(() => {
+      if (this.spans[1].textContent === "3") {
+        this.declareGameWinner();
+        return;
+      } else {
+        this.spans[1].textContent++;
+        this.p1Turn = false;
+        this.p2Turn = false;
+        this.startRound();
+        this.gameboard = ["", "", "", "", "", "", "", "", ""];
+        this.gameboardContainer.innerHTML = "";
+        this.gameBoard();
+      }
+    }, 1000);
+  },
+
+  updateScore: function (winner) {
     if (winner === "p1") {
       this.p1Score += 1;
+      console.log(this.spans);
+      this.spans[4].textContent += "|";
     } else if (winner === "p2") {
       this.p2Score += 1;
+      this.spans[7].textContent += "|";
     } else {
       this.tie += 1;
     }
-  },
-
-  updateGameHeader: function () {
-    // update round info;
-    // give winner a point;
-    // enable square clicks;
   },
 };
 
