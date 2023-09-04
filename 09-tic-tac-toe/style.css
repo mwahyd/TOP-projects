@@ -297,3 +297,7 @@ footer {
   border-right: none;
   border-bottom: none;
 }
+
+.disable-squares {
+  pointer-events: none;
+}
