@@ -1,17 +1,17 @@
 // create the game using the object literal pattern
 
 const game = {
-  // root functions
-  playersInfo: {},
-  gameboard: ["", "", "", "", "", "", "", "", ""],
-
-  // flags
-  p1Turn: false,
-  p1MarkerPlaced: false,
-  p2Turn: false,
-  p2MarkerPlaced: false,
-
   init: function () {
+    // root functions
+    this.playersInfo = {};
+    this.gameboard = ["", "", "", "", "", "", "", "", ""];
+    // flags
+    this.winner = false;
+    this.p1Turn = false;
+    this.p1MarkerPlaced = false;
+    this.p2Turn = false;
+    this.p2MarkerPlaced = false;
+
     this.cacheDOM();
     this.bindEvents();
     this.setDefault();
@@ -214,7 +214,7 @@ const game = {
     // transfer turn to player2
 
     // check 3 in a row
-    setTimeout(() => this.check3InARow(this.isTurn), 1);
+    setTimeout(() => this.check3InARow(this.isTurn), 100);
 
     // ? remove event listener
   },
@@ -320,10 +320,15 @@ const game = {
         this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
         this.gameboard[6] === this.playersInfo[`${playerTurn}M`])
     ) {
+      this.endRound();
       alert(`${playerTurn} wins`);
     } else if (!this.gameboard.includes("")) {
       alert("Round tied");
     }
+  },
+
+  endRound: function () {
+    return this.gameboardContainer.classList.add("disable-squares");
   },
 };
 
