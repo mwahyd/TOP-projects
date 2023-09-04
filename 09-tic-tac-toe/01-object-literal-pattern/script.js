@@ -213,6 +213,9 @@ const game = {
     // allow player to place marker if square is empty,
     // transfer turn to player2
 
+    // check 3 in a row
+    setTimeout(() => this.check3InARow(this.isTurn), 1);
+
     // ? remove event listener
   },
 
@@ -279,6 +282,48 @@ const game = {
     //   this.squareIndex = event.target.getAttribute("data-index");
     //   if (this.gameboard[this.squareIndex] === "") {
     // },
+  },
+
+  check3InARow: function (playerTurn) {
+    // check if player has their marker on these spots
+    if (
+      // top horizontal
+      (this.gameboard[0] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[1] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[2] === this.playersInfo[`${playerTurn}M`]) ||
+      // centre horizontal
+      (this.gameboard[3] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[5] === this.playersInfo[`${playerTurn}M`]) ||
+      // bottom horizontal
+      (this.gameboard[6] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[7] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[8] === this.playersInfo[`${playerTurn}M`]) ||
+      // left vertical
+      (this.gameboard[0] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[3] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[6] === this.playersInfo[`${playerTurn}M`]) ||
+      // centre vertical
+      (this.gameboard[1] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[7] === this.playersInfo[`${playerTurn}M`]) ||
+      // right vertical
+      (this.gameboard[2] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[5] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[8] === this.playersInfo[`${playerTurn}M`]) ||
+      // right diagonal
+      (this.gameboard[0] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[8] === this.playersInfo[`${playerTurn}M`]) ||
+      // left diagonal
+      (this.gameboard[2] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[6] === this.playersInfo[`${playerTurn}M`])
+    ) {
+      alert(`${playerTurn} wins`);
+    } else if (!this.gameboard.includes("")) {
+      alert("Round tied");
+    }
   },
 };
 
