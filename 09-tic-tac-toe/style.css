@@ -203,7 +203,8 @@ footer {
 .p1-info,
 .p2-info {
   display: grid;
-  grid-template-columns: 1fr 10px 10px;
+  grid-template-columns: 1fr 10px 10px 10px;
+  justify-items: center;
   gap: 5px;
   align-items: center;
 }
