@@ -217,42 +217,27 @@ const game = {
   },
 
   is3InARow: function (playerTurn) {
-    // check if player has their marker on these spots
-    if (
-      // top horizontal
-      (this.gameboard[0] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[1] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[2] === this.playersInfo[`${playerTurn}M`]) ||
-      // centre horizontal
-      (this.gameboard[3] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[5] === this.playersInfo[`${playerTurn}M`]) ||
-      // bottom horizontal
-      (this.gameboard[6] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[7] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[8] === this.playersInfo[`${playerTurn}M`]) ||
-      // left vertical
-      (this.gameboard[0] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[3] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[6] === this.playersInfo[`${playerTurn}M`]) ||
-      // centre vertical
-      (this.gameboard[1] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[7] === this.playersInfo[`${playerTurn}M`]) ||
-      // right vertical
-      (this.gameboard[2] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[5] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[8] === this.playersInfo[`${playerTurn}M`]) ||
-      // right diagonal
-      (this.gameboard[0] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[8] === this.playersInfo[`${playerTurn}M`]) ||
-      // left diagonal
-      (this.gameboard[2] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[4] === this.playersInfo[`${playerTurn}M`] &&
-        this.gameboard[6] === this.playersInfo[`${playerTurn}M`])
-    )
-      return playerTurn;
+    const combinations = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8], // Horizontal
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8], // Vertical
+      [0, 4, 8],
+      [2, 4, 6], // Diagonal
+    ];
+
+    for (const combo of combinations) {
+      const [a, b, c] = combo;
+      if (
+        this.gameboard[a] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[b] === this.playersInfo[`${playerTurn}M`] &&
+        this.gameboard[c] === this.playersInfo[`${playerTurn}M`]
+      ) {
+        return playerTurn;
+      }
+    }
   },
 
   startRound: function () {
