@@ -145,23 +145,21 @@ const game = {
   },
 
   gameController: function (event) {
-    // check player turn,
-    if (this.checkEmptySquare(event.target)) {
-      this.isTurn = this.setTurn();
-    } else {
+    if (!this.checkEmptySquare(event.target)) {
       alert("square not empty");
+      return;
     }
-    // get player marker,
+    this.isTurn = this.setTurn();
+    this.displayTurnIcon(this.isTurn);
+
     switch (this.isTurn) {
       case "p1":
-        this.displayTurnIcon(this.isTurn);
         this.markerP1 = this.playersInfo[`${this.isTurn}M`];
         this.placeMarker(event, this.markerP1);
         this.p1MarkerPlaced = true;
         break;
 
       case "p2":
-        this.displayTurnIcon(this.isTurn);
         this.markerP2 = this.playersInfo[`${this.isTurn}M`];
         this.placeMarker(event, this.markerP2);
         this.p2MarkerPlaced = true;
