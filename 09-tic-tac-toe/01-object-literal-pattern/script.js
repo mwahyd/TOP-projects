@@ -249,8 +249,6 @@ const game = {
   },
 
   displayTurnIcon: function (turn) {
-    console.log(turn);
-    console.log(this.spans);
     if (turn === "p1") {
       this.spans[5].classList.add("hidden");
       this.spans[9].classList.remove("hidden");
@@ -265,13 +263,10 @@ const game = {
     if (this.roundWinner) {
       this.updateScore(this.roundWinner);
       this.endRound();
-      setTimeout(
-        () => alert(`${this.playersInfo[this.roundWinner]} wins`),
-        300
-      );
+      this.showAlert(`${this.playersInfo[this.roundWinner]} wins`);
       this.resetGameBoard();
     } else if (!this.gameboard.includes("")) {
-      setTimeout(() => alert("Round tied"), 300);
+      this.showAlert(`Round Tied`);
       this.resetGameBoard();
     }
   },
@@ -372,6 +367,10 @@ const game = {
 
   redirect: function () {
     setTimeout(() => (window.location = "../menu.html"), 500);
+  },
+
+  showAlert: function (message) {
+    setTimeout(() => alert(message), 300);
   },
 };
 
