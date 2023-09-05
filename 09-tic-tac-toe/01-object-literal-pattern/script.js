@@ -10,7 +10,7 @@ const game = {
     this.p2Score = 0;
     this.tie = 0;
     // flags
-    this.winner = false;
+    this.winner;
     this.p1Turn = false;
     this.p1MarkerPlaced = false;
     this.p2Turn = false;
@@ -313,24 +313,31 @@ const game = {
     if (this.roundWinner) {
       this.updateScore(this.roundWinner);
       this.endRound();
-      setTimeout(() => alert(`${this.roundWinner} wins`), 50);
+      setTimeout(
+        () => alert(`${this.playersInfo[this.roundWinner]} wins`),
+        300
+      );
       // alert(`${this.roundWinner} wins`);
       this.resetGameBoard();
     } else if (!this.gameboard.includes("")) {
-      setTimeout(() => alert("Round tied"), 50);
+      setTimeout(() => alert("Round tied"), 300);
       // alert("Round tied");
       this.resetGameBoard();
     }
   },
 
   declareGameWinner: function () {
-    if (this.p1Score === 3) {
+    if (this.p1Score > this.p2Score) {
       console.log("P1 WINNER!");
-    } else if (this.p2Score === 3) {
+      this.winner = this.playersInfo["p1"];
+    } else if (this.p2Score > this.p1Score) {
       console.log("P2 WINNER!");
+      this.winner = this.playersInfo["p2"];
     } else {
       console.log("Game tied");
+      this.winner = "Game Tied";
     }
+    setTimeout(() => this.createModal(this.winner), 500);
   },
 
   displayGameHeader: function () {
@@ -347,7 +354,7 @@ const game = {
           break;
         case "player1-name":
           // console.log(item.id);
-          item.textContent = this.playersInfo["p1"];
+          item.textContent = `${this.playersInfo["p1"]}:`;
           break;
         case "p1-marker":
           // console.log(item.id);
@@ -355,7 +362,7 @@ const game = {
           break;
         case "player2-name":
           // console.log(item.id);
-          item.textContent = this.playersInfo["p2"];
+          item.textContent = `${this.playersInfo["p2"]}:`;
           break;
         case "p2-marker":
           // console.log(item.id);
@@ -393,6 +400,32 @@ const game = {
     } else {
       this.tie += 1;
     }
+  },
+
+  createModal: function (winner) {
+    this.modal = this.gameContent.lastElementChild.previousElementSibling;
+    this.blur = this.gameContent.lastElementChild;
+
+    this.modal.classList.remove("hidden");
+    this.blur.classList.remove("hidden");
+
+    this.winningPlayer = document.createElement("div");
+    this.score = document.createElement("div");
+    this.replay = document.createElement("button");
+
+    this.winningPlayer.textContent = `${winner} wins!`;
+    this.score.textContent = `${this.playersInfo["p1"]}: ${this.p1Score} ${this.playersInfo["p2"]}: ${this.p2Score} Ties: ${this.tie}`;
+    this.replay.textContent = "Replay";
+    this.replay.classList.add("start");
+    this.replay.addEventListener("click", this.redirect.bind(this));
+
+    this.modal.appendChild(this.winningPlayer);
+    this.modal.appendChild(this.score);
+    this.modal.appendChild(this.replay);
+  },
+
+  redirect: function () {
+    setTimeout(() => (window.location = "../menu.html"), 500);
   },
 };
 
