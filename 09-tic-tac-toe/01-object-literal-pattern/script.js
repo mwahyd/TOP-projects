@@ -22,7 +22,6 @@ const game = {
 
     if (document.body.id === "game-page") {
       this.render();
-      // this.setTurn();
     }
   },
 
@@ -54,7 +53,6 @@ const game = {
 
     // game html events
     if (document.body.id === "game-page") {
-      // window.addEventListener("load", this.gameBoard.bind(this));
       this.gameboardContainer.addEventListener(
         "click",
         this.gameController.bind(this)
@@ -185,30 +183,10 @@ const game = {
         console.log("p2MarkerPlaced", this.p2MarkerPlaced);
         break;
     }
-    // allow player to place marker if square is empty,
-    // transfer turn to player2
-
-    // check 3 in a row
-    // setTimeout(() => this.is3InARow(this.isTurn), 50);
-
     this.declareRoundWinner();
-
-    // ? remove event listener
   },
 
   // support functions
-  reset: function () {
-    // remove card-border-rad from showPlayerCard
-    // remove hidden from showPlayerCard
-    // add hover class to computer-btn
-    // - reload the page to set it back to default
-    // remove saved from save buttons
-    // remove saved from marker buttons
-    // ! clear local storage FOR EVERY NEW GAME
-    // clear timer for every game
-    //
-  },
-
   addRemoveHidden: function (event) {
     event.target.classList.add("hidden");
     event.target.parentElement.firstElementChild.classList.remove("hidden");
@@ -222,7 +200,6 @@ const game = {
     this.playersInfo["p1M"] = "x";
     this.playersInfo["p2"] = "p2";
     this.playersInfo["p2M"] = "o";
-    // console.log(this.playersInfo);
   },
 
   selectMarker: function (event, buttonID) {
@@ -255,10 +232,6 @@ const game = {
   checkEmptySquare: function (target) {
     this.squareIndex = target.getAttribute("data-index");
     return this.gameboard[this.squareIndex] === "" ? true : false;
-    //   return target.textContent === "" ? true : false;
-    //   this.squareIndex = event.target.getAttribute("data-index");
-    //   if (this.gameboard[this.squareIndex] === "") {
-    // },
   },
 
   is3InARow: function (playerTurn) {
@@ -317,11 +290,9 @@ const game = {
         () => alert(`${this.playersInfo[this.roundWinner]} wins`),
         300
       );
-      // alert(`${this.roundWinner} wins`);
       this.resetGameBoard();
     } else if (!this.gameboard.includes("")) {
       setTimeout(() => alert("Round tied"), 300);
-      // alert("Round tied");
       this.resetGameBoard();
     }
   },
@@ -344,28 +315,22 @@ const game = {
     this.spans.forEach((item) => {
       switch (item.id) {
         case "timer":
-          // console.log(item.id);
           item.textContent = "1:30";
           break;
         case "round":
-          // console.log(item.id);
           item.textContent = 1;
           console.log(item);
           break;
         case "player1-name":
-          // console.log(item.id);
           item.textContent = `${this.playersInfo["p1"]}:`;
           break;
         case "p1-marker":
-          // console.log(item.id);
           item.textContent = this.playersInfo["p1M"];
           break;
         case "player2-name":
-          // console.log(item.id);
           item.textContent = `${this.playersInfo["p2"]}:`;
           break;
         case "p2-marker":
-          // console.log(item.id);
           item.textContent = this.playersInfo["p2M"];
           break;
       }
