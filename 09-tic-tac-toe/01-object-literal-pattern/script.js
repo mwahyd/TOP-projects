@@ -64,23 +64,19 @@ const game = {
     // load the game board
     this.gameBoard();
     this.playersInfo = JSON.parse(localStorage.getItem("playersInfo"))[0];
-    console.log(this.playersInfo);
     this.displayGameHeader();
   },
 
   setTurn: function () {
-    console.log("p1 turn", this.p1Turn, "p2 turn", this.p2Turn);
     if (this.p1Turn === false && this.p2Turn === false) {
       this.p1Turn = true;
       return "p1";
     } else if (this.p1Turn === true && this.p1MarkerPlaced === true) {
-      console.log("player1 has played turn");
       this.p1Turn = false;
       this.p1MarkerPlaced = false;
       this.p2Turn = true;
       return "p2";
     } else if (this.p2Turn === true && this.p2MarkerPlaced === true) {
-      console.log("player2 has played turn");
       this.p2Turn = false;
       this.p2MarkerPlaced = false;
       this.p1Turn = true;
@@ -91,7 +87,6 @@ const game = {
   placeMarker: function (event, marker) {
     if (this.checkEmptySquare(event.target)) {
       this.gameboard[this.squareIndex] = marker;
-      console.log(this.gameboard);
       this.gameboardContainer.innerHTML = "";
       this.gameBoard();
     }
@@ -107,13 +102,11 @@ const game = {
         event.target.nextElementSibling.classList.add("hidden");
         this.addRemoveHidden(event);
         this.playersInfo["p2"] = "player 2";
-        console.log(this.playersInfo);
         break;
       case "computer-btn":
         event.target.classList.add("selected");
         event.target.classList.remove("hover");
         this.playersInfo["p2"] = "computer";
-        console.log(this.playersInfo);
         break;
     }
   },
@@ -121,17 +114,14 @@ const game = {
   getInputs: function (event) {
     event.preventDefault();
     if (event.target.nodeName !== "BUTTON") {
-      console.log("not a button click");
       return;
     }
     switch (event.target.classList[0]) {
       case "p1-markers":
         this.p1M = this.selectMarker(event, "p1-marker1");
-        console.log(this.p1M);
         break;
       case "p2-markers":
         this.p2M = this.selectMarker(event, "p2-marker1");
-        console.log(this.p2M);
         break;
       case "save-btn":
         if (event.target.id === "save1") {
@@ -139,7 +129,6 @@ const game = {
         } else if (event.target.id === "save2") {
           this.saveInfo(event, this.p2Input, "p2", "p2M", this.p2M, "p2", "o");
         }
-        console.log(this.playersInfo);
         break;
     }
     this.storePlayerInfo([this.playersInfo]);
@@ -151,10 +140,8 @@ const game = {
       div.setAttribute("data-index", index);
       div.classList.add("square", "highlight");
       div.textContent = marker;
-
       this.gameboardContainer.appendChild(div);
     });
-    console.log(this.gameboard);
   },
 
   gameController: function (event) {
@@ -164,23 +151,18 @@ const game = {
     } else {
       alert("square not empty");
     }
-    console.log(this.isTurn);
     // get player marker,
     switch (this.isTurn) {
       case "p1":
         this.markerP1 = this.playersInfo[`${this.isTurn}M`];
-        console.log(this.markerP1);
         this.placeMarker(event, this.markerP1);
         this.p1MarkerPlaced = true;
-        console.log("p1MarkerPlaced", this.p1MarkerPlaced);
         break;
 
       case "p2":
         this.markerP2 = this.playersInfo[`${this.isTurn}M`];
-        console.log(this.markerP2);
         this.placeMarker(event, this.markerP2);
         this.p2MarkerPlaced = true;
-        console.log("p2MarkerPlaced", this.p2MarkerPlaced);
         break;
     }
     this.declareRoundWinner();
@@ -299,13 +281,10 @@ const game = {
 
   declareGameWinner: function () {
     if (this.p1Score > this.p2Score) {
-      console.log("P1 WINNER!");
       this.winner = this.playersInfo["p1"];
     } else if (this.p2Score > this.p1Score) {
-      console.log("P2 WINNER!");
       this.winner = this.playersInfo["p2"];
     } else {
-      console.log("Game tied");
       this.winner = "Game Tied";
     }
     setTimeout(() => this.createModal(this.winner), 500);
@@ -319,7 +298,6 @@ const game = {
           break;
         case "round":
           item.textContent = 1;
-          console.log(item);
           break;
         case "player1-name":
           item.textContent = `${this.playersInfo["p1"]}:`;
@@ -357,7 +335,6 @@ const game = {
   updateScore: function (winner) {
     if (winner === "p1") {
       this.p1Score += 1;
-      console.log(this.spans);
       this.spans[4].textContent += "|";
     } else if (winner === "p2") {
       this.p2Score += 1;
