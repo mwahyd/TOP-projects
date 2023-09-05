@@ -154,12 +154,14 @@ const game = {
     // get player marker,
     switch (this.isTurn) {
       case "p1":
+        this.displayTurnIcon(this.isTurn);
         this.markerP1 = this.playersInfo[`${this.isTurn}M`];
         this.placeMarker(event, this.markerP1);
         this.p1MarkerPlaced = true;
         break;
 
       case "p2":
+        this.displayTurnIcon(this.isTurn);
         this.markerP2 = this.playersInfo[`${this.isTurn}M`];
         this.placeMarker(event, this.markerP2);
         this.p2MarkerPlaced = true;
@@ -263,6 +265,18 @@ const game = {
     return this.gameboardContainer.classList.add("disable-squares");
   },
 
+  displayTurnIcon: function (turn) {
+    console.log(turn);
+    console.log(this.spans);
+    if (turn === "p1") {
+      this.spans[5].classList.add("hidden");
+      this.spans[9].classList.remove("hidden");
+    } else if (turn === "p2") {
+      this.spans[5].classList.remove("hidden");
+      this.spans[9].classList.add("hidden");
+    }
+  },
+
   declareRoundWinner: function () {
     this.roundWinner = this.is3InARow(this.isTurn);
     if (this.roundWinner) {
@@ -293,9 +307,9 @@ const game = {
   displayGameHeader: function () {
     this.spans.forEach((item) => {
       switch (item.id) {
-        case "timer":
-          item.textContent = "1:30";
-          break;
+        // case "timer":
+        // item.textContent = "";
+        //   break;
         case "round":
           item.textContent = 1;
           break;
@@ -322,6 +336,8 @@ const game = {
         return;
       } else {
         this.spans[1].textContent++;
+        this.spans[5].classList.remove("hidden");
+        this.spans[9].classList.add("hidden");
         this.p1Turn = false;
         this.p2Turn = false;
         this.startRound();
@@ -338,7 +354,7 @@ const game = {
       this.spans[4].textContent += "|";
     } else if (winner === "p2") {
       this.p2Score += 1;
-      this.spans[7].textContent += "|";
+      this.spans[8].textContent += "|";
     } else {
       this.tie += 1;
     }
@@ -355,7 +371,12 @@ const game = {
     this.score = document.createElement("div");
     this.replay = document.createElement("button");
 
-    this.winningPlayer.textContent = `${winner} wins!`;
+    if (winner === "p1" || winner === "p2") {
+      this.winningPlayer.textContent = `${winner} wins!`;
+    } else {
+      this.winningPlayer.textContent = `${winner}!`;
+    }
+
     this.score.textContent = `${this.playersInfo["p1"]}: ${this.p1Score} ${this.playersInfo["p2"]}: ${this.p2Score} Ties: ${this.tie}`;
     this.replay.textContent = "Replay";
     this.replay.classList.add("start");
