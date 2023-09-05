@@ -68,15 +68,15 @@ const game = {
   },
 
   setTurn: function () {
-    if (this.p1Turn === false && this.p2Turn === false) {
+    if (!this.p1Turn && !this.p2Turn) {
       this.p1Turn = true;
       return "p1";
-    } else if (this.p1Turn === true && this.p1MarkerPlaced === true) {
+    } else if (this.p1Turn && this.p1MarkerPlaced) {
       this.p1Turn = false;
       this.p1MarkerPlaced = false;
       this.p2Turn = true;
       return "p2";
-    } else if (this.p2Turn === true && this.p2MarkerPlaced === true) {
+    } else if (this.p2Turn && this.p2MarkerPlaced) {
       this.p2Turn = false;
       this.p2MarkerPlaced = false;
       this.p1Turn = true;
