@@ -15,6 +15,7 @@ const game = {
     this.p1MarkerPlaced = false;
     this.p2Turn = false;
     this.p2MarkerPlaced = false;
+    // this.computerActive = true;
 
     this.cacheDOM();
     this.bindEvents();
@@ -68,33 +69,29 @@ const game = {
   },
 
   setTurn: function () {
-    // - set of rules to determine turn when p1 vs p2
     if (!this.p1Turn && !this.p2Turn) {
       this.p1Turn = true;
-      console.log("p1 turn");
       return "p1";
     } else if (this.p1MarkerPlaced) {
       this.p1Turn = false;
       this.p1MarkerPlaced = false;
       this.p2Turn = true;
-      console.log("p2 turn");
       return "p2";
     } else if (this.p2MarkerPlaced) {
       this.p2Turn = false;
       this.p2MarkerPlaced = false;
       this.p1Turn = true;
-      console.log("p1 turn");
       return "p1";
     }
-    // - set of rules to determine turn when p1 vs COMPUTER
   },
 
   placeMarker: function (event, marker, computerChoice) {
-    if (event === "undefined") {
-      this.gameboard[computerChoice] = marker;
-      this.gameboardContainer.innerHTML = "";
-      this.gameBoard();
-    } else if (this.checkEmptySquare(event.target)) {
+    // if (event === "undefined") {
+    //   this.gameboard[computerChoice] = marker;
+    //   this.gameboardContainer.innerHTML = "";
+    //   this.gameBoard();
+    // }
+    if (this.checkEmptySquare(event.target)) {
       this.gameboard[this.squareIndex] = marker;
       this.gameboardContainer.innerHTML = "";
       this.gameBoard();
@@ -118,6 +115,7 @@ const game = {
         this.playersInfo["p2"] = "computer";
         console.log(this.playersInfo);
         this.storePlayerInfo([this.playersInfo]);
+        // this.computerActive = true;
         break;
     }
   },
@@ -155,83 +153,75 @@ const game = {
     });
   },
 
-  // gameController: function (event) {
-  //   if (!this.checkEmptySquare(event.target)) {
-  //     alert("square not empty");
-  //     return;
-  //   }
-  //   this.isTurn = this.setTurn();
-  //   this.displayTurnIcon(this.isTurn);
-
-  //   switch (this.isTurn) {
-  //     case "p1":
-  //       this.markerP1 = this.playersInfo[`${this.isTurn}M`];
-  //       this.placeMarker(event, this.markerP1);
-  //       this.p1MarkerPlaced = true;
-  //       break;
-
-  //     case "p2":
-  //       this.markerP2 = this.playersInfo[`${this.isTurn}M`];
-  //       this.placeMarker(event, this.markerP2);
-  //       this.p2MarkerPlaced = true;
-  //       break;
-  //   }
-  //   this.declareRoundWinner();
-  // },
-
   gameController: function (event) {
-    if (event === "undefined") {
-      return;
-    } else if (!this.checkEmptySquare(event.target)) {
+    if (!this.checkEmptySquare(event.target)) {
       alert("square not empty");
       return;
     }
     this.isTurn = this.setTurn();
     this.displayTurnIcon(this.isTurn);
-    console.log(this.isTurn);
 
-    if (this.playersInfo["p2"] === "computer") {
-      if (this.isTurn === "p1") {
+    switch (this.isTurn) {
+      case "p1":
         this.markerP1 = this.playersInfo[`${this.isTurn}M`];
         this.placeMarker(event, this.markerP1);
         this.p1MarkerPlaced = true;
-        this.gameController("undefined");
-      } else if (this.isTurn === "p2") {
-        console.log("p2 turn now play mother father");
-        this.computerLogic();
-      }
-    } else {
-      if (this.isTurn === "p1") {
-        this.markerP1 = this.playersInfo[`${this.isTurn}M`];
-        this.placeMarker(event, this.markerP1);
-        this.p1MarkerPlaced = true;
-      } else if (this.isTurn === "p2") {
+        break;
+
+      case "p2":
         this.markerP2 = this.playersInfo[`${this.isTurn}M`];
         this.placeMarker(event, this.markerP2);
         this.p2MarkerPlaced = true;
-      }
+        break;
     }
     this.declareRoundWinner();
-
-    // if (this.isTurn === "p1") {
-    //   this.markerP1 = this.playersInfo[`${this.isTurn}M`];
-    //   this.placeMarker(event, this.markerP1);
-    //   this.p1MarkerPlaced = true;
-    // } else if (this.isTurn === "p2") {
-    //   if (this.playersInfo["p2"] !== "computer") {
-    //     this.markerP2 = this.playersInfo[`${this.isTurn}M`];
-    //     this.placeMarker(event, this.markerP2);
-    //     this.p2MarkerPlaced = true;
-    //   } else {
-    //     this.computerLogic();
-    //   }
-    // }
-    // this.declareRoundWinner();
-    // if (this.playersInfo["p2"] === "computer") {
-    //   this.computerLogic();
-    //   this.declareRoundWinner();
-    // }
   },
+
+  // - computer AI included
+  // gameController: function (event) {
+  //   if (event === "undefined") {
+  //     return;
+  //   } else if (!this.checkEmptySquare(event.target)) {
+  //     alert("square not empty");
+  //     return;
+  //   }
+  //   this.isTurn = this.setTurn();
+  //   this.displayTurnIcon(this.isTurn);
+  //   console.log(this.isTurn);
+
+  //   if (this.playersInfo["p2"] === "computer") {
+  //     if (this.isTurn === "p1") {
+  //       this.markerP1 = this.playersInfo[`${this.isTurn}M`];
+  //       this.placeMarker(event, this.markerP1);
+  //       this.p1MarkerPlaced = true;
+  //       this.declareRoundWinner();
+  //       this.updateSetTurn();
+  //     }
+  //   } else {
+  //     if (this.isTurn === "p1") {
+  //       this.markerP1 = this.playersInfo[`${this.isTurn}M`];
+  //       this.placeMarker(event, this.markerP1);
+  //       this.p1MarkerPlaced = true;
+  //     } else if (this.isTurn === "p2") {
+  //       this.markerP2 = this.playersInfo[`${this.isTurn}M`];
+  //       this.placeMarker(event, this.markerP2);
+  //       this.p2MarkerPlaced = true;
+  //     }
+  //   }
+  //   this.declareRoundWinner();
+  // },
+
+  // updateSetTurn: function () {
+  //   if (this.computerActive) {
+  //     console.log("turn has been updated");
+  //     this.p1Turn = false;
+  //     this.p2Turn = true;
+  //     this.computerLogic();
+  //     // - this line makes it play automatically but breaks the game
+  //     this.isTurn = this.setTurn();
+  //   }
+  //   // this.declareRoundWinner();
+  // },
 
   // support functions
   addRemoveHidden: function (event) {
@@ -324,14 +314,17 @@ const game = {
   },
 
   declareRoundWinner: function () {
+    // console.log("from roundWinner", this.isTurn);
     this.roundWinner = this.is3InARow(this.isTurn);
     if (this.roundWinner) {
+      // this.computerActive = false;
       this.updateScore(this.roundWinner);
       this.endRound();
       this.showAlert(`${this.playersInfo[this.roundWinner]} wins`);
       this.resetGameBoard();
     } else if (!this.gameboard.includes("")) {
       this.showAlert(`Round Tied`);
+      this.updateScore("tied");
       this.resetGameBoard();
     }
   },
@@ -378,6 +371,7 @@ const game = {
         this.declareGameWinner();
         return;
       } else {
+        // this.computerActive = true;
         this.spans[1].textContent++;
         this.spans[5].classList.remove("hidden");
         this.spans[9].classList.add("hidden");
@@ -392,7 +386,6 @@ const game = {
   },
 
   updateScore: function (winner) {
-    console.log(winner);
     if (winner === "p1") {
       this.p1Score += 1;
       this.spans[4].textContent += "|";
@@ -400,7 +393,6 @@ const game = {
       this.p2Score += 1;
       this.spans[8].textContent += "|";
     } else {
-      console.log(winner);
       this.tie += 1;
     }
   },
@@ -440,35 +432,34 @@ const game = {
     setTimeout(() => alert(message), 300);
   },
 
-  computerLogic: function () {
-    this.markerP2 = this.playersInfo[`p2M`];
-    console.log(this.markerP2);
-    console.log(this.gameboard);
-    this.compChoicesList = this.computerMoves();
-    this.compChoiceIndex = this.computerChoice(this.compChoicesList);
-    this.placeMarker("undefined", this.markerP2, this.compChoiceIndex);
+  // computerLogic: function () {
+  //   this.markerP2 = this.playersInfo[`p2M`];
+  //   console.log(this.markerP2);
+  //   console.log(this.gameboard);
+  //   this.compChoicesList = this.computerMoves();
+  //   this.compChoiceIndex = this.computerChoice(this.compChoicesList);
+  //   console.log(this.compChoiceIndex);
+  //   setTimeout(
+  //     () => this.placeMarker("undefined", this.markerP2, this.compChoiceIndex),
+  //     1000
+  //   );
+  //   this.p2MarkerPlaced = true;
+  // },
 
-    console.log(this.isTurn);
-    this.p2MarkerPlaced = true;
+  // computerMoves: function () {
+  //   const emptyIndices = [];
+  //   this.gameboard.forEach((pos, index) => {
+  //     if (pos === "") {
+  //       emptyIndices.push(index);
+  //     }
+  //   });
+  //   return emptyIndices;
+  // },
 
-    // ! switch turn back to "p1"
-    // this.gameController("undefined");
-  },
-
-  computerMoves: function () {
-    const emptyIndices = [];
-    this.gameboard.forEach((pos, index) => {
-      if (pos === "") {
-        emptyIndices.push(index);
-      }
-    });
-    return emptyIndices;
-  },
-
-  computerChoice: function (array) {
-    const choice = Math.floor(Math.random() * array.length);
-    return array[choice];
-  },
+  // computerChoice: function (array) {
+  //   const choice = Math.floor(Math.random() * array.length);
+  //   return array[choice];
+  // },
 };
 
 game.init();
