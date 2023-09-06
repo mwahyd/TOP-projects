@@ -195,6 +195,11 @@ footer {
   align-items: center;
 }
 
+.p1-info > span:first-child,
+.p2-info > span:first-child {
+  justify-self: end;
+}
+
 #p1-score,
 #p2-score {
   font-weight: 700;
