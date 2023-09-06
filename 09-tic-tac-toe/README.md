@@ -1,5 +1,7 @@
 # Project: Tic Tac Toe
 
+[Live demo](https://mwahyd.github.io/TOP-projects/09-tic-tac-toe/menu.html)
+
 The project is an attempt to get a deeper understanding of proper programming design philosophies in JavaScript.
 
 App Functionalities:
