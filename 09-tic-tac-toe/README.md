@@ -13,3 +13,5 @@ Features to add:
 
 - fix "Computer as opponent" code in source
 - add media queries to fix game in large displays
+
+![Screenshot!](image.png)
