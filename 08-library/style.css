@@ -14,19 +14,14 @@ html {
 }
 
 .container {
-  resize: horizontal;
-  overflow: auto;
-  /* border: 3px dashed orange; */
   min-width: 450px;
   max-width: 1000px;
-  /* height: 100vh; */
   margin: 0 auto;
   padding: 10px 20px;
 }
 
 .header {
   text-align: center;
-  /* border: 2px solid red; */
   box-shadow: 0 0 15px 1px #666;
   padding: 20px 0;
   margin-bottom: 20px;
@@ -37,26 +32,22 @@ html {
 .add-btn {
   background-color: transparent;
   border: none;
-  /* border: 2px solid red; */
-  /* outline: 0; */
   font-size: 5rem;
   outline: none;
 
   display: block;
   margin: 0 auto 50px;
-  transition: 0.3s;
+  transition: 0.2s;
   transform: rotate(0deg);
 }
 
 .add-btn:hover {
   cursor: pointer;
-  transition: 0.3s;
+  transition: 0.2s;
   transform: rotate(90deg);
 }
 
 .content {
-  /* border: 2px solid red; */
-
   display: grid;
   gap: 25px;
   grid-template-columns: repeat(auto-fill, minmax(175px, 1fr));
@@ -64,7 +55,6 @@ html {
 }
 
 .card {
-  /* border: 2px solid #ccc; */
   border-radius: 8px;
   box-shadow: 0 0 10px 0.5px #bababa;
   font-size: 1.135rem;
@@ -123,7 +113,6 @@ legend {
 }
 
 label:not(label.status) {
-  /* border: 1px dotted red; */
   font-size: 1.2rem;
   margin-bottom: 15px;
 
@@ -143,7 +132,6 @@ input:not(input[type="submit"], input[type="checkbox"]) {
 
 label.status,
 input[type="submit"] {
-  /* border: 2px solid red; */
   font-size: 1.2rem;
   text-align: center;
   width: 30%;
