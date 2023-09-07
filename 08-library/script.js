@@ -1,46 +1,23 @@
-const digiLibrary = [
-  // {
-  //   title: "the book thief",
-  //   author: "markus zusak",
-  //   pages: 545,
-  //   read: "not read",
-  // },
-  // {
-  //   title: "the da vinci code",
-  //   author: "dan brown",
-  //   pages: 545,
-  //   read: "read",
-  // },
-  // {
-  //   title: "cloud atlas",
-  //   author: "david mitchell",
-  //   pages: 545,
-  //   read: "not read",
-  // },
-  // {
-  //   title: "digital fortress",
-  //   author: "dan brown",
-  //   pages: 545,
-  //   read: "read",
-  // },
-];
+let digiLibrary = [];
 
 // book class
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-  this.index;
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+    this.index;
+  }
+
+  toggleStatus(status) {
+    this.read = status;
+  }
+
+  addIndex(index) {
+    this.index = index;
+  }
 }
-
-Book.prototype.toggleStatus = function (status) {
-  this.read = status;
-};
-
-Book.prototype.addIndex = function (index) {
-  this.index = index;
-};
 
 // handler functions
 function addBookToLibrary(obj) {
@@ -51,7 +28,6 @@ function addBookToLibrary(obj) {
 
   digiLibrary.push(new Book(title, author, pages, read));
   digiLibrary.at(-1).addIndex(digiLibrary.length);
-  // console.log(digiLibrary);
 }
 
 function getBooksOnDOM() {
