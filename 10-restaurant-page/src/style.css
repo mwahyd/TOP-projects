@@ -27,9 +27,34 @@ body {
 #container {
   border: 2px solid red;
   height: 100%;
+  max-width: 50vw;
+  margin: 0 auto;
 }
 
 header {
+  border: 2px solid blue;
+  height: 25vh;
+  padding: 20px;
+  font-size: 1.8rem;
+}
+
+header > * {
+  border: 2px solid orange;
+  height: 50%;
+}
+
+#title {
   font-family: "biteChocolate";
-  font-size: 2rem;
+  font-size: 3rem;
+  text-align: center;
+}
+
+#nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: end;
+}
+
+li {
+  list-style-type: none;
 }
