@@ -3,12 +3,6 @@ const htmlWebpackPlugin = require("html-webpack-plugin");
 
 module.exports = {
   devtool: "inline-source-map",
-  devServer: {
-    static: "./dist",
-  },
-  optimization: {
-    runtimeChunk: "single",
-  },
   entry: {
     script: "./src/script.js",
   },
@@ -21,4 +15,13 @@ module.exports = {
       title: "Restaurant Page",
     }),
   ],
+  // loaders:
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"],
+      },
+    ],
+  },
 };
