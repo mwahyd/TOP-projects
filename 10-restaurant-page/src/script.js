@@ -50,7 +50,13 @@ const restaurantPage = (function () {
     header.appendChild(nav);
 
     // main
-    main.textContent = "goats";
+    const p = _createElement("p");
+    p.id = "quote";
+    p.textContent = "always save room for dessert!";
+    p.classList.add("flex-centre");
+    main.appendChild(p);
+    // - if page === home
+    main.classList.add("flex-centre");
 
     // footer
     footer.textContent = "maishanwahyd 2023";
