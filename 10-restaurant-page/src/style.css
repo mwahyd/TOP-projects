@@ -25,12 +25,12 @@ body {
 }
 
 #container {
-  border: 2px solid red;
   background-image: url("./deserts-blured.jpg");
   background-size: cover;
   height: 100%;
   max-width: 40vw;
   margin: 0 auto;
+  position: relative;
 }
 
 header,
@@ -40,19 +40,26 @@ footer {
   padding: 20px;
 }
 
+header,
+footer {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
 header {
-  border: 2px solid blue;
   font-size: 2rem;
   height: 25vh;
 }
 
 header > * {
-  /* border: 2px solid orange; */
   height: 50%;
 }
 
-#title {
+#title,
+#quote {
   font-family: "biteChocolate";
+}
+
+#title {
   font-size: 3rem;
   text-align: center;
   margin-top: 4px;
@@ -69,10 +76,20 @@ li {
   font-weight: 600;
 }
 
+main {
+  height: 70vh;
+}
+
+#quote {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: rgb(225, 192, 106);
+  font-size: 3rem;
+  text-align: center;
+}
+
 /* footer */
 footer {
-  border: 2px solid green;
-  /* width: 50vw; */
+  width: 100%;
   height: 5vh;
   font-size: 1.5rem;
   position: absolute;
