@@ -53,7 +53,8 @@ const restaurantPage = (function () {
     main.textContent = "goats";
 
     // footer
-    footer.textContent = "nah nah";
+    footer.textContent = "maishanwahyd 2023";
+    footer.classList.add("flex-centre");
   }
 
   // handler functions
