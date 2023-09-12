@@ -82,13 +82,15 @@ main {
 
 #quote {
   background-color: rgba(0, 0, 0, 0.5);
-  color: rgb(225, 192, 106);
+  color: #d4b680;
   font-size: 3rem;
   text-align: center;
 }
 
 /* footer */
 footer {
+  flex-direction: column;
+  padding: 30px;
   width: 100%;
   height: 5vh;
   font-size: 1.5rem;
