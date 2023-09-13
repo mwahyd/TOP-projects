@@ -1,5 +1,6 @@
 // to get the css file to the dist folder, import it to the JS file
 import style from "./style.css";
+import menu from "./menu.js";
 
 const restaurantPage = (function () {
   // cache DOM
@@ -11,10 +12,13 @@ const restaurantPage = (function () {
   const footer = document.createElement("footer");
   const container = document.createElement("div");
 
-  _render();
+  // bind events
+  header.addEventListener("click", _headerHandler);
+
+  _render(_createHome);
 
   // root functions
-  function _render() {
+  function _render(loadPage) {
     // container
     container.id = "container";
     container.appendChild(header);
@@ -50,6 +54,47 @@ const restaurantPage = (function () {
     header.appendChild(nav);
 
     // main
+    loadPage();
+
+    // footer
+    const details = _createElement("p");
+    const credits = _createElement("p");
+    details.textContent = "maishanwahyd 2023";
+    credits.textContent = "background - Ulysse Pointcheval - Unsplash";
+
+    footer.appendChild(details);
+    footer.appendChild(credits);
+    footer.classList.add("flex-centre");
+  }
+
+  // handler functions
+  function _headerHandler(event) {
+    if (event.target.nodeName !== "LI") {
+      return;
+    }
+    console.log(event.target);
+
+    switch (event.target.id) {
+      case "home":
+        _eraseContent();
+        _render(_createHome);
+        console.log("from click");
+        break;
+      case "menu":
+        _createMenu(event);
+        break;
+      case "contact":
+        _createContact(event);
+        break;
+    }
+  }
+
+  // support functions
+  function _createElement(name) {
+    return document.createElement(name);
+  }
+
+  function _createHome() {
     const p = _createElement("p");
     p.id = "quote";
     p.textContent = "always save room for dessert!";
@@ -57,16 +102,17 @@ const restaurantPage = (function () {
     main.appendChild(p);
     // - if page === home
     main.classList.add("flex-centre");
-
-    // footer
-    footer.textContent = "maishanwahyd 2023";
-    footer.classList.add("flex-centre");
   }
 
-  // handler functions
+  function _createMenu(event) {
+    menu.sayHello();
+  }
 
-  // support functions
-  function _createElement(name) {
-    return document.createElement(name);
+  function _createContact(event) {}
+
+  function _eraseContent() {
+    header.innerHTML = "";
+    main.innerHTML = "";
+    footer.innerHTML = "";
   }
 })();
