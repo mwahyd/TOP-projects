@@ -61,6 +61,7 @@ const restaurantPage = (function () {
     const credits = _createElement("p");
     details.textContent = "maishanwahyd 2023";
     credits.textContent = "background - Ulysse Pointcheval - Unsplash";
+    credits.classList.add("credits");
 
     footer.appendChild(details);
     footer.appendChild(credits);
@@ -95,6 +96,7 @@ const restaurantPage = (function () {
   }
 
   function _createHome() {
+    main.classList = "";
     const p = _createElement("p");
     p.id = "quote";
     p.textContent = "always save room for dessert!";
@@ -113,7 +115,7 @@ const restaurantPage = (function () {
     menuItems.forEach((item) => {
       main.appendChild(item);
     });
-    // main.appendChild(menuItems);
+    main.classList.add("grid-layout");
   }
 
   function _createContact() {}
