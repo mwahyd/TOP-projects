@@ -31,7 +31,7 @@ const restaurantPage = (function () {
     // title
     const h1 = _createElement("h1");
     h1.id = "title";
-    h1.textContent = "Bakers!";
+    h1.textContent = "dessert Land";
     header.appendChild(h1);
 
     // nav
@@ -104,11 +104,19 @@ const restaurantPage = (function () {
     main.classList.add("flex-centre");
   }
 
-  function _createMenu(event) {
-    menu.sayHello();
+  function _createMenu() {
+    main.innerHTML = "";
+    main.classList = "";
+    const menuItems = menu.displayMenu();
+    console.log(menuItems);
+    console.log(main);
+    menuItems.forEach((item) => {
+      main.appendChild(item);
+    });
+    // main.appendChild(menuItems);
   }
 
-  function _createContact(event) {}
+  function _createContact() {}
 
   function _eraseContent() {
     header.innerHTML = "";
