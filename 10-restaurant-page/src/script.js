@@ -1,6 +1,7 @@
 // to get the css file to the dist folder, import it to the JS file
 import style from "./style.css";
 import menu from "./menu.js";
+import contact from "./contact.js";
 
 const restaurantPage = (function () {
   // cache DOM
@@ -73,19 +74,17 @@ const restaurantPage = (function () {
     if (event.target.nodeName !== "LI") {
       return;
     }
-    console.log(event.target);
 
     switch (event.target.id) {
       case "home":
         _eraseContent();
         _render(_createHome);
-        console.log("from click");
         break;
       case "menu":
-        _createMenu(event);
+        _createMenu();
         break;
       case "contact":
-        _createContact(event);
+        _createContact();
         break;
     }
   }
@@ -103,22 +102,26 @@ const restaurantPage = (function () {
     p.classList.add("flex-centre");
     main.appendChild(p);
     // - if page === home
-    main.classList.add("flex-centre");
+    main.classList.add("flex-centre", "fade-in");
   }
 
   function _createMenu() {
     main.innerHTML = "";
     main.classList = "";
     const menuItems = menu.displayMenu();
-    console.log(menuItems);
-    console.log(main);
     menuItems.forEach((item) => {
       main.appendChild(item);
     });
-    main.classList.add("grid-layout");
+    main.classList.add("grid-layout", "fade-in");
   }
 
-  function _createContact() {}
+  function _createContact() {
+    main.innerHTML = "";
+    main.classList = "";
+    const contactItem = contact.displayContact();
+    main.appendChild(contactItem);
+    main.classList.add("flex-centre", "fade-in");
+  }
 
   function _eraseContent() {
     header.innerHTML = "";
