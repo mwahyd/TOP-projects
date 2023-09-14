@@ -28,7 +28,7 @@ body {
   background-image: url("./deserts-blured.jpg");
   background-size: cover;
   min-height: 100vh;
-  max-width: 40vw;
+  max-width: 35vw;
   margin: 0 auto;
   position: relative;
 }
@@ -75,16 +75,15 @@ li {
   list-style-type: none;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.1s;
+  transition: all 0.2s;
 }
 
 li:hover {
-  font-size: 2.3rem;
-  transition: all 0.1s;
+  transition: all 0.2s;
+  margin-bottom: 1rem;
 }
 
 main {
-  /* border: 2px solid orange; */
   min-height: 70vh;
 }
 
@@ -99,7 +98,6 @@ main {
 .menu-item {
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
-  /* border: 2px solid red; */
   width: 150px;
   padding: 5px;
 }
