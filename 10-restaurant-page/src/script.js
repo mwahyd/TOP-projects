@@ -95,32 +95,33 @@ const restaurantPage = (function () {
   }
 
   function _createHome() {
-    main.classList = "";
+    main.innerHTML = "";
+    main.className = "";
     const p = _createElement("p");
     p.id = "quote";
     p.textContent = "always save room for dessert!";
     p.classList.add("flex-centre");
     main.appendChild(p);
     // - if page === home
-    main.classList.add("flex-centre", "fade-in");
+    main.classList.add("flex-centre");
   }
 
   function _createMenu() {
     main.innerHTML = "";
-    main.classList = "";
+    main.className = "";
     const menuItems = menu.displayMenu();
     menuItems.forEach((item) => {
       main.appendChild(item);
     });
-    main.classList.add("grid-layout", "fade-in");
+    main.classList.add("grid-layout");
   }
 
   function _createContact() {
     main.innerHTML = "";
-    main.classList = "";
+    main.className = "";
     const contactItem = contact.displayContact();
     main.appendChild(contactItem);
-    main.classList.add("flex-centre", "fade-in");
+    main.classList.add("flex-centre");
   }
 
   function _eraseContent() {
