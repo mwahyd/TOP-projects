@@ -95,7 +95,7 @@ main {
   text-align: center;
 }
 
-/* menu page */
+/* - menu page */
 .menu-item {
   background-color: rgba(0, 0, 0, 0.6);
   border-radius: 10px;
@@ -123,6 +123,44 @@ main {
 .credits {
   font-size: 0.7rem;
   font-weight: 300;
+}
+
+/* - contact page */
+.contact-item {
+  font-size: 1.7rem;
+  padding: 20px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.contact-item > *:not(img) {
+  width: max-content;
+  margin-bottom: 3px;
+}
+
+.contact-item img {
+  max-width: 30vw;
+  margin-top: 5px;
+}
+
+.contact-item > p:last-of-type::before {
+  content: "\260F";
+  color: #f70a8d;
+}
+
+.contact-item > p:first-of-type::before {
+  content: "\1f4cd";
+}
+
+.contact-item > p:first-of-type::before,
+.contact-item > p:last-of-type::before {
+  display: inline-block;
+  width: 30px;
+  text-align: center;
+  font-size: 1.8rem;
+}
+
+.contact-item > p {
+  vertical-align: middle;
 }
 
 /* footer */
