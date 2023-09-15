@@ -1,6 +1,6 @@
 # Project: Restaurant Page
 
-[Live demo](https://github.com/mwahyd/TOP-projects/10-restaurant-page/dist/index.html)
+[Live demo](https://mwahyd.github.io/TOP-projects10-restaurant-page/dist/index.html)
 
 This is a Webpack based project.
 The goal was to familiarise using a module bundler, install various different plugins and loaders to enable the usage of different types of files.
