@@ -26,18 +26,28 @@ body {
   cursor: pointer;
 }
 
+.drop-down > .link:focus,
 .link:hover {
   color: black;
 }
 
 .drop-down {
   border: 2px solid red;
+  position: relative;
 }
 
 .drop-down-menu {
-  opacity: 0;
+  position: absolute;
+  left: 0;
+  padding: 0.5rem;
+  border: 2px solid orange;
+  opacity: 0.5;
+  transform: translateY(-10px);
+  transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
+  pointer-events: none;
 }
 
 .drop-down > .link:focus + .drop-down-menu {
   opacity: 1;
+  transform: translateY(0px);
 }
