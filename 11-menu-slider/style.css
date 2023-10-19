@@ -38,10 +38,12 @@ body {
 
 .drop-down-menu {
   position: absolute;
+  top: calc(100% + 0.25rem);
   left: 0;
+  background-color: white;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
   padding: 0.5rem;
-  border: 2px solid orange;
-  opacity: 0.5;
+  opacity: 0.2;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   pointer-events: none;
