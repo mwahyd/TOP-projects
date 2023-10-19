@@ -1,30 +1,76 @@
-<DOCTYPE html>
-  <html lang="en">
-    <header>
-      <meta charset="UTF-8" />
-      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <link rel="stylesheet" href="./style.css" />
-      <script src="./script.js" defer></script>
-      <title>Dropdown Menus</title>
-    </header>
+<!DOCTYPE html>
+<html lang="en">
+  <header>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./script.js" defer></script>
+    <title>Dropdown Menus</title>
+  </header>
 
-    <body>
-      <header><h1>Dynamic User Interface</h1></header>
+  <body>
+    <header><h1>Dynamic User Interface</h1></header>
 
-      <main>
-        <div><h2>Drop-down menus</h2></div>
+    <main>
+      <div><h2>Drop-down menu</h2></div>
 
-        <div class="header">
-          <div class="drop-down" data-drop-down>
-            <button class="link" data-drop-down-btn>info</button>
-            <div class="drop-down-menu hidden">Content</div>
+      <div class="header" data-header>
+        <div class="drop-down" data-drop-down>
+          <button class="link" data-drop-down-btn>info</button>
+          <div class="drop-down-menu info-grid">
+            <div>
+              <div class="content-heading">Weather</div>
+              <div class="drop-down-links">
+                <a href="#" class="link">Today</a>
+                <a href="#" class="link">Week</a>
+                <a href="#" class="link">Month</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="content-heading">Temperature</div>
+              <div class="drop-down-links">
+                <a href="#" class="link">Today</a>
+                <a href="#" class="link">Week</a>
+                <a href="#" class="link">Month</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="content-heading">Pressure</div>
+              <div class="drop-down-links">
+                <a href="#" class="link">Today</a>
+                <a href="#" class="link">Week</a>
+                <a href="#" class="link">Month</a>
+              </div>
+            </div>
+
+            <div>
+              <div class="content-heading">Misc</div>
+              <div class="drop-down-links">
+                <a href="#" class="link">Twitter</a>
+                <a href="#" class="link">Instagram</a>
+                <a href="#" class="link">Newsletter</a>
+              </div>
+            </div>
           </div>
-
-          <a href="#" class="link">about</a>
-
-          <button class="link">login</button>
         </div>
-      </main>
-    </body>
-  </html>
-</DOCTYPE>
+
+        <a href="#" class="link">about</a>
+
+        <div class="drop-down" data-drop-down>
+          <button class="link" data-drop-down-btn>login</button>
+          <div class="drop-down-menu">
+            <form action="" class="login-form">
+              <label for="email">Email</label>
+              <input type="email" name="email" id="email" />
+              <label for="password">Password</label>
+              <input type="password" name="password" id="password" />
+              <button type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
