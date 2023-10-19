@@ -17,7 +17,7 @@ body {
   gap: 0.5rem;
 }
 
-.header > .link {
+.link {
   text-decoration: none;
   color: inherit;
   font-size: inherit;
@@ -26,6 +26,18 @@ body {
   cursor: pointer;
 }
 
-.header > .link:hover {
+.link:hover {
   color: black;
+}
+
+.drop-down {
+  border: 2px solid red;
+}
+
+.drop-down-menu {
+  opacity: 0;
+}
+
+.drop-down > .link:focus + .drop-down-menu {
+  opacity: 1;
 }
