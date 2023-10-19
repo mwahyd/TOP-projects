@@ -3,36 +3,36 @@
 }
 
 body {
+  margin: 0;
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
 }
 
 .header {
-  background-color: #f6f6f6;
-  padding: 0.25rem;
-  color: #777;
+  background-color: #f3f3f3;
+  padding: 0.5rem;
 
   display: flex;
   align-items: baseline;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 .link {
-  text-decoration: none;
-  color: inherit;
-  font-size: inherit;
   background: none;
   border: none;
+  text-decoration: none;
+  color: #777;
+  font-family: inherit;
+  font-size: inherit;
   cursor: pointer;
+  padding: 0;
 }
 
-.drop-down > .link:focus,
 .link:hover {
   color: black;
 }
 
 .drop-down {
-  border: 2px solid red;
   position: relative;
 }
 
@@ -42,14 +42,32 @@ body {
   left: 0;
   background-color: white;
   box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
-  padding: 0.5rem;
-  opacity: 0.2;
+  border-radius: 0.25rem;
+  padding: 0.75rem;
+  opacity: 0;
   transform: translateY(-10px);
   transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
   pointer-events: none;
 }
 
-.drop-down > .link:focus + .drop-down-menu {
+.drop-down > .link + .drop-down-menu.active {
   opacity: 1;
   transform: translateY(0px);
+  pointer-events: auto;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+  gap: 2rem;
+}
+
+.drop-down-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.login-form > input {
+  margin-bottom: 0.5rem;
 }
