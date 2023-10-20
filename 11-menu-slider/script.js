@@ -15,3 +15,21 @@ document.addEventListener("click", (e) => {
     dropdown.classList.remove("active");
   });
 });
+
+// rudder nav functionality
+document.addEventListener("click", (e) => {
+  const isDrawerBtn = e.target.matches("[data-drawer-btn]");
+  const drawer = e.target.closest("[data-drawer]");
+
+  if (!isDrawerBtn && drawer === null) {
+    const activeEl = document.querySelector("[data-drawer].active");
+    if (activeEl === null) return;
+    activeEl.classList.remove("active");
+    return;
+  }
+
+  // toggle active class if X icon clicked
+  if (isDrawerBtn) {
+    drawer.classList.toggle("active");
+  }
+});
