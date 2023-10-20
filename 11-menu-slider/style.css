@@ -73,3 +73,34 @@ body {
 .login-form > input {
   margin-bottom: 0.5rem;
 }
+
+/*  */
+/*  */
+
+/* ! Rudder navigation */
+
+.rudder-nav > .header {
+  display: flex;
+  justify-content: center;
+}
+
+.drawer-btn {
+  border: none;
+  background-color: rgb(50, 200, 200);
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: white;
+  padding: 0.5rem;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  cursor: pointer;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.drawer-btn:hover {
+  background-color: rgb(34, 173, 173);
+}
