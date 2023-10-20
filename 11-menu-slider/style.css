@@ -91,16 +91,65 @@ body {
   font-weight: 900;
   color: white;
   padding: 0.5rem;
-  width: 2rem;
-  height: 2rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 50%;
   cursor: pointer;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: width 300ms ease-in-out, border-radius 300ms ease-in-out;
 }
 
+.drawer {
+  position: relative;
+}
+
+.drawer.active > .drawer-btn,
 .drawer-btn:hover {
   background-color: rgb(34, 173, 173);
+}
+
+#icon {
+  margin-left: 3px;
+  transition: transform 500ms cubic-bezier(0.42, 0, 0.6, 2.55);
+}
+
+.drawer .drawer-link {
+  font-family: inherit;
+  font-size: inherit;
+  text-decoration: inherit;
+  color: none;
+  opacity: 0;
+  transform: rotate(-220deg);
+  transition: transform 300ms ease-in-out;
+  pointer-events: none;
+}
+
+.drawer.active > .drawer-btn {
+  width: 350px;
+  border-radius: 2rem;
+
+  display: flex;
+  justify-content: space-around;
+}
+
+.drawer.active > .drawer-btn > #icon {
+  transform: rotate(225deg);
+  font-size: 2.5rem;
+  margin-top: 5px;
+}
+
+.drawer.active > .drawer-btn > .drawer-link {
+  opacity: 1;
+  transform: rotate(0deg);
+  pointer-events: auto;
+  color: white;
+  cursor: default;
+}
+
+.drawer.active .drawer-link:hover {
+  border-bottom: 2px solid black;
 }
