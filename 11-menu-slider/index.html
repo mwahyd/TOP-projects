@@ -1,53 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-  <header>
+  <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
     <script src="./script.js" defer></script>
-    <title>Dropdown Menus</title>
-  </header>
+    <title>Dropdown Menu & Image Slider</title>
+  </head>
 
   <body>
     <header><h1>Dynamic User Interface</h1></header>
 
     <main>
-      <div><h2>Drop-down menu</h2></div>
+      <h2>Drop Down Menu</h2>
 
-      <div class="header" data-header>
-        <div class="drop-down" data-drop-down>
-          <button class="link" data-drop-down-btn>info</button>
-          <div class="drop-down-menu info-grid">
+      <div class="header">
+        <div class="dropdown" data-dropdown>
+          <button class="link" data-dropdown-btn>info</button>
+          <div class="dropdown-menu info-grid">
             <div>
-              <div class="content-heading">Weather</div>
-              <div class="drop-down-links">
-                <a href="#" class="link">Today</a>
-                <a href="#" class="link">Week</a>
-                <a href="#" class="link">Month</a>
+              <div class="content-header">News</div>
+              <div class="dropdown-links">
+                <a href="#" class="link">Breaking</a>
+                <a href="#" class="link">Top Stories</a>
+                <a href="#" class="link">Continental</a>
               </div>
             </div>
 
             <div>
-              <div class="content-heading">Temperature</div>
-              <div class="drop-down-links">
-                <a href="#" class="link">Today</a>
-                <a href="#" class="link">Week</a>
-                <a href="#" class="link">Month</a>
+              <div class="content-header">Entertainment</div>
+              <div class="dropdown-links">
+                <a href="#" class="link">Movies</a>
+                <a href="#" class="link">Music</a>
+                <a href="#" class="link">Shows</a>
               </div>
             </div>
 
             <div>
-              <div class="content-heading">Pressure</div>
-              <div class="drop-down-links">
+              <div class="content-header">Weather</div>
+              <div class="dropdown-links">
                 <a href="#" class="link">Today</a>
-                <a href="#" class="link">Week</a>
-                <a href="#" class="link">Month</a>
+                <a href="#" class="link">This Week</a>
+                <a href="#" class="link">Forecast</a>
               </div>
             </div>
 
             <div>
-              <div class="content-heading">Misc</div>
-              <div class="drop-down-links">
+              <div class="content-header">Misc</div>
+              <div class="dropdown-links">
                 <a href="#" class="link">Twitter</a>
                 <a href="#" class="link">Instagram</a>
                 <a href="#" class="link">Newsletter</a>
@@ -58,16 +58,41 @@
 
         <a href="#" class="link">about</a>
 
-        <div class="drop-down" data-drop-down>
-          <button class="link" data-drop-down-btn>login</button>
-          <div class="drop-down-menu">
-            <form action="" class="login-form">
+        <div class="dropdown" data-dropdown>
+          <button class="link" data-dropdown-btn>login</button>
+          <div class="dropdown-menu">
+            <form class="login-form">
               <label for="email">Email</label>
               <input type="email" name="email" id="email" />
               <label for="password">Password</label>
               <input type="password" name="password" id="password" />
               <button type="submit">Login</button>
             </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="mobile-dropdown more">
+        <h2>Mobile Drop Down With A "More" Option</h2>
+        <div class="header">
+          <button class="link">News</button>
+          <button class="link">Videos</button>
+          <button class="link">Photos</button>
+          <button class="link">Chat</button>
+
+          <div class="dropdown" data-dropdown>
+            <button class="link" data-dropdown-btn>
+              More <span id="down-arrow" data-dropdown-btn>&#8675;</span>
+            </button>
+
+            <div class="dropdown-menu">
+              <div class="dropdown-links">
+                <a href="#" class="link">Statistics</a>
+                <a href="#" class="link">Settings</a>
+                <a href="#" class="link">About</a>
+                <a href="#" class="link">Contact</a>
+              </div>
+            </div>
           </div>
         </div>
       </div>
