@@ -33,3 +33,37 @@ document.addEventListener("click", (e) => {
     drawer.classList.toggle("active");
   }
 });
+
+// image carousel
+
+const carousel = {
+  init: function () {
+    this.cacheDOM();
+    this.bindEvents();
+  },
+
+  cacheDOM: function () {
+    this.frame = document.querySelector("[data-frame]");
+    this.imgNav = this.frame.querySelector("[data-nav");
+  },
+
+  bindEvents: function () {
+    this.imgNav.addEventListener("click", this.navClicked.bind(this));
+  },
+
+  navClicked: function (e) {
+    e.preventDefault();
+    const isNavBtn = e.target.matches("[data-nav] a");
+    if (!isNavBtn) return;
+
+    this.frame.querySelectorAll("img").forEach((img) => {
+      img.classList.remove("active");
+      const link = e.target.getAttribute("href");
+      if (img.id === link.slice(1)) {
+        img.classList.add("active");
+      }
+    });
+  },
+};
+
+carousel.init();
