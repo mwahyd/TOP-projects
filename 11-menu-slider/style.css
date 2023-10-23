@@ -250,10 +250,7 @@ body {
   transition: opacity 150ms ease-in-out;
 }
 
-.image-frame img.active {
-  opacity: 1;
-}
-
+.image-frame img.active,
 .image-frame img:first-of-type {
   opacity: 1;
 }
