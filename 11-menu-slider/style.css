@@ -233,20 +233,29 @@ body {
 
 .image-frame {
   border: 2px solid orange;
-  display: flex;
-  gap: 1rem;
+
+  display: grid;
+  grid-template-columns: 1fr;
 }
 
 .image-frame img {
-  display: block;
   width: 100%;
-  aspect-ratio: inherit;
-  object-fit: cover;
+  height: 100%;
   cursor: pointer;
+
+  grid-column: 1;
+  grid-row: 1;
+
+  opacity: 0;
+  transition: opacity 150ms ease-in-out;
 }
 
 .image-frame img.active {
-  order: -1;
+  opacity: 1;
+}
+
+.image-frame img:first-of-type {
+  opacity: 1;
 }
 
 .image-nav {
@@ -257,5 +266,5 @@ body {
 }
 
 .image-nav .link:focus {
-  fill: #777;
+  color: maroon;
 }
