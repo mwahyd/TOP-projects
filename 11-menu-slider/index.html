@@ -131,17 +131,24 @@
         </div>
       </div>
 
-      <div class="image-slider">
+      <div class="image-slider" data-slider>
         <div class="header">
           <h2>Image Carousel</h2>
         </div>
-        <div class="image-frame">
-          <div class="image-container">
-            <img src="./assets/autumn.jpg" alt="autumn" />
-            <img src="./assets/crescent.jpg" alt="crescent" />
-            <img src="./assets/forest.jpg" alt="forest" />
-            <img src="./assets/moon.jpg" alt="full moon" />
-            <img src="./assets/water.jpg" alt="aerial shot of the surf side" />
+        <div class="image-container" data-frame>
+          <div class="image-frame" data-container>
+            <img data-img src="./assets/autumn.jpg" id="autumn" />
+            <img data-img src="./assets/crescent.jpg" id="crescent" />
+            <img data-img src="./assets/forest.jpg" id="forest" />
+            <img data-img src="./assets/moon.jpg" id="full-moon" />
+            <img data-img src="./assets/water.jpg" id="water" />
+          </div>
+          <div class="image-nav" data-nav>
+            <a class="link" href="#autumn">O</a>
+            <a class="link" href="#crescent">O</a>
+            <a class="link" href="#forest">O</a>
+            <a class="link" href="#full-moon">O</a>
+            <a class="link" href="#water">O</a>
           </div>
         </div>
       </div>
