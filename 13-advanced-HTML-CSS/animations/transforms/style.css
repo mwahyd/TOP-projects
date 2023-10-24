@@ -14,15 +14,16 @@ html {
 .box {
   width: 200px;
   height: 200px;
-  background-color: #3e3e3e;
-  border: 5px solid #f5f5f5;
+  background-color: var(--_bg-colour, #3e3e3e);
+  border: 5px solid var(--_border-colour, #f5f5f5);
   border-radius: 0.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.transform-2d {
+.transform-2d,
+.chaining {
   /* border: 2px solid red; */
   display: flex;
   justify-content: center;
@@ -52,4 +53,25 @@ html {
   /* transform: translateX(20px); */
   /* transform: translateY(-33%); */
   transform: translate(20px, -33%);
+}
+
+/* chaining transforms */
+
+.box.red,
+.box.blue {
+  position: absolute;
+  width: 100px;
+  height: 100px;
+}
+
+.box.red {
+  --_border-colour: rgba(128, 0, 0, 1);
+  --_bg-colour: rgba(128, 0, 0, 0.95);
+  transform: rotate(45deg) translate(70%);
+}
+
+.box.blue {
+  --_border-colour: rgba(0, 128, 128, 1);
+  --_bg-colour: rgba(0, 128, 128, 0.95);
+  transform: translate(-70%) rotate(45deg);
 }
