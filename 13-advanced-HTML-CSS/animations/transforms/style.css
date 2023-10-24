@@ -28,3 +28,28 @@ html {
   justify-content: center;
   gap: 2rem;
 }
+
+.rotate {
+  /* transform: rotate(45deg); */
+  /* transform: rotate(-1rad); */
+  transform: rotate(0.75turn);
+}
+
+.scale {
+  /* transform: scaleX(0.25); */
+  /* transform: scaleY(1.5); */
+  /* transform: scale(0.25, 1.5); */
+  transform: scale(0.5);
+}
+
+.skew {
+  /* transform: skewY(0.5rad); */
+  /* transform: skew(45deg, 0.5rad); */
+  transform: skew(45deg);
+}
+
+.translate {
+  /* transform: translateX(20px); */
+  /* transform: translateY(-33%); */
+  transform: translate(20px, -33%);
+}
