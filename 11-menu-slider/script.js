@@ -40,12 +40,15 @@ const carousel = {
   init: function () {
     this.cacheDOM();
     this.bindEvents();
+    setInterval(() => this.slideshow(), 5000);
   },
 
   cacheDOM: function () {
     this.frame = document.querySelector("[data-frame]");
     this.imgNav = this.frame.querySelector("[data-nav");
     this.btns = this.frame.querySelectorAll("[data-btn]");
+
+    this.images = Array.from(this.frame.querySelectorAll("img"));
   },
 
   bindEvents: function () {
@@ -72,19 +75,30 @@ const carousel = {
   changeImage: function (e) {
     const isNextBtn = e.target.matches("[data-next]");
     const isPrevBtn = e.target.matches("[data-prev]");
+
     const activeImage = this.frame.querySelector(".active");
-    const images = Array.from(this.frame.querySelectorAll("img"));
-    const index = images.indexOf(activeImage);
+    const index = this.images.indexOf(activeImage);
 
     if (isNextBtn) {
-      index === images.length - 1
-        ? images[0].classList.add("active")
-        : images[index + 1].classList.add("active");
+      index === this.images.length - 1
+        ? this.images[0].classList.add("active")
+        : this.images[index + 1].classList.add("active");
     } else if (isPrevBtn) {
       index === 0
-        ? images[images.length - 1].classList.add("active")
-        : images[index - 1].classList.add("active");
+        ? this.images[this.images.length - 1].classList.add("active")
+        : this.images[index - 1].classList.add("active");
     }
+    activeImage.classList.remove("active");
+  },
+
+  slideshow: function () {
+    const activeImage = this.frame.querySelector(".active");
+    const index = this.images.indexOf(activeImage);
+
+    index === this.images.length - 1
+      ? this.images[0].classList.add("active")
+      : this.images[index + 1].classList.add("active");
+
     activeImage.classList.remove("active");
   },
 };
