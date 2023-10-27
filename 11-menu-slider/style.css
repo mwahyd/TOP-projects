@@ -218,7 +218,6 @@ body {
 /* ! image carousel */
 
 .image-slider {
-  border: 2px solid red;
   position: relative;
 }
 
@@ -267,7 +266,7 @@ body {
 }
 
 .image-nav .link:focus {
-  color: maroon;
+  color: black;
 }
 
 .btn.previous,
