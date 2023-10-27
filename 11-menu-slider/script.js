@@ -72,12 +72,10 @@ const carousel = {
   changeImage: function (e) {
     const isNextBtn = e.target.matches("[data-next]");
     const isPrevBtn = e.target.matches("[data-prev]");
-    // get current image
     const activeImage = this.frame.querySelector(".active");
     const images = Array.from(this.frame.querySelectorAll("img"));
     const index = images.indexOf(activeImage);
-    // if (isNextBtn) {
-    // images[index + 1].classList.add("active");
+
     if (isNextBtn) {
       index === images.length - 1
         ? images[0].classList.add("active")
@@ -86,8 +84,6 @@ const carousel = {
       index === 0
         ? images[images.length - 1].classList.add("active")
         : images[index - 1].classList.add("active");
-    } else if (isPrevBtn) {
-      images[index - 1].classList.add("active");
     }
     activeImage.classList.remove("active");
   },
