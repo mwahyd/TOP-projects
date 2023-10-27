@@ -45,10 +45,14 @@ const carousel = {
   cacheDOM: function () {
     this.frame = document.querySelector("[data-frame]");
     this.imgNav = this.frame.querySelector("[data-nav");
+    this.btns = this.frame.querySelectorAll("[data-btn]");
   },
 
   bindEvents: function () {
     this.imgNav.addEventListener("click", this.navClicked.bind(this));
+    this.btns.forEach((btn) => {
+      btn.addEventListener("click", this.changeImage.bind(this));
+    });
   },
 
   navClicked: function (e) {
@@ -63,6 +67,21 @@ const carousel = {
         img.classList.add("active");
       }
     });
+  },
+
+  changeImage: function (e) {
+    const isNextBtn = e.target.matches("[data-next]");
+    const isPrevBtn = e.target.matches("[data-prev]");
+    // get current image
+    const activeImage = this.frame.querySelector(".active");
+    const images = Array.from(this.frame.querySelectorAll("img"));
+    const index = images.indexOf(activeImage);
+    if (isNextBtn) {
+      images[index + 1].classList.add("active");
+    } else if (isPrevBtn) {
+      images[index - 1].classList.add("active");
+    }
+    activeImage.classList.remove("active");
   },
 };
 
