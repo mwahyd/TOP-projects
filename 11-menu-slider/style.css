@@ -217,6 +217,11 @@ body {
 /*  */
 /* ! image carousel */
 
+.image-slider {
+  border: 2px solid red;
+  position: relative;
+}
+
 .image-slider > .header {
   margin-bottom: 1rem;
 }
@@ -232,7 +237,7 @@ body {
 }
 
 .image-frame {
-  border: 2px solid orange;
+  /* border: 2px solid orange; */
 
   display: grid;
   grid-template-columns: 1fr;
@@ -256,12 +261,34 @@ body {
 }
 
 .image-nav {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   position: absolute;
-  top: calc(100% + 0.5rem);
+  top: calc(100% + 1rem);
   left: 35%;
 }
 
 .image-nav .link:focus {
   color: maroon;
+}
+
+.btn.previous,
+.btn.next {
+  position: absolute;
+  top: calc(100% - 11rem);
+  background: none;
+  border: none;
+  font-size: 3rem;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #eeeeee;
+}
+
+.btn.previous {
+  left: -4.5rem;
+}
+
+.btn.next {
+  right: -4.5rem;
 }
