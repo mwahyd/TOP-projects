@@ -20,7 +20,7 @@ body {
   height: 100vh;
 }
 
-div:not(:last-of-type) > * {
+label {
   display: block;
 }
 
@@ -32,7 +32,53 @@ div:not(:last-of-type) > * {
 }
 
 #form {
-  border: 2px solid green;
+  border: 2px dashed black;
   width: max-content;
   margin: 0 auto;
+  padding: 1.5rem;
+}
+
+label {
+  /* border: 2px solid orange; */
+  display: flex;
+  align-items: baseline;
+}
+
+label::after {
+  content: "\25C9  req";
+  margin-left: auto;
+  margin-right: 2rem;
+  color: maroon;
+  font-size: 1rem;
+}
+
+input {
+  width: 100%;
+  height: 3rem;
+  padding: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+#post-code {
+  width: 25%;
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+button {
+  display: block;
+  font: inherit;
+  width: 30%;
+  margin: 1rem auto;
+  background-color: transparent;
+  padding: 0.25rem;
+}
+
+button:hover {
+  background-color: #272727;
+  color: white;
+}
+
+::placeholder {
+  color: #ccc;
 }
