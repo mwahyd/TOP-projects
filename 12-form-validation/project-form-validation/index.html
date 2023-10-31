@@ -9,42 +9,46 @@
   </head>
 
   <body>
+    <div class="error"></div>
     <form action="#" id="form">
       <div>
-        <label for="mail">
-          <span>Email</span> <span class="req"></span>&#9673;
-        </label>
+        <label for="mail"> Email </label>
         <input type="email" id="email" name="email" />
       </div>
 
       <div>
-        <label for="password">
-          <span>Password</span> <span class="req"></span>&#9673;
-        </label>
-        <input type="password" id="password" name="password" />
+        <label for="password"> Password </label>
+        <input
+          type="password"
+          id="password"
+          name="password"
+          minlength="8"
+          maxlength="30"
+          placeholder="between 8 - 30 characters" />
       </div>
 
       <div>
-        <label for="conf-password">
-          <span>Confirm Password</span> <span class="req"></span>&#9673;
-        </label>
+        <label for="conf-password"> Confirm Password </label>
         <input type="conf-password" id="conf-password" name="conf-password" />
       </div>
 
       <div>
-        <label for="country">
-          <span>Country</span> <span class="req"></span>&#9673;
-        </label>
-        <input type="text" id="country" name="country" />
-      </div>
-
-      <div>
-        <label for="post-code">
-          <span>Post Code</span> <span class="req"></span>&#9673;
-        </label>
-        <input type="tel" id="post-code" name="post-code" />
+        <label for="post-code"> Post Code </label>
+        <input
+          type="tel"
+          id="post-code"
+          name="post-code"
+          minlength="2"
+          maxlength="2"
+          placeholder="XX" />
         -
-        <input type="tel" id="post-code" name="post-code" />
+        <input
+          type="tel"
+          id="post-code"
+          name="post-code"
+          placeholder="XXX"
+          minlength="3"
+          maxlength="3" />
       </div>
 
       <button type="submit">Submit</button>
