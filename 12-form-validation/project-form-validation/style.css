@@ -27,15 +27,19 @@ label {
 .error {
   border: 2px solid red;
   width: 500px;
-  /* height: 100px; */
-  margin: 7rem auto;
+  height: 50px;
+  margin: 3rem auto;
 }
 
-#form {
+fieldset {
   border: 2px dashed black;
   width: max-content;
   margin: 0 auto;
   padding: 1.5rem;
+}
+
+legend {
+  padding: 0 0.25rem;
 }
 
 label {
