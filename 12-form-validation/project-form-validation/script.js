@@ -1,7 +1,7 @@
 const validation = {
   init: function () {
-    validation.cacheDOM();
-    validation.listeners();
+    this.cacheDOM();
+    this.listeners();
   },
 
   cacheDOM: function () {
@@ -20,20 +20,24 @@ const validation = {
   listeners: function () {
     // if user tabs through and ignores fields
     validation.cacheDOM().forEach((field) => {
-      field.addEventListener("blur", validation.error);
+      field.addEventListener("blur", this.error.bind(this));
+      // remove error highlight when data added
+      // field.addEventListener("input", validation.removeError);
     });
 
     // check field after change event
-    this.emailField.addEventListener("change", validation.testEmail);
+    this.emailField.addEventListener("change", this.testEmail.bind(this));
   },
 
   testEmail: function (event) {
     const regex =
       /^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/;
     if (regex.test(event.target.value)) {
-      console.log("pass");
+      event.target.classList.remove("error-highlight");
+      // remove specific error message
     } else {
-      console.log("fail");
+      event.target.classList.add("error-highlight");
+      // write error message
     }
   },
 
@@ -41,6 +45,13 @@ const validation = {
     // if field empty and blurred
     if (event.type === "blur" && event.target.value === "") {
       event.target.classList.add("error-highlight");
+      // write specific error message
+    }
+  },
+
+  removeError: function (event) {
+    if (event.target.value !== "") {
+      event.target.classList.remove("error-highlight");
     }
   },
 };
