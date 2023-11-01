@@ -33,7 +33,7 @@ label {
 
 fieldset {
   border: 2px dashed black;
-  width: max-content;
+  width: 350px;
   margin: 0 auto;
   padding: 1.5rem;
 }
@@ -63,10 +63,17 @@ input {
   margin-bottom: 1rem;
 }
 
-#post-code {
-  width: 25%;
+.code-input {
+  font-family: inherit;
+  font-size: inherit;
+  width: 3ch;
+  padding: 0.5ch;
   text-align: center;
-  letter-spacing: 2px;
+}
+
+.dash {
+  font-size: 3ch;
+  font-weight: 600;
 }
 
 button {
