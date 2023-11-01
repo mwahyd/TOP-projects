@@ -9,13 +9,17 @@
   </head>
 
   <body>
-    <div class="error"></div>
+    <div class="error" id="error-container"></div>
     <form action="#" id="form">
       <fieldset>
         <legend>Registration</legend>
         <div>
-          <label for="mail"> Email </label>
-          <input type="email" id="email" name="email" />
+          <label for="email"> Email </label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="example@example.com" />
         </div>
         <div>
           <label for="password"> Password </label>
@@ -29,7 +33,11 @@
         </div>
         <div>
           <label for="conf-password"> Confirm Password </label>
-          <input type="conf-password" id="conf-password" name="conf-password" />
+          <input
+            type="password"
+            id="conf-password"
+            name="conf-password"
+            placeholder="re-enter password" />
         </div>
         <div>
           <label for="country"> Country </label>
@@ -42,32 +50,37 @@
             id="one"
             name="one"
             class="code-input"
-            maxlength="1" />
+            maxlength="1"
+            data-id="post" />
           <input
             type="tel"
             id="two"
             name="two"
             class="code-input"
-            maxlength="1" />
+            maxlength="1"
+            data-id="post" />
           <span class="dash">-</span>
           <input
             type="tel"
             id="three"
             name="three"
             class="code-input"
-            maxlength="1" />
+            maxlength="1"
+            data-id="post" />
           <input
             type="tel"
             id="four"
             name="four"
             class="code-input"
-            maxlength="1" />
+            maxlength="1"
+            data-id="post" />
           <input
             type="tel"
             id="five"
             name="five"
             class="code-input"
-            maxlength="1" />
+            maxlength="1"
+            data-id="post" />
         </div>
         <button type="submit">Submit</button>
       </fieldset>
