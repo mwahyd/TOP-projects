@@ -1,6 +1,6 @@
 const validation = {
   init: function () {
-    this.errors = [];
+    this.errorCodes = [];
     this.cacheDOM();
     this.listeners();
   },
@@ -8,7 +8,7 @@ const validation = {
   cacheDOM: function () {
     this.form = document.querySelector("#form");
     this.errorDiv = this.form.previousElementSibling;
-    this.postFields = this.form.querySelectorAll("[data-id]");
+    this.postFields = this.form.querySelector("[data-id]");
 
     return [
       (this.emailField = this.form.querySelector("#email")),
@@ -18,61 +18,65 @@ const validation = {
     ];
   },
 
-  listeners: function () {
-    // if user tabs through and ignores fields
-    validation.cacheDOM().forEach((field) => {
-      field.addEventListener("blur", this.error.bind(this));
-      // remove error highlight when data added
-      // field.addEventListener("input", validation.removeError);
+  render: function () {
+    this.errorDiv.innerHTML = "";
+    this.errorCodes.forEach((errorCode) => {
+      const [field, code] = errorCode.split(/(?=[A-Z])/);
+      const p = document.createElement("p");
+      switch (code) {
+        case "Empty":
+          p.id = errorCode;
+          p.textContent = `\u2757${field} is ${code}`;
+          break;
+      }
+      this.errorDiv.appendChild(p);
     });
-
-    // check field after change event
-    this.emailField.addEventListener("change", this.testEmail.bind(this));
   },
 
-  testEmail: function (event) {
-    const regex =
-      /^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/;
-    if (regex.test(event.target.value)) {
-      this.removeError(event.target, "email-error");
-      // remove specific error message
-    } else {
-      event.target.classList.add("error-highlight");
-      // write error message
-    }
+  listeners: function () {
+    // check for blur, input, change event
+    validation.cacheDOM().forEach((field) => {
+      // raise error if field is empty after focus
+      field.addEventListener("blur", this.error.bind(this));
+      // remove error if field contains data
+      field.addEventListener("blur", this.valid.bind(this));
+    });
+
+    // check for change and test field
   },
 
   error: function (event) {
     // if field empty and blurred
     if (event.type === "blur" && event.target.value === "") {
       event.target.classList.add("error-highlight");
-      // write specific error message
-      this.raiseError(event.target, "field is empty");
+      this.raiseError(event.target, "Empty");
     }
   },
 
-  removeError: function (target, errorCode) {
-    target.classList.remove("error-highlight");
-    this.errors.splice(this.errors.indexOf(errorCode), 1);
-    Array.from(this.errorDiv.children).forEach((element) => {
-      if (element.id === errorCode) this.errorDiv.removeChild(element);
-    });
+  raiseError: function (target, code) {
+    const errorCode = target.id + code;
+    if (this.errorCodes.includes(errorCode)) return;
+    this.errorCodes.push(errorCode);
+    console.log(this.errorCodes);
+    this.render();
   },
 
-  raiseError: function (target, msg) {
-    // if error present in error div ignore
-    const p = document.createElement("p");
-    p.id = target.id + "-error";
-    if (this.errors.includes(p.id)) return;
-
-    this.errors.push(p.id);
-    p.textContent = `\u2757${target.id} ${msg};`;
-    switch (target.id) {
-      case "conf-password":
-        p.textContent = "\u2757" + "confirm password is empty";
-        break;
+  valid: function (event) {
+    // if field contains data
+    if (event.type === "blur" && event.target.value !== "") {
+      event.target.classList.remove("error-highlight");
+      this.removeError(event.target, "Empty");
     }
-    this.errorDiv.appendChild(p);
+  },
+
+  removeError: function (target, code) {
+    const errorCode = target.id + code;
+    console.log("something was entered", errorCode);
+    if (this.errorCodes.includes(errorCode)) {
+      this.errorCodes.splice(this.errorCodes.indexOf(errorCode), 1);
+    }
+    console.log(this.errorCodes);
+    this.render();
   },
 };
 
