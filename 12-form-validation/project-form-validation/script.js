@@ -23,25 +23,30 @@ const validation = {
     this.errorCodes.forEach((errorCode) => {
       const p = document.createElement("p");
       p.id = errorCode;
-      if (errorCode === "passwordLength") {
+      const [field, code] = errorCode.split(/(?=[A-Z])/);
+      if (code === "Length") {
         p.textContent = `\u2757 password shorter than 8 characters`;
         this.errorDiv.appendChild(p);
         return;
-      } else if (errorCode === "passwordUpperCase") {
+      } else if (code === "UpperCase") {
         p.textContent = `\u2757 password must have a capital letter`;
         this.errorDiv.appendChild(p);
         return;
-      } else if (errorCode === "passwordNumber") {
+      } else if (code === "Number") {
         p.textContent = `\u2757 password must have a number`;
         this.errorDiv.appendChild(p);
         return;
-      } else if (errorCode === "passwordSpecial") {
+      } else if (code === "Special") {
         p.textContent = `\u2757 password must have a special character \n\t eg: ! , . # $ ^`;
+        this.errorDiv.appendChild(p);
+        return;
+      } else if (code === "Missmatch") {
+        p.textContent = `\u2757 passwords do not match`;
         this.errorDiv.appendChild(p);
         return;
       }
 
-      const [field, code] = errorCode.split(/(?=[A-Z])/);
+      console.log(code);
       p.textContent = `\u2757${field} field is ${code}`;
       this.errorDiv.appendChild(p);
     });
@@ -59,6 +64,7 @@ const validation = {
     // check for change and test field
     this.emailField.addEventListener("change", this.testEmail.bind(this));
     this.passField.addEventListener("change", this.testPassword.bind(this));
+    this.conPassField.addEventListener("change", this.testConPass.bind(this));
   },
 
   error: function (event, errorType) {
@@ -87,6 +93,10 @@ const validation = {
         case "special":
           event.target.classList.add("error-highlight");
           this.raiseError(event.target, "Special");
+          break;
+        case "missmatch":
+          event.target.classList.add("error-highlight");
+          this.raiseError(event.target, "Missmatch");
           break;
       }
     }
@@ -125,6 +135,10 @@ const validation = {
         case "special":
           event.target.classList.remove("error-highlight");
           this.removeError(event.target, "Special");
+          break;
+        case "missmatch":
+          event.target.classList.remove("error-highlight");
+          this.removeError(event.target, "Missmatch");
           break;
       }
     }
@@ -174,6 +188,12 @@ const validation = {
     !special.test(event.target.value)
       ? this.error(event, "special")
       : this.valid(event, "special");
+  },
+
+  testConPass: function (event) {
+    event.target.value !== this.passField.value
+      ? this.error(event, "missmatch")
+      : this.valid(event, "missmatch");
   },
 };
 
