@@ -15,7 +15,6 @@ html {
 }
 
 body {
-  border: 2px solid red;
   font-size: 1.6rem;
   height: 100vh;
 }
@@ -25,16 +24,22 @@ label {
 }
 
 .error {
-  border: 2px solid red;
-  width: 500px;
-  height: 50px;
-  margin: 3rem auto;
+  background-color: #ffeeee;
+  width: 350px;
+  height: auto;
+  color: #f8312f;
+  white-space: pre-wrap;
+  text-transform: capitalize;
+
+  position: absolute;
+  top: 15rem;
+  right: 8rem;
 }
 
 fieldset {
   border: 2px dashed black;
   width: 350px;
-  margin: 0 auto;
+  margin: 5rem auto;
   padding: 1.5rem;
 }
 
@@ -52,7 +57,7 @@ label::after {
   content: "\25C9  req";
   margin-left: auto;
   margin-right: 2rem;
-  color: maroon;
+  color: #f8312f;
   font-size: 1rem;
 }
 
@@ -92,4 +97,10 @@ button:hover {
 
 ::placeholder {
   color: #ccc;
+}
+
+/* action classes */
+.error-highlight,
+.empty-highlight {
+  border: 2px dashed #f8312f;
 }
