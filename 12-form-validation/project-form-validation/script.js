@@ -23,12 +23,8 @@ const validation = {
     this.errorCodes.forEach((errorCode) => {
       const [field, code] = errorCode.split(/(?=[A-Z])/);
       const p = document.createElement("p");
-      switch (code) {
-        case "Empty":
-          p.id = errorCode;
-          p.textContent = `\u2757${field} is ${code}`;
-          break;
-      }
+      p.id = errorCode;
+      p.textContent = `\u2757${field} field is ${code}`;
       this.errorDiv.appendChild(p);
     });
   },
@@ -43,13 +39,17 @@ const validation = {
     });
 
     // check for change and test field
+    this.emailField.addEventListener("change", this.testEmail.bind(this));
   },
 
   error: function (event) {
     // if field empty and blurred
     if (event.type === "blur" && event.target.value === "") {
-      event.target.classList.add("error-highlight");
+      event.target.classList.add("empty-highlight");
       this.raiseError(event.target, "Empty");
+    } else if (event.type === "change") {
+      event.target.classList.add("error-highlight");
+      this.raiseError(event.target, "Invalid");
     }
   },
 
@@ -64,8 +64,13 @@ const validation = {
   valid: function (event) {
     // if field contains data
     if (event.type === "blur" && event.target.value !== "") {
-      event.target.classList.remove("error-highlight");
+      // - creates bug which does not let error highlight to be added when change event
+      event.target.classList.remove("empty-highlight");
       this.removeError(event.target, "Empty");
+    } else if (event.type === "change") {
+      event.target.classList.remove("error-highlight");
+      this.removeError(event.target, "Invalid");
+      console.log(event.target);
     }
   },
 
@@ -77,6 +82,16 @@ const validation = {
     }
     console.log(this.errorCodes);
     this.render();
+  },
+
+  testEmail: function (event) {
+    const regex =
+      /^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/;
+    if (regex.test(event.target.value)) {
+      this.valid(event);
+    } else {
+      this.error(event);
+    }
   },
 };
 
