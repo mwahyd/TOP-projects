@@ -34,7 +34,7 @@ const validation = {
     const regex =
       /^[a-z0-9][a-z0-9-_\.]+@([a-z]|[a-z0-9]?[a-z0-9-]+[a-z0-9])\.[a-z0-9]{2,10}(?:\.[a-z]{2,10})?$/;
     if (regex.test(event.target.value)) {
-      event.target.classList.remove("error-highlight");
+      this.removeError(event.target, "email-error");
       // remove specific error message
     } else {
       event.target.classList.add("error-highlight");
@@ -51,10 +51,12 @@ const validation = {
     }
   },
 
-  removeError: function (event) {
-    if (event.target.value !== "") {
-      event.target.classList.remove("error-highlight");
-    }
+  removeError: function (target, errorCode) {
+    target.classList.remove("error-highlight");
+    this.errors.splice(this.errors.indexOf(errorCode), 1);
+    Array.from(this.errorDiv.children).forEach((element) => {
+      if (element.id === errorCode) this.errorDiv.removeChild(element);
+    });
   },
 
   raiseError: function (target, msg) {
