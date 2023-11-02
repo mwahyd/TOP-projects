@@ -23,11 +23,24 @@ const validation = {
     this.errorCodes.forEach((errorCode) => {
       const p = document.createElement("p");
       p.id = errorCode;
-      if (errorCode === "passwordPassLength") {
+      if (errorCode === "passwordLength") {
         p.textContent = `\u2757 password shorter than 8 characters`;
         this.errorDiv.appendChild(p);
         return;
+      } else if (errorCode === "passwordUpperCase") {
+        p.textContent = `\u2757 password must have a capital letter`;
+        this.errorDiv.appendChild(p);
+        return;
+      } else if (errorCode === "passwordNumber") {
+        p.textContent = `\u2757 password must have a number`;
+        this.errorDiv.appendChild(p);
+        return;
+      } else if (errorCode === "passwordSpecial") {
+        p.textContent = `\u2757 password must have a special character \n\t eg: ! , . # $ ^`;
+        this.errorDiv.appendChild(p);
+        return;
       }
+
       const [field, code] = errorCode.split(/(?=[A-Z])/);
       p.textContent = `\u2757${field} field is ${code}`;
       this.errorDiv.appendChild(p);
@@ -60,9 +73,21 @@ const validation = {
           this.raiseError(event.target, "Invalid");
           break;
         case "passLength":
-          console.log("pass length error");
           event.target.classList.add("error-highlight");
-          this.raiseError(event.target, "PassLength");
+          this.raiseError(event.target, "Length");
+          break;
+        case "upperCase":
+          event.target.classList.add("error-highlight");
+          this.raiseError(event.target, "UpperCase");
+          break;
+        case "number":
+          event.target.classList.add("error-highlight");
+          this.raiseError(event.target, "Number");
+          break;
+        case "special":
+          event.target.classList.add("error-highlight");
+          this.raiseError(event.target, "Special");
+          break;
       }
     }
   },
@@ -88,7 +113,19 @@ const validation = {
           break;
         case "passLength":
           event.target.classList.remove("error-highlight");
-          this.removeError(event.target, "PassLength");
+          this.removeError(event.target, "Length");
+        case "upperCase":
+          event.target.classList.remove("error-highlight");
+          this.removeError(event.target, "UpperCase");
+          break;
+        case "number":
+          event.target.classList.remove("error-highlight");
+          this.removeError(event.target, "Number");
+          break;
+        case "special":
+          event.target.classList.remove("error-highlight");
+          this.removeError(event.target, "Special");
+          break;
       }
     }
   },
@@ -115,14 +152,28 @@ const validation = {
 
   testPassword: function (event) {
     const uCase = /[A-Z]{1,}/;
-    const lCase = /[a-z]/;
     const num = /[0-9]{1,}/;
     const special = /[\W]{1,}/;
-    if (event.target.value.length < 8) {
-      this.error(event, "passLength");
-    } else {
-      this.valid(event, "passLength");
-    }
+
+    // password length
+    event.target.value.length < 8
+      ? this.error(event, "passLength")
+      : this.valid(event, "passLength");
+
+    // password upper case test
+    !uCase.test(event.target.value)
+      ? this.error(event, "upperCase")
+      : this.valid(event, "upperCase");
+
+    // password number
+    !num.test(event.target.value)
+      ? this.error(event, "number")
+      : this.valid(event, "number");
+
+    // special character
+    !special.test(event.target.value)
+      ? this.error(event, "special")
+      : this.valid(event, "special");
   },
 };
 
