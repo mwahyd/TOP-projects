@@ -16,6 +16,7 @@
         <div>
           <label for="email"> Email </label>
           <input
+            data-required
             type="email"
             id="email"
             name="email"
@@ -24,6 +25,7 @@
         <div>
           <label for="password"> Password </label>
           <input
+            data-required
             type="password"
             id="password"
             name="password"
@@ -34,6 +36,7 @@
         <div>
           <label for="conf-password"> Confirm Password </label>
           <input
+            data-required
             type="password"
             id="conf-password"
             name="conf-password"
@@ -41,46 +44,41 @@
         </div>
         <div>
           <label for="country"> Country </label>
-          <input type="text" id="country" name="country" />
+          <input data-required type="text" id="country" name="country" />
         </div>
-        <div>
+        <div data-post>
           <label for="post-code"> Post Code </label>
           <input
-            type="tel"
+            type="text"
             id="one"
             name="one"
             class="code-input"
-            maxlength="1"
-            data-id="post" />
+            maxlength="1" />
           <input
-            type="tel"
+            type="text"
             id="two"
             name="two"
             class="code-input"
-            maxlength="1"
-            data-id="post" />
+            maxlength="1" />
           <span class="dash">-</span>
           <input
-            type="tel"
+            type="text"
             id="three"
             name="three"
             class="code-input"
-            maxlength="1"
-            data-id="post" />
+            maxlength="1" />
           <input
-            type="tel"
+            type="text"
             id="four"
             name="four"
             class="code-input"
-            maxlength="1"
-            data-id="post" />
+            maxlength="1" />
           <input
-            type="tel"
+            type="text"
             id="five"
             name="five"
             class="code-input"
-            maxlength="1"
-            data-id="post" />
+            maxlength="1" />
         </div>
         <button type="submit">Submit</button>
       </fieldset>
