@@ -8,13 +8,14 @@ const validation = {
   cacheDOM: function () {
     this.form = document.querySelector("#form");
     this.errorDiv = this.form.previousElementSibling;
-    this.postFields = this.form.querySelector("[data-id]");
+    // this.postFields = this.form.querySelectorAll("[data-id]");
 
     return [
       (this.emailField = this.form.querySelector("#email")),
       (this.passField = this.form.querySelector("#password")),
       (this.conPassField = this.form.querySelector("#conf-password")),
       (this.countryField = this.form.querySelector("#country")),
+      (this.postDiv = this.form.querySelector("[data-post]")),
     ];
   },
 
@@ -65,6 +66,7 @@ const validation = {
     this.emailField.addEventListener("change", this.testEmail.bind(this));
     this.passField.addEventListener("change", this.testPassword.bind(this));
     this.conPassField.addEventListener("change", this.testConPass.bind(this));
+    this.postDiv.addEventListener("click", this.testPostCode.bind(this));
   },
 
   error: function (event, errorType) {
@@ -194,6 +196,24 @@ const validation = {
     event.target.value !== this.passField.value
       ? this.error(event, "missmatch")
       : this.valid(event, "missmatch");
+  },
+
+  testPostCode: function (event) {
+    const input = event.target.matches("input");
+    if (!input) return;
+
+    const codes = this.form.querySelectorAll(".code-input");
+    codes.forEach((code, index) => {
+      code.addEventListener("keyup", (event) => {
+        if (event.key === "Backspace" && index > 0) {
+          console.log(event.key);
+          codes[index - 1].focus();
+        }
+        if (event.target.value !== "" && index < 4) {
+          codes[index + 1].focus();
+        }
+      });
+    });
   },
 };
 
