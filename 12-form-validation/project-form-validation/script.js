@@ -1,5 +1,6 @@
 const validation = {
   init: function () {
+    this.errors = [];
     this.cacheDOM();
     this.listeners();
   },
@@ -46,6 +47,7 @@ const validation = {
     if (event.type === "blur" && event.target.value === "") {
       event.target.classList.add("error-highlight");
       // write specific error message
+      this.raiseError(event.target, "field is empty");
     }
   },
 
@@ -53,6 +55,22 @@ const validation = {
     if (event.target.value !== "") {
       event.target.classList.remove("error-highlight");
     }
+  },
+
+  raiseError: function (target, msg) {
+    // if error present in error div ignore
+    const p = document.createElement("p");
+    p.id = target.id + "-error";
+    if (this.errors.includes(p.id)) return;
+
+    this.errors.push(p.id);
+    p.textContent = `\u2757${target.id} ${msg};`;
+    switch (target.id) {
+      case "conf-password":
+        p.textContent = "\u2757" + "confirm password is empty";
+        break;
+    }
+    this.errorDiv.appendChild(p);
   },
 };
 
