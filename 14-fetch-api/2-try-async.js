@@ -22,6 +22,12 @@ export async function getData() {
 Async is a keyword prefixing a function which informs it that its asynchronous.
 * Await is a keyword that tells the job to WAIT until the task is COMPLETE
 It will not assign the result to the variable until after the response comes back
+
+* When a function is declared with ASYNC it automatically RETURNS a promise.
+... returning in an async function is the same as resolving a promise. 
+... likewise, throwing an error will reject the promise.
+
+? An important thing to understand is ASYNC functions are just syntactical sugar for PROMISES.
 */
 
 // ! NOTE: this method provides ZERO error handling intrinsically
