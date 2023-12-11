@@ -2,7 +2,7 @@
 Warmup: Fibonacci
 The Fibonacci Sequence, which sums each number with the one before it.
 
-> Assignment 1:
+> Assignment 1: Fibonacci Sequence
 1. Using iteration, write a function "fibs" which takes a number and returns an array containing that many
    numbers from the Fibonacci sequence.
 
@@ -34,3 +34,28 @@ function fibsRec(n) {
 }
 
 console.log(fibsRec(8)); //  [0, 1, 1, 2, 3, 5, 8, 13]
+
+/* 
+> Assignment 2: MergeSort
+*/
+
+function mergeSort(array) {
+  // if length of array is 1 return array
+  // if array is empty return empty array
+  // base case - splitting the array into n sub arrays ?
+  if (array.length <= 1) {
+    return array;
+  }
+
+  // recursive case - find mid and call merge sort
+  const mid = Math.floor((1 + array.length) / 2);
+  console.log(mid);
+  const leftArray = array.slice(0, mid);
+  const rightArray = array.slice(mid, array.length);
+  const sortedLeft = mergeSort(leftArray);
+  const sortedRight = mergeSort(rightArray);
+  console.log(sortedLeft);
+  console.log(sortedRight);
+}
+
+console.log(mergeSort([3, 1, 8, 5]));
