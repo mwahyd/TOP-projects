@@ -19,4 +19,18 @@ function fibs(n) {
   return numbers;
 }
 
-console.log(fibs(8));
+console.log(fibs(8)); //  [0, 1, 1, 2, 3, 5, 8, 13]
+
+function fibsRec(n) {
+  // base case
+  if (n < 0) return [];
+  else if (n === 1) return [0];
+  else if (n === 2) return [0, 1];
+
+  // recursive case - get the array (reduce & conquer)
+  const fibList = fibsRec(n - 1);
+  fibList.push(fibList.at(-1) + fibList.at(-2));
+  return fibList;
+}
+
+console.log(fibsRec(8)); //  [0, 1, 1, 2, 3, 5, 8, 13]
