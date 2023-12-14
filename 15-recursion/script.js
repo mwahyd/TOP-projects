@@ -25,10 +25,12 @@ function fibsRec(n) {
   // base case
   if (n < 0) return [];
   else if (n === 1) return [0];
+  // return the array where the sequence will be appended to
   else if (n === 2) return [0, 1];
 
   // recursive case - get the array (reduce & conquer)
   const fibList = fibsRec(n - 1);
+  // add the last two digits in each recursion and append
   fibList.push(fibList.at(-1) + fibList.at(-2));
   return fibList;
 }
@@ -49,13 +51,31 @@ function mergeSort(array) {
 
   // recursive case - find mid and call merge sort
   const mid = Math.floor((1 + array.length) / 2);
-  console.log(mid);
   const leftArray = array.slice(0, mid);
   const rightArray = array.slice(mid, array.length);
   const sortedLeft = mergeSort(leftArray);
   const sortedRight = mergeSort(rightArray);
-  console.log(sortedLeft);
-  console.log(sortedRight);
+  return merge(sortedLeft, sortedRight);
 }
 
-console.log(mergeSort([3, 1, 8, 5]));
+function merge(left, right) {
+  const sortedArray = [];
+  let i = 0;
+  let j = 0;
+
+  while (i < left.length && j < right.length) {
+    if (left[i] < right[j]) {
+      sortedArray.push(left[i]);
+      i++;
+    } else {
+      sortedArray.push(right[j]);
+      j++;
+    }
+  }
+  sortedArray.push(...left.slice([i]));
+  sortedArray.push(...right.slice([j]));
+
+  return sortedArray;
+}
+
+console.log(mergeSort([9, 4, 3, 2, 1, 6]));
