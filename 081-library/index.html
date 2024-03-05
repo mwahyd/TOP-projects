@@ -17,6 +17,10 @@
 
       <main>
         <form class="modal hidden" id="form">
+          <div class="toolbar">
+            <h2>Book</h2>
+            <button id="close" class="close-btn">x</button>
+          </div>
           <label for="title">Title</label>
           <input type="text" id="title" name="title" />
           <label for="author">Author</label>
@@ -25,8 +29,9 @@
           <input type="number" id="pages" name="pages" min="1" max="9999" />
           <label for="read">Read</label>
           <input type="checkbox" id="read" name="read" />
-          <button class="submit-btn" id="submit">Submit</button>
+          <input type="submit" class="submit-btn" id="submit" />
         </form>
+        <div class="blur hidden" id="layer"></div>
       </main>
     </div>
   </body>
