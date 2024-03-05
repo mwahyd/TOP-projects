@@ -7,14 +7,17 @@ const library = [];
 // query selectors
 const docx = document.querySelector("body");
 const addBtn = docx.querySelector("#add-btn");
-const form = docx.querySelector("#form");
 const submitBtn = docx.querySelector("#submit");
+const closeBtn = docx.querySelector("#close");
+const form = docx.querySelector("#form");
+const layer = docx.querySelector("#layer");
 
 // handler functions
 function onAddBtnClick(event) {
   console.log(event.target);
   event.target.disabled = true;
   form.classList.remove("hidden");
+  layer.classList.remove("hidden");
 }
 
 function submitForm(event) {
@@ -52,8 +55,11 @@ function resetForm() {
   author.value = "";
   pages.value = "";
   read.checked = "";
+  form.classList.add("hidden");
+  layer.classList.add("hidden");
 }
 
 // event listeners
 addBtn.addEventListener("click", onAddBtnClick);
 submitBtn.addEventListener("click", submitForm);
+closeBtn.addEventListener("click", resetForm);
