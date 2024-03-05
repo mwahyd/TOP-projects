@@ -2,7 +2,9 @@
 // collect user input data from form
 // create individual book objects and add to the list
 
-const library = [];
+const library = [
+  { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
+];
 
 // query selectors
 const docx = document.querySelector("body");
@@ -25,6 +27,7 @@ function submitForm(event) {
   const book = getUserInput();
   addBookToLibrary(book);
   resetForm();
+  displayBooks();
 }
 
 // support functions
@@ -37,16 +40,16 @@ function getUserInput() {
   return new Book(title.value, author.value, pages.value, read.checked);
 }
 
-function Book(title, author, pages, isRead) {
+function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
   this.pages = pages;
-  this.isRead = isRead;
+  read === false ? (read = "no") : (read = "yes");
+  this.read = read;
 }
 
 function addBookToLibrary(obj) {
   library.push(obj);
-  console.log(library);
 }
 
 function resetForm() {
@@ -59,7 +62,37 @@ function resetForm() {
   layer.classList.add("hidden");
 }
 
+// create a card for each book
+function displayBooks() {
+  if (library.length === 0) return;
+
+  const cardsContainer = docx.querySelector("#cards");
+  cardsContainer.innerHTML = "";
+
+  library.forEach((book) => {
+    const card = createCard(book);
+    cardsContainer.appendChild(card);
+  });
+}
+
+function createCard(book) {
+  const card = document.createElement("div");
+  const title = document.createElement("p");
+  const author = document.createElement("p");
+  const pages = document.createElement("p");
+  const read = document.createElement("p");
+
+  title.textContent = book.title;
+  author.textContent = book.author;
+  pages.textContent = book.pages;
+  read.textContent = book.read;
+
+  card.append(title, author, pages, read);
+  return card;
+}
+
 // event listeners
+document.addEventListener("DOMContentLoaded", displayBooks);
 addBtn.addEventListener("click", onAddBtnClick);
 submitBtn.addEventListener("click", submitForm);
 closeBtn.addEventListener("click", resetForm);
