@@ -28,16 +28,16 @@ body {
   height: max(500px, 70%);
   width: max(500px, 70%);
   margin: 2rem auto;
-  display: flex;
-  justify-content: center;
 }
 
 header {
   display: flex;
   flex-direction: column;
+  align-items: center;
 }
 
 h1 {
+  text-align: center;
   font-size: clamp(2rem, 50vw, 3rem);
 }
 
@@ -47,6 +47,7 @@ h1 {
   border: 0;
   transition: 0.2s;
   transform: rotate(0deg);
+  width: max-content;
 }
 
 .add:hover {
@@ -54,6 +55,8 @@ h1 {
   transition: 0.2s;
   transform: rotate(90deg);
 }
+
+/* form */
 
 #form {
   padding: 2rem;
@@ -110,6 +113,42 @@ label {
   font-size: 2.2rem;
   cursor: pointer;
 }
+
+/* cards container */
+
+.cards {
+  /* border: 2px solid red; */
+  padding: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+}
+
+.card {
+  /* border: 2px solid red; */
+  border: 5px solid #fff;
+  box-shadow: 0 0 2rem rgba(0, 0, 0, 0.15);
+  width: max(150px, 30%);
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.card > div {
+  display: flex;
+  gap: 0.5rem;
+  font-size: clamp(1rem, 50vw, 1.19rem);
+}
+
+.card > div > p {
+  flex: 1;
+}
+
+.card > div > span {
+  flex: 3;
+}
+
+/*  */
 
 .hidden {
   display: none;
