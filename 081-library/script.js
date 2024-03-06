@@ -3,7 +3,9 @@
 // create individual book objects and add to the list
 
 const library = [
-  { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
+  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
+  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
+  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
 ];
 
 // query selectors
@@ -13,10 +15,11 @@ const submitBtn = docx.querySelector("#submit");
 const closeBtn = docx.querySelector("#close");
 const form = docx.querySelector("#form");
 const layer = docx.querySelector("#layer");
+const cardsContainer = docx.querySelector("#cards");
 
 // handler functions
 function onAddBtnClick(event) {
-  console.log(event.target);
+  // console.log(event.target);
   event.target.disabled = true;
   form.classList.remove("hidden");
   layer.classList.remove("hidden");
@@ -27,6 +30,13 @@ function submitForm(event) {
   const book = getUserInput();
   addBookToLibrary(book);
   resetForm();
+  displayBooks();
+}
+
+function onCardCloseBtnClicked(event) {
+  if (event.target.nodeName !== "BUTTON") return;
+  const cardIndex = event.target.parentNode.getAttribute("data-index");
+  removeCard(cardIndex);
   displayBooks();
 }
 
@@ -64,31 +74,38 @@ function resetForm() {
 
 // create a card for each book
 function displayBooks() {
-  if (library.length === 0) return;
-
   const cardsContainer = docx.querySelector("#cards");
   cardsContainer.innerHTML = "";
 
-  library.forEach((book) => {
+  library.forEach((book, index) => {
     const card = createCard(book);
+    card.setAttribute("data-index", index);
     cardsContainer.appendChild(card);
   });
 }
 
 function createCard(book) {
   const card = document.createElement("div");
-  const title = document.createElement("p");
-  const author = document.createElement("p");
-  const pages = document.createElement("p");
-  const read = document.createElement("p");
+  const title = document.createElement("div");
+  const author = document.createElement("div");
+  const pages = document.createElement("div");
+  const read = document.createElement("div");
+  const remove = document.createElement("button");
 
-  title.textContent = book.title;
-  author.textContent = book.author;
-  pages.textContent = book.pages;
-  read.textContent = book.read;
+  title.innerHTML = `<p>Title</p> <span>${book.title}</span>`;
+  author.innerHTML = `<p>Author</p> <span>${book.author}</span>`;
+  pages.innerHTML = `<p>Pages</p> <span>${book.pages}</span>`;
+  read.innerHTML = `<p>Read</p> <span>${book.read}</span>`;
+  remove.textContent = "x";
+  remove.classList.add("close-btn", "remove");
 
-  card.append(title, author, pages, read);
+  card.classList.add("card");
+  card.append(title, author, pages, read, remove);
   return card;
+}
+
+function removeCard(index) {
+  library.splice(index, 1);
 }
 
 // event listeners
@@ -96,3 +113,4 @@ document.addEventListener("DOMContentLoaded", displayBooks);
 addBtn.addEventListener("click", onAddBtnClick);
 submitBtn.addEventListener("click", submitForm);
 closeBtn.addEventListener("click", resetForm);
+cardsContainer.addEventListener("click", onCardCloseBtnClicked);
