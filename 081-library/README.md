@@ -1,6 +1,6 @@
 # Project: Reminders
 
-[Live demo](https://mwahyd.github.io//)
+[Live demo](https://mwahyd.github.io/TOP-projects/081-library/index.html)
 
 Objectives:
 
@@ -13,5 +13,3 @@ Tools
 - javascript
 - css
 - html
-
-![Screenshot!](screenshot.png)
