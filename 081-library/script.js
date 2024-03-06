@@ -3,9 +3,12 @@
 // create individual book objects and add to the list
 
 const library = [
-  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
-  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
-  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "no" },
+  // { title: "whats", author: "boom", pages: 453, read: "no" },
+  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "yes" },
+  // { title: "get hard", author: "nut", pages: 453, read: "no" },
+  // { title: "whats", author: "boom", pages: 453, read: "no" },
+  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "yes" },
+  // { title: "get hard", author: "nut", pages: 453, read: "no" },
 ];
 
 // query selectors
@@ -19,7 +22,6 @@ const cardsContainer = docx.querySelector("#cards");
 
 // handler functions
 function onAddBtnClick(event) {
-  // console.log(event.target);
   event.target.disabled = true;
   form.classList.remove("hidden");
   layer.classList.remove("hidden");
@@ -33,11 +35,14 @@ function submitForm(event) {
   displayBooks();
 }
 
-function onCardCloseBtnClicked(event) {
-  if (event.target.nodeName !== "BUTTON") return;
-  const cardIndex = event.target.parentNode.getAttribute("data-index");
-  removeCard(cardIndex);
-  displayBooks();
+function onCardClicked(event) {
+  if (event.target.nodeName === "BUTTON") {
+    const cardIndex = event.target.parentNode.getAttribute("data-index");
+    removeCard(cardIndex);
+    displayBooks();
+  } else if (event.target.className === "isRead") {
+    updateReadStatus(event);
+  } else return;
 }
 
 // support functions
@@ -95,7 +100,7 @@ function createCard(book) {
   title.innerHTML = `<p>Title</p> <span>${book.title}</span>`;
   author.innerHTML = `<p>Author</p> <span>${book.author}</span>`;
   pages.innerHTML = `<p>Pages</p> <span>${book.pages}</span>`;
-  read.innerHTML = `<p>Read</p> <span>${book.read}</span>`;
+  read.innerHTML = `<p>Read</p> <span class="isRead">${book.read}</span>`;
   remove.textContent = "x";
   remove.classList.add("close-btn", "remove");
 
@@ -108,9 +113,18 @@ function removeCard(index) {
   library.splice(index, 1);
 }
 
+function updateReadStatus(event) {
+  let value = event.target.textContent;
+  const cardIndex =
+    event.target.parentNode.parentNode.getAttribute("data-index");
+  value === "no" ? (value = "yes") : (value = "no");
+  library[cardIndex].read = value;
+  displayBooks();
+}
+
 // event listeners
 document.addEventListener("DOMContentLoaded", displayBooks);
 addBtn.addEventListener("click", onAddBtnClick);
 submitBtn.addEventListener("click", submitForm);
 closeBtn.addEventListener("click", resetForm);
-cardsContainer.addEventListener("click", onCardCloseBtnClicked);
+cardsContainer.addEventListener("click", onCardClicked);
