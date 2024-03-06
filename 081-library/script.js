@@ -18,6 +18,9 @@ function onAddBtnClick(event) {
 
 function submitForm(event) {
   event.preventDefault();
+  const response = validateFields(event);
+  if (!response) return;
+
   const book = getUserInput();
   addBookToLibrary(book);
   resetForm();
@@ -35,18 +38,37 @@ function onCardClicked(event) {
 }
 
 // support functions
+function validateFields(event) {
+  if (event.target[1].value.trim().toLowerCase() === "") {
+    alert("The 'Title' field is empty");
+    event.target[1].value = "";
+    return false;
+  } else if (event.target[2].value.trim().toLowerCase() === "") {
+    alert("The 'Author' field is empty");
+    event.target[2].value = "";
+    return false;
+  }
+  return true;
+}
+
 function getUserInput() {
   const title = docx.querySelector("#title");
   const author = docx.querySelector("#author");
   const pages = docx.querySelector("#pages");
   const read = docx.querySelector("#read");
 
-  return new Book(title.value, author.value, pages.value, read.checked);
+  return new Book(
+    title.value.trim().toLowerCase(),
+    author.value.trim().toLowerCase(),
+    pages.value,
+    read.checked
+  );
 }
 
 function Book(title, author, pages, read) {
   this.title = title;
   this.author = author;
+  if (pages === "") pages = 0;
   this.pages = pages;
   read === false ? (read = "no") : (read = "yes");
   this.read = read;
@@ -114,6 +136,6 @@ function updateReadStatus(event) {
 // event listeners
 document.addEventListener("DOMContentLoaded", displayBooks);
 addBtn.addEventListener("click", onAddBtnClick);
-submitBtn.addEventListener("click", submitForm);
+form.addEventListener("submit", submitForm);
 closeBtn.addEventListener("click", resetForm);
 cardsContainer.addEventListener("click", onCardClicked);
