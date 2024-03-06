@@ -78,7 +78,8 @@ function addBookToLibrary(obj) {
   library.push(obj);
 }
 
-function resetForm() {
+function resetForm(event = null) {
+  if (event) event.preventDefault();
   addBtn.disabled = false;
   title.value = "";
   author.value = "";
