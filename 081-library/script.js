@@ -1,15 +1,4 @@
-// an array to store all the Book objects
-// collect user input data from form
-// create individual book objects and add to the list
-
-const library = [
-  // { title: "whats", author: "boom", pages: 453, read: "no" },
-  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "yes" },
-  // { title: "get hard", author: "nut", pages: 453, read: "no" },
-  // { title: "whats", author: "boom", pages: 453, read: "no" },
-  // { title: "mocking bird", author: "hf sinker", pages: 453, read: "yes" },
-  // { title: "get hard", author: "nut", pages: 453, read: "no" },
-];
+const library = [];
 
 // query selectors
 const docx = document.querySelector("body");
