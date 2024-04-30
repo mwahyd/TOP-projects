@@ -17,39 +17,53 @@ const DOM = (function () {
         _selectPlayer2(event.target);
         break;
       case "comp-btn":
-        _selectComputer(event.target);
+        // _selectComputer(event.target);
+        _addClassList(event.target, "selected");
+        _removeClassList(event.target, "hover");
         break;
     }
-    // if computer select computer.
-    // if player 2 deselect computer
-
-    // support functions
-    function _selectPlayer1(button) {
-      _displayForm(button, "p1");
+  }
+  function _closeForm(event) {
+    event.preventDefault();
+    const form = playersContainer.querySelector("#p2 .form");
+    const p2Btn = playersContainer.querySelector("#p2-btn");
+    const compBtn = playersContainer.querySelector("#comp-btn");
+    _addClassList(form, "hidden");
+    _removeClassList(p2Btn, "hidden");
+    _removeClassList(compBtn, "hidden");
+  }
+  // support functions
+  function _selectPlayer1(button) {
+    _displayForm(button, "p1");
+  }
+  function _selectPlayer2(button) {
+    const computer = playersContainer.querySelector(".selected");
+    if (computer) {
+      _addClassList(computer, "hover");
+      _removeClassList(computer, "selected");
     }
-    function _selectPlayer2(button) {
-      const computer = playersContainer.querySelector(".selected");
-      if (computer) {
-        _resetComputer(computer);
-      }
-      _displayForm(button, "p2");
-      // ? player 2 display form
-    }
-    function _selectComputer(button) {
-      button.classList.add("selected");
-      button.classList.remove("hover");
-    }
-    function _resetComputer(computerBtn) {
-      computerBtn.classList.remove("selected");
-      computerBtn.classList.add("hover");
-    }
-    function _displayForm(button, playerID) {
-      const form = playersContainer.querySelector(`#${playerID} form`);
-      form.classList.toggle("hidden");
-      button.classList.toggle("hidden");
-      if (playerID === "p2") {
-        button.nextElementSibling.classList.add("hidden");
-      }
+    _displayForm(button, "p2");
+    const formClose = playersContainer.querySelector("#p2 .form .close");
+    formClose.addEventListener("click", _closeForm);
+  }
+  function _displayForm(button, playerID) {
+    const form = playersContainer.querySelector(`#${playerID} form`);
+    form.classList.toggle("hidden");
+    button.classList.toggle("hidden");
+    if (playerID === "p2") {
+      // button.nextElementSibling.classList.add("hidden");
+      _addClassList(button.nextElementSibling, "hidden");
     }
   }
+  function _addClassList(element, ...args) {
+    for (const arg of args) {
+      element.classList.add(arg);
+    }
+  }
+  function _removeClassList(element, ...args) {
+    for (const arg of args) {
+      element.classList.remove(arg);
+    }
+  }
+  function _removeListener(element, event) {}
 })();
