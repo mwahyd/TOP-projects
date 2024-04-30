@@ -19,8 +19,12 @@ body {
   font-size: 1.4rem;
 }
 
+button {
+  cursor: pointer;
+}
+
 #container {
-  border: 2px solid red;
+  /* border: 2px solid red; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -34,11 +38,13 @@ body {
 
 /* header */
 header {
-  border: 2px solid red;
+  /* border: 2px solid red; */
 }
 
-.title.main {
+.title.main,
+footer {
   text-align: center;
+  padding: 2rem;
 }
 
 /* menu */
@@ -66,11 +72,11 @@ header {
 .option {
   padding: 2rem;
   background-color: transparent;
-  cursor: pointer;
 }
 
-.option:hover {
-  background-color: #f3f3f3;
+#p1,
+#p2 {
+  position: relative;
 }
 
 #p2 {
@@ -80,16 +86,19 @@ header {
   gap: 3rem;
 }
 
-.vs {
+#vs {
   font-size: 2.5rem;
   font-weight: bold;
   letter-spacing: 1.3px;
+  position: absolute;
+  left: 21rem;
 }
 
 .start {
-  position: relative;
-  top: 2rem;
-  padding: 0.5rem;
+  position: absolute;
+  top: 22rem;
+  right: 6.5rem;
+  padding: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   font-weight: bold;
@@ -97,14 +106,75 @@ header {
   margin: 0 auto;
   background-color: orange;
   border: none;
-  cursor: pointer;
 }
 
 .start:hover {
   background-color: rgb(254, 177, 34);
 }
 
+/* player forms */
+input[class="player-name"] {
+  width: 13ch;
+  padding: 0.6rem 0.9rem;
+  font-size: 1.2rem;
+  letter-spacing: 1.5px;
+}
+
+.form {
+  border: 2px solid black;
+  padding: 1.5rem;
+  width: 16rem;
+}
+
+#p1 .form {
+  position: absolute;
+  top: -7.5rem;
+  left: -3rem;
+}
+
+#p2 .form {
+  position: absolute;
+  top: -7.5rem;
+  right: -3rem;
+}
+
+.form h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.form .group {
+  /* border: 2px solid red; */
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.5rem;
+}
+
+.markers button {
+  padding: 0.5rem 1rem;
+  font-size: 2rem;
+  background-color: transparent;
+  border: 1px solid #666;
+  /* border: 2px solid blue; */
+}
+
+.save-btn {
+}
+
 /* footer */
 footer {
-  border: 2px solid brown;
+  /* border: 2px solid brown; */
+}
+
+/* action classes */
+.selected {
+  background-color: orange;
+}
+
+.hover:hover {
+  background-color: #f3f3f3;
+}
+
+.hidden {
+  display: none;
 }
