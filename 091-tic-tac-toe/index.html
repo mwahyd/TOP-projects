@@ -18,14 +18,52 @@
         <main id="content">
           <div class="players">
             <div id="p1">
-              <button class="p1-btn option">Player 1</button>
+              <button id="p1-btn" class="option hover">Player 1</button>
+
+              <form action="#" class="form hidden">
+                <h2>Player 1</h2>
+
+                <input
+                  type="text"
+                  class="player-name"
+                  placeholder="name"
+                  maxlength="8" />
+
+                <div class="group">
+                  <div class="markers">
+                    <button class="p1-marker" id="p1-marker1">x</button>
+                    <button class="p1-marker" id="p1-marker2">&spades;</button>
+                  </div>
+
+                  <button class="save-btn" id="p1-save">save</button>
+                </div>
+              </form>
             </div>
 
-            <div class="vs">Vs</div>
+            <div id="vs">Vs</div>
 
             <div id="p2">
-              <button class="p2-btn option">Player 2</button>
-              <button class="comp-btn option">Computer</button>
+              <button id="p2-btn" class="option hover">Player 2</button>
+              <button id="comp-btn" class="option hover">Computer</button>
+
+              <form action="#" class="form hidden">
+                <h2>Player 2</h2>
+
+                <input
+                  type="text"
+                  class="player-name"
+                  placeholder="name"
+                  maxlength="8" />
+
+                <div class="group">
+                  <div class="markers">
+                    <button class="p1-marker" id="p1-marker1">o</button>
+                    <button class="p1-marker" id="p1-marker2">&diams;</button>
+                  </div>
+
+                  <button class="save-btn" id="p1-save">save</button>
+                </div>
+              </form>
             </div>
           </div>
 
@@ -33,7 +71,10 @@
         </main>
       </div>
 
-      <footer id="bottom">HELLO</footer>
+      <footer id="bottom">
+        Created by
+        <a href="https://github.com/mwahyd" target="_blank">mwahyd</a> 2024
+      </footer>
     </div>
   </body>
 </html>
