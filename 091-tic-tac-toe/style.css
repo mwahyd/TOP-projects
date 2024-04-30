@@ -69,7 +69,8 @@ footer {
   align-items: center;
 }
 
-.option {
+.option,
+.close {
   padding: 2rem;
   background-color: transparent;
 }
@@ -136,6 +137,16 @@ input[class="player-name"] {
   position: absolute;
   top: -7.5rem;
   right: -3rem;
+}
+
+#p2 .form .close {
+  /* border: 2px solid red; */
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0.1rem 0.4rem;
+  border-right: none;
+  border-top: none;
 }
 
 .form h2 {
