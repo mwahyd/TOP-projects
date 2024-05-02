@@ -29,23 +29,31 @@ const menu = (function () {
     const form = players.querySelector("#p2 .form");
     const p2Btn = players.querySelector("#p2-btn");
     const compBtn = players.querySelector("#comp-btn");
+    const selectedMarker = players.querySelector(`.marker.p2.selected`);
+    const p2Save = players.querySelector("#p2 .saved");
+    players.querySelector("#p2 input").value = "";
     _addClassList(form, "hidden");
     _removeClassList(p2Btn, "hidden");
     _removeClassList(compBtn, "hidden");
+    p2Save && _removeClassList(p2Save, "saved");
+    selectedMarker && _removeClassList(selectedMarker, "selected");
+    playerInfo["p2"] = undefined;
+    playerInfo["p2M"] = undefined;
   }
   function _getData(event) {
     event.preventDefault();
     const id = event.target.classList[1];
-    let marker;
+    // let marker;
     switch (event.target.classList[0]) {
       case "marker":
-        marker = _selectGetMarker(event.target, id);
+        _selectMarker(event.target, id);
         break;
       case "save-btn":
-        console.log(event.target, id);
+        _addClassList(event.target, "saved");
+        _saveInfo(id);
         break;
     }
-    console.log(marker);
+    // console.log(marker);
   }
   // support functions
   function _selectPlayer1(button) {
@@ -72,11 +80,29 @@ const menu = (function () {
       _addClassList(button.nextElementSibling, "hidden");
     }
   }
-  function _selectGetMarker(button, id) {
+  function _selectMarker(button, id) {
     const selectedMarker = players.querySelector(`.marker.${id}.selected`);
     selectedMarker && _removeClassList(selectedMarker, "selected");
     button.classList[1] === id && _addClassList(button, "selected");
-    return button.textContent.trim();
+  }
+  function _getName(id) {
+    const input = players.querySelector(`#${id} input`);
+    if (input.value.trim() !== "") return input.value.trim().toLowerCase();
+  }
+  function _getMarker(id) {
+    if (players.querySelector(`.marker.${id}.selected`)) {
+      return players.querySelector(`.marker.${id}.selected`).textContent.trim();
+    }
+  }
+  function _saveInfo(id) {
+    if (id === "p1") {
+      playerInfo["p1"] = _getName(id) || id;
+      playerInfo["p1M"] = _getMarker(id) || "x";
+    } else {
+      playerInfo["p2"] = _getName(id) || id;
+      playerInfo["p2M"] = _getMarker(id) || "o";
+    }
+    console.log(playerInfo);
   }
   function _addClassList(element, ...args) {
     for (const arg of args) {
