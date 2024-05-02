@@ -8,7 +8,7 @@ const menu = (function () {
   const startBtn = container.querySelector("#start");
   // bind events
   playerBtns.forEach((btn) => btn.addEventListener("click", selectPlayer));
-  startBtn.addEventListener("click", checkGameParameters);
+  startBtn.addEventListener("click", saveParaStartGame);
   // render
   // handler functions
   function selectPlayer(event) {
@@ -24,6 +24,7 @@ const menu = (function () {
         // selectComputer(event.target);
         addClassList(event.target, "selected");
         removeClassList(event.target, "hover");
+        setP2Computer();
         isReady();
         break;
     }
@@ -80,6 +81,10 @@ const menu = (function () {
     const formClose = players.querySelector("#p2 .form .close");
     formClose.addEventListener("click", closeForm);
     form.addEventListener("click", getData);
+  }
+  function setP2Computer() {
+    !playerInfo["p2"] && Object.assign(playerInfo, { p2: "COMP", p2M: "o" });
+    console.log(playerInfo);
   }
   function displayForm(button, form, playerID) {
     removeClassList(form, "hidden");
