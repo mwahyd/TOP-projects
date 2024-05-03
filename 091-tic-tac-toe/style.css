@@ -197,3 +197,35 @@ footer {
   border: 2px solid orange !important;
   border-radius: 10px;
 }
+
+.reveal {
+  animation: fade-in 1000ms forwards;
+}
+
+/* animations */
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  100% {
+    opacity: 1;
+  }
+  0% {
+    opacity: 0.5;
+  }
+}
+
+@keyframes slide-down {
+  0% {
+    transform: translateY(-100%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+}
