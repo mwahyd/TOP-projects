@@ -67,6 +67,7 @@ footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 3rem;
 }
 
 .option,
@@ -97,7 +98,7 @@ footer {
 
 .start {
   position: absolute;
-  top: 22rem;
+  top: 21.3rem;
   right: 6.5rem;
   padding: 0.8rem;
   text-transform: uppercase;
@@ -179,7 +180,7 @@ footer {
 
 /* action classes */
 .selected {
-  background-color: orange;
+  background-color: orange !important;
 }
 
 .hover:hover {
@@ -188,4 +189,11 @@ footer {
 
 .hidden {
   display: none;
+}
+
+.saved {
+  content: "saved";
+  background: linear-gradient(orange, rgb(255, 153, 0));
+  border: 2px solid orange !important;
+  border-radius: 10px;
 }
