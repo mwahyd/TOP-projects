@@ -38,6 +38,9 @@ const menu = (function () {
     const p2Save = players.querySelector("#p2 .saved");
     players.querySelector("#p2 input").value = "";
     addClassList(form, "hidden");
+    removeClassList(form, "reveal");
+    addClassList(p2Btn, "reveal");
+    addClassList(compBtn, "reveal");
     removeClassList(p2Btn, "hidden");
     removeClassList(compBtn, "hidden");
     p2Save && removeClassList(p2Save, "saved");
@@ -66,6 +69,7 @@ const menu = (function () {
     saveToLocalStorage();
     // remove event listeners
     // load game page
+    redirect("./game.html", 500);
   }
   //  support functions
   function selectPlayer1(button) {
@@ -91,9 +95,12 @@ const menu = (function () {
   }
   function displayForm(button, form, playerID) {
     removeClassList(form, "hidden");
+    removeClassList(button, "reveal");
+    addClassList(form, "reveal");
     addClassList(button, "hidden");
     if (playerID === "p2") {
       addClassList(button.nextElementSibling, "hidden");
+      removeClassList(button.nextElementSibling, "reveal");
     }
   }
   function selectMarker(button, id) {
@@ -153,4 +160,7 @@ const menu = (function () {
     localStorage.setItem("playersInfo", JSON.stringify(playerInfo));
   }
   function removeListeners() {}
+  function redirect(URL, timer) {
+    setTimeout(() => (window.location = URL), timer);
+  }
 })();
