@@ -61,8 +61,11 @@ const menu = (function () {
     }
     // console.log(marker);
   }
-  function checkGameParameters(event) {
-    console.log(event.target);
+  function saveParaStartGame() {
+    // save game info to local storage
+    saveToLocalStorage();
+    // remove event listeners
+    // load game page
   }
   //  support functions
   function selectPlayer1(button) {
@@ -146,6 +149,8 @@ const menu = (function () {
       element.classList.remove(arg);
     }
   }
-  //? when game starts, remove event listeners from menu page
-  function removeListener(element, event) {}
+  function saveToLocalStorage() {
+    localStorage.setItem("playersInfo", JSON.stringify(playerInfo));
+  }
+  function removeListeners() {}
 })();
