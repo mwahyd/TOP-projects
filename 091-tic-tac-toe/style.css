@@ -34,6 +34,7 @@ button {
   flex: 1;
   display: flex;
   align-items: center;
+  overflow: hidden;
 }
 
 /* header */
@@ -49,7 +50,7 @@ footer {
 
 /* menu */
 #content {
-  border: 2px solid black;
+  border: 3px solid black;
   border-radius: 1rem;
   width: 450px;
   height: 270px;
@@ -60,6 +61,14 @@ footer {
   flex-direction: column;
   justify-content: center;
   position: relative;
+}
+
+#content[open] {
+  animation: fade-in 1000ms forwards;
+}
+
+#content[closing] {
+  animation: fade-out 500ms forwards;
 }
 
 .players {
@@ -188,7 +197,7 @@ footer {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }
 
 .saved {
@@ -202,6 +211,14 @@ footer {
   animation: fade-in 1000ms forwards;
 }
 
+.fade-out {
+  animation: fade-out 500ms forwards;
+}
+
+.slide-down {
+  animation: slide-down 4000ms forwards;
+}
+
 /* animations */
 @keyframes fade-in {
   0% {
@@ -213,11 +230,11 @@ footer {
 }
 
 @keyframes fade-out {
-  100% {
+  0% {
     opacity: 1;
   }
-  0% {
-    opacity: 0.5;
+  100% {
+    opacity: 0;
   }
 }
 
