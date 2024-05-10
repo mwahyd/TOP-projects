@@ -64,10 +64,23 @@ const menu = (function () {
     }
     // console.log(marker);
   }
-  function saveParaStartGame() {
+  function saveParaStartGame(event) {
+    event.preventDefault();
     // save game info to local storage
     saveToLocalStorage();
     // remove event listeners
+    // animate the container down the screen
+    const content = container.querySelector("#content");
+    content.removeAttribute("open");
+    content.setAttribute("closing", "");
+    content.addEventListener(
+      "animationend",
+      () => {
+        content.removeAttribute("closing");
+        addClassList(content, "hidden");
+      },
+      { once: true }
+    );
     // load game page
     redirect("./game.html", 500);
   }
@@ -161,6 +174,10 @@ const menu = (function () {
   }
   function removeListeners() {}
   function redirect(URL, timer) {
-    setTimeout(() => (window.location = URL), timer);
+    timer <= 0
+      ? (window.location.href = URL)
+      : setTimeout(() => {
+          window.location.href = URL;
+        }, timer);
   }
 })();
