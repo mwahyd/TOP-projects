@@ -190,17 +190,19 @@ footer {
 /* ? GAME PAGE */
 #content[game] {
   /* border: 2px solid green; */
+  padding: 0;
 }
 
 #content[game] > #game-header {
-  /* border: none; */
   border-bottom: 2px solid orange;
-  position: relative;
-  top: -105px;
+  position: absolute;
+  top: -65px;
+  width: 445px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   font-weight: 600;
+  letter-spacing: 1.5px;
 }
 
 #game-header #left-items {
@@ -209,10 +211,6 @@ footer {
 
 #game-header #right-items {
   /* border: 2px solid magenta; */
-}
-
-#content[game] > #gameboard {
-  border: 2px solid red;
 }
 
 /* * game page header */
@@ -229,6 +227,15 @@ footer {
 #p1-info > span:first-child,
 #p2-info > span:first-child {
   justify-self: end;
+}
+
+/* * gameboard */
+#content[game] > #gameboard {
+  width: 70%;
+  height: 80%;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 
 /* action classes */
@@ -263,6 +270,19 @@ footer {
   animation: slide-down 1000ms forwards;
 }
 
+.square {
+  width: 100%;
+  height: 100%;
+  border: 2px solid rgb(255, 165, 0);
+  font-size: 5rem;
+  cursor: pointer;
+}
+
+.highlight:hover {
+  background-color: rgba(255, 228, 179, 0.2);
+  box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.2);
+}
+
 /* animations */
 @keyframes fade-in {
   0% {
@@ -289,4 +309,42 @@ footer {
   100% {
     transform: translateY(0%);
   }
+}
+
+/* design the gameboard */
+
+.square:first-of-type {
+  border-top: none;
+  border-left: none;
+}
+
+.square:nth-of-type(2) {
+  border-top: none;
+}
+
+.square:nth-of-type(3) {
+  border-top: none;
+  border-right: none;
+}
+
+.square:nth-of-type(4) {
+  border-left: none;
+}
+
+.square:nth-of-type(6) {
+  border-right: none;
+}
+
+.square:nth-of-type(7) {
+  border-left: none;
+  border-bottom: none;
+}
+
+.square:nth-of-type(8) {
+  border-bottom: none;
+}
+
+.square:nth-of-type(9) {
+  border-right: none;
+  border-bottom: none;
 }
