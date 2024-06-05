@@ -12,7 +12,9 @@ export default (function Tools() {
   function saveToLocalStorage(obj) {
     localStorage.setItem("playersInfo", JSON.stringify(obj));
   }
-  function getFromLocalStorage() {}
+  function getFromLocalStorage(key) {
+    return JSON.parse(localStorage.getItem(key));
+  }
   function removeListeners() {}
   function redirect(URL, timer) {
     timer <= 0
@@ -25,6 +27,7 @@ export default (function Tools() {
     addClassList,
     removeClassList,
     saveToLocalStorage,
+    getFromLocalStorage,
     removeListeners,
     redirect,
   };
