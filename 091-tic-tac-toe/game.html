@@ -4,19 +4,47 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
+    <script src="./game.js" type="module"></script>
     <title>Tic Tac Toe</title>
   </head>
 
-  <body>
+  <body id="game-page">
     <div id="container">
-      <header>
+      <header id="top">
         <h1 class="title main">Tic Tac Toe</h1>
       </header>
 
-      <main id="content"></main>
+      <div class="middle">
+        <main id="content" class="hidden" game>
+          <div id="game-header">
+            <div id="left-items">
+              <div>Round: <span id="round"></span></div>
+            </div>
+            <div id="right-items">
+              <div id="p1-info">
+                <span id="p1-name">P1</span>
+                <span id="p1-marker"></span>
+                <span id="p1-score"></span>
+                <span class="turn-icon">&#9750;</span>
+              </div>
 
-      <footer></footer>
+              <div id="p2-info">
+                <span id="p2-name">P2</span>
+                <span id="p2-marker"></span>
+                <span id="p2-score"></span>
+                <span class="turn-icon">&#9750;</span>
+              </div>
+            </div>
+          </div>
+
+          <div id="gameboard"></div>
+        </main>
+      </div>
+
+      <footer id="bottom">
+        Created by
+        <a href="https://github.com/mwahyd" target="_blank">mwahyd</a> 2024
+      </footer>
     </div>
   </body>
 </html>
