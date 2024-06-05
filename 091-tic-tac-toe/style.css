@@ -187,6 +187,50 @@ footer {
   /* border: 2px solid brown; */
 }
 
+/* ? GAME PAGE */
+#content[game] {
+  /* border: 2px solid green; */
+}
+
+#content[game] > #game-header {
+  /* border: none; */
+  border-bottom: 2px solid orange;
+  position: relative;
+  top: -105px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-weight: 600;
+}
+
+#game-header #left-items {
+  /* border: 2px solid blue; */
+}
+
+#game-header #right-items {
+  /* border: 2px solid magenta; */
+}
+
+#content[game] > #gameboard {
+  border: 2px solid red;
+}
+
+/* * game page header */
+#p1-info,
+#p2-info {
+  /* border: 2px solid purple; */
+  display: grid;
+  grid-template-columns: 1fr 1rem 1rem 1rem;
+  justify-items: center;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+#p1-info > span:first-child,
+#p2-info > span:first-child {
+  justify-self: end;
+}
+
 /* action classes */
 .selected {
   background-color: orange !important;
@@ -208,7 +252,7 @@ footer {
 }
 
 .reveal {
-  animation: fade-in 1000ms forwards;
+  animation: fade-in 500ms forwards;
 }
 
 .fade-out {
@@ -216,7 +260,7 @@ footer {
 }
 
 .slide-down {
-  animation: slide-down 4000ms forwards;
+  animation: slide-down 1000ms forwards;
 }
 
 /* animations */
