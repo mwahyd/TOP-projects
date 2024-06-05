@@ -1,3 +1,4 @@
+import Tools from "./tools.js";
 const menu = (function () {
   // initialise
   const playerInfo = {};
@@ -22,8 +23,8 @@ const menu = (function () {
         break;
       case "comp-btn":
         // selectComputer(event.target);
-        addClassList(event.target, "selected");
-        removeClassList(event.target, "hover");
+        Tools.addClassList(event.target, "selected");
+        Tools.removeClassList(event.target, "hover");
         setP2Computer();
         isReady();
         break;
@@ -37,14 +38,14 @@ const menu = (function () {
     const selectedMarker = players.querySelector(`.marker.p2.selected`);
     const p2Save = players.querySelector("#p2 .saved");
     players.querySelector("#p2 input").value = "";
-    addClassList(form, "hidden");
-    removeClassList(form, "reveal");
-    addClassList(p2Btn, "reveal");
-    addClassList(compBtn, "reveal");
-    removeClassList(p2Btn, "hidden");
-    removeClassList(compBtn, "hidden");
-    p2Save && removeClassList(p2Save, "saved");
-    selectedMarker && removeClassList(selectedMarker, "selected");
+    Tools.addClassList(form, "hidden");
+    Tools.removeClassList(form, "reveal");
+    Tools.addClassList(p2Btn, "reveal");
+    Tools.addClassList(compBtn, "reveal");
+    Tools.removeClassList(p2Btn, "hidden");
+    Tools.removeClassList(compBtn, "hidden");
+    p2Save && Tools.removeClassList(p2Save, "saved");
+    selectedMarker && Tools.removeClassList(selectedMarker, "selected");
     playerInfo["p2"] = undefined;
     playerInfo["p2M"] = undefined;
     disableStartButton();
@@ -58,7 +59,7 @@ const menu = (function () {
         selectMarker(event.target, id);
         break;
       case "save-btn":
-        addClassList(event.target, "saved");
+        Tools.addClassList(event.target, "saved");
         saveInfo(id);
         break;
     }
@@ -67,7 +68,7 @@ const menu = (function () {
   function saveParaStartGame(event) {
     event.preventDefault();
     // save game info to local storage
-    saveToLocalStorage();
+    Tools.saveToLocalStorage(playerInfo);
     // remove event listeners
     // animate the container down the screen
     const content = container.querySelector("#content");
@@ -77,12 +78,12 @@ const menu = (function () {
       "animationend",
       () => {
         content.removeAttribute("closing");
-        addClassList(content, "hidden");
+        Tools.addClassList(content, "hidden");
       },
       { once: true }
     );
     // load game page
-    redirect("./game.html", 500);
+    Tools.redirect("./game.html", 500);
   }
   //  support functions
   function selectPlayer1(button) {
@@ -94,8 +95,8 @@ const menu = (function () {
     const form = players.querySelector(`#p2 form`);
     const computer = players.querySelector("#comp-btn");
     if (computer) {
-      addClassList(computer, "hover");
-      removeClassList(computer, "selected");
+      Tools.addClassList(computer, "hover");
+      Tools.removeClassList(computer, "selected");
     }
     displayForm(button, form, "p2");
     const formClose = players.querySelector("#p2 .form .close");
@@ -107,19 +108,19 @@ const menu = (function () {
     console.log(playerInfo);
   }
   function displayForm(button, form, playerID) {
-    removeClassList(form, "hidden");
-    removeClassList(button, "reveal");
-    addClassList(form, "reveal");
-    addClassList(button, "hidden");
+    Tools.removeClassList(form, "hidden");
+    Tools.removeClassList(button, "reveal");
+    Tools.addClassList(form, "reveal");
+    Tools.addClassList(button, "hidden");
     if (playerID === "p2") {
-      addClassList(button.nextElementSibling, "hidden");
-      removeClassList(button.nextElementSibling, "reveal");
+      Tools.addClassList(button.nextElementSibling, "hidden");
+      Tools.removeClassList(button.nextElementSibling, "reveal");
     }
   }
   function selectMarker(button, id) {
     const selectedMarker = players.querySelector(`.marker.${id}.selected`);
-    selectedMarker && removeClassList(selectedMarker, "selected");
-    button.classList[1] === id && addClassList(button, "selected");
+    selectedMarker && Tools.removeClassList(selectedMarker, "selected");
+    button.classList[1] === id && Tools.addClassList(button, "selected");
   }
   function getName(id) {
     const input = players.querySelector(`#${id} input`);
@@ -159,25 +160,25 @@ const menu = (function () {
   function disableStartButton() {
     startBtn.disabled = true;
   }
-  function addClassList(element, ...args) {
-    for (const arg of args) {
-      element.classList.add(arg);
-    }
-  }
-  function removeClassList(element, ...args) {
-    for (const arg of args) {
-      element.classList.remove(arg);
-    }
-  }
-  function saveToLocalStorage() {
-    localStorage.setItem("playersInfo", JSON.stringify(playerInfo));
-  }
-  function removeListeners() {}
-  function redirect(URL, timer) {
-    timer <= 0
-      ? (window.location.href = URL)
-      : setTimeout(() => {
-          window.location.href = URL;
-        }, timer);
-  }
+  // function Tools.addClassList(element, ...args) {
+  //   for (const arg of args) {
+  //     element.classList.add(arg);
+  //   }
+  // }
+  // function Tools.removeClassList(element, ...args) {
+  //   for (const arg of args) {
+  //     element.classList.remove(arg);
+  //   }
+  // }
+  // function Tools.saveToLocalStorage() {
+  //   localStorage.setItem("playersInfo", JSON.stringify(playerInfo));
+  // }
+  // function removeListeners() {}
+  // function Tools.redirect(URL, timer) {
+  //   timer <= 0
+  //     ? (window.location.href = URL)
+  //     : setTimeout(() => {
+  //         window.location.href = URL;
+  //       }, timer);
+  // }
 })();
