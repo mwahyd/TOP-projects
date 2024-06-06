@@ -23,7 +23,7 @@ button {
   cursor: pointer;
 }
 
-#container {
+#app-container {
   /* border: 2px solid red; */
   height: 100%;
   display: flex;
@@ -49,7 +49,7 @@ footer {
 }
 
 /* menu */
-#content {
+#app-content {
   border: 3px solid black;
   border-radius: 1rem;
   width: 450px;
@@ -63,11 +63,11 @@ footer {
   position: relative;
 }
 
-#content[open] {
+#app-content[open] {
   animation: fade-in 1000ms forwards;
 }
 
-#content[closing] {
+#app-content[closing] {
   animation: fade-out 500ms forwards;
 }
 
@@ -188,12 +188,12 @@ footer {
 }
 
 /* ? GAME PAGE */
-#content[game] {
+#app-content[game] {
   /* border: 2px solid green; */
   padding: 0;
 }
 
-#content[game] > #game-header {
+#app-content[game] > #game-header {
   border-bottom: 2px solid orange;
   position: absolute;
   top: -65px;
@@ -229,8 +229,13 @@ footer {
   justify-self: end;
 }
 
+span#p1-marker,
+span#p2-marker {
+  font-size: 16px;
+}
+
 /* * gameboard */
-#content[game] > #gameboard {
+#app-content[game] > #app-gameboard {
   width: 70%;
   height: 80%;
   margin: 0 auto;
@@ -312,7 +317,6 @@ footer {
 }
 
 /* design the gameboard */
-
 .square:first-of-type {
   border-top: none;
   border-left: none;
