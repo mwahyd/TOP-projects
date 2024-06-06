@@ -3,7 +3,7 @@ const menu = (function () {
   // initialise
   const playerInfo = {};
   // cache DOM
-  const container = document.querySelector("#container");
+  const container = document.querySelector("#app-container");
   const players = container.querySelector(".players");
   const playerBtns = players.querySelectorAll("button");
   const startBtn = container.querySelector("#start");
@@ -71,7 +71,7 @@ const menu = (function () {
     Tools.saveToLocalStorage(playerInfo);
     // remove event listeners
     // animate the container down the screen
-    const content = container.querySelector("#content");
+    const content = container.querySelector("#app-content");
     content.removeAttribute("open");
     content.setAttribute("closing", "");
     content.addEventListener(
