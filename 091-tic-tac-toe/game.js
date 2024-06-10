@@ -44,7 +44,6 @@ const game = (function () {
   // bind events
   content.addEventListener("animationend", render, { once: true });
   pubsub.subscribe("renderComplete", gameController);
-  // pubsub.subscribe("markerPlaced", handoverTurn);
 
   // display the screen
   const displayScreen = (function () {
@@ -104,29 +103,17 @@ const game = (function () {
     return { round, p1Name, p1Marker, p2Name, p2Marker };
   }
   function gameController() {
-    // console.log("game controller running");
-    // identify p2 [comp | player2]
-    // const p2 = playersInfo["p2"];
-    // console.log(p2);
     // enable buttons
     enableSquares();
     // set turn to p1
     const turn = setTurn();
-    // console.log(turn);
     // update turn icon to indicate player
     displayTurnIcon(turn);
-
-    console.log(playersInfo["p2"]);
-
     // allow player to set marker
     clickSquare(turn);
     // determine if square is empty
     // LISTEN to broadcast regarding empty square!!!!!
     pubsub.subscribe("validMove", handleValidMove);
-
-    // handover turn to p2
-    // update turn icon to p2
-    // if COMP run compplaceMarker function
   }
   function handleValidMove([turn, index]) {
     console.log("handleValidMove", turn);
@@ -175,10 +162,7 @@ const game = (function () {
     }
   }
   function clickSquare(turn) {
-    // if turn = p1
     const gameboard = container.querySelector("#app-gameboard");
-    // console.log(gameboard);
-
     if (turn === "p2" && playersInfo["p2"] === "COMP") {
       computerPlaceMarker();
     } else {
@@ -213,21 +197,17 @@ const game = (function () {
   }
   function computerPlaceMarker() {
     const boardArray = gameboard.getboard();
-
     // get all the empty squares indexes
     const emptyIndices = boardArray
       .map((square, index) => (square === "" ? index : -1))
       .filter((index) => index !== -1);
-
     //  randomly select an index
     const randomIndex = generateRandomIndex(emptyIndices);
-
     setTimeout(() => {
       // place the marker in the random spot
       placeMarker("p2", randomIndex);
       // render gameboard
       gameboard.renderBoard();
-
       // end TURN
       gameController();
     }, 500);
