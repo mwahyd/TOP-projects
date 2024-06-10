@@ -122,8 +122,15 @@ const game = (function () {
     // render gameboard
     gameboard.renderBoard();
 
+    // (turn === "p1" || (turn === "p2" && playersInfo["p2"] !== "COMP"))
     // handover turn to p2
-    gameController();
+    // gameController();
+
+    const newTurn = setTurn();
+    // update turn icon to indicate player
+    displayTurnIcon(newTurn);
+    // allow player to set marker
+    clickSquare(newTurn);
   }
   function setTurn() {
     if (!p1Turn && !p2Turn) {
@@ -209,7 +216,15 @@ const game = (function () {
       // render gameboard
       gameboard.renderBoard();
       // end TURN
-      gameController();
+      // turnInProgress = false;
+      // gameController();
+
+      enableSquares();
+      const newTurn = setTurn();
+      // update turn icon to indicate player
+      displayTurnIcon(newTurn);
+      // allow player to set marker
+      clickSquare(newTurn);
     }, 500);
   }
   function generateRandomIndex(array) {
