@@ -11,7 +11,19 @@ const gameboard = (function () {
   function updateBoard(index, marker) {
     board[index] = marker;
   }
-  function renderBoard() {}
+  function renderBoard() {
+    const gameboardDiv = document.querySelector("#app-gameboard");
+    gameboardDiv.innerHTML = "";
+    gameboard.getboard().forEach((marker, index) => {
+      const div = document.createElement("div");
+      div.setAttribute("data-index", index);
+      marker !== ""
+        ? Tools.addClassList(div, "square", "marker")
+        : Tools.addClassList(div, "square", "highlight");
+      div.textContent = marker;
+      gameboardDiv.append(div);
+    });
+  }
   function resetBoard() {}
   return { getboard, updateBoard, renderBoard, resetBoard };
 })();
@@ -24,6 +36,7 @@ const game = (function () {
   let p1MarkerPlaced = false;
   let p2Turn = false;
   let p2MarkerPlaced = false;
+  const squaresClicked = {};
   // cache DOM
   const container = document.querySelector("#app-container");
   const content = container.querySelector("#app-content");
@@ -105,10 +118,20 @@ const game = (function () {
     clickSquare(turn);
     // determine if square is empty
     // LISTEN to broadcast regarding empty square!!!!!
+    pubsub.subscribe("validMove", handleValidMove);
 
     // handover turn to p2
     // update turn icon to p2
     // if COMP run compplaceMarker function
+  }
+  function handleValidMove([turn, index]) {
+    // place player marker
+    placeMarker(turn, index);
+    // render gameboard
+    gameboard.renderBoard();
+
+    // handover turn to p2
+    // if p2 === COMPUTER run COMPUTER placeMarker function
   }
   function setTurn() {
     if (!p1Turn && !p2Turn) {
@@ -135,5 +158,31 @@ const game = (function () {
       Tools.addClassList(p1TurnIcon, "hidden");
       Tools.addClassList(p2TurnIcon, "reveal");
     }
+  }
+  function clickSquare(turn) {
+    // if turn = p1
+    const gameboard = container.querySelector("#app-gameboard");
+    console.log(gameboard);
+    if (turn === "p1") {
+      gameboard.addEventListener("click", (event) => {
+        checkEmptySquare(event, turn);
+      });
+    }
+    // if turn = p2 === COMP --> run computer logic
+    // if turn = p2
+  }
+  function checkEmptySquare(event, turn) {
+    const squareIndex = event.target.getAttribute("data-index");
+    const boardArray = gameboard.getboard();
+    const isValid = boardArray[squareIndex] === "" ? true : false;
+    if (isValid) {
+      pubsub.publish("validMove", [turn, squareIndex]);
+    }
+  }
+  function placeMarker(turn, index) {
+    const playerMarker = playersInfo[`${turn}M`];
+    gameboard.updateBoard(index, playerMarker);
+    console.log(gameboard.getboard());
+    p1MarkerPlaced = true;
   }
 })();
