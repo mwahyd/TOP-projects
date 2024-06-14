@@ -13,5 +13,11 @@ export const pubsub = (function () {
     });
   }
 
-  return { subscribe, publish };
+  function unsubscribe(evName, func) {
+    if (events[evName]) {
+      events[evName] = events[evName].filter((fn) => fn !== func);
+    }
+  }
+
+  return { subscribe, publish, unsubscribe };
 })();
