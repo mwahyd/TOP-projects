@@ -311,9 +311,10 @@ const game = (function () {
   }
   function restartGame() {
     // check if a player has won 3 games!
-    if (container.querySelector("#app-round").textContent === "3") {
+    if (container.querySelector("#app-round").textContent === "1") {
       console.log("3rd ROUND");
       declareGameWinner();
+      createModal();
       return;
     }
     squaresClicked.p1 = [];
@@ -335,6 +336,27 @@ const game = (function () {
     const { p1: p1Score, p2: p2Score } = scores;
     if (p1Score > p2Score) scores.winner = "p1";
     else if (p2Score > p1Score) scores.winner = "p2";
-    else scores.winner = "Game Tied";
+    else scores.winner = "tie";
+  }
+  function createModal() {
+    const modal = container.querySelector(".modal");
+    Tools.removeClassList(modal, "hidden");
+    const winner = scores.winner;
+
+    const winnerDiv = document.createElement("p");
+    const score = document.createElement("div");
+    const replay = document.createElement("button");
+
+    winner === "tie"
+      ? (winnerDiv.textContent = "Game Tied!")
+      : (winnerDiv.textContent = `${playersInfo[winner]} wins!`);
+    score.textContent = `${playersInfo["p1"]}: ${scores["p1"]} - ${playersInfo["p2"]}: ${scores["p2"]} - Ties: ${scores.tie}`;
+    replay.textContent = "replay";
+    Tools.addClassList(replay, "start");
+    replay.addEventListener("click", () => {
+      Tools.redirect("./index.html", 500);
+    });
+    modal.append(winnerDiv, score, replay);
+    Tools.addClassList(modal, "reveal");
   }
 })();
