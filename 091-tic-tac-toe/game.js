@@ -3,7 +3,7 @@ import { pubsub } from "./pubsub.js";
 
 const gameboard = (function () {
   // initialise
-  const board = ["", "", "", "", "", "", "", "", ""];
+  let board = ["", "", "", "", "", "", "", "", ""];
   // APIs
   function getboard() {
     return board;
@@ -24,7 +24,9 @@ const gameboard = (function () {
       gameboardDiv.append(div);
     });
   }
-  function resetBoard() {}
+  function resetBoard() {
+    board = ["", "", "", "", "", "", "", "", ""];
+  }
   return { getboard, updateBoard, renderBoard, resetBoard };
 })();
 
@@ -37,6 +39,7 @@ const game = (function () {
   let p2Turn = false;
   let p2MarkerPlaced = false;
   const squaresClicked = { p1: [], p2: [] };
+  const scores = { p1: 0, p2: 0, tie: 0 };
   // cache DOM
   const container = document.querySelector("#app-container");
   const content = container.querySelector("#app-content");
@@ -110,13 +113,13 @@ const game = (function () {
     // update turn icon to indicate player
     displayTurnIcon(turn);
     // allow player to set marker
-    clickSquare(turn);
+    setTimeout(() => clickSquare(turn), 600);
     // determine if square is empty
     // LISTEN to broadcast regarding empty square!!!!!
     pubsub.subscribe("validMove", handleValidMove);
 
     // listen to marker placed
-    pubsub.subscribe("markerPlaced", isThreeInARow);
+    pubsub.subscribe("markerPlaced", declareRoundWinner);
   }
   function handleValidMove([turn, index]) {
     console.log("handleValidMove", turn);
@@ -259,8 +262,52 @@ const game = (function () {
         squaresClicked[turn].includes(b) &&
         squaresClicked[turn].includes(c)
       ) {
-        console.log(`${turn} wins`);
+        return turn;
       }
     }
+  }
+  function declareRoundWinner(turn) {
+    const roundWinner = isThreeInARow(turn);
+    if (roundWinner) {
+      console.log(`${roundWinner} wins the ROUND!`);
+      // update the score
+      updateScore(turn);
+      // end the round && update ROUND number
+
+      endRound();
+
+      // show alert regarding who won
+      setTimeout(() => {
+        alert(`${playersInfo[turn]} wins the round!`);
+        restartGame();
+      }, 300);
+
+      // reset the gameboard
+    }
+    // else check if there is no more empty space
+    // then declare round to be tied
+    // update score
+    // reset gameboard
+  }
+  function updateScore(turn) {
+    scores[turn]++;
+    const span = container.querySelector(`#${turn}-score`);
+    span.textContent += "|";
+    if (turn === "tie") scores[tie]++;
+  }
+  function endRound() {
+    p1Turn = false;
+    p2Turn = false;
+    p1MarkerPlaced = false;
+    p2MarkerPlaced = false;
+    pubsub.unsubscribe("validMove", handleValidMove);
+    pubsub.unsubscribe("markerPlaced", declareRoundWinner);
+  }
+  function restartGame() {
+    squaresClicked.p1 = [];
+    squaresClicked.p2 = [];
+    gameboard.resetBoard();
+    gameboard.renderBoard();
+    gameController();
   }
 })();
