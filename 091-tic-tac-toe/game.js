@@ -340,7 +340,9 @@ const game = (function () {
   }
   function createModal() {
     const modal = container.querySelector(".modal");
+    const blur = container.querySelector(".blur");
     Tools.removeClassList(modal, "hidden");
+    Tools.removeClassList(blur, "hidden");
     const winner = scores.winner;
 
     const winnerDiv = document.createElement("p");
