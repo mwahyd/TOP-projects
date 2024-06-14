@@ -39,7 +39,7 @@ const game = (function () {
   let p2Turn = false;
   let p2MarkerPlaced = false;
   const squaresClicked = { p1: [], p2: [] };
-  const scores = { p1: 0, p2: 0, tie: 0 };
+  const scores = { p1: 0, p2: 0, tie: 0, winner: "" };
   // cache DOM
   const container = document.querySelector("#app-container");
   const content = container.querySelector("#app-content");
@@ -310,13 +310,31 @@ const game = (function () {
     pubsub.unsubscribe("markerPlaced", declareRoundWinner);
   }
   function restartGame() {
+    // check if a player has won 3 games!
+    if (container.querySelector("#app-round").textContent === "3") {
+      console.log("3rd ROUND");
+      declareGameWinner();
+      return;
+    }
     squaresClicked.p1 = [];
     squaresClicked.p2 = [];
     gameboard.resetBoard();
     gameboard.renderBoard();
+
+    updateRoundCounter();
     gameController();
+  }
+  function updateRoundCounter() {
+    const round = container.querySelector("#app-round");
+    round.textContent++;
   }
   function isBoardFull() {
     return gameboard.getboard().every((square) => square !== "");
+  }
+  function declareGameWinner() {
+    const { p1: p1Score, p2: p2Score } = scores;
+    if (p1Score > p2Score) scores.winner = "p1";
+    else if (p2Score > p1Score) scores.winner = "p2";
+    else scores.winner = "Game Tied";
   }
 })();
