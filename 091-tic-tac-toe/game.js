@@ -114,19 +114,25 @@ const game = (function () {
     // determine if square is empty
     // LISTEN to broadcast regarding empty square!!!!!
     pubsub.subscribe("validMove", handleValidMove);
+
+    // listen to marker placed
+    pubsub.subscribe("markerPlaced", isThreeInARow);
   }
   function handleValidMove([turn, index]) {
     console.log("handleValidMove", turn);
-    disableSquares();
+
     // place player marker
     placeMarker(turn, index);
     // render gameboard
     gameboard.renderBoard();
 
+    pubsub.publish("markerPlaced", turn);
+
     // (turn === "p1" || (turn === "p2" && playersInfo["p2"] !== "COMP"))
     // handover turn to p2
     // gameController();
 
+    disableSquares();
     const newTurn = setTurn();
     // update turn icon to indicate player
     displayTurnIcon(newTurn);
@@ -188,7 +194,7 @@ const game = (function () {
     }
   }
   function updateSquaresClicked(turn, index) {
-    squaresClicked[turn].push(index);
+    squaresClicked[turn].push(Number(index));
     squaresClicked[turn] = [...new Set(squaresClicked[turn])];
   }
   function placeMarker(turn, index) {
@@ -219,6 +225,8 @@ const game = (function () {
       // turnInProgress = false;
       // gameController();
 
+      pubsub.publish("markerPlaced", "p2");
+
       enableSquares();
       const newTurn = setTurn();
       // update turn icon to indicate player
@@ -229,5 +237,30 @@ const game = (function () {
   }
   function generateRandomIndex(array) {
     return array[Math.floor(Math.random() * array.length)];
+  }
+  function isThreeInARow(turn) {
+    console.log(turn);
+    const combinations = [
+      [0, 1, 2],
+      [3, 4, 5],
+      [6, 7, 8], // Horizontal
+      [0, 3, 6],
+      [1, 4, 7],
+      [2, 5, 8], // Vertical
+      [0, 4, 8],
+      [2, 4, 6], // Diagonal
+    ];
+    // console.log(boardArray);
+    console.log(squaresClicked[turn]);
+    for (const combination of combinations) {
+      const [a, b, c] = combination;
+      if (
+        squaresClicked[turn].includes(a) &&
+        squaresClicked[turn].includes(b) &&
+        squaresClicked[turn].includes(c)
+      ) {
+        console.log(`${turn} wins`);
+      }
+    }
   }
 })();
