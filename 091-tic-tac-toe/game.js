@@ -117,6 +117,7 @@ const game = (function () {
   }
   function handleValidMove([turn, index]) {
     console.log("handleValidMove", turn);
+    disableSquares();
     // place player marker
     placeMarker(turn, index);
     // render gameboard
@@ -175,7 +176,6 @@ const game = (function () {
     } else {
       gameboard.addEventListener("click", (event) => {
         checkEmptySquare(event, turn);
-        disableSquares();
       });
     }
   }
