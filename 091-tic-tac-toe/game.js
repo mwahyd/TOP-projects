@@ -273,16 +273,19 @@ const game = (function () {
       // update the score
       updateScore(turn);
       // end the round && update ROUND number
-
       endRound();
-
       // show alert regarding who won
       setTimeout(() => {
-        alert(`${playersInfo[turn]} wins the round!`);
+        alert(`${playersInfo[turn].toUpperCase()} wins the round!`);
         restartGame();
       }, 300);
-
-      // reset the gameboard
+    } else if (isBoardFull()) {
+      updateScore("tie");
+      endRound();
+      setTimeout(() => {
+        alert("It's a TIE!");
+        restartGame();
+      }, 300);
     }
     // else check if there is no more empty space
     // then declare round to be tied
@@ -290,10 +293,13 @@ const game = (function () {
     // reset gameboard
   }
   function updateScore(turn) {
+    if (turn === "tie") {
+      scores[turn]++;
+      return;
+    }
     scores[turn]++;
     const span = container.querySelector(`#${turn}-score`);
     span.textContent += "|";
-    if (turn === "tie") scores[tie]++;
   }
   function endRound() {
     p1Turn = false;
@@ -309,5 +315,8 @@ const game = (function () {
     gameboard.resetBoard();
     gameboard.renderBoard();
     gameController();
+  }
+  function isBoardFull() {
+    return gameboard.getboard().every((square) => square !== "");
   }
 })();
