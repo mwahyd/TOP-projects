@@ -243,7 +243,41 @@ span#p2-marker {
   grid-template-columns: 1fr 1fr 1fr;
 }
 
-/* action classes */
+/* * modal */
+.modal {
+  /* border: 5px solid orange; */
+  border-radius: 2rem;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+
+  width: 100%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  text-transform: capitalize;
+  font-size: 3rem;
+  font-weight: 500;
+}
+
+.blur {
+  border-radius: 2rem;
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(3px);
+  z-index: 1;
+}
+
+/* * action classes */
 .selected {
   background-color: orange !important;
 }
@@ -276,11 +310,18 @@ span#p2-marker {
 }
 
 .square {
-  width: 100%;
-  height: 100%;
+  width: 104px;
+  height: 71px;
   border: 2px solid rgb(255, 165, 0);
-  font-size: 5rem;
   cursor: pointer;
+}
+
+.square.marker {
+  display: flex;
+  align-items: top;
+  justify-content: center;
+  font-size: 4rem;
+  cursor: default;
 }
 
 .highlight:hover {
@@ -314,6 +355,10 @@ span#p2-marker {
   100% {
     transform: translateY(0%);
   }
+}
+
+.disable-squares {
+  pointer-events: none;
 }
 
 /* design the gameboard */
