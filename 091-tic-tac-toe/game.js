@@ -93,9 +93,7 @@ const game = (function () {
     headerElements.p2Marker.textContent = `${playersInfo["p2M"]}`;
   }
   function getStoredData() {
-    // get info from local storage
     playersInfo = Tools.getFromLocalStorage("playersInfo");
-    // console.log(playersInfo);
   }
   function getHeaderElements() {
     const round = container.querySelector("#app-round");
@@ -114,34 +112,20 @@ const game = (function () {
     displayTurnIcon(turn);
     // allow player to set marker
     setTimeout(() => clickSquare(turn), 600);
-    // determine if square is empty
     // LISTEN to broadcast regarding empty square!!!!!
     pubsub.subscribe("validMove", handleValidMove);
-
     // listen to marker placed
     pubsub.subscribe("markerPlaced", declareRoundWinner);
   }
   function handleValidMove([turn, index]) {
-    // console.log("handleValidMove", turn);
-
-    // place player marker
     placeMarker(turn, index);
-    // render gameboard
     gameboard.renderBoard();
-
     pubsub.publish("markerPlaced", turn);
 
-    // (turn === "p1" || (turn === "p2" && playersInfo["p2"] !== "COMP"))
-    // handover turn to p2
-    // gameController();
+    if (playersInfo["p2"] === "COMP") disableSquares();
 
-    if (playersInfo["p2"] === "COMP") {
-      disableSquares();
-    }
     const newTurn = setTurn();
-    // update turn icon to indicate player
     displayTurnIcon(newTurn);
-    // allow player to set marker
     clickSquare(newTurn);
   }
   function setTurn() {
@@ -215,28 +199,17 @@ const game = (function () {
   }
   function computerPlaceMarker() {
     const boardArray = gameboard.getboard();
-    // get all the empty squares indexes
     const emptyIndices = boardArray
       .map((square, index) => (square === "" ? index : -1))
       .filter((index) => index !== -1);
-    //  randomly select an index
     const randomIndex = generateRandomIndex(emptyIndices);
     setTimeout(() => {
-      // place the marker in the random spot
       placeMarker("p2", randomIndex);
-      // render gameboard
       gameboard.renderBoard();
-      // end TURN
-      // turnInProgress = false;
-      // gameController();
-
       pubsub.publish("markerPlaced", "p2");
-
       enableSquares();
       const newTurn = setTurn();
-      // update turn icon to indicate player
       displayTurnIcon(newTurn);
-      // allow player to set marker
       clickSquare(newTurn);
     }, 500);
   }
@@ -244,7 +217,6 @@ const game = (function () {
     return array[Math.floor(Math.random() * array.length)];
   }
   function isThreeInARow(turn) {
-    // console.log(turn);
     const combinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -255,8 +227,6 @@ const game = (function () {
       [0, 4, 8],
       [2, 4, 6], // Diagonal
     ];
-    // console.log(boardArray);
-    // console.log(squaresClicked[turn]);
     for (const combination of combinations) {
       const [a, b, c] = combination;
       if (
@@ -271,12 +241,8 @@ const game = (function () {
   function declareRoundWinner(turn) {
     const roundWinner = isThreeInARow(turn);
     if (roundWinner) {
-      console.log(`${roundWinner} wins the ROUND!`);
-      // update the score
       updateScore(turn);
-      // end the round && update ROUND number
       endRound();
-      // show alert regarding who won
       setTimeout(() => {
         alert(`${playersInfo[turn].toUpperCase()} wins the round!`);
         restartGame();
@@ -289,10 +255,6 @@ const game = (function () {
         restartGame();
       }, 300);
     }
-    // else check if there is no more empty space
-    // then declare round to be tied
-    // update score
-    // reset gameboard
   }
   function updateScore(turn) {
     if (turn === "tie") {
@@ -312,9 +274,7 @@ const game = (function () {
     pubsub.unsubscribe("markerPlaced", declareRoundWinner);
   }
   function restartGame() {
-    // check if a player has won 3 games!
     if (container.querySelector("#app-round").textContent === "3") {
-      console.log("3rd ROUND");
       declareGameWinner();
       createModal();
       return;
