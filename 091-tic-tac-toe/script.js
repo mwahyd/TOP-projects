@@ -10,7 +10,6 @@ const menu = (function () {
   // bind events
   playerBtns.forEach((btn) => btn.addEventListener("click", selectPlayer));
   startBtn.addEventListener("click", saveParaStartGame);
-  // render
   // handler functions
   function selectPlayer(event) {
     switch (event.target.id) {
@@ -22,7 +21,6 @@ const menu = (function () {
         selectPlayer2(event.target);
         break;
       case "comp-btn":
-        // selectComputer(event.target);
         Tools.addClassList(event.target, "selected");
         Tools.removeClassList(event.target, "hover");
         setP2Computer();
@@ -53,7 +51,6 @@ const menu = (function () {
   function getData(event) {
     event.preventDefault();
     const id = event.target.classList[1];
-    // let marker;
     switch (event.target.classList[0]) {
       case "marker":
         selectMarker(event.target, id);
@@ -63,13 +60,10 @@ const menu = (function () {
         saveInfo(id);
         break;
     }
-    // console.log(marker);
   }
   function saveParaStartGame(event) {
     event.preventDefault();
-    // save game info to local storage
     Tools.saveToLocalStorage(playerInfo);
-    // remove event listeners
     // animate the container down the screen
     const content = container.querySelector("#app-content");
     content.removeAttribute("open");
@@ -82,8 +76,7 @@ const menu = (function () {
       },
       { once: true }
     );
-    // load game page
-    Tools.redirect("./game.html", 500);
+    Tools.redirect("./game.html", 500); // load game page
   }
   //  support functions
   function selectPlayer1(button) {
@@ -105,7 +98,6 @@ const menu = (function () {
   }
   function setP2Computer() {
     !playerInfo["p2"] && Object.assign(playerInfo, { p2: "COMP", p2M: "o" });
-    console.log(playerInfo);
   }
   function displayForm(button, form, playerID) {
     Tools.removeClassList(form, "hidden");
@@ -139,46 +131,20 @@ const menu = (function () {
       playerInfo["p2"] = getName(id) || id;
       playerInfo["p2M"] = getMarker(id) || "o";
     }
-    console.log(playerInfo);
     isReady();
   }
   function isReady() {
-    // check if p1 save clicked
-    // check if p2 save clicked OR computer selected
     const p1Saved = players.querySelector("#p1 .saved");
     const p2Saved = players.querySelector("#p2 .saved");
     const compSelected = players.querySelector("#comp-btn.selected");
-    // console.log(p1Saved, p2Saved, compSelected);
     if (p1Saved && (p2Saved || compSelected)) {
       enableStartButton();
     }
   }
   function enableStartButton() {
-    // console.log(startBtn);
     startBtn.removeAttribute("disabled");
   }
   function disableStartButton() {
     startBtn.disabled = true;
   }
-  // function Tools.addClassList(element, ...args) {
-  //   for (const arg of args) {
-  //     element.classList.add(arg);
-  //   }
-  // }
-  // function Tools.removeClassList(element, ...args) {
-  //   for (const arg of args) {
-  //     element.classList.remove(arg);
-  //   }
-  // }
-  // function Tools.saveToLocalStorage() {
-  //   localStorage.setItem("playersInfo", JSON.stringify(playerInfo));
-  // }
-  // function removeListeners() {}
-  // function Tools.redirect(URL, timer) {
-  //   timer <= 0
-  //     ? (window.location.href = URL)
-  //     : setTimeout(() => {
-  //         window.location.href = URL;
-  //       }, timer);
-  // }
 })();
