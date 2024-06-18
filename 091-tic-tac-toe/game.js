@@ -14,7 +14,7 @@ const gameboard = (function () {
   function renderBoard() {
     const gameboardDiv = document.querySelector("#app-gameboard");
     gameboardDiv.innerHTML = "";
-    gameboard.getboard().forEach((marker, index) => {
+    board.forEach((marker, index) => {
       const div = document.createElement("div");
       div.setAttribute("data-index", index);
       marker !== ""
@@ -48,23 +48,16 @@ const game = (function () {
   content.addEventListener("animationend", render, { once: true });
   pubsub.subscribe("renderComplete", gameController);
 
-  // display the screen
   const displayScreen = (function () {
-    // display the screen
     // animate it to appear from top to bottom
     Tools.removeClassList(content, "hidden");
     Tools.addClassList(content, "slide-down");
   })();
 
-  // render
   function render() {
-    // display the game header
     drawHeader();
-    // display the gameboard
     drawBoard();
-    // populate header
     populateHeader();
-    // announce completion
     setTimeout(() => pubsub.publish("renderComplete", null), 500);
   }
   function drawBoard() {
@@ -239,8 +232,7 @@ const game = (function () {
     }
   }
   function declareRoundWinner(turn) {
-    const roundWinner = isThreeInARow(turn);
-    if (roundWinner) {
+    if (isThreeInARow(turn)) {
       updateScore(turn);
       endRound();
       setTimeout(() => {
@@ -257,19 +249,14 @@ const game = (function () {
     }
   }
   function updateScore(turn) {
-    if (turn === "tie") {
-      scores[turn]++;
-      return;
-    }
     scores[turn]++;
-    const span = container.querySelector(`#${turn}-score`);
-    span.textContent += "|";
+    if (turn !== "tie") {
+      const span = container.querySelector(`#${turn}-score`);
+      span.textContent += "|";
+    }
   }
   function endRound() {
-    p1Turn = false;
-    p2Turn = false;
-    p1MarkerPlaced = false;
-    p2MarkerPlaced = false;
+    p1Turn = p2Turn = p1MarkerPlaced = p2MarkerPlaced = false;
     pubsub.unsubscribe("validMove", handleValidMove);
     pubsub.unsubscribe("markerPlaced", declareRoundWinner);
   }
