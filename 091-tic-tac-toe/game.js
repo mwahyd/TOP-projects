@@ -110,7 +110,7 @@ const game = (function () {
     enableSquares();
     // set turn to p1
     const turn = setTurn();
-    // update turn icon to indicate player
+    // display p1 turn
     displayTurnIcon(turn);
     // allow player to set marker
     setTimeout(() => clickSquare(turn), 600);
@@ -122,7 +122,7 @@ const game = (function () {
     pubsub.subscribe("markerPlaced", declareRoundWinner);
   }
   function handleValidMove([turn, index]) {
-    console.log("handleValidMove", turn);
+    // console.log("handleValidMove", turn);
 
     // place player marker
     placeMarker(turn, index);
@@ -135,7 +135,9 @@ const game = (function () {
     // handover turn to p2
     // gameController();
 
-    disableSquares();
+    if (playersInfo["p2"] === "COMP") {
+      disableSquares();
+    }
     const newTurn = setTurn();
     // update turn icon to indicate player
     displayTurnIcon(newTurn);
@@ -180,19 +182,19 @@ const game = (function () {
   }
   function clickSquare(turn) {
     const gameboard = container.querySelector("#app-gameboard");
+    gameboard.removeEventListener("click", handleSquareClick);
     if (turn === "p2" && playersInfo["p2"] === "COMP") {
       computerPlaceMarker();
     } else {
-      gameboard.addEventListener("click", (event) => {
-        checkEmptySquare(event, turn);
-      });
+      gameboard.addEventListener("click", handleSquareClick);
     }
   }
-  function checkEmptySquare(event, turn) {
+  function handleSquareClick(event) {
     const squareIndex = event.target.getAttribute("data-index");
     const boardArray = gameboard.getboard();
     const isValid = boardArray[squareIndex] === "" ? true : false;
     if (isValid) {
+      const turn = p1Turn ? "p1" : "p2";
       pubsub.publish("validMove", [turn, squareIndex]);
     }
   }
@@ -242,7 +244,7 @@ const game = (function () {
     return array[Math.floor(Math.random() * array.length)];
   }
   function isThreeInARow(turn) {
-    console.log(turn);
+    // console.log(turn);
     const combinations = [
       [0, 1, 2],
       [3, 4, 5],
@@ -254,7 +256,7 @@ const game = (function () {
       [2, 4, 6], // Diagonal
     ];
     // console.log(boardArray);
-    console.log(squaresClicked[turn]);
+    // console.log(squaresClicked[turn]);
     for (const combination of combinations) {
       const [a, b, c] = combination;
       if (
@@ -311,7 +313,7 @@ const game = (function () {
   }
   function restartGame() {
     // check if a player has won 3 games!
-    if (container.querySelector("#app-round").textContent === "1") {
+    if (container.querySelector("#app-round").textContent === "3") {
       console.log("3rd ROUND");
       declareGameWinner();
       createModal();
