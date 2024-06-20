@@ -105,15 +105,47 @@ footer {
   left: 21rem;
 }
 
+#set-difficulty {
+  /* border: 2px solid red; */
+  height: 59.33px;
+  position: absolute;
+  right: -25px;
+  top: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.difficulty {
+  width: 15px;
+  height: 15px;
+  border: none;
+}
+
+button.difficulty:nth-of-type(1):hover,
+button.difficulty:nth-of-type(1).select {
+  background-color: hsl(81, 84%, 81%);
+}
+
+button.difficulty:nth-of-type(2):hover,
+button.difficulty:nth-of-type(2).select {
+  background-color: hsl(46, 100%, 50%);
+}
+
+button.difficulty:nth-of-type(3):hover,
+button.difficulty:nth-of-type(3).select {
+  background-color: hsl(343, 100%, 39%);
+}
+
 .start {
   position: absolute;
   top: 21.3rem;
-  right: 6.5rem;
+  right: 4.5rem;
   padding: 0.8rem;
   text-transform: uppercase;
   letter-spacing: 1.3px;
   font-weight: bold;
-  width: 70%;
+  width: 80%;
   margin: 0 auto;
   background-color: orange;
   border: none;
