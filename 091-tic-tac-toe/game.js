@@ -41,7 +41,7 @@ const game = (function () {
   let p1MarkerPlaced = false;
   let p2Turn = false;
   let p2MarkerPlaced = false;
-  const squaresClicked = { p1: [], p2: [] };
+  // const squaresClicked = { p1: [], p2: [] };
   const scores = { p1: 0, p2: 0, tie: 0, winner: "" };
   // cache DOM
   const container = document.querySelector("#app-container");
@@ -199,6 +199,16 @@ const game = (function () {
       p2MarkerPlaced = true;
     }
   }
+  function getDifficulty() {
+    switch (playersInfo["difficulty"]) {
+      case "normal":
+        return 2;
+      case "hard":
+        return 4;
+      case "NIGHTMARE":
+        return 8;
+    }
+  }
   function computerPlaceMarker() {
     const boardArray = gameboard.getboard();
     const freeSpaceIndices = boardArray
@@ -284,8 +294,8 @@ const game = (function () {
       createModal();
       return;
     }
-    squaresClicked.p1 = [];
-    squaresClicked.p2 = [];
+    // squaresClicked.p1 = [];
+    // squaresClicked.p2 = [];
     gameboard.resetBoard();
     gameboard.renderBoard();
 
