@@ -155,7 +155,6 @@ const menu = (function () {
       playerInfo["p2"] = getName(id) || id;
       playerInfo["p2M"] = getMarker(id) || "o";
     }
-    console.log(playerInfo);
     isReady();
   }
   function isReady() {
@@ -165,8 +164,6 @@ const menu = (function () {
     const difficulty = players.querySelector("#set-difficulty > button.select");
     if (p1Saved && (p2Saved || (compSelected && difficulty))) {
       enableStartButton();
-      console.log(difficulties);
-      console.log(playerInfo);
     }
   }
   function enableStartButton() {
