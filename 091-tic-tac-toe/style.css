@@ -373,7 +373,7 @@ span#p2-marker {
   box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.2);
 }
 
-@media screen and (min-width: 1400px) {
+/* @media screen and (min-width: 1400px) {
   #app-content[game] {
     width: 30%;
     height: 40%;
@@ -395,7 +395,7 @@ span#p2-marker {
   .square.marker {
     font-size: 7rem;
   }
-}
+} */
 
 /* animations */
 @keyframes fade-in {
