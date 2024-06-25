@@ -41,7 +41,6 @@ const game = (function () {
   let p1MarkerPlaced = false;
   let p2Turn = false;
   let p2MarkerPlaced = false;
-  // const squaresClicked = { p1: [], p2: [] };
   const scores = { p1: 0, p2: 0, tie: 0, winner: "" };
   // cache DOM
   const container = document.querySelector("#app-container");
@@ -184,14 +183,9 @@ const game = (function () {
       pubsub.publish("validMove", [turn, squareIndex]);
     }
   }
-  // function updateSquaresClicked(turn, index) {
-  //   squaresClicked[turn].push(Number(index));
-  // squaresClicked[turn] = [...new Set(squaresClicked[turn])];
-  // }
   function placeMarker(turn, index) {
     const playerMarker = playersInfo[`${turn}M`];
     gameboard.updateBoard(index, playerMarker);
-    // updateSquaresClicked(turn, index);
 
     if (turn === "p1") {
       p1MarkerPlaced = true;
@@ -243,9 +237,9 @@ const game = (function () {
       clickSquare(newTurn);
     }, 500);
   }
-  function generateRandomIndex(array) {
-    return array[Math.floor(Math.random() * array.length)];
-  }
+  // function generateRandomIndex(array) {
+  //   return array[Math.floor(Math.random() * array.length)];
+  // }
   function miniMax(depth, isMaximiser, maxDepth) {
     if (isBoardFull() || depth === maxDepth) return 0;
     else if (isThreeInARow("p1")) return -1;
@@ -337,8 +331,6 @@ const game = (function () {
       createModal();
       return;
     }
-    // squaresClicked.p1 = [];
-    // squaresClicked.p2 = [];
     gameboard.resetBoard();
     gameboard.renderBoard();
 
