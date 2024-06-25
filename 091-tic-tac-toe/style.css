@@ -24,7 +24,6 @@ button {
 }
 
 #app-container {
-  /* border: 2px solid red; */
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -35,11 +34,6 @@ button {
   display: flex;
   align-items: center;
   overflow: hidden;
-}
-
-/* header */
-header {
-  /* border: 2px solid red; */
 }
 
 .title.main,
@@ -72,7 +66,6 @@ footer {
 }
 
 .players {
-  /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -91,7 +84,6 @@ footer {
 }
 
 #p2 {
-  /* border: 2px solid green; */
   display: flex;
   flex-direction: column;
   gap: 3rem;
@@ -106,7 +98,6 @@ footer {
 }
 
 #set-difficulty {
-  /* border: 2px solid red; */
   height: 59.33px;
   position: absolute;
   right: -25px;
@@ -182,7 +173,6 @@ input[class="player-name"] {
 }
 
 #p2 .form .close {
-  /* border: 2px solid red; */
   position: absolute;
   top: 0;
   right: 0;
@@ -197,7 +187,6 @@ input[class="player-name"] {
 }
 
 .form .group {
-  /* border: 2px solid red; */
   display: flex;
   justify-content: space-between;
   margin-top: 0.5rem;
@@ -208,20 +197,10 @@ input[class="player-name"] {
   font-size: 2rem;
   background-color: transparent;
   border: 1px solid #666;
-  /* border: 2px solid blue; */
-}
-
-.save-btn {
-}
-
-/* footer */
-footer {
-  /* border: 2px solid brown; */
 }
 
 /* ? GAME PAGE */
 #app-content[game] {
-  /* border: 2px solid green; */
   padding: 0;
 }
 
@@ -229,7 +208,6 @@ footer {
   border-bottom: 2px solid orange;
   position: absolute;
   top: -65px;
-  /* width: 445px; */
   width: 100%;
   display: flex;
   justify-content: space-around;
@@ -238,18 +216,9 @@ footer {
   letter-spacing: 1.5px;
 }
 
-#game-header #left-items {
-  /* border: 2px solid blue; */
-}
-
-#game-header #right-items {
-  /* border: 2px solid magenta; */
-}
-
 /* * game page header */
 #p1-info,
 #p2-info {
-  /* border: 2px solid purple; */
   display: grid;
   grid-template-columns: 1fr 1rem 1rem 1rem;
   justify-items: center;
@@ -262,14 +231,8 @@ footer {
   justify-self: end;
 }
 
-span#p1-marker,
-span#p2-marker {
-  /* font-size: 16px; */
-}
-
 /* * gameboard */
 #app-content[game] > #app-gameboard {
-  /* border: 2px solid red; */
   width: 70%;
   height: 80%;
   margin: 0 auto;
@@ -279,7 +242,6 @@ span#p2-marker {
 
 /* * modal */
 .modal {
-  /* border: 5px solid orange; */
   border-radius: 2rem;
   position: absolute;
   left: 50%;
