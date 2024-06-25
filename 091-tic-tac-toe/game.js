@@ -84,17 +84,23 @@ const game = (function () {
     headerElements.p1Marker.textContent = `${playersInfo["p1M"]}`;
     headerElements.p2Name.textContent = `${playersInfo["p2"]}:`;
     headerElements.p2Marker.textContent = `${playersInfo["p2M"]}`;
+    if (playersInfo["p2"] === "CPU") {
+      // show difficulty in game header
+      Tools.removeClassList(headerElements.level.parentElement, "hidden");
+      headerElements.level.textContent = playersInfo["difficulty"];
+    }
   }
   function getStoredData() {
     playersInfo = Tools.getFromLocalStorage("playersInfo");
   }
   function getHeaderElements() {
     const round = container.querySelector("#app-round");
+    const level = container.querySelector("#app-level");
     const p1Name = container.querySelector("#p1-name");
     const p1Marker = container.querySelector("#p1-marker");
     const p2Name = container.querySelector("#p2-name");
     const p2Marker = container.querySelector("#p2-marker");
-    return { round, p1Name, p1Marker, p2Name, p2Marker };
+    return { round, p1Name, p1Marker, p2Name, p2Marker, level };
   }
   function gameController() {
     // enable buttons
@@ -115,7 +121,7 @@ const game = (function () {
     gameboard.renderBoard();
     pubsub.publish("markerPlaced", turn);
 
-    if (playersInfo["p2"] === "COMP") disableSquares();
+    if (playersInfo["p2"] === "CPU") disableSquares();
 
     const newTurn = setTurn();
     displayTurnIcon(newTurn);
@@ -160,7 +166,7 @@ const game = (function () {
   function clickSquare(turn) {
     const gameboard = container.querySelector("#app-gameboard");
     gameboard.removeEventListener("click", handleSquareClick);
-    if (turn === "p2" && playersInfo["p2"] === "COMP") {
+    if (turn === "p2" && playersInfo["p2"] === "CPU") {
       computerPlaceMarker();
     } else {
       gameboard.addEventListener("click", handleSquareClick);
