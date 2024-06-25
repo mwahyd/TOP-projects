@@ -11,6 +11,9 @@ const gameboard = (function () {
   function updateBoard(index, marker) {
     board[index] = marker;
   }
+  function undoMove(index) {
+    board[index] = "";
+  }
   function renderBoard() {
     const gameboardDiv = document.querySelector("#app-gameboard");
     gameboardDiv.innerHTML = "";
@@ -27,7 +30,7 @@ const gameboard = (function () {
   function resetBoard() {
     board = ["", "", "", "", "", "", "", "", ""];
   }
-  return { getboard, updateBoard, renderBoard, resetBoard };
+  return { getboard, updateBoard, undoMove, renderBoard, resetBoard };
 })();
 
 const game = (function () {
@@ -181,14 +184,14 @@ const game = (function () {
       pubsub.publish("validMove", [turn, squareIndex]);
     }
   }
-  function updateSquaresClicked(turn, index) {
-    squaresClicked[turn].push(Number(index));
-    squaresClicked[turn] = [...new Set(squaresClicked[turn])];
-  }
+  // function updateSquaresClicked(turn, index) {
+  //   squaresClicked[turn].push(Number(index));
+  // squaresClicked[turn] = [...new Set(squaresClicked[turn])];
+  // }
   function placeMarker(turn, index) {
     const playerMarker = playersInfo[`${turn}M`];
     gameboard.updateBoard(index, playerMarker);
-    updateSquaresClicked(turn, index);
+    // updateSquaresClicked(turn, index);
 
     if (turn === "p1") {
       p1MarkerPlaced = true;
@@ -198,10 +201,11 @@ const game = (function () {
   }
   function computerPlaceMarker() {
     const boardArray = gameboard.getboard();
-    const emptyIndices = boardArray
+    const freeSpaceIndices = boardArray
       .map((square, index) => (square === "" ? index : -1))
       .filter((index) => index !== -1);
-    const randomIndex = generateRandomIndex(emptyIndices);
+    const randomIndex = generateRandomIndex(freeSpaceIndices);
+
     setTimeout(() => {
       placeMarker("p2", randomIndex);
       gameboard.renderBoard();
@@ -226,14 +230,22 @@ const game = (function () {
       [0, 4, 8],
       [2, 4, 6], // Diagonal
     ];
+    const board = gameboard.getboard();
     for (const combination of combinations) {
       const [a, b, c] = combination;
+      // if (
+      //   squaresClicked[turn].includes(a) &&
+      //   squaresClicked[turn].includes(b) &&
+      //   squaresClicked[turn].includes(c)
+      // ) {
+      //   return turn;
+      // }
       if (
-        squaresClicked[turn].includes(a) &&
-        squaresClicked[turn].includes(b) &&
-        squaresClicked[turn].includes(c)
+        board[a] === playersInfo[`${turn}M`] &&
+        board[b] === playersInfo[`${turn}M`] &&
+        board[c] === playersInfo[`${turn}M`]
       ) {
-        return turn;
+        return true;
       }
     }
   }
