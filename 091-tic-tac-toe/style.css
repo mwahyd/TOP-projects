@@ -373,30 +373,6 @@ span#p2-marker {
   box-shadow: 0 0 5px 2px rgba(255, 165, 0, 0.2);
 }
 
-/* @media screen and (min-width: 1400px) {
-  #app-content[game] {
-    width: 30%;
-    height: 40%;
-  }
-
-  #app-content[game] > #game-header {
-    font-size: 1.8rem;
-  }
-
-  #app-content[game] .start {
-    top: 300px;
-    right: 7.3rem;
-  }
-
-  .square {
-    height: 120px;
-  }
-
-  .square.marker {
-    font-size: 7rem;
-  }
-} */
-
 /* animations */
 @keyframes fade-in {
   0% {
