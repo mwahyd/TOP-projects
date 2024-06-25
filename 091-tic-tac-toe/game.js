@@ -214,10 +214,27 @@ const game = (function () {
     const freeSpaceIndices = boardArray
       .map((square, index) => (square === "" ? index : -1))
       .filter((index) => index !== -1);
-    const randomIndex = generateRandomIndex(freeSpaceIndices);
+    // const randomIndex = generateRandomIndex(freeSpaceIndices);
+
+    // Get the max depth based on the difficulty level
+    const maxDepth = getDifficulty();
+    let bestScore = -Infinity;
+    let bestMove = null;
+    freeSpaceIndices.forEach((position) => {
+      gameboard.updateBoard(position, "o");
+
+      // get the score for next move
+      let score = miniMax(0, false, maxDepth);
+      gameboard.undoMove(position);
+      if (score > bestScore) {
+        bestScore = score;
+        bestMove = position;
+      }
+    });
 
     setTimeout(() => {
-      placeMarker("p2", randomIndex);
+      // placeMarker("p2", randomIndex);
+      placeMarker("p2", bestMove);
       gameboard.renderBoard();
       pubsub.publish("markerPlaced", "p2");
       enableSquares();
@@ -228,6 +245,39 @@ const game = (function () {
   }
   function generateRandomIndex(array) {
     return array[Math.floor(Math.random() * array.length)];
+  }
+  function miniMax(depth, isMaximiser, maxDepth) {
+    if (isBoardFull() || depth === maxDepth) return 0;
+    else if (isThreeInARow("p1")) return -1;
+    else if (isThreeInARow("p2")) return 1;
+
+    // get free spaces
+    const board = gameboard.getboard();
+    const freeSpaces = board
+      .map((square, index) => (square === "" ? index : -1))
+      .filter((index) => index !== -1);
+    // recursive case
+    if (isMaximiser) {
+      // CPU
+      let maxEval = -Infinity;
+      freeSpaces.forEach((position) => {
+        gameboard.updateBoard(position, "o");
+        const score = miniMax(depth + 1, false, maxDepth);
+        gameboard.undoMove(position);
+        maxEval = Math.max(maxEval, score);
+      });
+      return maxEval;
+    } else {
+      // case for MINIMISER ==> P1
+      let minEval = Infinity;
+      freeSpaces.forEach((position) => {
+        gameboard.updateBoard(position, playersInfo["p1M"]);
+        const score = miniMax(depth + 1, true, maxDepth);
+        gameboard.undoMove(position);
+        minEval = Math.min(minEval, score);
+      });
+      return minEval;
+    }
   }
   function isThreeInARow(turn) {
     const combinations = [
@@ -243,13 +293,6 @@ const game = (function () {
     const board = gameboard.getboard();
     for (const combination of combinations) {
       const [a, b, c] = combination;
-      // if (
-      //   squaresClicked[turn].includes(a) &&
-      //   squaresClicked[turn].includes(b) &&
-      //   squaresClicked[turn].includes(c)
-      // ) {
-      //   return turn;
-      // }
       if (
         board[a] === playersInfo[`${turn}M`] &&
         board[b] === playersInfo[`${turn}M`] &&
