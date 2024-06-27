@@ -368,7 +368,7 @@ const game = (function () {
     replay.textContent = "replay";
     Tools.addClassList(replay, "start");
     replay.addEventListener("click", () => {
-      Tools.redirect("./index.html", 500);
+      Tools.redirect("./", 500);
     });
     modal.append(winnerDiv, score, replay);
     Tools.addClassList(modal, "reveal");

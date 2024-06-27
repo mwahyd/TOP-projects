@@ -92,7 +92,7 @@ const menu = (function () {
       },
       { once: true }
     );
-    Tools.redirect("./game.html", 500); // load game page
+    Tools.redirect("./game", 500); // load game page
   }
   //  support functions
   function selectPlayer1(button) {
