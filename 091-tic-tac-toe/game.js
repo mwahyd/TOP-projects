@@ -195,8 +195,8 @@ const game = (function () {
   }
   function getDifficulty() {
     switch (playersInfo["difficulty"]) {
-      case "normal":
-        return 2;
+      case "easy":
+        return 0;
       case "hard":
         return 4;
       case "NIGHTMARE":
