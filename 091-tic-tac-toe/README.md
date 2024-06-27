@@ -1,6 +1,6 @@
 # Project: Tic Tac Toe Web App
 
-[Live demo](https://mwahyd.github.io/TOP-projects/091-tic-tac-toe/index)
+[Live demo](https://mwahyd.github.io/TOP-projects/091-tic-tac-toe/)
 
 ## **Description**:
 
