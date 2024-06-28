@@ -47,7 +47,7 @@ footer {
   border: 3px solid black;
   border-radius: 1rem;
   width: 450px;
-  min-height: 270px;
+  height: 270px;
   margin: 5rem auto;
   padding: 6rem;
 
@@ -130,7 +130,7 @@ button.difficulty:nth-of-type(3).select {
 
 .start {
   position: absolute;
-  top: 23.3rem;
+  top: 21.3rem;
   right: 4.5rem;
   padding: 0.8rem;
   text-transform: uppercase;
