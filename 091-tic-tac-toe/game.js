@@ -241,9 +241,9 @@ const game = (function () {
   //   return array[Math.floor(Math.random() * array.length)];
   // }
   function miniMax(depth, isMaximiser, maxDepth) {
-    if (isBoardFull() || depth === maxDepth) return 0;
-    else if (isThreeInARow("p1")) return -1;
+    if (isThreeInARow("p1")) return -1;
     else if (isThreeInARow("p2")) return 1;
+    else if (isBoardFull() || depth === maxDepth) return 0;
 
     // get free spaces
     const board = gameboard.getboard();
