@@ -15,7 +15,7 @@ html {
 }
 
 body {
-  height: 100vh;
+  height: 100svh;
   font-size: 1.4rem;
 }
 
@@ -28,7 +28,7 @@ button {
   display: flex;
   flex-direction: column;
   width: 95%;
-  min-width: 300px;
+  min-width: 350px;
   margin: 0 auto;
 }
 
