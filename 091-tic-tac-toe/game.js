@@ -113,7 +113,7 @@ const game = (function () {
     displayTurnIcon(turn);
     // allow player to set marker
     setTimeout(() => clickSquare(turn), 600);
-    // LISTEN to broadcast regarding empty square!!!!!
+    // Listen to broadcast if played square is empty
     pubsub.subscribe("validMove", handleValidMove);
     // listen to marker placed
     pubsub.subscribe("markerPlaced", declareRoundWinner);
