@@ -13,64 +13,131 @@
       <h1>Dynamic User Interface</h1>
     </div>
 
-    <section class="section-one container">
-      <h2 class="section-title">Drop Down Menu</h2>
-      <nav class="nav-menu">
-        <ul class="menu__list">
-          <li class="menu__item"><a href="#" class="menu__link">Info</a></li>
-          <li class="menu__item"><a href="#" class="menu__link">About</a></li>
-          <li class="menu__item"><a href="#" class="menu__link">Login</a></li>
-        </ul>
+    <div class="wrapper">
+      <section class="section-one container">
+        <h2 class="section-title">Drop-down Menu</h2>
+        <nav class="nav-menu">
+          <ul class="menu__list">
+            <li class="menu__item"><a href="#" class="menu__link">Info</a></li>
+            <li class="menu__item"><a href="#" class="menu__link">About</a></li>
+            <li class="menu__item"><a href="#" class="menu__link">Login</a></li>
+          </ul>
 
-        <div class="info-dropdown" info-dropdown>
-          <div class="block">
-            <h2 class="block__title">News</h2>
-            <ul class="block__list">
-              <li class="info__item"><h2 class="info__link">News</h2></li>
-              <li class="info__item"><a href="#" class="info__link">Breaking</a></li>
+          <div class="info-dropdown" info-dropdown>
+            <div class="block">
+              <h2 class="block__title">News</h2>
+              <ul class="block__list">
+                <li class="info__item"><h2 class="info__link">News</h2></li>
+                <li class="info__item">
+                  <a href="#" class="info__link">Breaking</a>
+                </li>
+                <li class="info__item">
+                  <a href="#" class="info__link">Top Stories</a>
+                </li>
+                <li class="info__item">
+                  <a href="#" class="info__link">Continental</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="block">
+              <h2 class="block__title">Entertainment</h2>
+              <li class="info__item"><a href="#" class="info__link">Movies</a></li>
+              <li class="info__item"><a href="#" class="info__link">Music</a></li>
+              <li class="info__item"><a href="#" class="info__link">Shows</a></li>
+            </div>
+
+            <div class="block">
+              <h2 class="block__title">Weather</h2>
+              <li class="info__item"><a href="#" class="info__link">Today</a></li>
+              <li class="info__item"><a href="#" class="info__link">Forecast</a></li>
+              <li class="info__item"><a href="#" class="info__link">Maps</a></li>
+            </div>
+
+            <div class="block">
+              <h2 class="block__title">Stay Connected</h2>
               <li class="info__item">
-                <a href="#" class="info__link">Top Stories</a>
+                <a href="#" class="info__link">Instagram</a>
               </li>
+              <li class="info__item"><a href="#" class="info__link">Twitter</a></li>
               <li class="info__item">
-                <a href="#" class="info__link">Continental</a>
+                <a href="#" class="info__link">Newsletter</a>
               </li>
+            </div>
+          </div>
+
+          <div class="login-dropdown" login-dropdown>
+            <form action="#">
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" />
+
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password" />
+
+              <button type="submit">Submit</button>
+            </form>
+          </div>
+        </nav>
+      </section>
+
+      <section class="section-two container">
+        <h2 class="section-title">Mobile Drop-down</h2>
+
+        <button class="nav-toggle"><span class="hamburger"></span></button>
+        <nav class="nav-mobile--primary">
+          <ul class="mobile__list">
+            <li class="mobile__item">Photos<a href="#" class="mobile__link"></a></li>
+            <li class="mobile__item">Videos<a href="#" class="mobile__link"></a></li>
+            <li class="mobile__item">Chat<a href="#" class="mobile__link"></a></li>
+          </ul>
+        </nav>
+
+        <nav class="nav-mobile--secondary">
+          <ul class="mobile__list">
+            <li class="mobile__item">More ⇣<a href="#" class="mobile__link"></a></li>
+          </ul>
+
+          <div class="more-dropdown">
+            <ul class="more__list">
+              <li class="more__item">
+                <a href="#" class="more__link">Statistics</a>
+              </li>
+              <li class="more__item"><a href="#" class="more__link">About</a></li>
+              <li class="more__item"><a href="#" class="more__link">Contact</a></li>
+              <li class="more__item"><a href="#" class="more__link">Settings</a></li>
             </ul>
           </div>
+        </nav>
+      </section>
 
-          <div class="block">
-            <h2 class="block__title">Entertainment</h2>
-            <li class="info__item"><a href="#" class="info__link">Movies</a></li>
-            <li class="info__item"><a href="#" class="info__link">Music</a></li>
-            <li class="info__item"><a href="#" class="info__link">Shows</a></li>
-          </div>
+      <section class="section-three container">
+        <!-- <button class="btn rudder-toggle"><span class="plus">+</span></button> -->
 
-          <div class="block">
-            <h2 class="block__title">Weather</h2>
-            <li class="info__item"><a href="#" class="info__link">Today</a></li>
-            <li class="info__item"><a href="#" class="info__link">Forecast</a></li>
-            <li class="info__item"><a href="#" class="info__link">Maps</a></li>
-          </div>
+        <nav class="nav-rudder">
+          <li class="rudder__item"><a href="#" class="rudder__link">&#9826;</a></li>
+          <li class="rudder__item"><a href="#" class="rudder__link">&#9816;</a></li>
+          <li class="rudder__item"><a href="#" class="rudder__link">&#9826;</a></li>
+          <button class="btn rudder-toggle"><span id="icon">&#x2B;</span></button>
+          <li class="rudder__item">
+            <a href="#" class="rudder__link">&#128488;</a>
+          </li>
+          <li class="rudder__item"><a href="#" class="rudder__link">&#9881;</a></li>
+        </nav>
+      </section>
 
-          <div class="block">
-            <h2 class="block__title">Stay Connected</h2>
-            <li class="info__item"><a href="#" class="info__link">Instagram</a></li>
-            <li class="info__item"><a href="#" class="info__link">Twitter</a></li>
-            <li class="info__item"><a href="#" class="info__link">Newsletter</a></li>
-          </div>
+      <section class="section-four container">
+        <div class="float">
+          <button class="btn rudder-toggle"><span id="icon">&#x2B;</span></button>
         </div>
 
-        <div class="login-dropdown" login-dropdown>
-          <form action="#">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" />
-
-            <label for="password">Password</label>
-            <input type="password" id="password" name="password" />
-
-            <button>Submit</button>
-          </form>
-        </div>
-      </nav>
-    </section>
+        <ul class="float__menu">
+          <li class="float__list"><button class="option"></button></li>
+          <li class="float__list"><button class="option"></button></li>
+          <li class="float__list"><button class="option"></button></li>
+          <li class="float__list"><button class="option"></button></li>
+          <li class="float__list"><button class="option"></button></li>
+        </ul>
+      </section>
+    </div>
   </body>
 </html>
