@@ -23,3 +23,12 @@ function toggleDropdown(event, currentDropdown) {
   });
   currentDropdown.classList.toggle("active");
 }
+
+// * SECTION TWO RUDDER - CODE
+
+const drawerBtn = document.querySelector("[data-drawer-btn]");
+drawerBtn.addEventListener("click", openDrawer);
+
+function openDrawer(ev) {
+  drawerBtn.classList.toggle("active");
+}
