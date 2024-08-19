@@ -1,5 +1,15 @@
 // * SECTION ONE - CODE
 
+window.addEventListener("click", reset);
+
+function reset(ev) {
+  if (ev.target.nodeName === "HTML" || ev.target.classList.contains("container")) {
+    document.querySelectorAll(".active").forEach((item) => {
+      item.classList.remove("active");
+    });
+  }
+}
+
 const infoDropdown = document.querySelector("[info-dropdown]");
 const loginDropdown = document.querySelector("[login-dropdown]");
 
@@ -31,4 +41,15 @@ drawerBtn.addEventListener("click", openDrawer);
 
 function openDrawer(ev) {
   drawerBtn.classList.toggle("active");
+}
+
+// * SECTION THREE FLOAT - CODE
+
+const floatBtn = document.querySelector("[data-float-btn]");
+const floatMenu = document.querySelector("[data-float-menu]");
+floatBtn.addEventListener("click", openFloat);
+
+function openFloat(ev) {
+  floatBtn.classList.toggle("active");
+  floatMenu.classList.toggle("active");
 }
