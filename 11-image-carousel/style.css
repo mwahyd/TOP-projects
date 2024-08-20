@@ -135,7 +135,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 2;
   transition: width 300ms ease-in-out, border-radius 300ms ease-in-out;
 }
 
@@ -198,7 +197,7 @@ a {
   justify-content: center;
 
   position: fixed;
-  bottom: 1.5rem;
+  top: 1.5rem;
   right: 1rem;
   transition: transform 300ms ease-in-out;
 }
@@ -209,7 +208,7 @@ a {
 
 .float__menu {
   position: fixed;
-  bottom: 1.5rem;
+  top: 1.5rem;
   right: 1.5rem;
   height: 70%;
   max-height: 300px;
@@ -218,7 +217,7 @@ a {
   flex-direction: column;
   justify-content: space-evenly;
 
-  transform: translateY(500px);
+  transform: translateY(-500px);
   transition: transform 300ms ease-in-out;
 }
 
@@ -240,17 +239,69 @@ a {
 }
 
 .float-btn.active {
-  transform: translateY(-300px);
+  transform: translateY(300px);
 }
 
 .float__menu.active {
   transform: translateY(0);
 }
 
+/* * SECTION FOUR - IMAGE CARASOUL */
+
+.section-four {
+  padding: 6em 0;
+}
+
+.image-frame {
+  border: 5px solid black;
+  margin: 0 auto;
+  padding: 0.5rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  max-width: 270px;
+  max-height: 480px;
+}
+
+img {
+  grid-column: 1;
+  grid-row: 1;
+  height: 100%;
+  max-width: 100%;
+  object-fit: cover;
+  transition: opacity 500ms ease-in-out;
+}
+
+.nav-img {
+  margin: 1rem auto;
+  max-width: 350px;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 1.5rem;
+}
+
+.img__link {
+  border: 1px solid black;
+  width: 30px;
+  height: 10px;
+  border-radius: 2rem;
+}
+
+.img__link:hover {
+  background-color: black;
+}
+
 /* * Utility  */
 
 .hidden {
   display: none;
+}
+
+.invisible {
+  opacity: 0;
+}
+
+.highlight {
+  background-color: black;
 }
 
 .row {
