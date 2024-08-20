@@ -89,3 +89,43 @@ function toggleVisibilityHighlight(img, link, hide) {
   img.classList.toggle("invisible", hide);
   link.classList.toggle("highlight", !hide);
 }
+
+// display images in a loop
+function getImagesAndLinks() {
+  const images = document.querySelectorAll("img");
+  const navLinks = document.querySelectorAll("[data-img-links] > a");
+
+  const visibleImg = document.querySelector("img:not(.invisible)");
+  const highlightedHref = document.querySelector("a.highlight");
+
+  const nextIndex = (currentIndex + 1) % images.length;
+
+  const nextImg = images[nextIndex];
+  const nextlink = navLinks[nextIndex];
+
+  toggleVisibilityHighlight(visibleImg, highlightedHref, true);
+  toggleVisibilityHighlight(nextImg, nextlink, false);
+
+  currentIndex = nextImg;
+}
+
+function slideShow() {
+  const images = Array.from(document.querySelectorAll("img"));
+  const navLinks = Array.from(document.querySelectorAll("[data-img-links] > a"));
+
+  const visibleImg = document.querySelector("img:not(.invisible)");
+  const highlightedHref = document.querySelector("a.highlight");
+
+  const currentIndex = images.indexOf(visibleImg);
+  currentIndex === images.length - 1
+    ? toggleVisibilityHighlight(images[0], navLinks[0], false)
+    : toggleVisibilityHighlight(
+        images[currentIndex + 1],
+        navLinks[currentIndex + 1],
+        false
+      );
+
+  toggleVisibilityHighlight(visibleImg, highlightedHref, true);
+}
+
+setInterval(() => slideShow(), 5000);
