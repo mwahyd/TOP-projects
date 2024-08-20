@@ -53,3 +53,39 @@ function openFloat(ev) {
   floatBtn.classList.toggle("active");
   floatMenu.classList.toggle("active");
 }
+
+// * SECTION THREE Carasoul - CODE
+
+const navLinks = document.querySelectorAll("[data-img-links] > a");
+
+// preload images on page load
+
+window.addEventListener("load", preloadImages);
+navLinks.forEach((link) => link.addEventListener("click", displayImg));
+
+function preloadImages() {
+  const imgs = document.querySelectorAll("img");
+  imgs.forEach((img) => {
+    const preloadImg = new Image();
+    preloadImg.src = img.src;
+  });
+}
+
+function displayImg(ev) {
+  ev.preventDefault();
+  const href = ev.target.getAttribute("href").slice(1);
+  const visibleImg = document.querySelector("img:not(.invisible)");
+  const highlightedHref = document.querySelector("a.highlight");
+  // If the clicked link corresponds to the currently visible image, do nothing
+  if (visibleImg && href === visibleImg.id) return;
+
+  // toggle visibily
+  toggleVisibilityHighlight(visibleImg, highlightedHref, true);
+  toggleVisibilityHighlight(document.querySelector(`img#${href}`), ev.target, false);
+}
+
+function toggleVisibilityHighlight(img, link, hide) {
+  // if force === true toggle adds class else false toggle removes class
+  img.classList.toggle("invisible", hide);
+  link.classList.toggle("highlight", !hide);
+}
