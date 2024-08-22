@@ -1,3 +1,9 @@
+:root {
+  --clr-invalid: rgb(162, 0, 0);
+  --clr-warning: rgb(162, 130, 0);
+  --clr-valid: rgb(81, 162, 0);
+}
+
 *,
 *::before,
 *::after {
@@ -24,6 +30,7 @@ body {
 }
 
 .login__field {
+  /* border: 2px solid green; */
   position: relative;
 }
 
@@ -36,6 +43,7 @@ body {
   padding: 2rem 0 0.2rem 0;
   font-size: inherit;
   position: relative;
+  user-select: none;
 }
 
 .login__field > input:focus {
@@ -62,16 +70,17 @@ body {
   opacity: 0.8;
 }
 
-/* * Placeholders */
+/* * Placeholders Spans */
 
 .login__field > input::placeholder {
   color: transparent;
 }
 
 .placeholder {
+  /* border: 2px solid red; */
   display: block;
   position: absolute;
-  z-index: 1;
+  /* z-index: 1; */
   bottom: 0;
   padding: 0 0 0.2rem 0;
   pointer-events: none;
@@ -86,4 +95,32 @@ body {
 .login__field > input:not(:placeholder-shown) ~ .placeholder {
   font-size: 1rem;
   transform: translateY(-35px);
+}
+
+/* * ERROR Spans */
+
+.error {
+  /* border: 2px solid orange; */
+  display: flex;
+  align-items: center;
+  color: var(--clr-invalid);
+  margin-bottom: 1rem;
+}
+
+.error__icon {
+  font-size: 0.8rem;
+}
+
+/* * LIVE Validation  */
+
+input:not(:placeholder-shown):invalid {
+  border-color: var(--clr-invalid);
+}
+
+input:not(:placeholder-shown):valid {
+  border-color: var(--clr-valid);
+}
+
+input:not(:placeholder-shown):focus:invalid {
+  border-color: var(--clr-warning);
 }
