@@ -70,6 +70,15 @@ body {
   opacity: 0.8;
 }
 
+/* * Password field */
+
+.show-password {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
 /* * Placeholders Spans */
 
 .login__field > input::placeholder {
@@ -123,4 +132,18 @@ input:not(:placeholder-shown):valid {
 
 input:not(:placeholder-shown):focus:invalid {
   border-color: var(--clr-warning);
+}
+
+/* * Utility Classes */
+
+.valid {
+  color: var(--clr-valid);
+}
+
+.warning {
+  color: var(--clr-warning);
+}
+
+.invalid {
+  color: var(--clr-invalid);
 }
