@@ -9,23 +9,36 @@
   </head>
 
   <body>
-    <section class="section-login">
+    <section class="section-login" section-login>
       <div class="container">
         <h1 class="login__title">Sign in</h1>
         <form action="#" name="login" class="login__form">
           <div class="login__field">
-            <input type="email" name="email" id="email" placeholder="." />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="."
+              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
             <span class="email-placeholder placeholder">Email</span>
           </div>
           <div class="error">
+            <span class="error__icon">&#9899;&#xfe0e;</span>
             <span class="error__msg">HALO</span>
           </div>
 
           <div class="login__field">
-            <input type="password" name="password" id="password" placeholder="." />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="."
+              minlength="8" />
             <span class="password-placeholder placeholder">Password</span>
+            <span class="show-password" show-password>&#9673;&#xfe0e;</span>
           </div>
           <div class="error">
+            <span class="error__icon">&#9899;&#xfe0e;</span>
             <span class="error__msg">HALO</span>
           </div>
           <button type="submit" class="submit">Log in</button>
