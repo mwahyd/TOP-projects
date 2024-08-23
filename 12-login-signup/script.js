@@ -14,7 +14,9 @@
 
   // * email functions
   function emailConstraint(ev) {
-    if (!verifyEmail(ev.target.value)) {
+    if (ev.target.value === "") {
+      removeError(doc.querySelector("[email-error]"));
+    } else if (!verifyEmail(ev.target.value)) {
       const msg = ` Invalid email format [abc@abc.xyz]`;
       raiseError(doc.querySelector("[email-error]"), msg);
     } else {
