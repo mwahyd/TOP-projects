@@ -115,12 +115,12 @@ body {
   color: var(--clr-invalid);
   margin-bottom: 1rem;
   font-size: 1rem;
+  user-select: none;
 }
 
 .error__msg::before {
   content: "\26AB\fe0e";
   font-size: 0.8rem;
-  color: var(--clr-invalid);
 }
 
 /* * LIVE Validation  */
@@ -152,5 +152,5 @@ input:not(:placeholder-shown):focus:invalid {
 }
 
 .hidden {
-  display: none;
+  color: transparent;
 }
