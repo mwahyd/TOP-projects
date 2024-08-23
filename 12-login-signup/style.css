@@ -37,7 +37,7 @@ body {
 .login__field > input {
   border: 0;
   /* border: 2px solid red; */
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid rgb(111, 111, 111);
   display: block;
   width: 100%;
   padding: 2rem 0 0.2rem 0;
@@ -48,7 +48,7 @@ body {
 
 .login__field > input:focus {
   outline: none;
-  border-bottom: 2px solid rgb(100, 100, 100);
+  border-bottom: 2px solid rgb(183, 183, 183);
 }
 
 .login__field + .login__field {
@@ -114,10 +114,13 @@ body {
   align-items: center;
   color: var(--clr-invalid);
   margin-bottom: 1rem;
+  font-size: 1rem;
 }
 
-.error__icon {
+.error__msg::before {
+  content: "\26AB\fe0e";
   font-size: 0.8rem;
+  color: var(--clr-invalid);
 }
 
 /* * LIVE Validation  */
@@ -146,4 +149,8 @@ input:not(:placeholder-shown):focus:invalid {
 
 .invalid {
   color: var(--clr-invalid);
+}
+
+.hidden {
+  display: none;
 }
