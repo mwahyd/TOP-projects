@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <script src="./signup-script.js" defer></script>
+    <title>Sign Up</title>
+  </head>
+
+  <body>
+    <section class="section-signup" section-signup>
+      <div class="container">
+        <h1 class="signup__title">Sign Up</h1>
+        <form action="#" name="signup" class="signup__form">
+          <div class="input__field">
+            <input
+              required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="."
+              minlength="2"
+              maxlength="40" />
+            <span class="name-placeholder placeholder">Name</span>
+          </div>
+          <div class="error">
+            <span class="error__msg hidden" name-error>HELLO</span>
+          </div>
+
+          <div class="input__field">
+            <input
+              required
+              type="text"
+              name="surname"
+              id="surname"
+              placeholder="."
+              minlength="2"
+              maxlength="40" />
+
+            <span class="surname-placeholder placeholder">Surname</span>
+          </div>
+
+          <div class="error">
+            <span class="error__msg" surname-error>HELLO</span>
+          </div>
+
+          <div class="input__field">
+            <input
+              required
+              type="email"
+              name="email"
+              id="email"
+              placeholder="."
+              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+            <span class="email-placeholder placeholder">Email</span>
+          </div>
+
+          <div class="error">
+            <span class="error__msg" email-error>HELLO</span>
+          </div>
+
+          <div class="input__field">
+            <input
+              required
+              type="password"
+              name="password"
+              id="password"
+              minlength="8"
+              placeholder="." />
+            <span class="password-placeholder placeholder">Password</span>
+            <span class="show-password" show-password>&#9673;&#xfe0e;</span>
+          </div>
+          <div class="error">
+            <span class="error__msg" email-error>HELLO</span>
+          </div>
+
+          <button type="submit" class="submit">Sign Up</button>
+        </form>
+        <a target="_blank" href="./login.html" class="link link-signup"
+          >Have an account?</a
+        >
+      </div>
+    </section>
+  </body>
+</html>
