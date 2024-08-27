@@ -14,9 +14,7 @@
 
   // bind events
   nameFields.forEach((nameField) => {
-    nameField.addEventListener("focus", handleFocusBlur);
     nameField.addEventListener("blur", handleFocusBlur);
-    nameField.addEventListener("input", nameConstraint);
   });
   emailField.addEventListener("input", emailConstraint);
   showPassBtn.addEventListener("click", showPassword);
@@ -30,17 +28,17 @@
     focusConstraint(ev, errorSpanSelector);
   }
 
-  function nameConstraint(ev) {
-    // trim and lowercase input if empty flag error
-    // minimum 2 WORD characters else flag Error
-  }
-
   function focusConstraint(ev, spanName) {
     // focused and blured AND EMPTY flag error!
     const nameField = ev.target;
     const errorSpan = doc.querySelector(spanName);
+
     if (document.activeElement !== nameField && nameField.value.trim() === "") {
+      resetElement(nameField);
       raiseError(errorSpan, "remove", "hidden", " Field cannot be blank");
+    } else if (nameField.value.trim().length < 2) {
+      resetElement(nameField);
+      raiseError(errorSpan, "remove", "hidden", " Must be more than 2 characters");
     } else {
       removeError(errorSpan, "add", "hidden", true);
     }
@@ -84,5 +82,9 @@
     if (text) element.testContent = "";
     if (toggle === "add") element.classList.add(className);
     if (toggle === "remove") element.classList.remove(className);
+  }
+
+  function resetElement(element) {
+    element.value = "";
   }
 })();
