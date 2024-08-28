@@ -6,6 +6,8 @@
   const emailField = doc.querySelector("input[type='email']");
   const passField = doc.querySelector("input[type='password']");
   const showPassBtn = doc.querySelector("[show-password]");
+  // const signupBtn = doc.querySelector("[signup-btn]");
+  const form = doc.querySelector("[signup-form]");
 
   // bind events
   nameFields.forEach((nameField) => {
@@ -16,6 +18,7 @@
   showPassBtn.addEventListener("click", showPassword);
   passField.addEventListener("blur", handlePassBlur);
   passField.addEventListener("input", handlePassInput);
+  form.addEventListener("submit", verifyForm);
 
   // handler functions
 
@@ -33,14 +36,16 @@
 
   function nameConstraint(ev, spanName) {
     // focused and blured AND EMPTY flag error!
-    const nameField = ev.target;
-    const errorSpan = doc.querySelector(spanName);
+    const nameField = ev.target || ev;
+    // const errorSpan = doc.querySelector(spanName);
+    const errorSpan =
+      typeof spanName === "string" ? document.querySelector(spanName) : spanName;
 
     if (document.activeElement !== nameField && nameField.value.trim() === "") {
       resetElement(nameField);
       raiseError(errorSpan, "remove", "hidden", " Field cannot be blank");
     } else if (nameField.value.trim().length < 2) {
-      resetElement(nameField);
+      // resetElement(nameField);
       raiseError(errorSpan, "remove", "hidden", " Must be more than 2 characters");
     } else {
       removeError(errorSpan, "add", "hidden", true);
@@ -48,13 +53,14 @@
   }
 
   // * email functions
-  function emailConstraint(ev) {
-    const errorSpan = doc.querySelector("[email-error]");
-    const emailField = ev.target;
+  function emailConstraint(ev, spanName) {
+    const emailField = ev.target || ev;
+    const errorSpan = doc.querySelector("[email-error]") || spanName;
+
     if (document.activeElement !== emailField && emailField.value.trim() === "") {
       resetElement(emailField);
       raiseError(errorSpan, "remove", "hidden", " Field cannot be blank");
-    } else if (!verifyEmail(ev.target.value)) {
+    } else if (!verifyEmail(emailField.value)) {
       const msg = ` Invalid email format [abc@abc.xyz]`;
       raiseError(errorSpan, "remove", "hidden", msg);
     } else {
@@ -78,8 +84,9 @@
 
   // handle blur event (when user leaves password field)
   function handlePassBlur(ev) {
+    const passField = ev.target ? ev.target.value : ev.value;
     const passReqsSpans = getPassRequirements();
-    if (ev.target.value.trim() === "") {
+    if (passField.trim() === "") {
       highlightRequirementSpans(passReqsSpans, true);
     }
   }
@@ -115,8 +122,8 @@
     return {
       hasLetter: /[a-zA-Z]/.test(password),
       hasNum: /\d/.test(password),
-      hasChar: /[!@#$%^&*(),.?":{}|<>]/.test(password),
-      hasLength: password.length >= 8,
+      hasChar: /[!@#$%^&*_\-=+]/.test(password),
+      hasLength: password.trim().length >= 8,
     };
   }
 
@@ -136,6 +143,33 @@
       removeError(reqSpan, "remove", "invalid"); // remove red colour from span text
     } else {
       raiseError(reqSpan, "add", "invalid"); // add red colour to span text
+    }
+  }
+
+  // * form submission functions
+  function verifyForm(ev) {
+    ev.preventDefault();
+    const [nameField, famField] = nameFields;
+    const [nameSpan, famSpan, emailSpan] = doc.querySelectorAll(".error > span");
+
+    // consolidate fields and error handling
+    const fields = [
+      { field: nameField, errorFunc: () => nameConstraint(nameField, nameSpan) },
+      { field: famField, errorFunc: () => nameConstraint(famField, famSpan) },
+      { field: emailField, errorFunc: () => emailConstraint(emailField, emailSpan) },
+      { field: passField, errorFunc: () => handlePassBlur(passField) },
+    ];
+
+    // loop through fileds, check validity, handle error, focus on the first invalid field
+    const invalidField = fields.find(({ field }) => !field.checkValidity());
+
+    if (invalidField) {
+      const { field, errorFunc } = invalidField;
+      field.focus();
+      errorFunc();
+    } else {
+      alert("Submitting form");
+      form.submit();
     }
   }
 
