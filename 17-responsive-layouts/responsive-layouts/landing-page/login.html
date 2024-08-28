@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./login.css" />
+    <script src="./login-script.js" defer></script>
+    <title>Login</title>
+  </head>
+
+  <body>
+    <section class="section-login" section-login>
+      <div class="container">
+        <h1 class="login__title">Sign in</h1>
+        <form action="#" name="login" class="login__form" novalidate>
+          <div class="input__field">
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="."
+              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+            <span class="email-placeholder placeholder">Email</span>
+          </div>
+          <div class="error">
+            <span class="error__msg hidden" email-error></span>
+          </div>
+
+          <div class="input__field">
+            <input
+              type="password"
+              name="password"
+              id="password"
+              placeholder="."
+              minlength="8" />
+            <span class="password-placeholder placeholder">Password</span>
+            <span class="show-password" show-password>&#9673;&#xfe0e;</span>
+          </div>
+          <div class="error">
+            <span class="error__msg hidden"></span>
+          </div>
+          <button type="submit" class="submit">Log in</button>
+        </form>
+        <a href="#" class="link">Forgot password?</a>
+        <a href="./signup" class="link link-signup"> Make an account! </a>
+        <a href="./" class="link link-signup"> Home </a>
+      </div>
+    </section>
+  </body>
+</html>

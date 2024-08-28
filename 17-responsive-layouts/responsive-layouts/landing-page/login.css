@@ -1,0 +1,201 @@
+:root {
+  --clr-invalid: rgb(162, 0, 0);
+  --clr-warning: rgb(162, 130, 0);
+  --clr-valid: rgb(81, 162, 0);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: system-ui;
+  font-size: 1.125rem;
+  line-height: 1.5;
+}
+
+.container {
+  width: 90%;
+  max-width: 350px;
+  margin: 0 auto;
+}
+
+a {
+  text-decoration: none;
+  font-size: 1rem;
+}
+
+/* * Input Form Styles */
+
+.input__field {
+  position: relative;
+}
+
+.input__field > input {
+  border: 0;
+  border-bottom: 2px solid rgb(111, 111, 111);
+  display: block;
+  width: 100%;
+  padding: 2rem 0 0.2rem 0;
+  font-size: inherit;
+  position: relative;
+  user-select: none;
+}
+
+.input__field > input:focus {
+  outline: none;
+  border-bottom: 2px solid rgb(183, 183, 183);
+}
+
+.input__field + .input__field {
+  margin-top: 1rem;
+}
+
+.submit {
+  display: block;
+  width: 100%;
+  margin: 1.5rem 0;
+  padding: 0.75rem 2rem;
+  border: 0;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.submit:hover {
+  opacity: 0.8;
+}
+
+/* * Password field */
+
+.show-password {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  cursor: pointer;
+}
+
+/* * Placeholders Spans */
+
+.input__field > input::placeholder {
+  color: transparent;
+}
+
+.placeholder {
+  display: block;
+  position: absolute;
+  bottom: 0;
+  padding: 0 0 0.2rem 0;
+  pointer-events: none;
+  transition: transform 100ms ease-in-out, font-size 100ms ease-in-out;
+}
+
+.input__field > input:focus ~ .placeholder {
+  font-size: 1rem;
+  transform: translateY(-35px);
+}
+
+.input__field > input:not(:placeholder-shown) ~ .placeholder {
+  font-size: 1rem;
+  transform: translateY(-35px);
+}
+
+/* * ERROR Spans */
+
+.error {
+  display: flex;
+  align-items: center;
+  color: var(--clr-invalid);
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  user-select: none;
+}
+
+.error__msg::before {
+  content: "\26AB\fe0e";
+  font-size: 0.8rem;
+}
+
+/* * login page links */
+
+.link {
+  color: #ccc;
+}
+
+.link:hover {
+  color: #949494;
+}
+
+.link-signup {
+  display: block;
+}
+
+/* * LIVE Validation  */
+
+input:not(:placeholder-shown):invalid {
+  border-color: var(--clr-invalid);
+}
+
+input:not(:placeholder-shown):valid {
+  border-color: var(--clr-valid);
+}
+
+input:not(:placeholder-shown):focus:invalid {
+  border-color: var(--clr-warning);
+}
+
+/* * Sign Up Page */
+
+.section-signup {
+  padding: 1em 0;
+}
+
+/* * Password */
+
+.pass-reqs {
+  font-size: 0.9rem;
+}
+
+.pass-reqs > * {
+  margin: 0;
+}
+
+.req__msg {
+  font-weight: bold;
+}
+
+.req__icon[valid] {
+  color: var(--clr-valid);
+}
+
+/* * Utility Classes */
+
+.hidden {
+  color: transparent;
+}
+
+.valid {
+  color: var(--clr-valid);
+}
+
+.warning {
+  color: var(--clr-warning);
+}
+
+.invalid {
+  color: var(--clr-invalid);
+}
+
+.valid-border {
+  border-color: var(--clr-valid);
+}
+
+.warning-border {
+  border-color: var(--clr-warning);
+}
+
+.invalid-border {
+  border-color: var(--clr-invalid);
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./login.css" />
+    <script src="./signup-script.js" defer></script>
+    <title>Sign Up</title>
+  </head>
+
+  <body>
+    <section class="section-signup" section-signup>
+      <div class="container">
+        <h1 class="signup__title">Sign Up</h1>
+        <form action="#" name="signup" class="signup__form" signup-form novalidate>
+          <div class="input__field">
+            <input
+              required
+              type="text"
+              name="name"
+              id="name"
+              placeholder="."
+              minlength="2"
+              maxlength="40" />
+            <span class="name-placeholder placeholder">Name</span>
+          </div>
+          <div class="error">
+            <span class="error__msg hidden" name-error></span>
+          </div>
+
+          <div class="input__field">
+            <input
+              required
+              type="text"
+              name="surname"
+              id="surname"
+              placeholder="."
+              minlength="2"
+              maxlength="40" />
+
+            <span class="surname-placeholder placeholder">Surname</span>
+          </div>
+
+          <div class="error">
+            <span class="error__msg hidden" surname-error></span>
+          </div>
+
+          <div class="input__field">
+            <input
+              required
+              type="email"
+              name="email"
+              id="email"
+              placeholder="."
+              pattern="[a-zA-Z0-9._%+\-]+@[a-zA-Z0-9.\-]+\.[a-zA-Z]{2,}" />
+            <span class="email-placeholder placeholder">Email</span>
+          </div>
+
+          <div class="error">
+            <span class="error__msg hidden" email-error></span>
+          </div>
+
+          <div class="input__field">
+            <input
+              required
+              type="password"
+              name="password"
+              id="password"
+              pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*_\-=+]).{8,}$"
+              placeholder="." />
+            <span class="password-placeholder placeholder">Password</span>
+            <span class="show-password" show-password>&#9673;&#xfe0e;</span>
+          </div>
+          <div class="pass-reqs">
+            <p class="req__msg" pass-req>Your password must contain atleast:</p>
+            <p class="req__letter req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 1 letter
+            </p>
+            <p class="req__num req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 1 number
+            </p>
+            <p class="req__char req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 1 special character (eg:
+              #?!_%)
+            </p>
+            <p class="req__length req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 8 characters
+            </p>
+          </div>
+
+          <button type="submit" class="submit">Sign Up</button>
+        </form>
+        <a href="./login" class="link link-signup"> Have an account? </a>
+        <a href="./" class="link link-signup"> Home </a>
+      </div>
+    </section>
+  </body>
+</html>
