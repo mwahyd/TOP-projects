@@ -11,32 +11,31 @@
 }
 
 body {
+  margin: 0;
   font-family: system-ui;
   font-size: 1.125rem;
   line-height: 1.5;
 }
 
 .container {
-  /* border: 2px solid red; */
   width: 90%;
   max-width: 350px;
   margin: 0 auto;
 }
 
-/* * Login Form Styles */
-
-.login__form {
-  /* border: 2px solid green; */
+a {
+  text-decoration: none;
+  font-size: 1rem;
 }
 
-.login__field {
-  /* border: 2px solid green; */
+/* * Input Form Styles */
+
+.input__field {
   position: relative;
 }
 
-.login__field > input {
+.input__field > input {
   border: 0;
-  /* border: 2px solid red; */
   border-bottom: 2px solid rgb(111, 111, 111);
   display: block;
   width: 100%;
@@ -46,20 +45,19 @@ body {
   user-select: none;
 }
 
-.login__field > input:focus {
+.input__field > input:focus {
   outline: none;
   border-bottom: 2px solid rgb(183, 183, 183);
 }
 
-.login__field + .login__field {
-  /* border: 2px solid yellow; */
+.input__field + .input__field {
   margin-top: 1rem;
 }
 
 .submit {
   display: block;
   width: 100%;
-  margin-top: 1.5rem;
+  margin: 1.5rem 0;
   padding: 0.75rem 2rem;
   border: 0;
   border-radius: 0.8rem;
@@ -81,27 +79,25 @@ body {
 
 /* * Placeholders Spans */
 
-.login__field > input::placeholder {
+.input__field > input::placeholder {
   color: transparent;
 }
 
 .placeholder {
-  /* border: 2px solid red; */
   display: block;
   position: absolute;
-  /* z-index: 1; */
   bottom: 0;
   padding: 0 0 0.2rem 0;
   pointer-events: none;
   transition: transform 100ms ease-in-out, font-size 100ms ease-in-out;
 }
 
-.login__field > input:focus ~ .placeholder {
+.input__field > input:focus ~ .placeholder {
   font-size: 1rem;
   transform: translateY(-35px);
 }
 
-.login__field > input:not(:placeholder-shown) ~ .placeholder {
+.input__field > input:not(:placeholder-shown) ~ .placeholder {
   font-size: 1rem;
   transform: translateY(-35px);
 }
@@ -109,7 +105,6 @@ body {
 /* * ERROR Spans */
 
 .error {
-  /* border: 2px solid orange; */
   display: flex;
   align-items: center;
   color: var(--clr-invalid);
@@ -121,6 +116,20 @@ body {
 .error__msg::before {
   content: "\26AB\fe0e";
   font-size: 0.8rem;
+}
+
+/* * login page links */
+
+.link {
+  color: #ccc;
+}
+
+.link:hover {
+  color: #949494;
+}
+
+.link-signup {
+  display: block;
 }
 
 /* * LIVE Validation  */
@@ -137,7 +146,40 @@ input:not(:placeholder-shown):focus:invalid {
   border-color: var(--clr-warning);
 }
 
+/* * Sign Up Page */
+
+.section-signup {
+  padding: 1em 0;
+}
+
+.name-fields {
+  border: 2px solid red;
+  display: flex;
+}
+
+/* * Password */
+
+.pass-reqs {
+  font-size: 0.9rem;
+}
+
+.pass-reqs > * {
+  margin: 0;
+}
+
+.req__msg {
+  font-weight: bold;
+}
+
+.req__icon[valid] {
+  color: var(--clr-valid);
+}
+
 /* * Utility Classes */
+
+.hidden {
+  color: transparent;
+}
 
 .valid {
   color: var(--clr-valid);
@@ -151,6 +193,14 @@ input:not(:placeholder-shown):focus:invalid {
   color: var(--clr-invalid);
 }
 
-.hidden {
-  color: transparent;
+.valid-border {
+  border-color: var(--clr-valid);
+}
+
+.warning-border {
+  border-color: var(--clr-warning);
+}
+
+.invalid-border {
+  border-color: var(--clr-invalid);
 }
