@@ -14,9 +14,6 @@
   emailField.addEventListener("blur", emailConstraint);
   emailField.addEventListener("input", emailConstraint);
   showPassBtn.addEventListener("click", showPassword);
-  // passField.addEventListener("blur", handlePassFocusBlur);
-  // passField.addEventListener("input", handlePassFocusBlur);
-
   passField.addEventListener("blur", handlePassBlur);
   passField.addEventListener("input", handlePassInput);
 
@@ -135,6 +132,11 @@
     const icon = reqSpan.querySelector(".req__icon");
     icon.textContent = isValid ? "\u26AB\uFE0E" : "\u25CB\uFE0E"; // Filled or open circle
     isValid ? icon.setAttribute("valid", "") : icon.removeAttribute("valid");
+    if (isValid) {
+      removeError(reqSpan, "remove", "invalid"); // remove red colour from span text
+    } else {
+      raiseError(reqSpan, "add", "invalid"); // add red colour to span text
+    }
   }
 
   // * error functions
