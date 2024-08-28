@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./style.css" />
-    <script src="./script.js" defer></script>
+    <script src="./login-script.js" defer></script>
     <title>Login</title>
   </head>
 
@@ -12,8 +12,8 @@
     <section class="section-login" section-login>
       <div class="container">
         <h1 class="login__title">Sign in</h1>
-        <form action="#" name="login" class="login__form">
-          <div class="login__field">
+        <form action="#" name="login" class="login__form" novalidate>
+          <div class="input__field">
             <input
               type="email"
               name="email"
@@ -23,11 +23,10 @@
             <span class="email-placeholder placeholder">Email</span>
           </div>
           <div class="error">
-            <span class="error__icon">&#9899;&#xfe0e;</span>
-            <span class="error__msg">HALO</span>
+            <span class="error__msg hidden" email-error></span>
           </div>
 
-          <div class="login__field">
+          <div class="input__field">
             <input
               type="password"
               name="password"
@@ -38,11 +37,14 @@
             <span class="show-password" show-password>&#9673;&#xfe0e;</span>
           </div>
           <div class="error">
-            <span class="error__icon">&#9899;&#xfe0e;</span>
-            <span class="error__msg">HALO</span>
+            <span class="error__msg hidden"></span>
           </div>
           <button type="submit" class="submit">Log in</button>
         </form>
+        <a href="#" class="link">Forgot password?</a>
+        <a target="_blank" href="./signup.html" class="link link-signup">
+          Make an account!
+        </a>
       </div>
     </section>
   </body>
