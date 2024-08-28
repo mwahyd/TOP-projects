@@ -12,7 +12,7 @@
     <section class="section-signup" section-signup>
       <div class="container">
         <h1 class="signup__title">Sign Up</h1>
-        <form action="#" name="signup" class="signup__form">
+        <form action="#" name="signup" class="signup__form" signup-form novalidate>
           <div class="input__field">
             <input
               required
@@ -25,7 +25,7 @@
             <span class="name-placeholder placeholder">Name</span>
           </div>
           <div class="error">
-            <span class="error__msg hidden" name-error>HELLO</span>
+            <span class="error__msg hidden" name-error></span>
           </div>
 
           <div class="input__field">
@@ -42,7 +42,7 @@
           </div>
 
           <div class="error">
-            <span class="error__msg" surname-error>HELLO</span>
+            <span class="error__msg hidden" surname-error></span>
           </div>
 
           <div class="input__field">
@@ -57,7 +57,7 @@
           </div>
 
           <div class="error">
-            <span class="error__msg" email-error>HELLO</span>
+            <span class="error__msg hidden" email-error></span>
           </div>
 
           <div class="input__field">
@@ -66,20 +66,33 @@
               type="password"
               name="password"
               id="password"
-              minlength="8"
+              pattern="^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*_\-=+]).{8,}$"
               placeholder="." />
             <span class="password-placeholder placeholder">Password</span>
             <span class="show-password" show-password>&#9673;&#xfe0e;</span>
           </div>
-          <div class="error">
-            <span class="error__msg" email-error>HELLO</span>
+          <div class="pass-reqs">
+            <p class="req__msg" pass-req>Your password must contain atleast:</p>
+            <p class="req__letter req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 1 letter
+            </p>
+            <p class="req__num req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 1 number
+            </p>
+            <p class="req__char req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 1 special character (eg:
+              #?!_%)
+            </p>
+            <p class="req__length req" pass-req>
+              <span class="req__icon">&#9675;&#xfe0e;</span> 8 characters
+            </p>
           </div>
 
           <button type="submit" class="submit">Sign Up</button>
         </form>
-        <a target="_blank" href="./login.html" class="link link-signup"
-          >Have an account?</a
-        >
+        <a target="_blank" href="./login.html" class="link link-signup">
+          Have an account?
+        </a>
       </div>
     </section>
   </body>
