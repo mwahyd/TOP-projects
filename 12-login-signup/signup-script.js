@@ -6,7 +6,6 @@
   const emailField = doc.querySelector("input[type='email']");
   const passField = doc.querySelector("input[type='password']");
   const showPassBtn = doc.querySelector("[show-password]");
-  // const signupBtn = doc.querySelector("[signup-btn]");
   const form = doc.querySelector("[signup-form]");
 
   // bind events

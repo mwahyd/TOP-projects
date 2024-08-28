@@ -152,11 +152,6 @@ input:not(:placeholder-shown):focus:invalid {
   padding: 1em 0;
 }
 
-.name-fields {
-  border: 2px solid red;
-  display: flex;
-}
-
 /* * Password */
 
 .pass-reqs {
